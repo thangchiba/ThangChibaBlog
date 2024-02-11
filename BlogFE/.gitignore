@@ -42,3 +42,7 @@ yarn-error.log*
 .env
 
 tsconfig.tsbuildinfo
+
+# amplify
+.amplify
+amplifyconfiguration*
