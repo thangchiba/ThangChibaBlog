@@ -38,10 +38,7 @@ yarn-error.log*
 # vscode settings
 .vscode/
 
-# Ignore all .env. files
-.env.*
-
-# But keep .env.example tracked
-!.env.example
+# .env
+.env
 
 tsconfig.tsbuildinfo
