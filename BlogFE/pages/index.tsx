@@ -10,6 +10,7 @@ import { Heading } from '~/components/homepage/Heading'
 import { ShortDescription } from '~/components/homepage/ShortDescription'
 import { TypedBios } from '~/components/homepage/TypedBios'
 import { getAllFilesFrontMatter } from '~/libs/mdx.server'
+import MetaMessenger from "~/components/MetaMessenger";
 
 export async function getStaticProps({ locale }) {
   let posts = getAllFilesFrontMatter(`${locale}/blog`)
@@ -44,6 +45,7 @@ export default function Home({ posts }) {
           </div>
           <div className="hidden xl:block">
             <ProfileCard />
+            <MetaMessenger />
           </div>
         </div>
       </div>
