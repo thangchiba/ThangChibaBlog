@@ -10,7 +10,7 @@ import { Heading } from '~/components/homepage/Heading'
 import { ShortDescription } from '~/components/homepage/ShortDescription'
 import { TypedBios } from '~/components/homepage/TypedBios'
 import { getAllFilesFrontMatter } from '~/libs/mdx.server'
-import MetaMessenger from "~/components/MetaMessenger";
+import { MetaMessenger } from '~/components/MetaMessenger'
 
 export async function getStaticProps({ locale }) {
   let posts = getAllFilesFrontMatter(`${locale}/blog`)
