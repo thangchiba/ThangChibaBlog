@@ -8,6 +8,7 @@ import { LanguageSwitcher } from './LanguageSwitcher'
 import { Link } from './Link'
 import { MobileNavToggle } from './MobileNavToggle'
 import { ThemeSwitcher } from './ThemeSwitcher'
+import CypherChat from "~/components/CypherChat";
 
 export function Header({ navShow, onToggleNav }: { onToggleNav: () => void; navShow: boolean }) {
   let { t } = useTranslation('common')
@@ -49,6 +50,7 @@ export function Header({ navShow, onToggleNav }: { onToggleNav: () => void; navS
           </div>
           <div className="flex items-center gap-1">
             <AnalyticsLink />
+            <CypherChat />
             <ThemeSwitcher />
             <LanguageSwitcher />
             <MobileNavToggle navShow={navShow} onToggleNav={onToggleNav} />

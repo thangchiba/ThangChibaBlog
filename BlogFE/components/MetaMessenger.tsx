@@ -7,8 +7,8 @@ export function MetaMessenger() {
       language="vi_VN"
       themeColor={'#000000'}
       bottomSpacing={10}
-      loggedInGreeting="loggedInGreeting"
-      loggedOutGreeting="loggedOutGreeting"
+      loggedInGreeting="Đây là mục chat riêng tư với tôi, hãy để lại tin nhắn của bạn"
+      loggedOutGreeting="Xin chào và hẹn gặp lại"
     />
   )
 }
