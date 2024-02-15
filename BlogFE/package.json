@@ -12,6 +12,7 @@
     "upgrade": "rimraf package-lock.json && npx taze major -w && ni"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.18",
     "@octokit/graphql": "^7.0.1",
     "@prisma/client": "^5.2.0",
     "@radix-ui/react-popover": "^1.0.6",
@@ -26,7 +27,7 @@
     "i18next": "^23.4.6",
     "image-size": "^1.0.2",
     "isomorphic-unfetch": "^4.0.2",
-    "lucide-react": "^0.274.0",
+    "lucide-react": "^0.295.0",
     "mdx-bundler": "^9.2.1",
     "next": "^13.5.4",
     "next-i18next": "^14.0.2",
@@ -36,6 +37,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-i18next": "^13.2.2",
+    "react-messenger-chat-plugin": "^3.0.5",
     "react-share": "^4.4.1",
     "reading-time": "^1.5.0",
     "rehype-autolink-headings": "^6.1.1",
@@ -47,8 +49,7 @@
     "smoothscroll-polyfill": "^0.4.4",
     "swr": "^2.2.2",
     "tailwindcss": "^3.3.3",
-    "typed.js": "^2.0.132",
-    "react-messenger-chat-plugin": "^3.0.5"
+    "typed.js": "^2.0.132"
   },
   "devDependencies": {
     "@aws-amplify/backend": "^0.12.1",
@@ -77,6 +78,7 @@
     "prettier": "^3.0.3",
     "prettier-plugin-tailwindcss": "^0.5.4",
     "prisma": "^5.2.0",
+    "react-messenger-chat-plugin": "^3.0.5",
     "rehype": "^13.0.1",
     "remark-frontmatter": "^4.0.1",
     "remark-parse": "^10.0.2",
@@ -84,8 +86,7 @@
     "tsx": "^3.12.8",
     "typescript": "^5.3.3",
     "unified": "^11.0.2",
-    "unist-util-visit": "^5.0.0",
-    "react-messenger-chat-plugin": "^3.0.5"
+    "unist-util-visit": "^5.0.0"
   },
   "lint-staged": {
     "*.+(js|jsx|ts|tsx)": [
