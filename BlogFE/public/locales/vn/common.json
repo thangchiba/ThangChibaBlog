@@ -81,5 +81,9 @@
   },
   "tag": {
     "no_tags_found": "Không tìm thấy thẻ nào."
+  },
+  "fb_messenger": {
+    "logged_in_greeting" : "Đây là mục chat riêng tư với tôi, hãy để lại tin nhắn của bạn",
+    "logged_out_greeting" : "Xin chào và hẹn gặp lại"
   }
 }
