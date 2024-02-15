@@ -1,14 +1,32 @@
 import { MessengerChat } from 'react-messenger-chat-plugin'
+import { useTheme } from 'next-themes'
+import { useLocale } from '~/hooks/useLocale'
+import { useTranslation } from 'next-i18next'
+
+function getLocaleLanguageMessage(localeCodes: string) {
+  if (localeCodes === 'vn') {
+    return 'vi_VN'
+  }
+  if (localeCodes === 'ja') {
+    return 'ja_JP'
+  }
+  return 'en_US'
+}
 
 export function MetaMessenger() {
+  let { theme, setTheme, resolvedTheme } = useTheme()
+  let isDark = theme === 'dark' || resolvedTheme === 'dark'
+  let [localeCodes] = useLocale()
+  const languageLocale = getLocaleLanguageMessage(localeCodes.code)
+  let { t } = useTranslation('common')
   return (
     <MessengerChat
       pageId="113413278026734"
-      language="vi_VN"
-      themeColor={'#000000'}
+      language={languageLocale}
+      themeColor={isDark ? '#ffffff' : '#000000'}
       bottomSpacing={10}
-      loggedInGreeting="Đây là mục chat riêng tư với tôi, hãy để lại tin nhắn của bạn"
-      loggedOutGreeting="Xin chào và hẹn gặp lại"
+      loggedInGreeting={t('fb_messenger.logged_in_greeting')}
+      loggedOutGreeting={t('fb_messenger.logged_out_greeting')}
     />
   )
 }

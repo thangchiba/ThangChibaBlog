@@ -1,12 +1,16 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { Dialog } from '@headlessui/react'
-import { MessageCircleHeart } from 'lucide-react'
+import { MessageCircleHeart, XCircle } from 'lucide-react'
 
 const CypherChat = () => {
   const [isOpen, setIsOpen] = useState(false)
   const roomName = process.env.CYPHER_ROOM_NAME
   const enigma = process.env.CYPHER_ENIGMA || ''
-
+  // Random a number with value string from '000001' to '999999'
+  const randomId = useMemo(
+    () => String(Math.floor(Math.random() * 999999) + 1).padStart(6, '0'),
+    []
+  )
   function openModal() {
     setIsOpen(true)
   }
@@ -38,18 +42,29 @@ const CypherChat = () => {
         <div className="fixed inset-0 overflow-y-auto">
           <div className="flex min-h-full items-center justify-center p-0 text-center">
             {/* Adjust the width and padding of the Dialog.Panel for a larger size */}
-            <Dialog.Panel className="w-full max-w-5xl transform overflow-hidden rounded-2xl bg-white p-0 text-left align-middle shadow-xl transition-all">
-              {/*<Dialog.Title*/}
-              {/*  as="h3"*/}
-              {/*  className="text-lg text-center font-medium leading-6 text-gray-900 my-1"*/}
-              {/*>*/}
-              {/*  Community Chat*/}
-              {/*</Dialog.Title>*/}
+            <Dialog.Panel className="w-full max-w-5xl transform overflow-hidden rounded-2xl bg-black p-0 text-left align-middle shadow-xl transition-all">
+              <Dialog.Title
+                as="h3"
+                className="text-lg font-medium leading-6 text-gray-900 mt-1 md:hidden"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex-1"></div>{' '}
+                  {/* This div is used to balance the space on the left side */}
+                  <span className="flex-3 text-center text-white">Cypher Chat</span>
+                  <button
+                    type="button"
+                    className="flex-1 inline-flex justify-end rounded-md border border-transparent text-red-700 hover:bg-red-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                    onClick={closeModal}
+                  >
+                    <XCircle strokeWidth={2} size={25} className="text-right" />
+                  </button>
+                </div>
+              </Dialog.Title>
               {/* Adjust the height of the iframe for a larger view */}
               {isOpen && (
                 <iframe
                   title="Cypher Chat"
-                  src={`https://cypher.thangchiba.com/room/${roomName}?enigma=${enigma}`}
+                  src={`https://cypher.thangchiba.com/room/${roomName}?enigma=${enigma}&nickName=User${randomId}`}
                   frameBorder="0"
                   className="w-full h-[700px]" // Adjusted height here
                   allowFullScreen
