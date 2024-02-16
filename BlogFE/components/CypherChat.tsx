@@ -4,8 +4,8 @@ import { MessageCircleHeart, XCircle } from 'lucide-react'
 
 export function CypherChat() {
   const [isOpen, setIsOpen] = useState(false)
-  const roomName = process.env.CYPHER_ROOM_NAME
-  const enigma = process.env.CYPHER_ENIGMA || ''
+  const roomName = process.env.CYPHER_CHAT_ROOM
+  const enigma = process.env.CYPHER_CHAT_ENIGMA || ''
   // Random a number with value string from '000001' to '999999'
   const randomId = useMemo(
     () => String(Math.floor(Math.random() * 999999) + 1).padStart(6, '0'),
