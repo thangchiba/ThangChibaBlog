@@ -85,5 +85,8 @@
   "fb_messenger": {
     "logged_in_greeting": "This is a private chat with me, please leave your message",
     "logged_out_greeting": "Hello and see you again"
+  },
+  "social_account": {
+    "contact_text": "Get in touch with me via my social media accounts:"
   }
 }

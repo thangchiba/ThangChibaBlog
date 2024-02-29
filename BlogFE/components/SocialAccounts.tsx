@@ -1,10 +1,12 @@
 import { Facebook, Github, Linkedin, Mail, Youtube } from 'lucide-react'
 import { siteMetadata } from '~/data/siteMetadata'
+import { useTranslation } from 'next-i18next'
 
 export default function SocialAccounts() {
+  let { t } = useTranslation('common')
   return (
     <div>
-      <p className="my-3">Get in touch with me via my social media accounts:</p>
+      <p className="my-3">{t('social_account.contact_text')}</p>
       <div className="flex space-x-4 items-center">
         <a
           href={siteMetadata.github}

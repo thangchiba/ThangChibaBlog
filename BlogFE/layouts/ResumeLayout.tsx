@@ -2,6 +2,7 @@ import { PageSeo } from 'components/SEO'
 import { ScrollTopButton } from '~/components/ScrollTopButton'
 import { ToC } from '~/components/ToC'
 import { useTranslation } from 'next-i18next'
+import SocialAccounts from '~/components/SocialAccounts'
 
 export function ResumeLayout({ children, toc }) {
   let { t } = useTranslation('common')
@@ -32,6 +33,7 @@ export function ResumeLayout({ children, toc }) {
           </div>
         </main>
       </div>
+      <SocialAccounts />
     </>
   )
 }

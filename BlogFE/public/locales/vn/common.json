@@ -85,5 +85,8 @@
   "fb_messenger": {
     "logged_in_greeting" : "Đây là mục chat riêng tư với tôi, hãy để lại tin nhắn của bạn",
     "logged_out_greeting" : "Xin chào và hẹn gặp lại"
+  },
+  "social_account": {
+    "contact_text": "Dưới đây là địa chỉ liên lạc của tôi:"
   }
 }

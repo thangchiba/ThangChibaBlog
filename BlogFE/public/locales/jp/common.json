@@ -85,5 +85,8 @@
   "fb_messenger": {
     "logged_in_greeting": "これは私とのプライベートチャットです。メッセージを残してください",
     "logged_out_greeting": "こんにちは、またお会いしましょう"
+  },
+  "social_account": {
+    "contact_text": "私のソーシャルメディアを通じてご連絡してください:"
   }
 }
