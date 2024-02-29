@@ -3,11 +3,17 @@ import type { Project } from '~/types/data'
 export let projectsData: Project[] = [
   {
     type: 'work',
-    title: 'Vegetable Wholesale Digital Transformation',
+    title: 'Vegetable Wholesale DX',
     description: `Transforming a traditional vegetable wholesale business into a digital platform, including a mobile app for customers and a web app for the business owner.`,
     imgSrc: '/static/images/vegetable-wholesale.webp',
     url: 'https:thangchiba.com',
-    builtWith: ['ReactJS', 'SpringBoot', ' PostgreSQL'],
+    detail: 'vegetable-wholesale-dx',
+    repo: 'Cypher',
+    fe: ['ReactJS', 'ReactNative', 'TypeScript'],
+    be: ['SpringBoot'],
+    db: ['PostgreSQL'],
+    infra: ['AWS'],
+    tools: ['Figma', 'Excel', 'PowerPoint'],
   },
   {
     type: 'self',
@@ -16,5 +22,6 @@ export let projectsData: Project[] = [
     imgSrc: `/static/images/chatgptpp.png`,
     repo: 'https://thangchiba.com',
     builtWith: ['ReactJS', 'OpenAI', 'AWS'],
+    detail: 'blog.thangchiba.com/hihi',
   },
 ]

@@ -6,8 +6,15 @@ export interface Project {
   description?: string
   imgSrc: string
   url?: string
+  detail?: string
   repo?: string
-  builtWith: string[]
+  builtWith?: string[]
+  fe?: string[]
+  be?: string[]
+  db?: string[]
+  network?: string[]
+  infra?: string[]
+  tools?: string[]
 }
 
 export type SiteMetaData = typeof siteMetadata & {
