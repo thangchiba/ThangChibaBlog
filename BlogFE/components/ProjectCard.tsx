@@ -5,14 +5,14 @@ import { Link } from './Link'
 
 export function ProjectCard({ project }: ProjectCardProps) {
   let { t } = useTranslation('common')
-  let { title, description, imgSrc, url, detail, repo } = project
+  let { title, summary, images, url, slug, repo } = project
 
   return (
     <div className="md p-4 md:w-1/2" style={{ maxWidth: '544px' }}>
       <div className="flex h-full flex-col overflow-hidden rounded-lg border border-transparent shadow-nextjs dark:shadow-nextjs-dark">
         <Image
           alt={title}
-          src={imgSrc}
+          src={images[0]}
           className="object-cover object-center md:h-36 lg:h-60"
           width={1088}
           height={612}
@@ -20,8 +20,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <div className="flex grow flex-col justify-between space-y-6 p-4 md:p-6">
           <div className="space-y-3">
             <h2 className="text-2xl font-bold leading-8 tracking-tight">
-              {detail ? (
-                <Link href={detail} aria-label={`Link to ${title}`}>
+              {slug ? (
+                <Link href={`/projects/${slug}`} aria-label={`Link to ${title}`}>
                   <span data-umami-event="project-title-link">{title}</span>
                 </Link>
               ) : (
@@ -29,7 +29,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               )}
             </h2>
             <div className="max-w-none space-y-2 text-gray-500 dark:text-gray-400">
-              <p>{description}</p>
+              <p>{summary}</p>
               <div className="space-y-2">
                 {['Built With', 'FE', 'BE', 'DB', 'Network', 'Infra', 'Tools'].map((category) => {
                   const key = category.toLowerCase() // Convert category to lowercase to match the project2 keys
@@ -63,9 +63,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
           </div>
 
           <div className="flex justify-between cursor-pointer">
-            {detail && (
+            {slug && (
               <Link
-                href={detail}
+                href={`/projects/${slug}`}
                 className="text-base font-medium leading-6 text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 animate-bounce cursor-pointer"
                 aria-label={`Link to detail of ${title}`}
               >

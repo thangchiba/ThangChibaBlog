@@ -2,23 +2,27 @@ import { PageSeo } from '~/components/SEO'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { ProjectCard } from '~/components/ProjectCard'
-import type { Project } from '~/types/data'
+import type { ProjectFrontMatter } from '~/types/mdx'
+import { PROJECT_TYPE } from '~/types/mdx'
+import { getAllFilesFrontMatter } from '~/libs/mdx.server'
 
 export async function getStaticProps({ locale }) {
   let projectsDataModule = await import(`~/data/${locale}/projectsData.ts`)
   let projectsData = projectsDataModule.projectsData
 
+  let posts = getAllFilesFrontMatter(`${locale}/projects`)
+
   return {
     props: {
-      projectsData,
+      projectsData: posts,
       ...(await serverSideTranslations(locale, ['common'])),
     },
   }
 }
 
-export default function Index({ projectsData }: { projectsData: Project[] }) {
-  let workProjects = projectsData.filter(({ type }) => type === 'work')
-  let sideProjects = projectsData.filter(({ type }) => type === 'self')
+export default function Index({ projectsData }: { projectsData: ProjectFrontMatter[] }) {
+  let workProjects = projectsData.filter(({ projectType }) => projectType === PROJECT_TYPE.WORK)
+  let sideProjects = projectsData.filter(({ projectType }) => projectType === PROJECT_TYPE.SELF)
   let { t } = useTranslation('common')
 
   let description = t('projects.projects_description')

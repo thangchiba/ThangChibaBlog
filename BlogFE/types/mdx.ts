@@ -31,6 +31,10 @@ export enum POST_TYPE {
   BLOG = 'blog',
   PROJECT = 'project',
 }
+export enum PROJECT_TYPE {
+  WORK = 'work',
+  SELF = 'self',
+}
 
 export interface BlogFrontMatter extends MdxFrontMatter {
   readingTime: ReadingTime
@@ -39,6 +43,16 @@ export interface BlogFrontMatter extends MdxFrontMatter {
 
 export interface ProjectFrontMatter extends BlogFrontMatter {
   type: POST_TYPE
+  projectType: PROJECT_TYPE
+  images?: string[] | string
+  url?: string
+  repo?: string
+  fe?: string[]
+  be?: string[]
+  db?: string[]
+  network?: string[]
+  infra?: string[]
+  tools?: string[]
 }
 
 export interface SnippetFrontMatter extends BlogFrontMatter {

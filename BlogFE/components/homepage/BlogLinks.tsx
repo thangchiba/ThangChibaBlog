@@ -8,7 +8,7 @@ export function BlogLinks() {
 
   return (
     <div className="flex flex-col space-y-1.5">
-      <Link href="/projects/index" className="hover:underline">
+      <Link href="/projects" className="hover:underline">
         <Twemoji emoji="hammer-and-wrench" />
         <span data-umami-event="home-link-projects" className="ml-1.5">
           {t('menu_projects_2')}

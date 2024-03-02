@@ -2,7 +2,7 @@ import type { ImageProps as NextImageProps } from 'next/image'
 import type React from 'react'
 import type { projectsData } from '~/data/en/projectsData'
 import type { commentConfig } from '~/data/siteMetadata'
-import type { MdxFrontMatter, ReadingTime } from './mdx'
+import type { MdxFrontMatter, ProjectFrontMatter, ReadingTime } from './mdx'
 
 export interface PageTitleProps {
   children: React.ReactNode
@@ -19,7 +19,7 @@ export interface ImageProps extends NextImageProps {
 export type ProjectDataType = (typeof projectsData)[0]
 
 export interface ProjectCardProps {
-  project: ProjectDataType
+  project: ProjectFrontMatter
 }
 
 export interface SocialButtonsProps {
