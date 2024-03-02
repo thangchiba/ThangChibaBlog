@@ -14,11 +14,9 @@ import { kebabCase } from '~/utils/string'
 
 export async function getStaticPaths({ locales }: { locales: string[] }) {
   let tags = getAllTags(`${DEFAULT_LOCALE}/blog`, `${DEFAULT_LOCALE}/projects`)
-  console.log({ tags })
   let paths = []
   for (let locale of locales) {
     for (let tag of Object.keys(tags)) {
-      // console.log({ paths, tag, locale })
       paths.push({
         params: {
           tag,

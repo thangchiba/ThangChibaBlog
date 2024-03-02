@@ -16,7 +16,6 @@ export function PostListItem({
   let lang = i18n.language
   let isProject = type === POST_TYPE.PROJECT
   let category = isProject ? 'projects' : 'blog'
-  console.log({ frontMatter, category, type })
 
   return (
     <li key={slug}>
