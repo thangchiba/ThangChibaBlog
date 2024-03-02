@@ -36,3 +36,10 @@ export interface ResumeLayoutProps {
   frontMatter: MdxFrontMatter
   toc: TOC
 }
+
+export interface ProjectLayoutProps {
+  frontMatter: BlogFrontMatter
+  commentConfig: CommentConfigType
+  children: React.ReactNode
+  description: string
+}

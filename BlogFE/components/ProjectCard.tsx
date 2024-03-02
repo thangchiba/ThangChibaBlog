@@ -32,7 +32,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               <p>{description}</p>
               <div className="space-y-2">
                 {['Built With', 'FE', 'BE', 'DB', 'Network', 'Infra', 'Tools'].map((category) => {
-                  const key = category.toLowerCase() // Convert category to lowercase to match the project keys
+                  const key = category.toLowerCase() // Convert category to lowercase to match the project2 keys
                   const technologies = project[key] // Get technologies array using dynamic key
 
                   // Only render this category if there are technologies defined

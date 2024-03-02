@@ -9,10 +9,13 @@ export function ListLayout(props: ListLayoutProps) {
   let { posts, title, initialDisplayPosts = [], pagination } = props
   let { t } = useTranslation('common')
   let [searchValue, setSearchValue] = useState('')
-  let filteredBlogPosts = posts.filter((frontMatter) => {
-    let searchContent = frontMatter.title + frontMatter.summary + frontMatter.tags.join(' ')
-    return searchContent.toLowerCase().includes(searchValue.toLowerCase())
-  })
+  console.log(posts)
+  let filteredBlogPosts = posts
+    ? posts.filter((frontMatter) => {
+        let searchContent = frontMatter.title + frontMatter.summary + frontMatter.tags.join(' ')
+        return searchContent.toLowerCase().includes(searchValue.toLowerCase())
+      })
+    : []
 
   // If initialDisplayPosts exist, display it if no searchValue is specified
   let displayPosts =

@@ -1,6 +1,17 @@
 import type { CommentConfigType } from './components'
-import type { AuthorFrontMatter, BlogFrontMatter, MdxFileData } from './mdx'
+import type { AuthorFrontMatter, BlogFrontMatter, MdxFileData, ProjectFrontMatter } from './mdx'
 import type { PaginationType } from './server'
+
+export interface ProjectProps {
+  post: MdxFileData
+  commentConfig: CommentConfigType
+}
+
+export interface ProjectListProps {
+  posts: ProjectFrontMatter[]
+  initialDisplayPosts: ProjectFrontMatter[]
+  pagination: PaginationType
+}
 
 export interface SnippetProps {
   snippet: MdxFileData

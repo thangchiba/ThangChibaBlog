@@ -9,6 +9,7 @@ export type MdxPageLayout =
   | 'PostSimple'
   | 'ResumeLayout'
   | 'SnippetLayout'
+  | 'ProjectLayout'
 
 export interface MdxFrontMatter {
   layout?: MdxPageLayout
@@ -26,9 +27,18 @@ export interface MdxFrontMatter {
 
 export type ReadingTime = ReturnType<typeof readingTime>
 
+export enum POST_TYPE {
+  BLOG = 'blog',
+  PROJECT = 'project',
+}
+
 export interface BlogFrontMatter extends MdxFrontMatter {
   readingTime: ReadingTime
   fileName: string
+}
+
+export interface ProjectFrontMatter extends BlogFrontMatter {
+  type: POST_TYPE
 }
 
 export interface SnippetFrontMatter extends BlogFrontMatter {
@@ -51,5 +61,6 @@ export interface MdxLayoutRendererProps {
   layout: MdxPageLayout
   mdxSource: string
   frontMatter: MdxFrontMatter
+
   [key: string]: any
 }

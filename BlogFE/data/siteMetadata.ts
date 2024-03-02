@@ -31,7 +31,7 @@ export let siteMetadata = {
  * https://vercel.com/docs/environment-variables
  * --
  *
- * Visit each provider's documentation link and follow the instructions, then add the environment variable to your project.
+ * Visit each provider's documentation link and follow the instructions, then add the environment variable to your project2.
  */
 export let commentConfig = {
   provider: 'giscus', // 'giscus' | 'utterances' | 'disqus',

@@ -1,5 +1,6 @@
 import { useTranslation } from 'next-i18next'
-import type { BlogFrontMatter, SnippetFrontMatter } from '~/types/mdx'
+import type { BlogFrontMatter, ProjectFrontMatter } from '~/types/mdx'
+import { POST_TYPE } from '~/types/mdx'
 import { formatDate } from '~/utils/date'
 import { Link } from './Link'
 import { Tag } from './Tag'
@@ -7,14 +8,15 @@ import { Tag } from './Tag'
 export function PostListItem({
   frontMatter,
 }: {
-  frontMatter: BlogFrontMatter | SnippetFrontMatter
+  frontMatter: BlogFrontMatter | ProjectFrontMatter
 }) {
-  let { slug, date, title, summary, tags, heading, type } = frontMatter as BlogFrontMatter &
-    SnippetFrontMatter
+  let { slug, date, title, summary, tags, type } = frontMatter as BlogFrontMatter &
+    ProjectFrontMatter
   let { t, i18n } = useTranslation()
   let lang = i18n.language
-  let isSnippets = heading && type
-  let category = isSnippets ? 'snippets' : 'blog'
+  let isProject = type === POST_TYPE.PROJECT
+  let category = isProject ? 'projects' : 'blog'
+  console.log({ frontMatter, category, type })
 
   return (
     <li key={slug}>
