@@ -1,0 +1,92 @@
+---
+type: 'project'
+projectType: 'self'
+tags: ['reactjs']
+title: 'Neo Socket'
+date: '2023-02-01'
+summary: "A High-Performance Framework for Real-Time Applications"
+images: ['/static/images/vegetable-wholesale.webp']
+url: 'https://apartment.thangchiba.com'
+repo: 'Apartment'
+be: ['Dotnet7', '.NET Standard2.0','TypeScript']
+network: ['TCP/UDP','Websocket']
+infra: ['Windows','MacOS','Linux','Unity']
+tools: []
+draft: false
+---
+
+import Twemoji from './Twemoji.tsx'
+import UnsplashPhotoInfo from './UnsplashPhotoInfo.tsx'
+
+## **Overview**
+
+- **Title:** NeoSocket
+- **Purpose:** Designed to enable high-performance and scalable solutions for MMORPG and Metaverse game development. Additionally, its versatility allows application in real-time chat systems and dashboard management interfaces.
+- **Context:** Driven by the need for a robust framework capable of meeting the unique challenges of open-world MMORPGs or Metaverse, which existing open-source libraries failed to address adequately.
+
+## **Inspiration and Background**
+
+- **From Web to Game Development:** Transitioning skills from web development (experience with frameworks like Spring Boot, ASP.NET) to game development.
+- **Key Motivations:** Desire to create a framework with easy-to-use APIs similar to popular web frameworks, but with enhanced performance suitable for real-time gaming.
+
+## **NeoSocket's Core Features**
+
+- **Stateful Design:** Tailored for real-time applications, ensuring persistent connection states for dynamic interactions.
+- **Middleware Layer:** Integrates robust features such as anti-DDoS measures and sophisticated authentication/authorization mechanisms for user security.
+- **Neo-Protocol:** A proprietary protocol that significantly reduces bandwidth usage through streamlined features and optimized data handling.
+- **Bandwidth Efficiency:** Employs MessagePack for data serialization, reducing bandwidth consumption by bundling multiple packets into a single TCP packet.
+- **Ease of Development:** Offers a familiar and intuitive structure with Handlers (akin to Controllers), Services, and a built-in IoC (Inversion of Control) container, drawing inspiration from conventional web frameworks.
+- **Demand-Reply Mechanism:** Mirrors the Request-Response pattern commonly found in web development, adapted for high-efficiency network communication.
+- **Command Support:** Facilitates command-style requests that do not necessitate a response, thereby increasing system flexibility and reducing unnecessary data transmission.
+- **Packet Management:** Utilizes MessagePack with key configurations, negating the need for transmitting property names within packets. It employs a unique packet identity system (combining packetNumber and packetName) for efficient data identification, replacing traditional URL-based approaches.
+
+## **Development Progress**
+
+- **TCP/UDP Connection Implementation:** Focused initially on gaming, particularly Unity integration, the server component was developed using .NET 7 while the client uses .NET Standard 2.0. The client-side code compiles into a DLL for use within Unity. This setup has achieved the high performance and efficiency anticipated for server-client communication.
+- **TypeScript Library Development:** A specialized TypeScript library has been crafted to facilitate connections from web applications, particularly those built with ReactJS, to the server. This library offers a bandwidth-efficient alternative to traditional HTTP RESTful APIs. However, its stateful architecture makes it less suitable for certain types of websites.
+- **Monitoring Dashboard Development:** Currently, a ReactJS-based dashboard is under construction. This dashboard aims to provide comprehensive monitoring capabilities for NeoSocket, including server performance measurement and health checks.
+
+## **Challenges and Prospects**
+
+### **Key Challenges:**
+
+- **Performance Optimization Learning Curve:** Mastering advanced .NET features for performance enhancement, such as structs, immutable data types, hash tables, caching, parallel programming, context switching, and thread-safe collections.
+- **Code Refinement:** Addressing the current lack of readability in the codebase, which extensively utilizes singletons for convenience. Future plans include code clean-up and adopting best practices for clarity and maintainability.
+- **Framework and API Research:** Analyzing various frameworks and libraries to understand which APIs offer the best developer experience. Inspired by the IOC Container and annotations like Autowired and Service in Spring Boot, similar features were replicated in .NET to enhance developer convenience.
+
+### **Prospects:**
+
+- **Future of NeoSocket:** NeoSocket stands as a high-performance socket framework developed in C#. Its potential future applications include creating advanced solutions like message queues and a distributed game server architecture. These applications aim to achieve superior performance with minimal bandwidth waste, leveraging NeoSocket’s efficient design.
+
+## Tech Keywords
+
+- **Programming Languages & Environments:**
+  - .NET 7 (Server side)
+  - DotNet Standard 2.0 (Client side)
+  - TypeScript
+- **Networking and Sockets:**
+  - Socket Libraries
+  - Stateful Connection
+- Parallel Programming:
+  - Asynchronous Programming (Async/Await)
+- **Protocols:**
+  - TCP (Transmission Control Protocol)
+  - UDP (User Datagram Protocol)
+  - WebSocket
+- **Network Utilities:**
+  - UPnP (Universal Plug and Play)
+  - UDP Hole Punching
+- **Serialization/Deserialization:**
+  - MessagePack (for efficient data handling)
+- Scan and Caching
+  - Reflection(for auto scan and cache necessary part)
+  - Attribute(easy to program, readability code)
+- Operation：
+  - Windows :
+  - MacOS
+  - Linux
+- Currently Support Platform :
+  - Unity
+  - ReactJS
+  - Javascript/Typescript
+  - DotNet application
