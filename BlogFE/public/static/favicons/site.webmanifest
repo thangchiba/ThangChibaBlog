@@ -3,8 +3,8 @@
   "short_name": "",
   "icons": [
     {
-      "src": "/cumeo128.jpg",
-      "sizes": "72x72",
+      "src": "/NeoSocket-rmbg-128.png",
+      "sizes": "128x128",
       "type": "image/png"
     }
   ],
