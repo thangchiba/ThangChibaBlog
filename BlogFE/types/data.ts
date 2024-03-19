@@ -15,6 +15,7 @@ export interface Project {
   network?: string[]
   infra?: string[]
   tools?: string[]
+  keywords?: string[]
 }
 
 export type SiteMetaData = typeof siteMetadata & {

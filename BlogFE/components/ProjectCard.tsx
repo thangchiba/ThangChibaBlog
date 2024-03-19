@@ -31,33 +31,35 @@ export function ProjectCard({ project }: ProjectCardProps) {
             <div className="max-w-none space-y-2 text-gray-500 dark:text-gray-400">
               <p>{summary}</p>
               <div className="space-y-2">
-                {['Built With', 'FE', 'BE', 'DB', 'Network', 'Infra', 'Tools'].map((category) => {
-                  const key = category.toLowerCase() // Convert category to lowercase to match the project2 keys
-                  const technologies = project[key] // Get technologies array using dynamic key
+                {['Built With', 'FE', 'BE', 'DB', 'Network', 'Infra', 'Tools', 'Keywords'].map(
+                  (category) => {
+                    const key = category.toLowerCase() // Convert category to lowercase to match the project2 keys
+                    const technologies = project[key] // Get technologies array using dynamic key
 
-                  // Only render this category if there are technologies defined
-                  return (
-                    technologies &&
-                    technologies.length > 0 && (
-                      <div key={category} className="flex items-center flex-wrap">
-                        <span className="shrink-0 font-semibold text-gray-600 dark:text-gray-300 mr-2">
-                          {category} :
-                        </span>
-                        <div className="flex flex-wrap space-x-1.5">
-                          {technologies.map((tech, index) => (
-                            <span
-                              key={index}
-                              className="font-semibold text-gray-600 dark:text-gray-300"
-                            >
-                              {tech}
-                              {index !== technologies.length - 1 && ','}
-                            </span>
-                          ))}
+                    // Only render this category if there are technologies defined
+                    return (
+                      technologies &&
+                      technologies.length > 0 && (
+                        <div key={category} className="flex items-center flex-wrap">
+                          <span className="shrink-0 font-semibold text-gray-600 dark:text-gray-300 mr-2">
+                            {category} :
+                          </span>
+                          <div className="flex flex-wrap space-x-1.5">
+                            {technologies.map((tech, index) => (
+                              <span
+                                key={index}
+                                className="font-semibold text-gray-600 dark:text-gray-300"
+                              >
+                                {tech}
+                                {index !== technologies.length - 1 && ','}
+                              </span>
+                            ))}
+                          </div>
                         </div>
-                      </div>
+                      )
                     )
-                  )
-                })}
+                  }
+                )}
               </div>
             </div>
           </div>
