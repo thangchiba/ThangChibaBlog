@@ -20,12 +20,12 @@ export function BlogLinks() {
           {t('menu_blog_2')}
         </span>
       </Link>
-      <Link href="/snippets" className="hover:underline">
-        <Twemoji emoji="dna" />
-        <span data-umami-event="home-link-snippets" className="ml-1.5">
-          {t('menu_snippets_2')}
-        </span>
-      </Link>
+      {/*<Link href="/snippets" className="hover:underline">*/}
+      {/*  <Twemoji emoji="dna" />*/}
+      {/*  <span data-umami-event="home-link-snippets" className="ml-1.5">*/}
+      {/*    {t('menu_snippets_2')}*/}
+      {/*  </span>*/}
+      {/*</Link>*/}
       <Link href="/about" className="hover:underline">
         <Twemoji emoji="face-with-monocle" />
         <span data-umami-event="home-link-about" className="ml-1.5">
