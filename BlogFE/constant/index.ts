@@ -34,7 +34,7 @@ export let FEATURED_POSTS = 5
 
 export let LOCALES = [
   {
-    code: 'vn',
+    code: 'vi',
     name: 'Tiếng Việt',
     flag: 'https://cdn.jsdelivr.net/gh/lipis/flag-icons/flags/4x3/vn.svg',
   },
@@ -50,4 +50,4 @@ export let LOCALES = [
   },
 ]
 
-export let DEFAULT_LOCALE = 'vn'
+export let DEFAULT_LOCALE = 'jp'

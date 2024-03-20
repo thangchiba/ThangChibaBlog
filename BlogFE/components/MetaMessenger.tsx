@@ -4,7 +4,7 @@ import { useLocale } from '~/hooks/useLocale'
 import { useTranslation } from 'next-i18next'
 
 function getLocaleLanguageMessage(localeCodes: string) {
-  if (localeCodes === 'vn') {
+  if (localeCodes === 'vi') {
     return 'vi_VN'
   }
   if (localeCodes === 'ja') {

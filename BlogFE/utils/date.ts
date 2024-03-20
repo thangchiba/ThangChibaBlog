@@ -1,7 +1,7 @@
 export function formatDate(date, language: string = 'en'): string {
   const newDate = new Date(date)
 
-  if (language === 'vn') {
+  if (language === 'vi') {
     // Vietnamese format: "Ngày dd Tháng mm Năm yyyy"
     return `Ngày ${newDate.getDate()} Tháng ${newDate.getMonth() + 1} Năm ${newDate.getFullYear()}`
   } else if (language === 'jp') {
