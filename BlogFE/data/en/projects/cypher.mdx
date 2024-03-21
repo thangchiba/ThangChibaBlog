@@ -19,36 +19,31 @@ draft: false
 import Twemoji from './Twemoji.tsx'
 import UnsplashPhotoInfo from './UnsplashPhotoInfo.tsx'
 
-### **Project Context**
+### **Background:**
 
-- **User Need:** My sister, who owns several apartments, required a user-friendly application. Her limited computer skills and inability to use complex tools like Excel necessitated a simple, accessible solution.
-- **Accessibility Requirements:** The need for a platform accessible from various devices, including PCs and smartphones, at any time.
-- **Choice of Platform:** Opted for a web-based application to ensure multi-platform support.
+- 🧠**Think:** Drawing inspiration from World War II, the German military with their Enigma machine caused headaches for the Allied forces. Despite being able to intercept messages, decrypting the content was a challenge.
+- 💡**Idea:** A chat application that encrypts messages on the user's side. Users will agree to use a common password (called enigma) to encrypt and send/receive messages. The chat room will allow anyone access with a URL BUT they cannot read the messages without the password.
 
-### **Why Serverless?**
+→ **Simplifies the access process while maintaining security.🔐**
 
-- **Optimized for Infrequent Use:** Given that the application is accessed only a few times a month, yet requires constant availability, serverless infrastructure emerged as the most suitable choice. This approach ensures that resources are efficiently utilized, reflecting the application's usage pattern.
-- **Leveraging AWS Serverless Infrastructure:** The decision to use AWS services was driven by the need for a cost-effective, efficient, and scalable solution.
-  - **Robust Authentication:** AWS Cognito is employed for its secure user management capabilities, ensuring the safety and privacy of user data.
-  - **Efficient Frontend Hosting:** The combination of AWS Route53, CloudFront, and S3 bucket provides reliable and scalable hosting solutions. The integration of CloudFront's CDN (Content Delivery Network) enables fast access from anywhere in the world.
-  - **Flexible Backend Services:** AWS Lambda functions and API Gateway form the backbone of the backend, offering a responsive and adaptable environment. The key advantage here is their constant availability, crucial for a service that needs to be accessible 24/7.
-  - **Database Solution:** DynamoDB is utilized for its seamless integration with AWS serverless architecture, providing a reliable and scalable database solution.
+- 🥇**First time:** The first application completed using NeoSocket (a framework for realtime apps designed by me).
+- 🏭**Use case:** This is not just another chat app. It should be used for private chats between two people who have agreed on a password (e.g., meeting in person). It can be embedded in another website to facilitate community chats, allowing people to express their opinions anonymously (I am also integrating it into my blog).
 
+### **Features:**
 
-### **Development Approach**
+- 🏙️**Interface:** Includes dark mode, responsive design. Webpage is mobile, tablet, and PC friendly.
+- 📱**Access:** No login required. Just need a URL or room name and a code to decrypt the messages.
+- 🚂**Functionality:** Meets the basic requirements of a messaging app. Messages are sent and received in real-time.
+- 🤝🏻**Rules:** Access any chat room. Need a matching password with others to decrypt messages.
+- 🔔**Note:** Messages are sent with a Nickname for identification. You can choose any Nickname, and anyone else can choose the same one. Of course, only those with the same password can communicate.
+- 💾**Storage:** Messages are stored on the server for 24 hours. But don't worry, the server won't know what you've messaged.
+- 📶**Connectivity:** Pings every 5 seconds. If a connection loss is detected, it automatically reconnects to the server.
+- 🎡**Utility:** Can be embedded in other websites to serve as a community chat room.
 
-- **Frontend Development:** Developed with ReactJS, renowned for its efficiency and user-friendliness. The design is responsive for both PC and mobile devices, adapting seamlessly to different screen sizes and orientations, including landscape and portrait modes.
-- **Backend Development:** FastAPI, a modern Python framework, was chosen for the backend. Python's rapid wake-up time is particularly beneficial for Lambda functions, aligning well with the serverless architecture.
+### **Technology:**
 
-### **Application Features**
-
-- **User Interface:** Emphasizes simplicity and intuitiveness, specifically designed for users with minimal technical expertise. The interface is straightforward, facilitating easy navigation and interaction.
-- **Accessibility:** The application is universally accessible from any device with internet access, ensuring users can manage their properties from anywhere, at any time.
-- **Functionality:** Custom-tailored to address the specific needs of apartment management. The application encompasses features vital for efficient property management, catering specifically to the requirements of apartment owners.
-
-### **Future Enhancements**
-
-- **Continuous Improvement:** Plans to regularly update and enhance the application based on user feedback and technological advancements.
-- **Feature Expansion:** Potential introduction of new features such as automated rent collection, maintenance request tracking, and real-time notifications for important updates.
-- **Enhanced Reporting:** Developing more comprehensive reporting tools for better financial and operational oversight of properties.
-- **User Experience Optimization:** Ongoing efforts to refine the user interface and interaction design, ensuring the application remains user-friendly and aligns with emerging design trends.
+- **FE:** Uses React-Typescript, Redux-Thunk. MUI CSS framework. NeoSocketSDK(TS)
+- **BE:** NeoSocket(Dotnet8)
+- **DB:** MongoDB
+- **Infra:** AWS serverless for FE. GCP VMInstance for running backend and DB, packaged by Docker.
+- Continuous Integration/Continuous Deployment (CICD) for FE.

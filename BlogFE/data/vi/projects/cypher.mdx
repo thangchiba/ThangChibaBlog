@@ -1,0 +1,49 @@
+---
+type: 'project'
+projectType: 'self'
+tags: ['reactjs']
+title: 'Cypher ChatApp'
+date: '2023-02-01'
+summary: "Cypher."
+images: ['/static/images/projects/cypher-demo.png']
+url: 'https://cypher.thangchiba.com'
+repo: 'Apartment'
+fe: ['ReactJS', 'MUI']
+be: ['FastAPI']
+db: ['DynamoDB']
+infra: ['AWS','Cognito', 'Lambda','APIGateway','R53', 'CloudFront', 'S3']
+keywords: ['Responsive Design']
+draft: false
+---
+
+import Twemoji from './Twemoji.tsx'
+import UnsplashPhotoInfo from './UnsplashPhotoInfo.tsx'
+
+### Bối cảnh :
+
+- 🧠**Think :** Lấy ý tưởng từ cuộc thế chiến thứ 2, quân đội Đức với chiếc máy Enigma đã khiến quân đồng minh đau đầu. Mặc dù có thể lấy được tin tức nhưng rất khó để giải được nội dung.
+- 💡**Idea :** Một ứng dụng chat được mã hoá gói tin ở phía người dùng. Những người dùng sẽ thống nhất dùng chung một mật mã ( được gọi là enigma ) để mã hoá và gửi/nhận gói tin. Phòng chat sẽ cho phép bất kì ai truy cập khi có url NHƯNG nếu không có mật mã sẽ không đọc được gói tin.
+
+→ **Đơn giản hoá quy trình truy cập nhưng vẫn giữ được tính bảo mật.🔐**
+
+- 🥇**First time :** Ứng dụng đầu tiên hoàn thiện bởi sử dụng NeoSocket( Framework cho realtime app do mình tự thiết kế).
+- 🏭**Use case :** Đây không phải là một chat app khá đặc biệt. Nên sử dụng để chat riêng tư 2 người với mật khẩu đã được giao kèo với nhau ( ví dụ gặp mặt trực tiếp ). Nhúng vào một trang web khác để phục vụ chat cho cộng đồng, mọi người có thể tự do nêu ý kiến mà không ai biết họ là ai ( mình cũng đang tích hợp vào blog của mình )
+
+### Tính năng :
+
+- 🏙️**Giao diện :** Có dark mode, responsive design. Webpage thân thiện với mobile, table và cả PC.
+- 📱**Truy cập :** Không yêu cầu đăng nhập. Chỉ cần có URL hoặc tên phòng và mã code để giải mã tin nhắn.
+- 🚂**Tính năng :** Đáp ứng cơ bản một ứng dụng nhắn tin. Gói tin được gửi và nhận trong thời gian thực.
+- 🤝🏻**Luật :** Có thể truy cập vào bất cứ phòng chat nào. Cần mật khẩu trùng với người khác để có thể dịch được nội dung.
+- 🔔**Lưu ý :** Gói tin được gửi sẽ kèm Nickname để nhận biết ai đã gửi. Bạn có thể chọn bất cứ Nickname nào, và bất kì ai cũng có thể chọn bí danh đó. Tất nhiên chỉ có những người có chung mật khẩu mới có thể giao tiếp.
+- 💾**Lưu trữ :** Gói tin được lưu ở server trong 24 tiếng. Nhưng yên tâm, server cũng không biết bạn đã nhắn gì.
+- 📶**Kết nối :** Ping sẽ gửi mỗi 5 giây. Nếu nhận thấy mất kết nối sẽ tự động kết nối lại với server.
+- 🎡**Tiện ích :** Có thể nhúng vào trang web khác để làm chat room cộng đồng.
+
+### Công nghệ :
+
+- **FE :** Sử dụng React-Typescript, Redux-Thunk. MUI css framework. NeoSocketSDK(TS)
+- **BE :** NeoSocket(Dotnet8)
+- **DB :** MongoDB
+- **Infra :** AWS serverless cho FE. GCP VMInstance để chạy backend và DB đã được đóng gói bởi docker.
+- CICD cho FE.
