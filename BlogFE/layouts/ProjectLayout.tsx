@@ -4,18 +4,17 @@ import { Comments } from '~/components/comments'
 import { PageTitle } from '~/components/PageTitle'
 import { ScrollTopButton } from '~/components/ScrollTopButton'
 import { SectionContainer } from '~/components/SectionContainer'
-import { BlogSeo, PageSeo } from '~/components/SEO'
-import { siteMetadata } from '~/data/siteMetadata'
-import type { PostSimpleLayoutProps, ProjectLayoutProps } from '~/types/layout'
-import { errors } from 'rehype-parse/lib/errors'
+import { PageSeo } from '~/components/SEO'
+import type { ProjectLayoutProps } from '~/types/layout'
+import AudioPlayer from '~/components/media/AudioPlayer'
 
 export function ProjectLayout(props: ProjectLayoutProps) {
   let { frontMatter, children, description, commentConfig } = props
-  let { date, title, slug, fileName, tags, readingTime } = frontMatter
+  let { date, title, slug, fileName, tags, readingTime, audioURL } = frontMatter
 
   return (
     <SectionContainer>
-      <PageSeo title={title} description={description} />
+      <PageSeo title={title} description={description} {...frontMatter} />
       <ScrollTopButton />
       <article>
         <div>
@@ -33,6 +32,11 @@ export function ProjectLayout(props: ProjectLayoutProps) {
           </header>
           <div className="pb-8" style={{ gridTemplateRows: 'auto 1fr' }}>
             <div className="xl:col-span-3 xl:row-span-2 xl:pb-0">
+              {audioURL && (
+                <div className="mb-5 w-full">
+                  <AudioPlayer audioUrl={audioURL} />
+                </div>
+              )}
               <div className="prose prose-base max-w-none pb-8 dark:prose-dark md:prose-lg">
                 {children}
               </div>
