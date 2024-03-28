@@ -39,6 +39,7 @@ export enum PROJECT_TYPE {
 export interface BlogFrontMatter extends MdxFrontMatter {
   readingTime: ReadingTime
   fileName: string
+  audioURL?: string
 }
 
 export interface ProjectFrontMatter extends BlogFrontMatter {
