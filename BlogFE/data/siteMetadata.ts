@@ -11,11 +11,11 @@ export let siteMetadata = {
   youtube: 'https://www.youtube.com/@thangchiba',
   linkedin: 'https://www.linkedin.com/in/thangchiba/',
   locale: 'en-US',
-  analyticsURL: 'http://api.thangchiba.com:51211/share/RXMEJ5xe/blog',
+  analyticsURL: 'http://api.thangchiba.com:51211/share/nLMqY0CD/blog',
   analytics: {
     plausibleDataDomain: '',
     simpleAnalytics: false, // true | false
-    umamiWebsiteId: 'e95932eb-2027-4a37-bba3-cc25917f326c',
+    umamiWebsiteId: '4574828f-610b-4bd9-b786-7524543bcef0',
     googleAnalyticsId: 'G-KKSDBZSET6', // e.g. UA-000000-2 or G-XXXXXXX
   },
   socialAccounts: {
