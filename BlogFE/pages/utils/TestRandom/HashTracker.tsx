@@ -29,7 +29,7 @@ const HashTracker: React.FC<HashTrackerProps> = ({ hashString, captureCount }) =
         }
       })
     }
-  }, [captureCount]) // This effect should run whenever hashString changes
+  }, [hashString, captureCount]) // This effect should run whenever hashString changes
 
   return (
     <div>

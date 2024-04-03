@@ -50,8 +50,8 @@ const RandomNumberGenerator: React.FC<RandomNumberGeneratorProps> = ({ hashStrin
         </label>
       </div>
       {randomNumber !== null && (
-        <p className="text-center text-lg font-semibold text-indigo-600 dark:text-indigo-400">
-          Random Number: {randomNumber}
+        <p className="text-center text-lg font-semibold text-indigo-600 dark:text-yellow-300">
+          Random Number: <span className="font-bold text-xl">{randomNumber}</span>
         </p>
       )}
     </div>

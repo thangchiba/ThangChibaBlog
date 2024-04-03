@@ -9,6 +9,7 @@ const TestRandom = () => {
   const [videoStarted, setVideoStarted] = useState<boolean>(false)
   const videoRef = useRef<HTMLVideoElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const streamRef = useRef<MediaStream | null>(null)
   const [hashString, setHashString] = useState<string>('')
   const [captureCount, setCaptureCount] = useState<number>(0) // Track capture events
   const [isInfoHovered, setIsInfoHovered] = useState(false)
@@ -28,8 +29,31 @@ const TestRandom = () => {
         }
       }
       setVideoStarted(true)
+      // Save the stream to a ref or state for later access to stop the camera
+      streamRef.current = stream
     }
   }
+
+  const stopCamera = () => {
+    if (streamRef.current) {
+      // Stop all tracks of the stream
+      streamRef.current.getTracks().forEach((track) => {
+        track.stop()
+      })
+      // Clear the video source
+      if (videoRef.current) {
+        videoRef.current.srcObject = null
+      }
+      setVideoStarted(false)
+    }
+  }
+
+  // Call stopCamera when the component unmounts or no longer needs the camera
+  useEffect(() => {
+    return () => {
+      stopCamera()
+    }
+  }, [])
 
   const drawVideoOnCanvas = () => {
     const video = videoRef.current
@@ -62,6 +86,7 @@ const TestRandom = () => {
           if (typeof base64data === 'string') {
             const hash = CryptoJS.SHA256(base64data).toString(CryptoJS.enc.Hex)
             setHashString(hash) // Store hash as a string
+            console.log({ base64data, hash })
           }
         }
         const endTime = performance.now() // End timing after hash generation
@@ -76,9 +101,10 @@ const TestRandom = () => {
   }
 
   return (
-    <div className="relative text-center max-w-2xl p-2 border-2 rounded-lg border-amber-700">
+    <div className="relative text-center max-w-2xl p-2 border-2 rounded-lg border-green-400">
       {/*<CameraSelector />*/}
       <div className="relative inline-block">
+        {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
         <video ref={videoRef} className="w-full h-auto hidden" />
         <canvas ref={canvasRef} className="w-full h-auto block" />
 
@@ -123,8 +149,8 @@ const TestRandom = () => {
       {/*<p>Capture count: {captureCount}</p>*/}
       {hashString && (
         <div>
-          <p className="flex flex-wrap break-all animate-fade-in border border-gray-300 dark:border-gray-600 px-4 py-2 rounded-md bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 transition duration-300">
-            Hash : {hashString}
+          <p className="flex flex-wrap break-all animate-fade-in border border-gray-300 dark:border-gray-600 px-1 py-2 rounded-md bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 transition duration-300">
+            Hash:<span className="font-bold">{hashString}</span>
           </p>
           <RandomNumberGenerator hashString={hashString} />
         </div>
