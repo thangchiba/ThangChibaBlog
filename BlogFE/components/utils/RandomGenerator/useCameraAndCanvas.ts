@@ -32,29 +32,10 @@ const useCameraAndCanvas = (
       console.error('Error enumerating devices:', error)
     }
   }, [])
-  const enumerateDevices = async () => {
-    try {
-      const devices = await navigator.mediaDevices.enumerateDevices()
-      const videoDevices = devices
-        .filter((device) => device.kind === 'videoinput')
-        .map((device) => ({
-          label: device.label || `Device ${device.deviceId.substr(0, 8)}`,
-          deviceId: device.deviceId,
-        }))
-
-      if (videoDevices.length === 0) {
-        setTimeout(enumerateDevices, 500) // Retry after a delay
-      } else {
-        console.log({ videoDevices })
-        setCameraDevices(videoDevices)
-      }
-    } catch (error) {
-      console.error('Error enumerating devices:', error)
-    }
-  }
 
   const startCamera = async (deviceId?: string) => {
     try {
+      await listCameras() // Update the camera list each time before starting the camera
       const constraints = { video: deviceId ? { deviceId: { exact: deviceId } } : true }
       const stream = await navigator.mediaDevices.getUserMedia(constraints)
       if (videoRef.current) {
