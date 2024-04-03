@@ -3,11 +3,11 @@ import CryptoJS from 'crypto-js'
 import RandomNumberGenerator from './RandomNumberGenerator'
 import HashTracker from './HashTracker'
 import WebcamComponent from './WebcamComponent'
-import CameraSelector from '~/pages/utils/TestRandom/CameraSelector'
-import useCapture from '~/pages/utils/TestRandom/useCapture'
-import useCameraAndCanvas from '~/pages/utils/TestRandom/useCameraAndCanvas'
+import CameraSelector from '~/components/utils/RandomGenerator/CameraSelector'
+import useCapture from '~/components/utils/RandomGenerator/useCapture'
+import useCameraAndCanvas from '~/components/utils/RandomGenerator/useCameraAndCanvas'
 
-const TestRandom = () => {
+const RandomGenerator = () => {
   const videoRef = useRef<HTMLVideoElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [hashString, setHashString] = useState<string>('')
@@ -22,14 +22,14 @@ const TestRandom = () => {
 
   const handleSelectCamera = (deviceId: string) => {
     setSelectedCameraId(deviceId)
-    startCamera(deviceId)
+    if (videoStarted) startCamera(deviceId)
   }
   // If needed, call stopCamera when the component unmounts
   useEffect(() => {
     return () => {
       stopCamera()
     }
-  }, [])
+  }, [stopCamera])
 
   return (
     <div className="relative text-center max-w-3xl p-2 border-2 rounded-lg border-green-400">
@@ -43,8 +43,19 @@ const TestRandom = () => {
           <CameraSelector cameraDevices={cameraDevices} onSelectCamera={handleSelectCamera} />
         </div>
 
+        {videoStarted && (
+          <button
+            className="absolute top-2.5 right-2.5 bg-transparent w-6 cursor-pointer text-red-600 text-2xl"
+            onClick={stopCamera}
+            style={{ outline: 'none' }}
+            aria-label="Close camera"
+          >
+            x
+          </button>
+        )}
+
         <div
-          className="absolute top-2.5 right-2.5 bg-gray-500 text-white w-6 h-6 rounded-full text-center leading-6 cursor-pointer"
+          className="absolute bottom-2.5 right-2.5 bg-gray-500 text-white w-6 h-6 rounded-full text-center leading-6 cursor-pointer"
           onMouseEnter={() => setIsInfoHovered(true)}
           onMouseLeave={() => setIsInfoHovered(false)}
         >
@@ -52,7 +63,7 @@ const TestRandom = () => {
         </div>
 
         {isInfoHovered && (
-          <div className="absolute top-10 left-1/2 transform -translate-x-1/2 bg-white dark:bg-black rounded-lg border border-black z-10 text-left p-2.5">
+          <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 bg-white dark:bg-black rounded-lg border border-black z-10 text-left p-2.5">
             <WebcamComponent />
           </div>
         )}
@@ -90,4 +101,4 @@ const TestRandom = () => {
   )
 }
 
-export default TestRandom
+export default RandomGenerator

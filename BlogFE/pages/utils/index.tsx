@@ -1,5 +1,5 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import TestRandom from '~/pages/utils/TestRandom'
+import RandomGenerator from 'components/utils/RandomGenerator'
 
 export async function getStaticProps({ locale }: { locale: string }) {
   const translation = await serverSideTranslations(locale, ['common'])
@@ -11,8 +11,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
 export default function Index() {
   return (
     <div>
-      <TestRandom />
-      Utils
+      <RandomGenerator />
     </div>
   )
 }

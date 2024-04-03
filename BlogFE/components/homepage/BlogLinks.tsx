@@ -15,7 +15,7 @@ export function BlogLinks() {
         </span>
       </Link>
       <Link href="/projects" className="hover:underline">
-        <Twemoji emoji="building-construction" />
+        <Twemoji emoji="hammer-and-wrench" />
         <span data-umami-event="home-link-projects" className="ml-1.5">
           {t('menu_projects_2')}
         </span>
@@ -23,7 +23,8 @@ export function BlogLinks() {
       <Link href="/utils" className="hover:underline">
         <Twemoji emoji="hammer-and-wrench" />
         <span data-umami-event="home-link-projects" className="ml-1.5">
-          {t('menu_projects_2')}
+          {/*{t('menu_projects_2')}*/}
+          Utils
         </span>
       </Link>
       {/*<Link href="/snippets" className="hover:underline">*/}
