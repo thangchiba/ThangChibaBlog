@@ -10,18 +10,31 @@ interface WebcamInfo {
   aspectRatio: number
 }
 
-const WebcamComponent: React.FC = () => {
+interface WebcamComponentProps {
+  cameraId: string
+}
+
+const WebcamComponent: React.FC<WebcamComponentProps> = ({ cameraId }) => {
   const [webcamInfo, setWebcamInfo] = useState<WebcamInfo | null>(null)
 
   useEffect(() => {
     async function getWebcamInfo() {
       try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true })
+        // Specify the camera to use if cameraId is provided
+        const constraints = cameraId
+          ? {
+              video: { deviceId: { exact: cameraId } },
+              width: { ideal: 1920 },
+              height: { ideal: 1080 },
+              frameRate: { ideal: 60 },
+            }
+          : { video: true }
+        const stream = await navigator.mediaDevices.getUserMedia(constraints)
         const tracks = stream.getVideoTracks()
         const settings = tracks[0].getSettings()
 
         // Example calculations and defaults for demo purposes
-        const resolution = `${settings.width}×${settings.height}`
+        const resolution = `${settings.width || 0}×${settings.height || 0}`
         const megaPixels = ((settings.width || 0) * (settings.height || 0)) / 1000000
 
         setWebcamInfo({
@@ -29,22 +42,22 @@ const WebcamComponent: React.FC = () => {
           qualityRating: 221, // This would need a method to be calculated
           builtInMicrophone: stream.getAudioTracks().length > 0 ? 'Yes' : 'None',
           frameRate: settings.frameRate || 0,
-          megaPixels: megaPixels,
-          resolution: resolution,
+          megaPixels,
+          resolution,
           aspectRatio: settings.aspectRatio || 1.33,
         })
 
-        // Clean up the stream
-        return () => {
-          tracks.forEach((track) => track.stop())
-        }
+        // Clean up the stream after gathering data
+        tracks.forEach((track) => track.stop())
       } catch (error) {
         console.error('Error accessing the webcam', error)
       }
     }
 
-    getWebcamInfo()
-  }, [])
+    if (cameraId) {
+      getWebcamInfo()
+    }
+  }, [cameraId])
 
   return (
     <div>

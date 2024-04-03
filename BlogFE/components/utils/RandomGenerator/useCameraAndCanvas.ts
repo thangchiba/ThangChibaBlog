@@ -36,7 +36,12 @@ const useCameraAndCanvas = (
   const startCamera = async (deviceId?: string) => {
     try {
       await listCameras() // Update the camera list each time before starting the camera
-      const constraints = { video: deviceId ? { deviceId: { exact: deviceId } } : true }
+      const constraints = {
+        video: deviceId ? { deviceId: { exact: deviceId } } : true,
+        width: { ideal: 1920 },
+        height: { ideal: 1080 },
+        frameRate: { ideal: 60 },
+      }
       const stream = await navigator.mediaDevices.getUserMedia(constraints)
       if (videoRef.current) {
         videoRef.current.srcObject = stream

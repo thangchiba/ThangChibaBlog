@@ -64,7 +64,7 @@ const RandomGenerator = () => {
 
         {isInfoHovered && (
           <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 bg-white dark:bg-black rounded-lg border border-black z-10 text-left p-2.5">
-            <WebcamComponent />
+            <WebcamComponent cameraId={selectedCameraId} />
           </div>
         )}
 
