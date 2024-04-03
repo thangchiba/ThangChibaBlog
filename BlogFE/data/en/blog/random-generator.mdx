@@ -1,0 +1,82 @@
+---
+title: 'How goldfish help me to protect my Server?'
+date: '2024-04-04'
+tags: ['admin', 'thangchiba']
+draft: false
+summary: "Ever wondered if computers can truly generate random numbers? How could seemingly clueless goldfish help in concocting random codes to thwart hackers? This is akin to what CloudFlare is doing to safeguard a huge chunk of the world's internet traffic."
+audioURL: '/static/audio/first-post-en.mp3'
+authors: ['default']
+---
+
+import RandomGenerator from './utils/RandomGenerator/index.tsx'
+
+### **Background**
+
+Recently, I've been grappling with the randomness aspect in my game.
+
+Absolutely! Randomness is pivotal in games, making them more engaging. That's why the Gacha and Pachinko games in Japan are thriving :))).
+
+Besides, there are times when I need to generate secret keys for client requests to my server. 🔐
+
+So, I need to devise a service that can be shared across my game and other apps, ensuring high traffic and robust security. (Tough, right? 🥲)
+
+### **Can computers really generate random numbers?**
+
+I always wonder, can computers genuinely create random numbers? Given they operate on bits and bytes, needing input to produce output. Indeed, most random number generation algorithms are based on the computer’s clock and complex calculations. Theoretically, their pattern could be predicted.
+
+There are even articles that have predicted the random algorithm of JS/V8, like this one:
+
+[YouTube Video Link](https://www.youtube.com/watch?v=-h_rj2-HP2E)
+
+It would be a nightmare if a hacker could decipher the pattern of your random secret key generation.
+
+Thus, we need something outside the computer's lifecycle, something utterly ordinary and random ^^.
+
+### **Solution**
+
+For an algorithm to meet my standards, it must have the following qualities:
+
+1. **Unpredictability**: It should be impossible to predict the next value based on previous outputs, even with knowledge of all previously generated values.
+2. **Uniformity**: The numbers generated must be evenly distributed, meaning each number should have an equal chance of appearing.
+3. **Irreproducibility**: The random number sequence cannot be recreated, even with information on how the algorithm operates.
+
+### **Requirements**
+
+I've decided the inputs for the random number algorithm (CSRNGs) will be:
+
+1. **System entropy**: Certain information only known to the server like MachineTime or RequestID.
+2. **Environmental entropy**: Noise from the server's surroundings, images of animals/street scenes, etc.
+3. **Random seed**: CSRNGs often start with a random "seed", an initial value used to kick-start the number generation process. This seed must be random enough to ensure the generated sequence is unpredictable.
+4. **Periodic entropy collection**: To maintain randomness, CSRNGs may periodically gather more entropy from the system and update their state.
+5. **Combining entropy sources**: Some CSRNGs use various entropy sources and combine them to produce the output, increasing complexity and reducing predictability.
+
+### **Implementation**
+
+I'll select representatives for each of the above points.
+
+1. I choose the server's machine time and **requestID** of the client. When a client sends a request for a random number, I will increment the **requestID** and take the **current server time** as the Seed.
+2. I decided to use a camera to capture images. After obtaining the image data, I will hash it with SHA256 to create a **hash string** (64 characters).
+
+Due to a tight budget, we use what we have. There's a fish tank with around twenty different-sized fish 🐳, constantly swimming around, so the chance of capturing two identical images is nearly zero (a minor change like a light ray altering the color of one pixel would make the **hash string** entirely different). 🌝
+
+Also, to avoid the wrath of my wife over the electric bill from keeping the fish tank light on all night, I placed a **plasma globe** behind it. This globe is pretty dynamic and unpredictable, making it a great choice for this setup. Hehe. ⚡
+
+3. Naturally, a random **seed** will be synthesized from 1 and 2, then used in regular random number generation algorithms.
+4. My old camera does 30fps. 📸 Thus, capturing 30 images per second would mean you're updating the random number generation algorithm 30 times a second, automatically and impartially. Wow. But I think 1FPS is enough. Who would bother hacking my humble server, right? 🔥
+5. I think this is sufficient for my needs. Summing up: I will capture an image every second → Hash it to get a 64-character string → For each request, use that code + requestID and Server Time (if needed for security) as the Seed and then use regular random number generation algorithms.
+
+### **Result Evaluation**
+
+Pretty good 👍🏻. You can try it out right here on this blog; I've been coding a demo, and it was a real struggle. 😭
+
+<RandomGenerator />
+
+Essentially, each captured image has slight differences in lighting. You could point the camera at the ceiling, and the code would still generate normally.
+
+BUT, if you point the camera down at a table where everything is pitch black, you'll end up with the same code every time.
+
+Fundamentally, it's quite challenging to predict and replicate. A supercomputer would need to mind-hack my aquarium to figure out where each fish will be and in what position in the next second. 🦈
+
+Regarding uniformity, I've tested converting the hash string into numbers ranging from 1 to 10, and it looks quite stable.
+
+Overall, I'm satisfied and will be implementing this in my games and servers. Gamers will play in a fair and clean environment, free from manipulated outcomes, except for those I dislike. 😈

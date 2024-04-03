@@ -38,33 +38,31 @@ const RandomGenerator = () => {
         {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
         <video ref={videoRef} className="w-full h-auto hidden" />
         <canvas ref={canvasRef} className="w-full h-auto block" />
-
-        <div className="absolute top-2.5 left-2.5 bg-transparent  w-1/4 cursor-pointer">
-          <CameraSelector cameraDevices={cameraDevices} onSelectCamera={handleSelectCamera} />
-        </div>
-
         {videoStarted && (
-          <button
-            className="absolute top-2.5 right-2.5 bg-transparent w-6 cursor-pointer text-red-600 text-2xl"
-            onClick={stopCamera}
-            style={{ outline: 'none' }}
-            aria-label="Close camera"
-          >
-            x
-          </button>
-        )}
-
-        <div
-          className="absolute bottom-2.5 right-2.5 bg-gray-500 text-white w-6 h-6 rounded-full text-center leading-6 cursor-pointer"
-          onMouseEnter={() => setIsInfoHovered(true)}
-          onMouseLeave={() => setIsInfoHovered(false)}
-        >
-          i
-        </div>
-
-        {isInfoHovered && (
-          <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 bg-white dark:bg-black rounded-lg border border-black z-10 text-left p-2.5">
-            <WebcamComponent cameraId={selectedCameraId} />
+          <div>
+            <div className="absolute top-2.5 left-2.5 bg-transparent  w-1/4 cursor-pointer">
+              <CameraSelector cameraDevices={cameraDevices} onSelectCamera={handleSelectCamera} />
+            </div>
+            <button
+              className="absolute top-2.5 right-2.5 bg-transparent w-6 cursor-pointer text-red-600 text-2xl"
+              onClick={stopCamera}
+              style={{ outline: 'none' }}
+              aria-label="Close camera"
+            >
+              x
+            </button>
+            <div
+              className="absolute bottom-2.5 right-2.5 bg-gray-500 text-white w-6 h-6 rounded-full text-center leading-6 cursor-pointer"
+              onMouseEnter={() => setIsInfoHovered(true)}
+              onMouseLeave={() => setIsInfoHovered(false)}
+            >
+              i
+            </div>
+            {isInfoHovered && (
+              <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 bg-white dark:bg-black rounded-lg border border-black z-10 text-left p-2.5">
+                <WebcamComponent cameraId={selectedCameraId} />
+              </div>
+            )}
           </div>
         )}
 
@@ -89,7 +87,7 @@ const RandomGenerator = () => {
       </div>
 
       {/*<p>Capture count: {captureCount}</p>*/}
-      {hashString && (
+      {hashString && videoStarted && (
         <div>
           <p className="flex flex-wrap break-all animate-fade-in border border-gray-300 dark:border-gray-600 px-1 py-2 rounded-md bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 transition duration-300">
             Hash:<span className="font-bold">{hashString}</span>

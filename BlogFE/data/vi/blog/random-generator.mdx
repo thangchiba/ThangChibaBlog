@@ -1,0 +1,81 @@
+---
+title: 'Mấy con cá vàng giúp mình bảo vệ hệ thống thế nào?'
+date: '2024-04-04'
+tags: ['admin', 'thangchiba']
+draft: false
+summary: 'Bạn có thắc mắc máy tính có thể thực sự tạo ra được số ngẫu nhiên không? Làm sao mấy con cá vàng vô tri lại có thể giúp mình tạo được mã ngẫu nhiên để chống bị hack quy luật tạo mã? Đây cũng là cách mà CloudFlare đang làm để bảo vệ một phần lớn traffic internet trên thế giới này.'
+images: ['/static/images/road.jpg']
+audioURL: '/static/audio/first-post-en.mp3'
+authors: ['default']
+---
+
+import RandomGenerator from './utils/RandomGenerator/index.tsx'
+
+### Bối cảnh
+
+Gần đây mình cần giải quyết vấn đề cho game của mình đó là tính ngẫu nhiên.
+
+Chắc chắn rồi! Tính ngẫu nhiên rất quan trọng trong game, nó làm game trở lên thú vị. Đó là lí do Gacha hút máu và Pachinko ở Nhật sống rất khoẻ :))).
+
+Ngoài ra còn có những khi mình cần tạo secret-key cho client request tới server của mình. 🔐
+
+Vì vậy mình cần tạo ra 1 service có thể xài chung giữa game và các app khác của mình, nó phải đảm bảo được traffic cao và tính bảo mật tốt.( khó 🥲)
+
+### Máy tính có thực sự tạo được số ngẫu nhiên?
+
+Mình luôn thắc mắc liệu máy tính có thực sự tạo được số Random không? Bởi bản chất nó chạy dựa vào những bit 0 và 1, chúng ta cần input để nó cho ra output. Và quả thật đa số các thuật toán tạo số, chuỗi ngẫu nhiên đều là được tạo dựa vào thời gian của máy tính và một số phép tính phức tạp. Về mặt lý thuyết nó hoàn toàn có thể đoán được quy luật.
+
+Trong thực tế cũng có những bài viết đã prediction được thuật toán random của JS/V8 như :
+
+https://www.youtube.com/watch?v=-h_rj2-HP2E
+
+Điều đó sẽ rất kinh khủng nếu hacker nắm được quy luật tạo random secret key của bạn.
+
+Vì vậy mà chúng ta cần một thứ gì đó không trong vòng đời của máy tính, một thứ gì đó rất đời thường và ngẫu nhiên ^^.
+
+### Giải pháp
+
+Để một thuật toán tạo mã đạt tiêu chuẩn( của mình ) thì cần những yếu tố sau :
+
+1. **Khó dự đoán**: Không thể dự đoán giá trị tiếp theo dựa vào các giá trị trước đó, ngay cả khi biết tất cả các giá trị đã được sinh ra.
+2. **Độ đồng đều**: Các số được sinh ra phải phân phối đều, tức là mỗi số có cùng khả năng xuất hiện.
+3. **Không thể tái tạo**: Không thể tái tạo lại chuỗi số ngẫu nhiên, ngay cả khi có thông tin về cách thức hoạt động của thuật toán.
+
+### Yêu cầu
+
+Mình quyết định input của thuật toán ngẫu nhiên (CSRNGs) sẽ là :
+
+1. **Entropy từ hệ thống**: Một số nguồn thông tin chỉ có phía server biết như là MachineTime hay RequestID.
+2. **Entropy từ môi trường**: Tiếng ồn của môi trường xung quanh server, hình ảnh sinh vật/khung cảnh đường phố,…
+3. **Seed ngẫu nhiên**: CSRNGs thường bắt đầu với một "seed" (giống) ngẫu nhiên, một giá trị ban đầu được sử dụng để khởi động quá trình sinh số. Seed này cần phải đủ ngẫu nhiên để đảm bảo rằng chuỗi số được sinh ra không thể dự đoán được.
+4. **Thu thập entropy định kỳ**: Để duy trì tính ngẫu nhiên, CSRNGs có thể định kỳ thu thập thêm entropy từ hệ thống và cập nhật nội trạng của chúng.
+5. **Kết hợp các nguồn entropy**: Một số CSRNG sử dụng nhiều nguồn entropy khác nhau và kết hợp chúng để tạo ra output, làm tăng độ phức tạp và giảm khả năng dự đoán.
+
+### Thực thi
+
+Với mỗi mục ở trên mình sẽ chọn ra đại biểu.
+
+1. Mình chọn thời gian máy của server và **requestID** của client. Khi client gửi request để nhận số ngẫu nhiên mình sẽ tăng **requestID** của user và lấy **thời gian hiện tại của máy chủ** để làm Seed.
+2. Mình quyết định dùng camera chụp lại ảnh. Sau khi có dữ liệu tấm ảnh mình sẽ hash nó với SHA256 để tạo **hash string** (64char).
+Vì kinh phí eo hẹp nên nhà có gì xài cái đó. Có cái bể cá chắc tầm 2 chục con lớn bé 🐳, chúng nó tung tăng bơi lội suốt nên khả năng chụp 2 tấm trùng nhau là gần như ko có (một thay đổi rất nhỏ như tia sáng khiến thay đổi màu sắc của 1 pixel trên tấm ảnh cũng đủ cho **hash string** hoàn toàn khác đi). 🌝
+Ngoài ra vì bật đèn bể cá cả đêm sợ tiền điện hàng tháng vợ la nên mình để **quả** **cầu** **plasma** ở đằng sau nữa. Về tính chất thì cái quả cầu này nó cũng rất tăng động và khó đoán nên dùng trong case này là trên cả hợp lí. Hehe. ⚡
+
+3. Tất nhiên rồi, 1 **seed** ngẫu nhiên sẽ được mình tổng hợp từ 1 và 2 rồi sử dụng các thuật toán tạo số ngẫu nhiên như bình thường.
+4. Chiếc camera cùi cùi cũng 30fps. 📸 Như vậy nếu 1 giây các bạn chụp 30 lần tương đương với việc bạn thay đổi thuật toán tạo số 30 lần 1 giây một cách tự động và hoàn toàn khách quan. Waoo. Nhưng mình nghĩ mình chỉ cần 1FPS thôi là đủ. Ai mà thèm bỏ công ra hack cái server cùi bắp của mình cơ chứ ^^. 🔥
+5. Mình nghĩ nhiêu đây là đủ với mình rồi. Tổng hợp lại sẽ là như sau : Mình sẽ chụp lại mỗi giây 1 bức ảnh → Hash nó được 1 chuỗi 64 kí tự → Mỗi lần nhận request sẽ dùng mã đó + requestID và Server Time ( nếu cần bảo mật ) để làm Seed rồi dùng các thuật toán tạo ngẫu nhiên bình thường.
+
+### Đánh giá kết quả
+
+Khá ổn 👍🏻.  Các bạn cũng có thể thử ngay tại blog này mình ngồi code demo nhọc quá trời luôn á. 😭
+
+<RandomGenerator />
+
+Về cơ bản mỗi tấm ảnh chụp ra đều có ít nhiều khác biệt về ánh sáng, các bạn có thể để cam chỉ lên trần nhà và sẽ thấy mã vẫn được tạo bình thường.
+
+NHƯNG khi cắm camera xuống bàn và mọi thứ nhìn thấy chỉ còn đen thui thì chụp bao tấm cũng ra 1 mã thôi.
+
+Về cơ bản thì nó thật sự khó để dự đoán và tái tạo. Một siêu máy tính cần hack não đàn cá nhà mình xem 1 giây tiếp theo nó ở đâu, tư thế như nào ^^. 🦈
+
+Về tính đồng đều thì mình có test qua kết quả khi chuyển từ hash string sang thành số có range 1-10 thấy khá ổn.
+
+Nói chung là cá nhân thấy thoả mãn, từ nay mình sẽ áp dụng vào các game cũng như server của mình. Các gamer sẽ được chơi bời trong một môi trường liêm chính trong sạch, không thao túng kết quả, trừ thằng nào mình ghét. 😈
