@@ -4,104 +4,35 @@ import RandomNumberGenerator from './RandomNumberGenerator'
 import HashTracker from './HashTracker'
 import WebcamComponent from './WebcamComponent'
 import CameraSelector from '~/pages/utils/TestRandom/CameraSelector'
+import useCapture from '~/pages/utils/TestRandom/useCapture'
+import useCameraAndCanvas from '~/pages/utils/TestRandom/useCameraAndCanvas'
 
 const TestRandom = () => {
-  const [videoStarted, setVideoStarted] = useState<boolean>(false)
   const videoRef = useRef<HTMLVideoElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const streamRef = useRef<MediaStream | null>(null)
   const [hashString, setHashString] = useState<string>('')
-  const [captureCount, setCaptureCount] = useState<number>(0) // Track capture events
-  const [isInfoHovered, setIsInfoHovered] = useState(false)
-  const startCamera = async () => {
-    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true })
-      if (videoRef.current) {
-        videoRef.current.srcObject = stream
-        videoRef.current.onloadedmetadata = () => {
-          // @ts-ignore
-          videoRef.current.play()
-          if (canvasRef.current && videoRef.current) {
-            canvasRef.current.width = videoRef.current.videoWidth
-            canvasRef.current.height = videoRef.current.videoHeight
-            drawVideoOnCanvas() // Start drawing video on canvas
-          }
-        }
-      }
-      setVideoStarted(true)
-      // Save the stream to a ref or state for later access to stop the camera
-      streamRef.current = stream
-    }
-  }
+  const [captureCount, setCaptureCount] = useState<number>(0)
+  const [isInfoHovered, setIsInfoHovered] = useState<boolean>(false)
+  const { startCamera, videoStarted, stopCamera, cameraDevices } = useCameraAndCanvas(
+    videoRef,
+    canvasRef
+  )
+  const { captureAndHashImage } = useCapture(canvasRef, setHashString)
+  const [selectedCameraId, setSelectedCameraId] = useState<string>('')
 
-  const stopCamera = () => {
-    if (streamRef.current) {
-      // Stop all tracks of the stream
-      streamRef.current.getTracks().forEach((track) => {
-        track.stop()
-      })
-      // Clear the video source
-      if (videoRef.current) {
-        videoRef.current.srcObject = null
-      }
-      setVideoStarted(false)
-    }
+  const handleSelectCamera = (deviceId: string) => {
+    setSelectedCameraId(deviceId)
+    startCamera(deviceId)
   }
-
-  // Call stopCamera when the component unmounts or no longer needs the camera
+  // If needed, call stopCamera when the component unmounts
   useEffect(() => {
     return () => {
       stopCamera()
     }
   }, [])
 
-  const drawVideoOnCanvas = () => {
-    const video = videoRef.current
-    const canvas = canvasRef.current
-    if (video && canvas) {
-      const context = canvas.getContext('2d')
-      const draw = () => {
-        if (!video.paused && !video.ended) {
-          // @ts-ignore
-          context.drawImage(video, 0, 0, canvas.width, canvas.height)
-          requestAnimationFrame(draw)
-        }
-      }
-      draw()
-    }
-  }
-
-  const captureAndHashImage = () => {
-    const startTime = performance.now() // Start timing before capture
-    const canvas = canvasRef.current
-    const video = videoRef.current
-    if (canvas && video) {
-      const context = canvas.getContext('2d')
-      context?.drawImage(video, 0, 0, canvas.width, canvas.height)
-
-      canvas.toBlob((blob) => {
-        const reader = new FileReader()
-        reader.onloadend = function () {
-          const base64data = reader.result
-          if (typeof base64data === 'string') {
-            const hash = CryptoJS.SHA256(base64data).toString(CryptoJS.enc.Hex)
-            setHashString(hash) // Store hash as a string
-            console.log({ base64data, hash })
-          }
-        }
-        const endTime = performance.now() // End timing after hash generation
-        console.log(`Hash generation time: ${endTime - startTime} milliseconds`)
-        if (blob) {
-          reader.readAsDataURL(blob)
-        }
-      })
-    }
-
-    setCaptureCount((prevCount) => prevCount + 1) // Increment capture count
-  }
-
   return (
-    <div className="relative text-center max-w-2xl p-2 border-2 rounded-lg border-green-400">
+    <div className="relative text-center max-w-3xl p-2 border-2 rounded-lg border-green-400">
       {/*<CameraSelector />*/}
       <div className="relative inline-block">
         {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
@@ -109,7 +40,7 @@ const TestRandom = () => {
         <canvas ref={canvasRef} className="w-full h-auto block" />
 
         <div className="absolute top-2.5 left-2.5 bg-transparent  w-1/4 cursor-pointer">
-          <CameraSelector />
+          <CameraSelector cameraDevices={cameraDevices} onSelectCamera={handleSelectCamera} />
         </div>
 
         <div
@@ -130,7 +61,7 @@ const TestRandom = () => {
           {!videoStarted && (
             <button
               className="py-2.5 px-5 rounded-full bg-green-500 text-white cursor-pointer"
-              onClick={startCamera}
+              onClick={() => startCamera(selectedCameraId)}
             >
               Start Camera
             </button>
