@@ -1,81 +1,81 @@
 ---
 title: 'Mấy con cá vàng giúp mình bảo vệ hệ thống thế nào?'
 date: '2024-04-04'
-tags: ['admin', 'thangchiba']
+tags: ['security', 'random-generator']
 draft: false
-summary: 'Ever wondered if computers can truly generate random numbers? How could seemingly clueless goldfish help in concocting random codes to thwart hackers? This is akin to what CloudFlare is doing to safeguard a huge chunk of the world's internet traffic.'
+summary: 'コンピュータが本当にランダムな数を生成できるのか疑問に思ったことはありますか？どうやって無邪気な金魚がランダムなコードを生成して、ハッキングから保護するのか？これはCloudFlareが世界中の大量のインターネットトラフィックを守るために使用している方法です。'
 images: ['/static/images/road.jpg']
-audioURL: '/static/audio/first-post-en.mp3'
+audioURL: '/static/audio/blog/random-generator-jp.mp3'
 authors: ['default']
 ---
 
 import RandomGenerator from './utils/RandomGenerator/index.tsx'
 
-### Bối cảnh
+### **背景**
 
-Gần đây mình cần giải quyết vấn đề cho game của mình đó là tính ngẫu nhiên.
+最近、私のゲームにランダム性を追加する問題を解決する必要がありました。
 
-Chắc chắn rồi! Tính ngẫu nhiên rất quan trọng trong game, nó làm game trở lên thú vị. Đó là lí do Gacha hút máu và Pachinko ở Nhật sống rất khoẻ :))).
+もちろんです！ランダム性はゲームにとって非常に重要で、それがゲームを面白くします。これが日本のガチャやパチンコが盛んな理由です :)))。
 
-Ngoài ra còn có những khi mình cần tạo secret-key cho client request tới server của mình. 🔐
+また、クライアントリクエストに対してサーバーへの秘密キーを生成する必要がある時もあります。🔐
 
-Vì vậy mình cần tạo ra 1 service có thể xài chung giữa game và các app khác của mình, nó phải đảm bảo được traffic cao và tính bảo mật tốt.( khó 🥲)
+したがって、私のゲームや他のアプリケーション間で共有できるサービスを作成する必要があり、高いトラフィックと良好なセキュリティを保証する必要があります。（難しい 🥲）
 
-### Máy tính có thực sự tạo được số ngẫu nhiên?
+### **コンピュータは本当にランダムな数を生成できるのか？**
 
-Mình luôn thắc mắc liệu máy tính có thực sự tạo được số Random không? Bởi bản chất nó chạy dựa vào những bit 0 và 1, chúng ta cần input để nó cho ra output. Và quả thật đa số các thuật toán tạo số, chuỗi ngẫu nhiên đều là được tạo dựa vào thời gian của máy tính và một số phép tính phức tạp. Về mặt lý thuyết nó hoàn toàn có thể đoán được quy luật.
+コンピュータが本当にランダムな数を生成できるのか、いつも疑問に思っています。それは0と1のビットに基づいて動作し、出力を生成するための入力が必要です。実際、多くのランダム数生成アルゴリズムはコンピュータの時計と複雑な計算に基づいて生成されます。理論的には、パターンを予測することができます。
 
-Trong thực tế cũng có những bài viết đã prediction được thuật toán random của JS/V8 như :
+実際には、JS/V8のランダムアルゴリズムを予測した記事もあります：
 
 https://www.youtube.com/watch?v=-h_rj2-HP2E
 
-Điều đó sẽ rất kinh khủng nếu hacker nắm được quy luật tạo random secret key của bạn.
+ハッカーがあなたのランダム秘密キー生成規則を把握できたら、それは非常に恐ろしいことです。
 
-Vì vậy mà chúng ta cần một thứ gì đó không trong vòng đời của máy tính, một thứ gì đó rất đời thường và ngẫu nhiên ^^.
+ですから、私たちはコンピュータのライフサイクルの外にある何か、非常に日常的でランダムなものが必要です ^^。
 
-### Giải pháp
+### **解決策**
 
-Để một thuật toán tạo mã đạt tiêu chuẩn( của mình ) thì cần những yếu tố sau :
+私の基準を満たすためのアルゴリズムを作成するには、次の要素が必要です：
 
-1. **Khó dự đoán**: Không thể dự đoán giá trị tiếp theo dựa vào các giá trị trước đó, ngay cả khi biết tất cả các giá trị đã được sinh ra.
-2. **Độ đồng đều**: Các số được sinh ra phải phân phối đều, tức là mỗi số có cùng khả năng xuất hiện.
-3. **Không thể tái tạo**: Không thể tái tạo lại chuỗi số ngẫu nhiên, ngay cả khi có thông tin về cách thức hoạt động của thuật toán.
+1. **予測困難**：生成されたすべての値を知っていても、前の値に基づいて次の値を予測することはできません。
+2. **均一性**：生成される数は均等に分布する必要があり、つまり、各数は同じ出現確率を持つ必要があります。
+3. **再現不可能**：アルゴリズムの動作方法に関する情報があっても、ランダム数列を再現することはできません。
 
-### Yêu cầu
+### **要件**
 
-Mình quyết định input của thuật toán ngẫu nhiên (CSRNGs) sẽ là :
+私はランダム数生成アルゴリズム(CSRNGs)の入力を次のように決定しました：
 
-1. **Entropy từ hệ thống**: Một số nguồn thông tin chỉ có phía server biết như là MachineTime hay RequestID.
-2. **Entropy từ môi trường**: Tiếng ồn của môi trường xung quanh server, hình ảnh sinh vật/khung cảnh đường phố,…
-3. **Seed ngẫu nhiên**: CSRNGs thường bắt đầu với một "seed" (giống) ngẫu nhiên, một giá trị ban đầu được sử dụng để khởi động quá trình sinh số. Seed này cần phải đủ ngẫu nhiên để đảm bảo rằng chuỗi số được sinh ra không thể dự đoán được.
-4. **Thu thập entropy định kỳ**: Để duy trì tính ngẫu nhiên, CSRNGs có thể định kỳ thu thập thêm entropy từ hệ thống và cập nhật nội trạng của chúng.
-5. **Kết hợp các nguồn entropy**: Một số CSRNG sử dụng nhiều nguồn entropy khác nhau và kết hợp chúng để tạo ra output, làm tăng độ phức tạp và giảm khả năng dự đoán.
+1. **システムからのエントロピー**：MachineTimeやRequestIDなど、サーバーのみが知っている情報。
+2. **環境からのエントロピー**：サーバー周辺の環境ノイズ、動物や街の景色の画像など。
+3. **ランダムシード**：CSRNGsは通常、乱数生成プロセスを開始するために使用されるランダムな「シード」から開始します。このシードは、生成された数列が予測不可能であることを保証するために、十分にランダムである必要があります。
+4. **定期的なエントロピーの収集**：ランダム性を維持するために、CSRNGsは定期的にシステムから追加のエントロピーを収集し、その状態を更新することができます。
+5. **複数のエントロピー源の組み合わせ**：一部のCSRNGsは、複数のエントロピー源を使用し、それらを組み合わせて出力を生成し、複雑さを増し、予測可能性を低減します。
 
-### Thực thi
+### **実行**
 
-Với mỗi mục ở trên mình sẽ chọn ra đại biểu.
+上記の各項目から代表を選びます。
 
-1. Mình chọn thời gian máy của server và **requestID** của client. Khi client gửi request để nhận số ngẫu nhiên mình sẽ tăng **requestID** của user và lấy **thời gian hiện tại của máy chủ** để làm Seed.
-2. Mình quyết định dùng camera chụp lại ảnh. Sau khi có dữ liệu tấm ảnh mình sẽ hash nó với SHA256 để tạo **hash string** (64char).
-Vì kinh phí eo hẹp nên nhà có gì xài cái đó. Có cái bể cá chắc tầm 2 chục con lớn bé 🐳, chúng nó tung tăng bơi lội suốt nên khả năng chụp 2 tấm trùng nhau là gần như ko có (một thay đổi rất nhỏ như tia sáng khiến thay đổi màu sắc của 1 pixel trên tấm ảnh cũng đủ cho **hash string** hoàn toàn khác đi). 🌝
-Ngoài ra vì bật đèn bể cá cả đêm sợ tiền điện hàng tháng vợ la nên mình để **quả** **cầu** **plasma** ở đằng sau nữa. Về tính chất thì cái quả cầu này nó cũng rất tăng động và khó đoán nên dùng trong case này là trên cả hợp lí. Hehe. ⚡
+1. 私はサーバーのマシン時間とクライアントの**requestID**を選びました。クライアントがランダム数をリクエストするために送信すると、ユーザーの**requestID**を増やし、**現在のサーバー時間**をシードとして使用します。
+2. 私はカメラを使って写真を撮ることにしました。画像データを取得したら、SHA256でハッシュ化して**ハッシュ文字列**（64文字）を生成します。
 
-3. Tất nhiên rồi, 1 **seed** ngẫu nhiên sẽ được mình tổng hợp từ 1 và 2 rồi sử dụng các thuật toán tạo số ngẫu nhiên như bình thường.
-4. Chiếc camera cùi cùi cũng 30fps. 📸 Như vậy nếu 1 giây các bạn chụp 30 lần tương đương với việc bạn thay đổi thuật toán tạo số 30 lần 1 giây một cách tự động và hoàn toàn khách quan. Waoo. Nhưng mình nghĩ mình chỉ cần 1FPS thôi là đủ. Ai mà thèm bỏ công ra hack cái server cùi bắp của mình cơ chứ ^^. 🔥
-5. Mình nghĩ nhiêu đây là đủ với mình rồi. Tổng hợp lại sẽ là như sau : Mình sẽ chụp lại mỗi giây 1 bức ảnh → Hash nó được 1 chuỗi 64 kí tự → Mỗi lần nhận request sẽ dùng mã đó + requestID và Server Time ( nếu cần bảo mật ) để làm Seed rồi dùng các thuật toán tạo ngẫu nhiên bình thường.
+予算が限られているので、あるものでやりくりします。20匹ほどの大小さまざまな魚がいる魚の水槽があり🐳、彼らは絶えず泳いでいるので、同じ写真を2回撮る可能性はほぼゼロです（微小な光の変化が1ピクセルの色を変えるだけで、**ハッシュ文字列**を完全に変えるには十分です）。🌝
 
-### Đánh giá kết quả
+さらに、水槽のライトを一晩中つけていると電気代のことで妻に怒られるので、**プラズマボール**を後ろに置きました。この球体は非常に活動的で予測不可能なので、このケースには最適です。へへ。⚡
 
-Khá ổn 👍🏻.  Các bạn cũng có thể thử ngay tại blog này mình ngồi code demo nhọc quá trời luôn á. 😭
+3. もちろん、1と2からランダムな**シード**を合成し、通常の乱数生成アルゴリズムを使用します。
+4. 私の古いカメラは30fpsです。📸 つまり、1秒に30回撮影すると、1秒に30回自動的かつ公正に乱数生成アルゴリズムを更新することになります。わお。でも、1FPSだけあれば十分だと思います。誰が私のささやかなサーバーをハックするために手間をかけると思いますか？🔥
+5. これで私には十分だと思います。まとめると、次のようになります：1秒ごとに写真を撮影 → それをハッシュ化して64文字の文字列を得る → リクエストごとにそのコード + requestIDとサーバー時間（セキュリティが必要な場合）をシードとして使用し、通常の乱数生成アルゴリズムを使用します。
 
-<RandomGenerator />
+### **結果の評価**
 
-Về cơ bản mỗi tấm ảnh chụp ra đều có ít nhiều khác biệt về ánh sáng, các bạn có thể để cam chỉ lên trần nhà và sẽ thấy mã vẫn được tạo bình thường.
+なかなか良いです👍🏻。ここに座ってデモをコーディングしているので、このブログですぐに試すことができます。😭
 
-NHƯNG khi cắm camera xuống bàn và mọi thứ nhìn thấy chỉ còn đen thui thì chụp bao tấm cũng ra 1 mã thôi.
+基本的に、撮影された各画像には、多少の光の違いがあります。カメラを天井に向けると、コードは正常に生成されます。
 
-Về cơ bản thì nó thật sự khó để dự đoán và tái tạo. Một siêu máy tính cần hack não đàn cá nhà mình xem 1 giây tiếp theo nó ở đâu, tư thế như nào ^^. 🦈
+しかし、カメラをテーブルに向けて、見えるものがすべて真っ暗になると、撮影した写真はすべて同じコードになります。
 
-Về tính đồng đều thì mình có test qua kết quả khi chuyển từ hash string sang thành số có range 1-10 thấy khá ổn.
+基本的に、予測や再現は非常に困難です。スーパーコンピュータが私の家の魚たちの次の1秒の位置や姿勢をハックしなければなりません。🦈
 
-Nói chung là cá nhân thấy thoả mãn, từ nay mình sẽ áp dụng vào các game cũng như server của mình. Các gamer sẽ được chơi bời trong một môi trường liêm chính trong sạch, không thao túng kết quả, trừ thằng nào mình ghét. 😈
+均一性に関しては、ハッシュ文字列から1～10の範囲の数値に変換する結果をテストし、かなり安定していることがわかりました。
+
+全体的には満足しており、これから私のゲームやサーバーに適用します。ゲーマーは公正でクリーンな環境で遊ぶことができ、嫌いな人を除いて結果を操作することはありません。😈

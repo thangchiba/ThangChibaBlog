@@ -1,10 +1,10 @@
 ---
 title: 'How goldfish help me to protect my Server?'
 date: '2024-04-04'
-tags: ['admin', 'thangchiba']
+tags: ['security', 'random-generator']
 draft: false
 summary: "Ever wondered if computers can truly generate random numbers? How could seemingly clueless goldfish help in concocting random codes to thwart hackers? This is akin to what CloudFlare is doing to safeguard a huge chunk of the world's internet traffic."
-audioURL: '/static/audio/first-post-en.mp3'
+audioURL: '/static/audio/blog/random-generator-en.mp3'
 authors: ['default']
 ---
 
@@ -56,11 +56,8 @@ I'll select representatives for each of the above points.
 
 1. I choose the server's machine time and **requestID** of the client. When a client sends a request for a random number, I will increment the **requestID** and take the **current server time** as the Seed.
 2. I decided to use a camera to capture images. After obtaining the image data, I will hash it with SHA256 to create a **hash string** (64 characters).
-
 Due to a tight budget, we use what we have. There's a fish tank with around twenty different-sized fish 🐳, constantly swimming around, so the chance of capturing two identical images is nearly zero (a minor change like a light ray altering the color of one pixel would make the **hash string** entirely different). 🌝
-
 Also, to avoid the wrath of my wife over the electric bill from keeping the fish tank light on all night, I placed a **plasma globe** behind it. This globe is pretty dynamic and unpredictable, making it a great choice for this setup. Hehe. ⚡
-
 3. Naturally, a random **seed** will be synthesized from 1 and 2, then used in regular random number generation algorithms.
 4. My old camera does 30fps. 📸 Thus, capturing 30 images per second would mean you're updating the random number generation algorithm 30 times a second, automatically and impartially. Wow. But I think 1FPS is enough. Who would bother hacking my humble server, right? 🔥
 5. I think this is sufficient for my needs. Summing up: I will capture an image every second → Hash it to get a 64-character string → For each request, use that code + requestID and Server Time (if needed for security) as the Seed and then use regular random number generation algorithms.
