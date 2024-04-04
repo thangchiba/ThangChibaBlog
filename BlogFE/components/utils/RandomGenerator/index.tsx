@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react'
-import CryptoJS from 'crypto-js'
 import RandomNumberGenerator from './RandomNumberGenerator'
 import HashTracker from './HashTracker'
 import WebcamComponent from './WebcamComponent'
@@ -32,8 +31,7 @@ const RandomGenerator = () => {
   }, [stopCamera])
 
   return (
-    <div className="relative text-center max-w-3xl p-2 border-2 rounded-lg border-green-400">
-      {/*<CameraSelector />*/}
+    <div className="relative text-center max-w-2xl p-2 border-2 rounded-lg border-green-400">
       <div className="relative inline-block">
         {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
         <video ref={videoRef} className="w-full h-auto hidden" />
@@ -88,10 +86,19 @@ const RandomGenerator = () => {
 
       {/*<p>Capture count: {captureCount}</p>*/}
       {hashString && videoStarted && (
-        <div>
-          <p className="flex flex-wrap break-all animate-fade-in border border-gray-300 dark:border-gray-600 px-1 py-2 rounded-md bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 transition duration-300">
-            Hash:<span className="font-bold">{hashString}</span>
-          </p>
+        <div className="w-full mx-auto bg-white dark:bg-gray-800 shadow rounded-lg py-2">
+          <div className="flex">
+            <span className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+              <span>Hash</span>
+            </span>
+            <input
+              type="string"
+              disabled={true}
+              value={hashString}
+              className="rounded-none rounded-e-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Min Value"
+            />
+          </div>
           <RandomNumberGenerator hashString={hashString} />
         </div>
       )}
