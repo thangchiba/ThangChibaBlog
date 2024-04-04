@@ -29,14 +29,19 @@ const TextToSpeech: React.FC = () => {
   return (
     <form className="border-2 border-amber-400 rounded-lg p-4 space-y-3">
       {isLoading && <LoadingIndicator />}
-      <textarea
-        id="content"
-        value={inputText}
-        onChange={(e) => setInputText(e.target.value)}
-        rows={8}
-        className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        placeholder="Enter content here..."
-      ></textarea>
+      <div className="relative w-full">
+        <textarea
+          id="content"
+          value={inputText}
+          onChange={(e) => setInputText(e.target.value)}
+          rows={8}
+          className="block p-2.5 pb-8 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Enter content here..."
+        ></textarea>
+        <span className="absolute bottom-0 right-2.5 p-2.5 font-bold text-sm text-gray-500">
+          {inputText.length} characters
+        </span>
+      </div>
 
       <div className="flex">
         <span className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
