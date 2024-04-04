@@ -26,34 +26,38 @@ const RandomNumberGenerator: React.FC<RandomNumberGeneratorProps> = ({ hashStrin
   }, [hashString, min, max])
 
   return (
-    <div className="w-full mt-5 mx-auto  bg-white dark:bg-gray-800 shadow rounded-lg">
-      <div className="mb-4">
-        <label className="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">
-          Min:
-          <input
-            type="number"
-            value={min}
-            onChange={(e) => setMin(parseInt(e.target.value))}
-            className="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-indigo-500 dark:focus:border-indigo-400"
-          />
-        </label>
+    <div className="flex justify-between align-middle items-center my-3">
+      <div className="flex">
+        <span className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+          <span>Min</span>
+        </span>
+        <input
+          type="number"
+          value={min}
+          onChange={(e) => setMin(parseInt(e.target.value))}
+          className="rounded-none rounded-e-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Min Value"
+        />
       </div>
-      <div className="mb-4">
-        <label className="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">
-          Max:
-          <input
-            type="number"
-            value={max}
-            onChange={(e) => setMax(parseInt(e.target.value))}
-            className="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-indigo-500 dark:focus:border-indigo-400"
-          />
-        </label>
-      </div>
+
       {randomNumber !== null && (
-        <p className="text-center text-lg font-semibold text-indigo-600 dark:text-yellow-300">
-          Random Number: <span className="font-bold text-xl">{randomNumber}</span>
+        <p className="text-center align-middle text-lg font-semibold text-indigo-600 dark:text-yellow-300">
+          <span className="font-bold text-5xl">{randomNumber}</span>
         </p>
       )}
+
+      <div className="flex">
+        <span className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+          <span>Max</span>
+        </span>
+        <input
+          type="number"
+          value={max}
+          onChange={(e) => setMax(parseInt(e.target.value))}
+          className="rounded-none rounded-e-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Max Value"
+        />
+      </div>
     </div>
   )
 }

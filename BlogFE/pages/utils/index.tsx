@@ -12,7 +12,8 @@ export async function getStaticProps({ locale }: { locale: string }) {
 export default function Index() {
   return (
     <div>
-      {/*<RandomGenerator />*/}
+      <RandomGenerator />
+      <div className="my-5"></div>
       <TextToSpeech />
     </div>
   )
