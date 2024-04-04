@@ -7,14 +7,11 @@ import { PROJECT_TYPE } from '~/types/mdx'
 import { getAllFilesFrontMatter } from '~/libs/mdx.server'
 
 export async function getStaticProps({ locale }) {
-  let projectsDataModule = await import(`~/data/${locale}/projectsData.ts`)
-  let projectsData = projectsDataModule.projectsData
-
-  let posts = getAllFilesFrontMatter(`${locale}/projects`)
+  let projects = getAllFilesFrontMatter(`${locale}/projects`)
 
   return {
     props: {
-      projectsData: posts,
+      projectsData: projects,
       ...(await serverSideTranslations(locale, ['common'])),
     },
   }

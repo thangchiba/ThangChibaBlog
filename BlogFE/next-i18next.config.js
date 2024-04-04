@@ -1,6 +1,6 @@
 module.exports = {
   i18n: {
-    defaultLocale: 'jp',
+    defaultLocale: 'en',
     locales: ['en', 'vi', 'jp'],
     localeDetection: true, // Automatically detect the locale
   },

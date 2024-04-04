@@ -193,6 +193,21 @@ module.exports = {
           'ul > li': {
             paddingLeft: '0px',
           },
+          'input, textarea': {
+            backgroundColor: theme('colors.white'),
+            color: theme('colors.gray.700'),
+            borderColor: theme('colors.gray.300'),
+            '&:focus': {
+              borderColor: theme('colors.primary.500'),
+              boxShadow: `0 0 0 1px ${theme('colors.primary.500')}`,
+            },
+          },
+          label: {
+            color: theme('colors.gray.700'),
+          },
+          'ul li': {
+            color: theme('colors.gray.700'),
+          },
         },
         dark: {
           css: {
@@ -241,6 +256,21 @@ module.exports = {
             blockquote: {
               color: theme('colors.gray.100'),
               borderLeftColor: theme('colors.gray.700'),
+            },
+            'input, textarea': {
+              backgroundColor: theme('colors.gray.800'),
+              color: theme('colors.gray.300'),
+              borderColor: theme('colors.gray.600'),
+              '&:focus': {
+                borderColor: theme('colors.primary.400'),
+                boxShadow: `0 0 0 1px ${theme('colors.primary.400')}`,
+              },
+            },
+            label: {
+              color: theme('colors.gray.300'),
+            },
+            'ul li': {
+              color: theme('colors.gray.300'),
             },
           },
         },
