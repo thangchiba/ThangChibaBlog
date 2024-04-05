@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { fetchTTS } from './ttsUtils'
-import LoadingIndicator from '~/components/common/LoadingIndicator'
+import LoadingIndicator from '../../common/LoadingIndicator'
+import axios from 'axios'
 
 const TextToSpeech: React.FC = () => {
   const [inputText, setInputText] = useState<string>('')
@@ -12,13 +12,25 @@ const TextToSpeech: React.FC = () => {
 
   const handleFetchTTS = async (e) => {
     e.preventDefault()
+    setIsLoading(true)
+
     try {
-      setIsLoading(true)
-      const audioBlob = await fetchTTS(inputText, model, voice)
-      console.log('length of blob ' + audioBlob.length)
-      const url = URL.createObjectURL(audioBlob)
-      setAudioSrc(url)
-      setDownloadLink(url)
+      const response = await axios.post(
+        '/api/tts',
+        { inputText, model, voice },
+        { responseType: 'blob' }
+      )
+
+      //@ts-ignore
+      console.log('Response size:', response) // Log the size of the blob
+
+      if (response.data.size > 0) {
+        const url = URL.createObjectURL(response.data)
+        setAudioSrc(url)
+        setDownloadLink(url)
+      } else {
+        console.error('Received empty blob.')
+      }
     } catch (error) {
       console.error('Error fetching TTS:', error)
     } finally {

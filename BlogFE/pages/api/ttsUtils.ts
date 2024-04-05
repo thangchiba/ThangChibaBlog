@@ -20,16 +20,17 @@ export const splitText = (text: string, maxLength: number): string[] => {
   return chunks
 }
 
-export const fetchTTS = async (inputText: string, model: string, voice: string): Promise<Blob> => {
-  console.log('zo fetch')
+// Function to fetch TTS for each chunk and concatenate the results
+export const fetchTTS = async (
+  inputText: string,
+  model: string,
+  voice: string
+): Promise<Buffer> => {
   const endpoint = 'https://api.openai.com/v1/audio/speech'
-  const apiKey = process.env.NEXT_PUBLIC_OPENAI_KEY // Use environment variable for API key
-  console.log(apiKey)
-  const chunks = splitText(inputText, 4096)
-  // eslint-disable-next-line no-undef
-  let combinedBlobParts: BlobPart[] = []
-  console.log(chunks)
+  const apiKey = process.env.NEXT_PUBLIC_OPENAI_KEY
+  const chunks = splitText(inputText, 4096) // Adjust the max length as needed
 
+  let audioBuffers = []
   for (const chunk of chunks) {
     const data = {
       model: model,
@@ -37,17 +38,18 @@ export const fetchTTS = async (inputText: string, model: string, voice: string):
       input: chunk,
     }
 
-    console.log({ endpoint, data, apiKey })
     const response = await axios.post(endpoint, data, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${apiKey}`,
       },
-      responseType: 'blob',
+      responseType: 'arraybuffer',
     })
 
-    combinedBlobParts.push(response.data)
+    audioBuffers.push(Buffer.from(response.data))
   }
 
-  return new Blob(combinedBlobParts, { type: 'audio/mpeg' })
+  // Concatenate all buffers into one
+  const combinedBuffer = Buffer.concat(audioBuffers)
+  return combinedBuffer
 }
