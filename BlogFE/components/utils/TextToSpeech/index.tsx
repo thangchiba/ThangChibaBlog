@@ -21,9 +21,6 @@ const TextToSpeech: React.FC = () => {
         { responseType: 'blob' }
       )
 
-      //@ts-ignore
-      console.log('Response size:', response) // Log the size of the blob
-
       if (response.data.size > 0) {
         const url = URL.createObjectURL(response.data)
         setAudioSrc(url)
