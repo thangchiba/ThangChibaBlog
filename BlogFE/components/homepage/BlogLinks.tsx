@@ -23,8 +23,7 @@ export function BlogLinks() {
       <Link href="/utils" className="hover:underline">
         <Twemoji emoji="hammer-and-wrench" />
         <span data-umami-event="home-link-projects" className="ml-1.5">
-          {/*{t('menu_projects_2')}*/}
-          Utils
+          {t('menu_utils_2')}
         </span>
       </Link>
       {/*<Link href="/snippets" className="hover:underline">*/}

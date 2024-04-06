@@ -33,7 +33,6 @@ export function ResumeLayout({ children, toc }) {
           </div>
         </main>
       </div>
-      <SocialAccounts />
     </>
   )
 }

@@ -12,6 +12,7 @@
   "menu_blog": "ブログ",
   "menu_snippets": "スニペット",
   "menu_projects": "プロジェクト",
+  "menu_utils": "ツール",
   "menu_about": "紹介",
   "menu_resume": "履歴書",
   "greeting_message": "地球のタンです",
@@ -36,6 +37,7 @@
   "menu_blog_2": "私のブログ",
   "menu_snippets_2": "私のスニペットコレクション",
   "menu_projects_2": "私が作成したプロジェクト",
+  "menu_utils_2": "私が作成したツール",
   "menu_about_2": "私について",
   "menu_resume_2": "私のキャリア",
   "analytics": "このサイトのトラフィックとエンゲージメント",
@@ -64,7 +66,7 @@
   "build_with": {
     "built_with": "で構築",
     "view_source": "ソースを見る",
-    "copyright_author": "ThangChibaのブログ - ThangChibaのコーディング旅"
+    "copyright_author": "ホアン　ヴァン　タアン / ThangChiba"
   },
   "projects": {
     "projects_description": "私が行ってきた、そして現在進行中のプロジェクト一覧。",
@@ -85,7 +87,7 @@
   },
   "fb_messenger": {
     "logged_in_greeting": "これは私とのプライベートチャットです。メッセージを残してください",
-    "logged_out_greeting": "こんにちは、またお会いしましょう"
+    "logged_out_greeting": "こんにちは、今日はどうですか？"
   },
   "social_account": {
     "contact_text": "私のソーシャルメディアを通じてご連絡してください:"
