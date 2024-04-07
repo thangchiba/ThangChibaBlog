@@ -1,18 +1,18 @@
 backend:
-#  name: test-repo
-  name: github  # Use 'github' for GitHub integration or 'test-repo' for local testing
-  repo: thangchiba/ThangChibaBlog  # Your GitHub repository
-  branch: dev  # The branch where your content is stored
+  name: github
+  repo: thangchiba/ThangChibaBlog
+  branch: main
 
-media_folder: "public/images"  # The folder where uploaded media will be stored
+media_folder: "public/static/images"  # The folder where uploaded media will be stored
 public_folder: "/images"  # The public URL path to access the media
-
 collections:
   - name: "english_posts"
     label: "English Posts"
-    folder: "BlogFE/data/en/blog"  # Path to the English content
+    folder: "BlogFE/data/en/blog"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: "mdx"
+    format: "frontmatter"
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
@@ -21,21 +21,4 @@ collections:
       - { label: "Summary", name: "summary", widget: "text" }
       - { label: "Audio URL", name: "audioURL", widget: "string" }
       - { label: "Authors", name: "authors", widget: "list" }
-      - { label: "Featured Image", name: "thumbnail", widget: "image" }
-      - { label: "Body", name: "body", widget: "markdown" }
-
-  - name: "japanese_posts"
-    label: "Japanese Posts"
-    folder: "BlogFE/data/jp/blog"  # Path to the Japanese content
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Tags", name: "tags", widget: "list" }
-      - { label: "Draft", name: "draft", widget: "boolean" }
-      - { label: "Summary", name: "summary", widget: "text" }
-      - { label: "Audio URL", name: "audioURL", widget: "string" }
-      - { label: "Authors", name: "authors", widget: "list" }
-      - { label: "Featured Image", name: "thumbnail", widget: "image" }
       - { label: "Body", name: "body", widget: "markdown" }
