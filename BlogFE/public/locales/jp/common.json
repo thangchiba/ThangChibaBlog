@@ -77,6 +77,10 @@
     "live_page": "ライブ",
     "built_with": "で構築"
   },
+  "utils": {
+    "utils_description": "私の仕事を支援するために作成したユーティリティツールのリスト",
+    "utils_title": "ツール"
+  },
   "pagination": {
     "previous": "前",
     "next": "次",

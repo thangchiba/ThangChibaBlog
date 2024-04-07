@@ -77,6 +77,10 @@
     "live_page": "Live",
     "built_with": "Built with"
   },
+  "utils": {
+    "utils_description": "List utilities tools i created to support my work",
+    "utils_title": "Utils"
+  },
   "pagination": {
     "previous": "Previous",
     "next": "Next",

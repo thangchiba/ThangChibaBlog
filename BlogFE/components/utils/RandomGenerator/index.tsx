@@ -31,7 +31,7 @@ const RandomGenerator = () => {
   }, [stopCamera])
 
   return (
-    <div className="relative text-center max-w-2xl p-2 border-2 rounded-lg border-green-400">
+    <div className="relative text-center p-2 border-2 rounded-lg border-green-400">
       <div className="relative inline-block">
         {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
         <video ref={videoRef} className="w-full h-auto hidden" />

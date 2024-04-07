@@ -77,6 +77,10 @@
     "live_page": "Đang hoạt động",
     "built_with": "Được xây dựng bằng"
   },
+  "utils": {
+    "utils_description": "Danh sách các công cụ tiện ích mình đã tạo để hỗ trợ công việc của mình",
+    "utils_title": "Tiện ích"
+  },
   "pagination": {
     "previous": "Trước",
     "next": "Tiếp",
@@ -86,8 +90,8 @@
     "no_tags_found": "Không tìm thấy thẻ nào."
   },
   "fb_messenger": {
-    "logged_in_greeting" : "Đây là mục chat riêng tư với mình, hãy để lại tin nhắn của bạn",
-    "logged_out_greeting" : "Ngày hôm nay của bạn thế nào?"
+    "logged_in_greeting": "Đây là mục chat riêng tư với mình, hãy để lại tin nhắn của bạn",
+    "logged_out_greeting": "Ngày hôm nay của bạn thế nào?"
   },
   "social_account": {
     "contact_text": "Dưới đây là địa chỉ liên lạc của mình:"

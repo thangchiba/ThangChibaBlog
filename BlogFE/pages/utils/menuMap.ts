@@ -4,7 +4,7 @@ import RandomGenerator from '~/components/utils/RandomGenerator'
 
 interface ComponentEntry {
   name: string
-  component: React.ComponentType
+  component: React.ComponentType<any>
   emoji: string
 }
 

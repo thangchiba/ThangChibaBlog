@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Twemoji from '~/components/Twemoji'
 import menuMap from '~/pages/utils/menuMap'
 
-const Sidebar = ({ onNavigate }) => {
+const Sidebar = ({ onNavigate, activeComponent, setActiveComponent }) => {
   const [isSidebarOpen, setSidebarOpen] = useState(false)
 
   return (
@@ -21,20 +21,23 @@ const Sidebar = ({ onNavigate }) => {
         />
       )}
       <div
-        className={`absolute top-0 left-0 w-64 bg-gray-600 p-5 transition-transform duration-300 ease-in-out ${
+        className={`absolute top-0 left-0 w-64 bg-gray-600 p-2 transition-transform duration-300 ease-in-out ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } z-30 md:static md:translate-x-0 rounded-2xl`}
       >
-        <ul className="mt-5 xl:mt-0">
+        <ul className="mt-10 xl:mt-0">
           {Object.entries(menuMap).map(([endpoint, { emoji, name }]) => (
             <li key={endpoint} className="my-3">
               <a
                 href="#!"
                 onClick={() => {
                   onNavigate(endpoint)
+                  setActiveComponent(endpoint)
                   setSidebarOpen(false)
                 }}
-                className="flex items-center"
+                className={`flex items-center p-2 rounded-lg ${
+                  activeComponent === endpoint ? 'bg-gray-700' : ''
+                }`}
               >
                 <Twemoji emoji={emoji} className="mx-2" />
                 {name}

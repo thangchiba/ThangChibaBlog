@@ -1,7 +1,9 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import React, { useState } from 'react'
-import Sidebar from '~/pages/utils/Sidebar'
 import menuMap from '~/pages/utils/menuMap'
+import Sidebar from '~/pages/utils/Sidebar'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { PageSeo } from '~/components/SEO'
+import { useTranslation } from 'next-i18next'
 
 export async function getStaticProps({ locale }: { locale: string }) {
   const translation = await serverSideTranslations(locale, ['common'])
@@ -12,8 +14,9 @@ export async function getStaticProps({ locale }: { locale: string }) {
 
 const UtilsPage = () => {
   const [activeComponent, setActiveComponent] = useState('tts')
+  let { t } = useTranslation('common')
+  let description = t('utils.utils_description')
 
-  console.log(activeComponent)
   const handleNavigation = (endpoint: string) => {
     setActiveComponent(endpoint)
   }
@@ -27,7 +30,17 @@ const UtilsPage = () => {
 
   return (
     <div className="relative flex bg-gray-50 dark:bg-gray-800 rounded-2xl h-[90vh]">
-      <Sidebar onNavigate={handleNavigation} />
+      <PageSeo
+        title={`${t('utils.utils_title')} - ${t('site_meta_data.author')} - ${t(
+          'site_meta_data.title'
+        )}`}
+        description={description}
+      />
+      <Sidebar
+        onNavigate={handleNavigation}
+        activeComponent={activeComponent}
+        setActiveComponent={setActiveComponent}
+      />
       <div className="flex-1 xl:px-5 mt-11 xl:mt-0">
         <ActiveComponent />
       </div>
