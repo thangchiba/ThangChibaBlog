@@ -12,6 +12,10 @@ const TextToSpeech: React.FC = () => {
 
   const handleFetchTTS = async (e) => {
     e.preventDefault()
+    if (!inputText) {
+      alert('Content cannot null')
+      return
+    }
     setIsLoading(true)
 
     try {

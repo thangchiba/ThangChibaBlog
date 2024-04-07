@@ -12,16 +12,17 @@ const Sidebar = ({ onNavigate, activeComponent, setActiveComponent }) => {
         onClick={() => setSidebarOpen(!isSidebarOpen)}
       >
         <Twemoji emoji="hammer-and-wrench" />
+        Select Tools
       </button>
 
       {isSidebarOpen && (
-        <div
+        <button
           className="fixed inset-0 bg-black bg-opacity-50 z-30"
           onClick={() => setSidebarOpen(false)}
         />
       )}
       <div
-        className={`absolute top-0 left-0 w-64 bg-gray-600 p-2 transition-transform duration-300 ease-in-out ${
+        className={`absolute top-0 left-0 w-64 h-full bg-gray-600 p-2 transition-transform duration-300 ease-in-out ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } z-30 md:static md:translate-x-0 rounded-2xl`}
       >
