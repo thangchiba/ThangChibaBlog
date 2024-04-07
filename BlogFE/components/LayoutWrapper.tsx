@@ -10,16 +10,11 @@ export function LayoutWrapper({ children }) {
   let onToggleNav = () => setNavShow((status) => !status)
 
   const router = useRouter()
-  console.log(router)
-  // const isClient = typeof window !== 'undefined'
   const path = router.pathname || ''
-  // Determine the maximum width class based on the current path
   const maxXLWidthClass =
     path === '/utils' || path === '/course'
       ? 'xl:max-w-7xl' // Adjust the maximum width as needed
       : 'xl:max-w-5xl'
-
-  // const maxXLWidthClass = 'xl:max-w-5xl'
   return (
     <>
       <MobileNav navShow={navShow} onToggleNav={onToggleNav} />

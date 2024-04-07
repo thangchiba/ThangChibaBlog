@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Twemoji from '~/components/Twemoji'
-import menuMap from '~/pages/utils/menuMap'
+import menuMap from '~/data/menuMap'
 
 const Sidebar = ({ onNavigate, activeComponent, setActiveComponent }) => {
   const [isSidebarOpen, setSidebarOpen] = useState(false)

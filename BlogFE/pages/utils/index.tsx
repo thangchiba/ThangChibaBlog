@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import menuMap from '~/pages/utils/menuMap'
+import menuMap from '~/data/menuMap'
 import Sidebar from '~/pages/utils/Sidebar'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { PageSeo } from '~/components/SEO'
