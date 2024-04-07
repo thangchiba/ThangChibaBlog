@@ -6,7 +6,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const { inputText, model, voice } = req.body
   try {
     const audioBuffer = await fetchTTS(inputText, model, voice)
-    console.log('Audio Buffer size:', audioBuffer.length)
     res.setHeader('Content-Type', 'audio/mpeg')
     res.setHeader('Content-Length', audioBuffer.length.toString())
     res.end(audioBuffer)

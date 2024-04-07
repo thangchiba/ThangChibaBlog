@@ -1,10 +1,10 @@
 {
   "site_meta_data": {
-    "title": "ThangChiba's blog - ThangChiba's coding journey",
+    "title": "ThangChiba's blog - ThangChiba's journey",
     "author": "ThangChiba",
     "full_name": "Hoang Van Thang",
-    "header_title": "ThangChiba's blog - ThangChiba's coding journey",
-    "footer_title": "ThangChiba's blog - ThangChiba's coding journey",
+    "header_title": "ThangChiba's blog - ThangChiba's journey",
+    "footer_title": "ThangChiba's blog - ThangChiba's journey",
     "description": "I write about web and game development, system architecture, and sometime about my personal life.",
     "language": "en"
   },
@@ -12,6 +12,7 @@
   "menu_blog": "Blog",
   "menu_snippets": "Snippets",
   "menu_projects": "Projects",
+  "menu_utils": "Utils",
   "menu_about": "About",
   "menu_resume": "Resume",
   "greeting_message": "Hi, I'm Thang",
@@ -36,6 +37,7 @@
   "menu_blog_2": "My blog",
   "menu_snippets_2": "My snippets collection",
   "menu_projects_2": "The projects I create",
+  "menu_utils_2": "The useful tools I create",
   "menu_about_2": "More about me",
   "menu_resume_2": "My career",
   "analytics": "Traffic & engagement of this site",
@@ -64,7 +66,7 @@
   "build_with": {
     "built_with": "Build with",
     "view_source": "View source",
-    "copyright_author": "ThangChiba's blog - ThangChiba's coding journey"
+    "copyright_author": "Hoang Van Thang / ThangChiba"
   },
   "projects": {
     "projects_description": "List of projects I have worked on and am currently working on.",
@@ -74,6 +76,10 @@
     "learn_more": "More detail",
     "live_page": "Live",
     "built_with": "Built with"
+  },
+  "utils": {
+    "utils_description": "List utilities tools i created to support my work",
+    "utils_title": "Utils"
   },
   "pagination": {
     "previous": "Previous",
@@ -85,7 +91,7 @@
   },
   "fb_messenger": {
     "logged_in_greeting": "This is a private chat with me, please leave your message",
-    "logged_out_greeting": "Hello and see you again"
+    "logged_out_greeting": "Hi. How are you today?"
   },
   "social_account": {
     "contact_text": "Get in touch with me via my social media accounts:"

@@ -15,16 +15,15 @@ export function BlogLinks() {
         </span>
       </Link>
       <Link href="/projects" className="hover:underline">
-        <Twemoji emoji="hammer-and-wrench" />
+        <Twemoji emoji="building-construction" />
         <span data-umami-event="home-link-projects" className="ml-1.5">
           {t('menu_projects_2')}
         </span>
       </Link>
       <Link href="/utils" className="hover:underline">
         <Twemoji emoji="hammer-and-wrench" />
-        <span data-umami-event="home-link-projects" className="ml-1.5">
-          {/*{t('menu_projects_2')}*/}
-          Utils
+        <span data-umami-event="home-link-utils" className="ml-1.5">
+          {t('menu_utils_2')}
         </span>
       </Link>
       {/*<Link href="/snippets" className="hover:underline">*/}

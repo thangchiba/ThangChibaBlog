@@ -6,8 +6,8 @@ export default function SocialAccounts() {
   let { t } = useTranslation('common')
   return (
     <div>
-      <p className="my-3">{t('social_account.contact_text')}</p>
-      <div className="flex space-x-4 items-center">
+      {/*<p className="my-3">{t('social_account.contact_text')}</p>*/}
+      <div className="flex justify-center space-x-4 items-center">
         <a
           href={siteMetadata.github}
           target="_blank"

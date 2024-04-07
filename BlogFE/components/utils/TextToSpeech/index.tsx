@@ -12,6 +12,10 @@ const TextToSpeech: React.FC = () => {
 
   const handleFetchTTS = async (e) => {
     e.preventDefault()
+    if (!inputText) {
+      alert('Content cannot null')
+      return
+    }
     setIsLoading(true)
 
     try {
@@ -20,9 +24,6 @@ const TextToSpeech: React.FC = () => {
         { inputText, model, voice },
         { responseType: 'blob' }
       )
-
-      //@ts-ignore
-      console.log('Response size:', response) // Log the size of the blob
 
       if (response.data.size > 0) {
         const url = URL.createObjectURL(response.data)
