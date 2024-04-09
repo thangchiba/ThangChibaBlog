@@ -29,7 +29,7 @@ const UtilsPage = () => {
   }
 
   return (
-    <div className="relative flex bg-gray-50 dark:bg-gray-800 rounded-2xl h-[90vh]">
+    <div className="relative flex bg-gray-100 dark:bg-gray-800 rounded-2xl h-[90vh]">
       <PageSeo
         title={`${t('utils.utils_title')} - ${t('site_meta_data.author')} - ${t(
           'site_meta_data.title'

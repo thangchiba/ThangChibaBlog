@@ -19,8 +19,10 @@
     "@radix-ui/react-popover": "^1.0.6",
     "@tailwindcss/forms": "^0.5.6",
     "@tailwindcss/typography": "^0.5.9",
+    "@tinacms/cli": "^1.5.43",
     "autoprefixer": "^10.4.15",
     "aws-amplify": "^6.0.16",
+    "axios": "^1.6.8",
     "clsx": "^2.0.0",
     "esbuild": "^0.19.2",
     "github-slugger": "^2.0.0",
@@ -50,8 +52,8 @@
     "smoothscroll-polyfill": "^0.4.4",
     "swr": "^2.2.2",
     "tailwindcss": "^3.3.3",
-    "typed.js": "^2.0.132",
-    "axios": "^1.6.8"
+    "tinacms": "^1.6.1",
+    "typed.js": "^2.0.132"
   },
   "devDependencies": {
     "@aws-amplify/backend": "^0.12.1",

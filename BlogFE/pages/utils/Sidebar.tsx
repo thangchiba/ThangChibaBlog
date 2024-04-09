@@ -8,7 +8,7 @@ const Sidebar = ({ onNavigate, activeComponent, setActiveComponent }) => {
   return (
     <>
       <button
-        className="md:hidden p-2 text-white absolute top-0 left-0 z-40 bg-gray-600 rounded-xl"
+        className="md:hidden p-2 absolute top-0 left-0 z-40 bg-gray-200 dark:bg-gray-600 rounded-lg"
         onClick={() => setSidebarOpen(!isSidebarOpen)}
       >
         <Twemoji emoji="hammer-and-wrench" />
@@ -22,9 +22,9 @@ const Sidebar = ({ onNavigate, activeComponent, setActiveComponent }) => {
         />
       )}
       <div
-        className={`absolute top-0 left-0 w-64 h-full bg-gray-600 p-2 transition-transform duration-300 ease-in-out ${
+        className={`absolute top-0 left-0 w-64 h-full bg-gray-200 dark:bg-gray-600 p-2 transition-transform duration-300 ease-in-out ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-        } z-30 md:static md:translate-x-0 rounded-2xl`}
+        } z-30 md:static md:translate-x-0 rounded-lg`}
       >
         <ul className="mt-10 xl:mt-0">
           {Object.entries(menuMap).map(([endpoint, { emoji, name }]) => (
@@ -37,7 +37,7 @@ const Sidebar = ({ onNavigate, activeComponent, setActiveComponent }) => {
                   setSidebarOpen(false)
                 }}
                 className={`flex items-center p-2 rounded-lg ${
-                  activeComponent === endpoint ? 'bg-gray-700' : ''
+                  activeComponent === endpoint ? 'bg-gray-300 dark:bg-gray-700' : ''
                 }`}
               >
                 <Twemoji emoji={emoji} className="mx-2" />
