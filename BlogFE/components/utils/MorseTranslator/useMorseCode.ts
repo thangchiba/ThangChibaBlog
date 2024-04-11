@@ -45,18 +45,18 @@ const useMorseCode = () => {
 
     for (const char of morseString) {
       const timing = morseTiming[char]
-      console.log(`Char: ${char}, Timing: ${timing.length}, Sound: ${timing.sound}`)
+      // console.log(`Char: ${char}, Timing: ${timing.length}, Sound: ${timing.sound}`)
 
       if (timing) {
         const duration = config.dotLength * timing.length
-        console.log(`Playing ${char} for duration: ${duration}`)
+        // console.log(`Playing ${char} for duration: ${duration}`)
 
         if (timing.sound > 0) {
           playBeep(duration, currentTime)
         }
         currentTime += duration
         // Add the space after each Morse code symbol (inter-element space)
-        currentTime += config.dotLength
+        currentTime += config.dotLength / 2
       }
     }
   }

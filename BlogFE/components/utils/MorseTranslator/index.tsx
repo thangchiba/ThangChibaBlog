@@ -18,8 +18,16 @@ const MorseTranslator: React.FC = () => {
   }
 
   const handleMorseChange = (value: string) => {
-    setMorse(value)
-    setText(translateToEnglish(value))
+    const normalizedMorse = value
+      .replaceAll('−', '.')
+      .replaceAll('•', '.')
+      .replaceAll('。', '.')
+      .replaceAll('・', '.')
+      .replaceAll('ー', '-')
+      .replaceAll('　', ' ')
+
+    setMorse(normalizedMorse)
+    setText(translateToEnglish(normalizedMorse))
   }
 
   return (
