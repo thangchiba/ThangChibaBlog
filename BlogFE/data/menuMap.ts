@@ -1,6 +1,7 @@
 import React from 'react'
 import TextToSpeech from '~/components/utils/TextToSpeech'
 import RandomGenerator from '~/components/utils/RandomGenerator'
+import MorseTranslator from '~/components/utils/MorseTranslator'
 
 interface ComponentEntry {
   name: string
@@ -22,6 +23,11 @@ const menuMap: MenuMap = {
     name: 'Random Generator',
     component: RandomGenerator,
     emoji: 'camera-with-flash',
+  },
+  'morse-translator': {
+    name: 'Morse Translator',
+    component: MorseTranslator,
+    emoji: 'radio',
   },
 }
 
