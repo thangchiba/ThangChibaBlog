@@ -41,7 +41,7 @@ const UtilsPage = () => {
         activeComponent={activeComponent}
         setActiveComponent={setActiveComponent}
       />
-      <div className="flex-1 xl:px-5 mt-11 xl:mt-0">
+      <div className="flex-1 xl:px-5 mt-10 md:mt-0">
         <ActiveComponent />
       </div>
     </div>

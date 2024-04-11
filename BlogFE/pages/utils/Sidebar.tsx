@@ -22,11 +22,11 @@ const Sidebar = ({ onNavigate, activeComponent, setActiveComponent }) => {
         />
       )}
       <div
-        className={`absolute top-0 left-0 w-64 h-full bg-gray-200 dark:bg-gray-600 p-2 transition-transform duration-300 ease-in-out ${
+        className={`absolute top-0 left-0 w-50 h-full bg-gray-200 dark:bg-gray-600 p-2 transition-transform duration-300 ease-in-out ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } z-30 md:static md:translate-x-0 rounded-lg`}
       >
-        <ul className="mt-10 xl:mt-0">
+        <ul className="mt-10 sm:mt-0">
           {Object.entries(menuMap).map(([endpoint, { emoji, name }]) => (
             <li key={endpoint} className="my-3">
               <a
@@ -41,7 +41,7 @@ const Sidebar = ({ onNavigate, activeComponent, setActiveComponent }) => {
                 }`}
               >
                 <Twemoji emoji={emoji} className="mx-2" />
-                {name}
+                <span className="text-sm">{name}</span>
               </a>
             </li>
           ))}

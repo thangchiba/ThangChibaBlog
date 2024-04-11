@@ -66,7 +66,7 @@ export function CypherChat() {
                   title="Cypher Chat"
                   src={`https://cypher.thangchiba.com/room/${roomName}?enigma=${enigma}&nickName=User${randomId}`}
                   frameBorder="0"
-                  className="w-full h-[700px]" // Adjusted height here
+                  className="w-full h-[680px]" // Adjusted height here
                   allowFullScreen
                 ></iframe>
               )}
