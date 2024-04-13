@@ -18,7 +18,7 @@ export function BlogMeta({
     <dd
       className={`flex ${
         layout === 'vertical' ? 'flex-col' : 'flex-wrap'
-      } text-sm font-medium leading-3 text-gray-500 dark:text-gray-400 md:text-base`}
+      } text-sm font-medium leading-5 text-gray-500 dark:text-gray-400 md:text-base`}
     >
       <time
         dateTime={date}
@@ -27,13 +27,13 @@ export function BlogMeta({
         <Twemoji emoji="calendar" size="" />
         <span className={`ml-1.5 md:ml-2`}>{formatDate(date, lang)}</span>
       </time>
+      {layout === 'horizontal' && <span className="mx-2">{' • '}</span>}
       <div className={`flex items-center ${layout === 'vertical' ? 'my-2' : ''}`}>
         <Twemoji emoji="hourglass-not-done" size="" />
         <span className={`ml-1.5 md:ml-2`}>
           {t('blog.reading_time', { time: Math.ceil(readingTime.minutes) })}
         </span>
       </div>
-      {layout === 'horizontal' && <span className="mx-2">{' • '}</span>}
       {showView && (
         <>
           {layout === 'horizontal' && <span className="mx-2">{' • '}</span>}
