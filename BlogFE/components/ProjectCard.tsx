@@ -19,7 +19,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         />
         <div className="flex grow flex-col justify-between space-y-6 p-4 md:p-6">
           <div className="space-y-3">
-            <h2 className="text-3xl font-bold leading-8 tracking-tight">
+            <h2 className="text-3xl font-bold leading-10 tracking-tight">
               {slug ? (
                 <Link href={`/projects/${slug}`} aria-label={`Link to ${title}`}>
                   <span data-umami-event="project-title-link">{title}</span>

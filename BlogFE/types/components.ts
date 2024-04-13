@@ -56,6 +56,8 @@ export interface BlogMetaProps {
   date: string
   slug: string
   readingTime: ReadingTime
+  layout?: 'horizontal' | 'vertical'
+  showView?: boolean
 }
 
 export interface CommentsProps {

@@ -6,6 +6,7 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { getAllFilesFrontMatter } from '~/libs/mdx.server'
 import type { BlogListProps } from '~/types/page'
+import NewListLayout from '~/layouts/NewListLayout'
 
 export async function getStaticPaths(context: GetStaticPathsContext) {
   let locales = context.locales || []
@@ -63,7 +64,7 @@ export default function PostPage(props: BlogListProps) {
   return (
     <>
       <PageSeo title={t('site_meta_data.title')} description={t('site_meta_data.description')} />
-      <ListLayout
+      <NewListLayout
         posts={posts}
         initialDisplayPosts={initialDisplayPosts}
         pagination={pagination}

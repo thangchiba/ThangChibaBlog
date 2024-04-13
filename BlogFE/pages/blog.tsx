@@ -5,6 +5,7 @@ import { POSTS_PER_PAGE } from '~/constant'
 import { ListLayout } from '~/layouts/ListLayout'
 import { getAllFilesFrontMatter } from '~/libs/mdx.server'
 import type { BlogListProps } from '~/types/page'
+import NewListLayout from '~/layouts/NewListLayout'
 
 export async function getStaticProps({ locale }) {
   let posts = getAllFilesFrontMatter(`${locale}/blog`)
@@ -34,7 +35,7 @@ export default function Blog({ posts, initialDisplayPosts, pagination }: BlogLis
         )}`}
         description={t('site_meta_data.description')}
       />
-      <ListLayout
+      <NewListLayout
         posts={posts}
         initialDisplayPosts={initialDisplayPosts}
         pagination={pagination}
