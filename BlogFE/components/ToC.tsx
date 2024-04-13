@@ -48,6 +48,7 @@ export function ToC({ toc }: { toc: TOC[] }) {
       let header = document.querySelector(item.url)
       if (header) {
         observer.observe(header)
+        header.classList.add('text-green-800', 'dark:text-green-300')
       }
     })
 
@@ -74,7 +75,7 @@ export function ToC({ toc }: { toc: TOC[] }) {
             <a
               href={item.url}
               onClick={(e) => handleLinkClick(e, item.url)}
-              className="block text-gray-400 hover:text-gray-600 transition ease-in-out duration-150"
+              className="block text-orange-800 dark:text-orange-400 hover:text-gray-600 transition ease-in-out duration-150"
             >
               {item.value}
             </a>
