@@ -14,11 +14,13 @@ export default function About({ resumeData }: { resumeData: MdxFileData }) {
   let { mdxSource, frontMatter, toc } = resumeData
 
   return (
-    <MDXLayoutRenderer
-      layout={frontMatter.layout}
-      mdxSource={mdxSource}
-      frontMatter={frontMatter}
-      toc={toc}
-    />
+    <div>
+      <MDXLayoutRenderer
+        layout={frontMatter.layout}
+        mdxSource={mdxSource}
+        frontMatter={frontMatter}
+        toc={toc}
+      />
+    </div>
   )
 }

@@ -2,7 +2,6 @@ import { PageSeo } from 'components/SEO'
 import { ScrollTopButton } from '~/components/ScrollTopButton'
 import { ToC } from '~/components/ToC'
 import { useTranslation } from 'next-i18next'
-import SocialAccounts from '~/components/SocialAccounts'
 
 export function ResumeLayout({ children, toc }) {
   let { t } = useTranslation('common')
@@ -24,7 +23,7 @@ export function ResumeLayout({ children, toc }) {
             {description}
           </p>
         </header>
-        <div className="border border-t border-gray-200 dark:border-gray-700" />
+        <div className="border border-t border-gray-200 dark:border-gray-300" />
         <main className="gap-12 max-w-screen-xl mx-auto p-3 md:p-8 dark:bg-gray-700 bg-gray-100 my-12 rounded-md md:flex space-y-12 md:space-y-0">
           <ToC toc={toc} />
           <div className="border-l border-gray-300 hidden md:block" />

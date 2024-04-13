@@ -13,7 +13,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <Image
           alt={title}
           src={images[0]}
-          className="object-cover object-center md:h-36 lg:h-60 rounded-2xl"
+          className="object-cover object-center md:h-36 lg:h-60 rounded-lg"
           width={1088}
           height={612}
         />

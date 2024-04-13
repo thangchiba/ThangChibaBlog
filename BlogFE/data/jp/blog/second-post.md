@@ -7,7 +7,9 @@ summary: 'This is second blog post. Welcome and thanks for reading.'
 images: ['/static/images/road.jpg']
 authors: ['default']
 ---
+
 # Platform - Framework
+
 # React Native - JavaScript
 
 ### **React Nativeとは**
