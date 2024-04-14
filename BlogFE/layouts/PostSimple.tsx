@@ -32,7 +32,7 @@ export function PostSimple(props: PostSimpleLayoutProps) {
               <dl>
                 <div>
                   <dt className="sr-only">Published on</dt>
-                  <BlogMeta date={date} slug={slug} readingTime={readingTime} />
+                  <BlogMeta date={date} slug={slug} readingTime={readingTime} showView={true} />
                 </div>
               </dl>
             </div>

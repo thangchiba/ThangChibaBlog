@@ -27,6 +27,7 @@ export function MetaMessenger() {
       bottomSpacing={10}
       loggedInGreeting={t('fb_messenger.logged_in_greeting')}
       loggedOutGreeting={t('fb_messenger.logged_out_greeting')}
+      greetingDialogDisplay={'show'}
     />
   )
 }

@@ -11,6 +11,8 @@ let SITE_URL = 'https://www.thangchiba.com'
     'pages/*.tsx',
     'data/blog/**/*.mdx',
     'data/blog/**/*.md',
+    'data/project/**/*.mdx',
+    'data/project/**/*.md',
     'public/tags/**/*.xml',
     '!pages/_*.tsx',
     '!pages/api',

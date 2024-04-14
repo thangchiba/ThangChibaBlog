@@ -9,17 +9,17 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
   return (
     <div className="md p-4 md:w-1/2" style={{ maxWidth: '544px' }}>
-      <div className="flex h-full flex-col overflow-hidden rounded-lg border border-transparent shadow-nextjs dark:shadow-nextjs-dark">
+      <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-transparent shadow-nextjs dark:shadow-nextjs-dark">
         <Image
           alt={title}
           src={images[0]}
-          className="object-cover object-center md:h-36 lg:h-60"
+          className="object-cover object-center md:h-36 lg:h-60 rounded-lg"
           width={1088}
           height={612}
         />
         <div className="flex grow flex-col justify-between space-y-6 p-4 md:p-6">
           <div className="space-y-3">
-            <h2 className="text-2xl font-bold leading-8 tracking-tight">
+            <h2 className="text-3xl font-bold leading-10 tracking-tight">
               {slug ? (
                 <Link href={`/projects/${slug}`} aria-label={`Link to ${title}`}>
                   <span data-umami-event="project-title-link">{title}</span>

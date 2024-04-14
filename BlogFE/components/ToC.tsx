@@ -6,6 +6,13 @@ export function ToC({ toc }: { toc: TOC[] }) {
   let activeIdRef = useRef(null)
 
   useEffect(() => {
+    // Logic for adding styles to strong elements
+    const strongElements = document.querySelectorAll('strong')
+    strongElements.forEach((element) => {
+      element.classList.add('text-gray-800', 'dark:text-gray-300')
+    })
+
+    // IntersectionObserver logic
     let observerOptions = {
       rootMargin: '-10px 0px 0px 0px',
       threshold: 0,
@@ -30,13 +37,13 @@ export function ToC({ toc }: { toc: TOC[] }) {
             `li a[href="#${activeIdRef.current}"]`
           )
           if (previousActiveAnchor) {
-            previousActiveAnchor.classList.remove('text-gray-600')
+            previousActiveAnchor.classList.remove('text-orange-800')
           }
         }
 
         let currentActiveAnchor = navRef.current.querySelector(`li a[href="#${firstActiveId}"]`)
         if (currentActiveAnchor) {
-          currentActiveAnchor.classList.add('text-gray-600')
+          currentActiveAnchor.classList.add('text-orange-800')
         }
 
         activeIdRef.current = firstActiveId
@@ -48,12 +55,16 @@ export function ToC({ toc }: { toc: TOC[] }) {
       let header = document.querySelector(item.url)
       if (header) {
         observer.observe(header)
+        header.classList.add('text-gray-800', 'dark:text-green-300')
       }
     })
 
-    // Cleanup the observer when the component is unmounted
-    return () => observer.disconnect()
-  }, [toc])
+    // Cleanup function
+    return () => {
+      // Disconnect the observer
+      observer.disconnect()
+    }
+  }, [toc]) // Ensure this effect runs only when `toc` changes.
 
   let handleLinkClick = (e: MouseEvent, url: string) => {
     e.preventDefault()
@@ -74,7 +85,7 @@ export function ToC({ toc }: { toc: TOC[] }) {
             <a
               href={item.url}
               onClick={(e) => handleLinkClick(e, item.url)}
-              className="block text-gray-400 hover:text-gray-600 transition ease-in-out duration-150"
+              className="block text-gray-800 dark:text-orange-400 hover:text-orange-600 dark:hover:text-orange-200 transition ease-in-out duration-150"
             >
               {item.value}
             </a>
