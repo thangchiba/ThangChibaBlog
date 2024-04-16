@@ -19,30 +19,66 @@ draft: false
 
 ## **Tổng Quan**
 
-- **Mục đích:** Được thiết kế để kích hoạch các giải pháp hiệu năng cao và có khả năng mở rộng cho việc phát triển game MMORPG và Metaverse. Ngoài ra, tính linh hoạt của nó còn cho phép áp dụng trong hệ thống chat thời gian thực và giao diện quản lý dashboard.
+- **Mục đích:** Được thiết kế để dành cho các ứng dụng yêu cầu hiệu năng cao và có khả năng mở rộng cho việc phát triển game MMORPG và Metaverse. Ngoài ra, tính linh hoạt của nó còn cho phép áp dụng trong hệ thống chat thời gian thực và giao diện quản lý dashboard.
 - **Bối cảnh:** Xuất phát từ nhu cầu có một framework mạnh mẽ có khả năng đáp ứng các thách thức độc đáo của MMORPG thế giới mở hoặc Metaverse, mà các thư viện mã nguồn mở hiện tại chưa giải quyết đầy đủ.
 
 ## **Cảm Hứng và Nền Tảng**
 
-- **Từ Phát Triển Web đến Phát Triển Game:** Chuyển đổi kỹ năng từ phát triển web (kinh nghiệm với các framework như Spring Boot, ASP.NET) sang phát triển game.
-- **Động Lực Chính:** Mong muốn tạo ra một framework với các API dễ sử dụng tương tự như các web framework phổ biến, nhưng với hiệu năng được tăng cường phù hợp cho trò chơi thời gian thực.
+- **Từ Phát Triển Web đến Phát Triển Game:** Bản thân mình chuyển đổi từ phát triển web (kinh nghiệm với các framework như Spring Boot, ASP.NET) sang phát triển game vì vậy mình lấy cảm hứng từ các framework web rất nhiều.
+- **Động Lực Chính:** Mong muốn tạo ra một framework với các API dễ sử dụng tương tự như các web framework phổ biến, nhưng với hiệu năng được tối ưu phù hợp cho trò chơi thời gian thực.
 
-## **Các Tính Năng Chính của NeoSocket**
+## **Các Đặc Điểm của NeoSocket**
 
-- **Stateful Connection:** Phù hợp cho các ứng dụng thời gian thực, đảm bảo trạng thái kết nối liên tục cho các tương tác động.
-- **Lớp Middleware:** Tích hợp các tính năng mạnh mẽ như biện pháp chống DDoS và cơ chế xác thực/ủy quyền tinh vi cho an ninh người dùng. Ngoài ra có khả năng tự do tinh chỉnh bởi developer.
-- **Neo-Protocol:** Một giao thức độc quyền giúp giảm đáng kể lượng sử dụng băng thông thông qua các tính năng được tối ưu hóa và xử lý dữ liệu hiệu quả.
-- **Hiệu Quả Băng Thông:** Sử dụng MessagePack hoặc Protobuf cho việc chuẩn hóa dữ liệu, giảm tiêu thụ băng thông bằng cách gói nhiều gói tin vào một gói TCP duy nhất.
+- **Stateful Connection:** Phù hợp cho các ứng dụng thời gian thực, đảm bảo trạng thái kết nối liên tục cho các tương tác. Tránh gây lãng phí cho những tác vụ dài hơi, cần truyền tải lượng lớn dữ liệu.
+- **Lớp Middleware: Nhằm giúp các developer có thể tự do tinh chỉnh.** Tích hợp các tính năng mạnh mẽ như biện pháp chống DDoS và cơ chế xác thực/ủy quyền cho an ninh người dùng.
+- **Neo-Protocol:** Một giao thức do mình tự thiết kế giúp giảm đáng kể lượng sử dụng băng thông thông qua các tính năng được tối ưu hóa và xử lý dữ liệu hiệu quả. Với phương châm là tiết kiệm đến từng bit.
+- **Hiệu Quả Băng Thông:** Sử dụng MessagePack hoặc Protobuf cho việc chuẩn hóa dữ liệu. Giúp giảm 50-90% băng thông so với JSON. Ngoài ra còn giảm tiêu thụ băng thông bằng cơ chế gói nhiều gói tin vào một gói tin TCP/UDP duy nhất.
 - **Dễ Dàng Phát Triển:** Cung cấp một cấu trúc quen thuộc và trực quan với Handlers (tương tự như Controllers), Services, và một container IoC (Inversion of Control) tích hợp, lấy cảm hứng từ các web framework thông thường.
-- **Cơ Chế Yêu Cầu-Phản Hồi (Demand):** Phản ánh mô hình Yêu Cầu-Phản Hồi thường thấy trong phát triển web, được điều chỉnh cho giao tiếp mạng hiệu quả cao.
-- **Hỗ Trợ Lệnh (Command):** Hỗ trợ các yêu cầu theo kiểu lệnh không cần phản hồi, từ đó tăng cường linh hoạt của hệ thống và giảm lượng truyền dữ liệu không cần thiết.
+- **Cơ Chế Yêu Cầu-Phản Hồi (Demand / Unary Request):** Phản ánh mô hình Yêu Cầu-Phản Hồi giống như thường thấy trong phát triển web(Request-Response) được điều chỉnh cho giao tiếp mạng hiệu quả cao.
+- **Hỗ Trợ Lệnh (Command / BiDirection):** Hỗ trợ các yêu cầu theo kiểu lệnh không cần phản hồi, từ đó tăng cường linh hoạt của hệ thống và giảm lượng truyền dữ liệu không cần thiết.
 - **Quản Lý Gói Tin:** Sử dụng MessagePack với các cấu hình chính, loại bỏ nhu cầu truyền tên thuộc tính trong gói tin. Nó sử dụng hệ thống định danh gói tin độc đáo (kết hợp packetNumber và packetName) cho việc nhận dạng dữ liệu hiệu quả, thay thế cho các phương pháp dựa trên URL truyền thống.
+
+## Demo :
+
+### Handle lên tới 400k request/s với 2core CPU Google VM. (VM còn đang chạy nền khoảng 15 service trên docker).
+
+
+### Handle 1000 người chơi trong cùng scene(Mô phỏng buổi hoà nhạc trong metaverse)
+
+
+### One endpoint for all protocol :
+
+Sử dụng chung 1 endpoint cho TCP/UDP, Websocket, HTTP hoặc Unixsocket,…
+
+
+### Viết và tổ chức code như web nhưng hiệu năng dành cho game, realtime app.
+
+
+### Hướng Packet.
+
+Mọi thứ sẽ xoay quanh packet. Mỗi packet sẽ được định danh bằng PacketID và PacketName, được serialize bằng MessagePack giúp tối ưu băng thông. Không cần .protobuf file giúp quy trình phát triển nhẹ nhàng hơn.
+
+Có SDK cho Typescript giúp việc phát triển ứng dụng web cũng đã có thể triển khai.
+
+
+
+### Builtin Container
+
+Builtin container có 4 scope lifetime cho service như Dotnet, Spring (Scoped, Transient, Singleton) và thêm 1 lựa chọn là Parasitic (Lifetime sẽ đồng hành cùng với NeoClient).
+
+Có hỗ trợ [Qualifier] giống như SpringBoot (giống KeyedService Dotnet8).
+
+
+Chạy nền như 1 Service Worker trong Dotnet. Và có thể sử dụng được các service có trong hệ sinh thái Dotnet.
+
+Hoặc cũng có thể chạy như Console Application.
 
 ## **Tiến Độ Phát Triển**
 
-- **Thực Hiện Kết Nối TCP/UDP:** Ban đầu tập trung vào game, đặc biệt là tích hợp với Unity, phần máy chủ được phát triển sử dụng .NET 7 trong khi khách hàng sử dụng .NET Standard 2.0. Mã phía khách hàng được biên dịch thành một DLL để sử dụng trong Unity. Cấu hình này đã đạt được hiệu năng và hiệu quả mong đợi cho giao tiếp máy chủ-khách hàng.
-- **Phát Triển Thư Viện TypeScript:** Một thư viện TypeScript chuyên biệt đã được tạo ra để hỗ trợ kết nối từ các ứng dụng web, đặc biệt là những ứng dụng được xây dựng bằng ReactJS, với máy chủ. Thư viện này cung cấp một lựa chọn tiết kiệm băng thông thay thế cho các API HTTP RESTful truyền thống. Tuy nhiên, kiến trúc có trạng thái của nó làm cho nó kém phù hợp với một số loại website.
+- **Thực Hiện Kết Nối TCP/UDP:** Ban đầu tập trung vào game, đặc biệt là tích hợp với Unity, phần máy chủ được phát triển sử dụng .NET 7 trong khi máy khách sử dụng .NET Standard 2.0. Mã phía máy khách được biên dịch thành một DLL để sử dụng trong Unity. Cấu hình này đã đạt được hiệu năng và hiệu quả mong đợi cho giao tiếp máy chủ-máy khách.
+- **Phát Triển Thư Viện TypeScript:** TypeScript SDK chuyên biệt đã được tạo ra để hỗ trợ kết nối từ các ứng dụng web, đặc biệt là những ứng dụng được xây dựng bằng ReactJS, với máy chủ. Thư viện này cung cấp một lựa chọn tiết kiệm băng thông thay thế cho các API HTTP RESTful truyền thống. Tuy nhiên, kiến trúc stateful của nó làm cho nó kém phù hợp với một số loại website.
 - **Phát Triển Bảng Điều Khiển Giám Sát:** Hiện tại, một bảng điều khiển dựa trên ReactJS đang được xây dựng. Bảng điều khiển này nhằm cung cấp khả năng giám sát toàn diện cho NeoSocket, bao gồm đo lường hiệu suất máy chủ và kiểm tra sức khỏe.
+- **Tích hợp Metric**: Đã viết middleware cho việc sử dụng Prometheus + Grafana để đo lường chỉ số.
 
 ## **Thách Thức và Triển Vọng**
 
@@ -54,8 +90,7 @@ draft: false
 
 ### **Triển Vọng:**
 
-- **Tương Lai của NeoSocket:** NeoSocket tự hào là một framework socket hiệu suất cao được phát triển bằng C#. Các ứng dụng tương lai tiềm năng bao gồm việc tạo ra các giải pháp tiên tiến như hàng đợi thông điệp và một kiến trúc máy chủ game phân tán. Những ứng dụng này nhằm đạt được hiệu suất vượt trội với sự lãng phí băng thông tối thiểu, tận dụng thiết kế hiệu quả của NeoSocket.
-
+- **Tương Lai của NeoSocket:** NeoSocket là một framework socket hiệu suất cao được phát triển bằng C#. Các ứng dụng tương lai tiềm năng bao gồm việc tạo ra các giải pháp tiên tiến như hàng đợi thông điệp và một kiến trúc máy chủ game phân tán. Những ứng dụng này nhằm đạt được hiệu suất vượt trội với sự lãng phí băng thông tối thiểu, tận dụng thiết kế hiệu quả của NeoSocket.
 ## Tech Keywords
 
 - **Programming Languages & Environments:**
@@ -65,7 +100,7 @@ draft: false
 - **Networking and Sockets:**
   - Socket Libraries
   - Stateful Connection
-- Parallel Programming:
+- **Parallel Programming:**
   - Asynchronous Programming (Async/Await)
 - **Protocols:**
   - TCP (Transmission Control Protocol)
@@ -76,14 +111,14 @@ draft: false
   - UDP Hole Punching
 - **Serialization/Deserialization:**
   - MessagePack (for efficient data handling)
-- Scan and Caching
+- **Scan and Caching:**
   - Reflection(for auto scan and cache necessary part)
   - Attribute(easy to program, readability code)
-- Operation：
+- **Operation：**
   - Windows :
   - MacOS
   - Linux
-- Currently Support Platform :
+- **Currently Support Platform :**
   - Unity
   - ReactJS
   - Javascript/Typescript

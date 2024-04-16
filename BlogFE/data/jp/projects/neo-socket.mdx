@@ -1,0 +1,102 @@
+---
+type: 'project'
+projectType: 'self'
+tags: ['dotnet','realtime','socket']
+title: 'Neo Socket'
+date: '2023-02-01'
+summary: "A High-Performance Framework for Real-Time Applications"
+images: ['/static/images/projects/NeoSocket-Thumbnail-FHD.jpg']
+repo: 'NeoSocket'
+fe: ['TypeScript']
+be: ['Dotnet7', '.NET Standard2.0']
+network: ['TCP/UDP','Websocket']
+infra: ['Windows','MacOS','Linux']
+tools: [Prometheus,Grafana]
+draft: false
+---
+
+# **NeoSocket: リアルタイムアプリケーション向けのハイパフォーマンスフレームワーク**
+
+## **概要**
+
+- **目的:** MMORPGやメタバースなど、高性能が求められ、拡張性のあるゲーム開発に最適な設計。リアルタイムチャットシステムやダッシュボードの管理インターフェイスにも応用可能です。
+- **背景:** 現在のオープンソースライブラリでは解決されていない、MMORPGやメタバースの独特な課題に応えるために開発されました。
+
+## **インスピレーションと基盤**
+
+- **Web開発からゲーム開発へ:** Web開発（Spring BootやASP.NETなどのフレームワーク経験）からゲーム開発へ転向した私は、Webフレームワークから多くのインスピレーションを得ています。
+- **主な動機:** 使いやすいAPIを持つフレームワークを作りたいという願望があり、それがリアルタイムゲームに適したパフォーマンスを提供します。
+
+## **NeoSocketの特徴**
+
+- **ステートフル接続:** リアルタイムアプリケーションに最適で、連続的な接続状態を保証します。データ転送量が多い長期タスクの無駄を避けます。
+- **ミドルウェア層:** 開発者が自由にカスタマイズ可能。DDoS防止策や認証/認可メカニズムなどの強力な機能を統合。
+- **Neo-Protocol:** 自分で設計したプロトコルで、データ処理の最適化と効率的なデータハンドリングにより、帯域幅の使用を大幅に削減。ビットを節約することがモットーです。
+- **帯域効率:** MessagePackやProtobufを使用してデータを標準化。JSONと比較して50-90%の帯域幅を削減。さらに、TCP/UDPパケットを1つにまとめることで帯域の消費を削減。
+- **開発のしやすさ:** Handlers（コントローラーに似ている）、Services、そして組み込みのIoC（Inversion of Control）コンテナを備えた、馴染みのある直感的な構造を提供。
+- **要求/一元要求機構:** Web開発で一般的な要求/応答モデルを反映し、効率的なネットワーク通信に適応させています。
+- **コマンドサポート（BiDirectional):** 応答を必要としないコマンド型の要求をサポートし、システムの柔軟性を高め、不要なデータ伝送を削減。
+- **パケット管理:** MessagePackを使用してパケットIDとPacketNameでパケットを識別するユニークなシステムを採用し、URLベースの従来の方法に代わります。
+
+## **デモ**
+
+### 2コアCPUのGoogle VMで400kリクエスト/秒を処理可能。 (VMは約15個のサービスをDocker上で稼働中です)。
+
+!https://prod-files-secure.s3.us-west-2.amazonaws.com/b910266f-9f2e-43ba-9e92-56e5600c24ba/225794ac-312a-4db0-93a7-fd7c15826521/Screenshot_0006-01-28_at_1.09.59.png
+
+### 同じシーンで1000人のプレイヤーを処理可能（メタバース内のコンサートシミュレーション）
+
+!https://prod-files-secure.s3.us-west-2.amazonaws.com/b910266f-9f2e-43ba-9e92-56e5600c24ba/bae86c8f-ecc4-4efa-a5aa-c0deadc58eab/Untitled.png
+
+### すべてのプロトコルに対応する一つのエンドポイント：
+
+TCP/UDP、Websocket、HTTP、Unixsocketなど、一つのエンドポイントで対応します。
+
+!https://prod-files-secure.s3.us-west-2.amazonaws.com/b910266f-9f2e-43ba-9e92-56e5600c24ba/7bc255ce-25d3-4fe7-a948-56bcdd0943ba/Screenshot_0006-04-07_at_17.25.37.png
+
+### Webのようにコードを書き、ゲームやリアルタイムアプリケーションのためのパフォーマンスを実現
+
+!https://prod-files-secure.s3.us-west-2.amazonaws.com/b910266f-9f2e-43ba-9e92-56e5600c24ba/34b6d135-a7b1-47aa-9b87-69ed0ecdd22f/Screenshot_0006-04-07_at_17.28.11.png
+
+### パケット指向
+
+全てのことはパケットに関連しています。各パケットはPacketIDとPacketNameで識別され、MessagePackでシリアライズされて帯域を最適化します。.protobufファイルは必要ありません、これにより開発プロセスが軽減されます。
+
+Typescript SDKも用意されており、Webアプリケーションの開発が容易になります。
+
+!https://prod-files-secure.s3.us-west-2.amazonaws.com/b910266f-9f2e-43ba-9e92-56e5600c24ba/4f96b990-dbce-4095-b2de-1990e7c6aa03/Screenshot_0006-04-07_at_21.51.53.png
+
+!https://prod-files-secure.s3.us-west-2.amazonaws.com/b910266f-9f2e-43ba-9e92-56e5600c24ba/b05e1ad3-177e-4290-8f05-30ec29e5e896/Screenshot_0006-04-17_at_2.41.03.png
+
+### 組み込みのコンテナ
+
+組み込みコンテナはDotnetやSpringのように、サービスライフタイム（Scoped, Transient, Singleton）に加えて、NeoClientに同伴するParasitic（寄生的）オプションを提供します。
+
+SpringBootの[Qualifier]やDotnet8のKeyedServiceのようなサ
+
+ポートが含まれています。
+
+!https://prod-files-secure.s3.us-west-2.amazonaws.com/b910266f-9f2e-43ba-9e92-56e5600c24ba/4498c202-20d9-47a1-b6dd-cc89ae17cb1c/Screenshot_0006-04-07_at_21.51.02.png
+
+DotnetのService Workerとして、またはConsole Applicationとして実行可能です。
+
+## **開発の進行**
+
+- **TCP/UDP接続の実装:** ゲームに焦点を当て、[サーバーは.NET](http://xn--v9juh3c9hb.net/) 7、[クライアントは.NET](http://xn--v9j7ef7b3h8huc.net/) Standard 2.0を使用してUnityと統合。クライアントコードはUnity内で使用するためにDLLにコンパイルされ、サーバーとクライアント間の通信のパフォーマンスと効率を実現しました。
+- **TypeScriptライブラリの開発:** ReactJSを使用したWebアプリケーションの接続をサポートするために特別に作られたTypeScript SDKが提供されます。これは従来のRESTful HTTP APIよりも帯域を節約する選択肢ですが、そのstatefulアーキテクチャは一部のウェブサイトには適していません。
+- **監視ダッシュボードの開発:** 現在、NeoSocketの包括的なモニタリングを提供するReactJSベースのダッシュボードが開発中です。これにはサーバーのパフォーマンス測定やヘルスチェックが含まれます。
+- **メトリックの統合:** PrometheusとGrafanaを使用してメトリックを測定するためのミドルウェアが書かれました。
+
+## **課題と展望**
+
+### **主な課題:**
+
+- **パフォーマンスの最適化:** .NETの高度な機能を活用してパフォーマンスを向上させること、例えばデータ構造、不変データタイプ、ハッシュテーブル、キャッシュストレージ、並列プログラミング、コンテキストスイッチ、スレッドセーフコレクションなど。
+- **コードの微調整:** 現在のコードベースの独創性の欠如に直面し、主に利便性のためにシングルトンを使用しています。将来的にはコードのクリーンアップとベストプラクティスの適用を計画しています。
+- **フレームワークとAPIの研究:** 他のフレームワークやライブラリを分析して、どのAPIが開発者にとって最良の体験を提供するかを理解します。Spring BootのContainer IOCやAutowired、Serviceなどの注釈にインスピレーションを受け、.NETで同様の機能を模倣して開発者の利便性を向上させました。
+
+### **展望:**
+
+- **NeoSocketの未来:** NeoSocketは、C#で開発された高パフォーマンスのソケットフレームワークです。将来的なアプリケーションには、メッセージキューと分散ゲームサーバーアーキテクチャなどの先進的なソリューションが含まれ、NeoSocketの効率的なデザインを活かして、最小限の帯域幅の無駄で
+
+優れたパフォーマンスを達成することを目指しています。
