@@ -11,6 +11,12 @@ export type MdxPageLayout =
   | 'SnippetLayout'
   | 'ProjectLayout'
 
+export type MdxFrontMatterCategory =
+  | 'system-architecture'
+  | 'game'
+  | 'software'
+  | 'life'
+  | 'security'
 export interface MdxFrontMatter {
   layout?: MdxPageLayout
   title: string
@@ -23,6 +29,7 @@ export interface MdxFrontMatter {
   images?: string[] | string
   authors?: string[]
   slug: string
+  category: MdxFrontMatterCategory
 }
 
 export type ReadingTime = ReturnType<typeof readingTime>
