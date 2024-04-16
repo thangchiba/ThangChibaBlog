@@ -5,7 +5,7 @@ export let projectsData: Project[] = [
     type: 'work',
     title: 'Vegetable Wholesale Digital Transformation',
     description: `Transforming a traditional vegetable wholesale business into a digital platform, including a mobile app for customers and a web app for the business owner.`,
-    imgSrc: '/static/images/projects/vegetable-wholesale.webp',
+    imgSrc: '/static/images/dog-no-avaiable-banner.webp',
     url: 'https:thangchiba.com',
     builtWith: ['ReactJS', 'SpringBoot', ' PostgreSQL'],
   },
