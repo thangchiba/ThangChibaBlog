@@ -7,6 +7,7 @@ date: '2023-02-01'
 summary: "A High-Performance Framework for Real-Time Applications"
 images: ['/static/images/projects/NeoSocket-Thumbnail-FHD.jpg']
 repo: 'NeoSocket'
+audioURL: '/static/audio/projects/neo-socket-jp.mp3'
 fe: ['TypeScript']
 be: ['Dotnet7', '.NET Standard2.0']
 network: ['TCP/UDP','Websocket']
@@ -42,21 +43,17 @@ draft: false
 
 ### 2コアCPUのGoogle VMで400kリクエスト/秒を処理可能。 (VMは約15個のサービスをDocker上で稼働中です)。
 
-!https://prod-files-secure.s3.us-west-2.amazonaws.com/b910266f-9f2e-43ba-9e92-56e5600c24ba/225794ac-312a-4db0-93a7-fd7c15826521/Screenshot_0006-01-28_at_1.09.59.png
 
 ### 同じシーンで1000人のプレイヤーを処理可能（メタバース内のコンサートシミュレーション）
 
-!https://prod-files-secure.s3.us-west-2.amazonaws.com/b910266f-9f2e-43ba-9e92-56e5600c24ba/bae86c8f-ecc4-4efa-a5aa-c0deadc58eab/Untitled.png
 
 ### すべてのプロトコルに対応する一つのエンドポイント：
 
 TCP/UDP、Websocket、HTTP、Unixsocketなど、一つのエンドポイントで対応します。
 
-!https://prod-files-secure.s3.us-west-2.amazonaws.com/b910266f-9f2e-43ba-9e92-56e5600c24ba/7bc255ce-25d3-4fe7-a948-56bcdd0943ba/Screenshot_0006-04-07_at_17.25.37.png
 
 ### Webのようにコードを書き、ゲームやリアルタイムアプリケーションのためのパフォーマンスを実現
 
-!https://prod-files-secure.s3.us-west-2.amazonaws.com/b910266f-9f2e-43ba-9e92-56e5600c24ba/34b6d135-a7b1-47aa-9b87-69ed0ecdd22f/Screenshot_0006-04-07_at_17.28.11.png
 
 ### パケット指向
 
@@ -64,9 +61,6 @@ TCP/UDP、Websocket、HTTP、Unixsocketなど、一つのエンドポイント�
 
 Typescript SDKも用意されており、Webアプリケーションの開発が容易になります。
 
-!https://prod-files-secure.s3.us-west-2.amazonaws.com/b910266f-9f2e-43ba-9e92-56e5600c24ba/4f96b990-dbce-4095-b2de-1990e7c6aa03/Screenshot_0006-04-07_at_21.51.53.png
-
-!https://prod-files-secure.s3.us-west-2.amazonaws.com/b910266f-9f2e-43ba-9e92-56e5600c24ba/b05e1ad3-177e-4290-8f05-30ec29e5e896/Screenshot_0006-04-17_at_2.41.03.png
 
 ### 組み込みのコンテナ
 
@@ -76,13 +70,12 @@ SpringBootの[Qualifier]やDotnet8のKeyedServiceのようなサ
 
 ポートが含まれています。
 
-!https://prod-files-secure.s3.us-west-2.amazonaws.com/b910266f-9f2e-43ba-9e92-56e5600c24ba/4498c202-20d9-47a1-b6dd-cc89ae17cb1c/Screenshot_0006-04-07_at_21.51.02.png
 
 DotnetのService Workerとして、またはConsole Applicationとして実行可能です。
 
 ## **開発の進行**
 
-- **TCP/UDP接続の実装:** ゲームに焦点を当て、[サーバーは.NET](http://xn--v9juh3c9hb.net/) 7、[クライアントは.NET](http://xn--v9j7ef7b3h8huc.net/) Standard 2.0を使用してUnityと統合。クライアントコードはUnity内で使用するためにDLLにコンパイルされ、サーバーとクライアント間の通信のパフォーマンスと効率を実現しました。
+- **TCP/UDP接続の実装:** ゲームに焦点を当て、サーバーは.NET7、クライアントは.NET Standard 2.0を使用してUnityと統合。クライアントコードはUnity内で使用するためにDLLにコンパイルされ、サーバーとクライアント間の通信のパフォーマンスと効率を実現しました。
 - **TypeScriptライブラリの開発:** ReactJSを使用したWebアプリケーションの接続をサポートするために特別に作られたTypeScript SDKが提供されます。これは従来のRESTful HTTP APIよりも帯域を節約する選択肢ですが、そのstatefulアーキテクチャは一部のウェブサイトには適していません。
 - **監視ダッシュボードの開発:** 現在、NeoSocketの包括的なモニタリングを提供するReactJSベースのダッシュボードが開発中です。これにはサーバーのパフォーマンス測定やヘルスチェックが含まれます。
 - **メトリックの統合:** PrometheusとGrafanaを使用してメトリックを測定するためのミドルウェアが書かれました。
@@ -100,3 +93,37 @@ DotnetのService Workerとして、またはConsole Applicationとして実行�
 - **NeoSocketの未来:** NeoSocketは、C#で開発された高パフォーマンスのソケットフレームワークです。将来的なアプリケーションには、メッセージキューと分散ゲームサーバーアーキテクチャなどの先進的なソリューションが含まれ、NeoSocketの効率的なデザインを活かして、最小限の帯域幅の無駄で
 
 優れたパフォーマンスを達成することを目指しています。
+
+
+## Tech Keywords
+
+- **Programming Languages & Environments:**
+- .NET 7 (Server side)
+- DotNet Standard 2.0 (Client side)
+- TypeScript
+- **Networking and Sockets:**
+- Socket Libraries
+- Stateful Connection
+- Parallel Programming:
+- Asynchronous Programming (Async/Await)
+- **Protocols:**
+- TCP (Transmission Control Protocol)
+- UDP (User Datagram Protocol)
+- WebSocket
+- **Network Utilities:**
+- UPnP (Universal Plug and Play)
+- UDP Hole Punching
+- **Serialization/Deserialization:**
+- MessagePack (for efficient data handling)
+- Scan and Caching
+- Reflection(for auto scan and cache necessary part)
+- Attribute(easy to program, readability code)
+- Operation：
+- Windows :
+- MacOS
+- Linux
+- Currently Support Platform :
+- Unity
+- ReactJS
+- Javascript/Typescript
+- DotNet application

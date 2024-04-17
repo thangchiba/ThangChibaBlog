@@ -20,14 +20,16 @@ export function MetaMessenger() {
   const languageLocale = getLocaleLanguageMessage(localeCodes.code)
   let { t } = useTranslation('common')
   return (
-    <MessengerChat
-      pageId="113413278026734"
-      language={languageLocale}
-      themeColor={isDark ? '#ffffff' : '#000000'}
-      bottomSpacing={10}
-      loggedInGreeting={t('fb_messenger.logged_in_greeting')}
-      loggedOutGreeting={t('fb_messenger.logged_out_greeting')}
-      greetingDialogDisplay={'show'}
-    />
+    <div style={{ zIndex: 1000 }}>
+      <MessengerChat
+        pageId="113413278026734"
+        language={languageLocale}
+        themeColor={isDark ? '#ffffff' : '#000000'}
+        bottomSpacing={10}
+        loggedInGreeting={t('fb_messenger.logged_in_greeting')}
+        loggedOutGreeting={t('fb_messenger.logged_out_greeting')}
+        greetingDialogDisplay={'show'}
+      />
+    </div>
   )
 }
