@@ -2,6 +2,7 @@ import React from 'react'
 import TextToSpeech from '~/components/utils/TextToSpeech'
 import RandomGenerator from '~/components/utils/RandomGenerator'
 import MorseTranslator from '~/components/utils/MorseTranslator'
+import UploadFile from '~/components/utils/UploadFile'
 
 interface ComponentEntry {
   name: string
@@ -27,6 +28,11 @@ const menuMap: MenuMap = {
   'morse-translator': {
     name: 'Morse Translator',
     component: MorseTranslator,
+    emoji: 'radio',
+  },
+  'upload-file': {
+    name: 'Upload File',
+    component: UploadFile,
     emoji: 'radio',
   },
 }
