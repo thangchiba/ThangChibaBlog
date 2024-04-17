@@ -1,30 +1,34 @@
 import { useCallback, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import InputWithLabel from '~/components/ui/InputWithLabel'
-import FilePreview from '~/components/utils/UploadFile/FilePreview'
-import { file } from '@babel/types'
+import FilePreview from './FilePreview' // Make sure the path to this component is correct
 
 const UploadForm = () => {
   const [path, setPath] = useState('')
-  const [files, setFiles] = useState<File[]>([])
-  const [previews, setPreviews] = useState<string[]>([])
-  const [uploadUrls, setUploadUrls] = useState<string[]>([])
+  const [files, setFiles] = useState([])
+  const [previewFiles, setPreviewFiles] = useState([])
 
-  const onDrop = useCallback((acceptedFiles: File[]) => {
-    setFiles(acceptedFiles)
-    setPreviews(
-      acceptedFiles.map((file) => {
-        if (file.type.startsWith('image/')) {
-          const reader = new FileReader()
-          reader.onloadend = () => {
-            setPreviews((prev) => [...prev, reader.result as string])
-          }
-          reader.readAsDataURL(file)
-        }
-        return '' // Return empty string for non-image files or files we don't preview
-      })
-    )
+  const onDrop = useCallback((acceptedFiles) => {
+    setFiles((currentFiles) => [...currentFiles, ...acceptedFiles])
+    const newPreviewFiles = acceptedFiles.map((file) => ({
+      name: file.name,
+      preview: URL.createObjectURL(file),
+      size: file.size,
+    }))
+    setPreviewFiles((currentPreviewFiles) => [...currentPreviewFiles, ...newPreviewFiles])
   }, [])
+
+  const removeFile = (fileName) => {
+    setFiles((currentFiles) => currentFiles.filter((file) => file.name !== fileName))
+    setPreviewFiles((currentPreviewFiles) =>
+      currentPreviewFiles.filter((file) => file.name !== fileName)
+    )
+    // Optionally revoke the URL to avoid memory leaks
+    const fileToRemove = previewFiles.find((file) => file.name === fileName)
+    if (fileToRemove) {
+      URL.revokeObjectURL(fileToRemove.preview)
+    }
+  }
 
   const uploadFiles = async () => {
     if (!files.length) return
@@ -40,54 +44,44 @@ const UploadForm = () => {
       })
 
       if (response.ok) {
-        const data = await response.json()
-        setUploadUrls((prev) => [...prev, data.url])
-        alert('File uploaded successfully!')
+        // Optionally update UI or state here upon successful upload
       } else {
-        alert('Upload failed.')
+        alert(`Upload of ${file.name} failed.`)
       }
     }
   }
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
+    noClick: previewFiles.length !== 0,
   })
 
   return (
     <div className="p-6">
       <InputWithLabel
-        label={'Upload Path'}
+        label="Upload Path"
         value={path}
         onChange={setPath}
-        placeholder={'Enter path of file here'}
+        placeholder="Enter path of file here"
       />
       <div
         {...getRootProps()}
-        className="border-dashed border-2 border-gray-400 rounded-md p-6 text-center cursor-pointer"
+        className="border-dashed border-2 border-gray-400 rounded-md p-6 text-center cursor-pointer flex flex-col space-y-5"
       >
         <input {...getInputProps()} />
-        <p>Drag 'n' drop some files here, or use the button below to select files</p>
+        {previewFiles.length === 0 && (
+          <p>Drag 'n' drop some files here, or click to select files</p>
+        )}
+        {previewFiles.map((file, index) => (
+          <FilePreview key={index} file={file} onRemove={removeFile} />
+        ))}
       </div>
-      {previews.map(
-        (preview, index) =>
-          preview && <img key={index} src={preview} alt="Preview" className="mt-4 max-h-40" />
-      )}
       <button
         className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         onClick={uploadFiles}
       >
         Upload Files
       </button>
-      {uploadUrls.map((url, index) => (
-        <div key={index} className="mt-4">
-          <p>
-            Uploaded to:
-            <a href={url} target="_blank" rel="noopener noreferrer">
-              {url}
-            </a>
-          </p>
-        </div>
-      ))}
     </div>
   )
 }

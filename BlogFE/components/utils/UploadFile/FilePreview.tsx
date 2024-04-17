@@ -1,7 +1,7 @@
 import React from 'react'
 
 interface FilePreviewProps {
-  file: File & { preview: string; size: number }
+  file: File & { preview: string; size: number; uploadedURL?: string }
   onRemove: (fileName: string) => void
 }
 
@@ -17,7 +17,10 @@ const FilePreview: React.FC<FilePreviewProps> = ({ file, onRemove }) => {
   return (
     <div className="relative p-2 border rounded-lg">
       <button
-        onClick={() => onRemove(file.name)}
+        onClick={(e) => {
+          e.preventDefault()
+          onRemove(file.name)
+        }}
         className="absolute w-8 h-8 right-0 top-0 text-red-500 bg-transparent text-3xl"
       >
         ×
@@ -26,6 +29,7 @@ const FilePreview: React.FC<FilePreviewProps> = ({ file, onRemove }) => {
       <p className="text-md truncate mt-2">
         {formattedName} - {formatSize(file.size)}
       </p>
+      <p>{file.uploadedURL}</p>
     </div>
   )
 }
