@@ -5,8 +5,10 @@ import FilePreview from './FilePreview' // Make sure the path to this component 
 
 const UploadForm = () => {
   const [path, setPath] = useState('')
+  const [password, setPassword] = useState('')
   const [files, setFiles] = useState([])
   const [previewFiles, setPreviewFiles] = useState([])
+  console.log(files)
 
   const onDrop = useCallback((acceptedFiles) => {
     setFiles((currentFiles) => [...currentFiles, ...acceptedFiles])
@@ -14,6 +16,8 @@ const UploadForm = () => {
       name: file.name,
       preview: URL.createObjectURL(file),
       size: file.size,
+      url: undefined,
+      type: file.type,
     }))
     setPreviewFiles((currentPreviewFiles) => [...currentPreviewFiles, ...newPreviewFiles])
   }, [])
@@ -30,6 +34,11 @@ const UploadForm = () => {
     }
   }
 
+  const removeFiles = () => {
+    setFiles([])
+    setPreviewFiles([])
+  }
+
   const uploadFiles = async () => {
     if (!files.length) return
 
@@ -37,6 +46,7 @@ const UploadForm = () => {
       const formData = new FormData()
       formData.append('file', file)
       formData.append('path', path)
+      formData.append('password', password)
 
       const response = await fetch('/api/upload', {
         method: 'POST',
@@ -44,7 +54,13 @@ const UploadForm = () => {
       })
 
       if (response.ok) {
-        // Optionally update UI or state here upon successful upload
+        const { url } = await response.json()
+        const index = files.indexOf(file)
+        if (index !== -1) {
+          setPreviewFiles((currentPreviewFiles) =>
+            currentPreviewFiles.map((prev, idx) => (idx === index ? { ...prev, url } : prev))
+          )
+        }
       } else {
         alert(`Upload of ${file.name} failed.`)
       }
@@ -57,16 +73,24 @@ const UploadForm = () => {
   })
 
   return (
-    <div className="p-6">
+    <div className="p-6 border-2 rounded-xl border-blue-500 space-y-5">
+      <InputWithLabel
+        label="Password"
+        value={password}
+        onChange={setPassword}
+        placeholder="Enter password to upload"
+        labelWidth={120}
+      />
       <InputWithLabel
         label="Upload Path"
         value={path}
         onChange={setPath}
         placeholder="Enter path of file here"
+        labelWidth={120}
       />
       <div
         {...getRootProps()}
-        className="border-dashed border-2 border-gray-400 rounded-md p-6 text-center cursor-pointer flex flex-col space-y-5"
+        className="border-dashed border-2 border-gray-400 rounded-md mt-5 p-1 md:p-6 text-center cursor-pointer flex flex-col"
       >
         <input {...getInputProps()} />
         {previewFiles.length === 0 && (
@@ -76,12 +100,20 @@ const UploadForm = () => {
           <FilePreview key={index} file={file} onRemove={removeFile} />
         ))}
       </div>
-      <button
-        className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        onClick={uploadFiles}
-      >
-        Upload Files
-      </button>
+      <div className="flex justify-around">
+        <button
+          className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={uploadFiles}
+        >
+          Upload Files
+        </button>
+        <button
+          className="mt-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+          onClick={removeFiles}
+        >
+          Remove All
+        </button>
+      </div>
     </div>
   )
 }

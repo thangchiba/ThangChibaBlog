@@ -5,7 +5,7 @@ import AWS from 'aws-sdk'
 const upload = multer({
   storage: multer.memoryStorage(),
   limits: {
-    fileSize: 5 * 1024 * 1024, // 5 MB max file size
+    fileSize: 5 * 1024 * 1024 * 1024, // 5 GB max file size
   },
 })
 
@@ -30,6 +30,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   uploadSingle(req, res, function (err) {
     if (err) return res.status(500).send(err)
+    if (req.body.password !== process.env.THANG_CHIBA_SECRET_PASSWORD)
+      return res.status(400).json({ messgae: 'Cannot upload!!!' })
 
     const file = req.file
     const path = req.body.path ? req.body.path + '/' : ''
