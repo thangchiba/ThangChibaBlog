@@ -2,7 +2,7 @@ import fs from 'fs'
 import { globby } from 'globby'
 import prettier from 'prettier'
 
-let SITE_URL = 'https://www.thangchiba.com'
+let SITE_URL = 'https://thangchiba.com'
 
 ;(async () => {
   console.log('Generating sitemap...')
@@ -11,34 +11,35 @@ let SITE_URL = 'https://www.thangchiba.com'
     'pages/*.tsx',
     'data/blog/**/*.mdx',
     'data/blog/**/*.md',
-    'data/project/**/*.mdx',
-    'data/project/**/*.md',
+    'data/projects/**/*.mdx',
+    'data/projects/**/*.md',
     'public/tags/**/*.xml',
     '!pages/_*.tsx',
     '!pages/api',
   ])
 
   let sitemap = `
-			<?xml version="1.0" encoding="UTF-8"?>
-			<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-				${pages
+      <?xml version="1.0" encoding="UTF-8"?>
+      <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+        ${pages
           .map((page) => {
             let path = page
               .replace('pages/', '/')
               .replace('data/blog', '/blog')
+              .replace('data/projects', '/projects')
               .replace('public/', '/')
-              .replace('.ts', '')
+              .replace('.tsx', '')
               .replace('.mdx', '')
               .replace('.md', '')
               .replace('/feed.xml', '')
             let route = path === '/index' ? '' : path
-            if (page === `pages/404.ts` || page === `pages/blog/[...slug].ts`) {
+            if (page === `pages/404.tsx` || page === `pages/blog/[...slug].tsx`) {
               return
             }
             return `<url><loc>${SITE_URL}${route}</loc></url>\n`
           })
           .join('')}
-			</urlset>
+      </urlset>
     `
 
   let formatted = await prettier.format(sitemap, {
