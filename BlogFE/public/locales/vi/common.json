@@ -95,5 +95,15 @@
   },
   "social_account": {
     "contact_text": "Dưới đây là địa chỉ liên lạc của mình:"
+  },
+  "modals": {
+    "redirect": {
+      "ok": "Đi đến trang mới",
+      "no": "Ở lại đây"
+    }
+  },
+  "chatgpt_redirect": {
+    "title": "Thông báo thay đổi",
+    "content": "Trang ChatGPT đã được chuyển đến một vị trí mới. Vui lòng truy cập trang mới để cập nhật thêm."
   }
 }

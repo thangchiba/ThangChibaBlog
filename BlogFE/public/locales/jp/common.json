@@ -95,5 +95,15 @@
   },
   "social_account": {
     "contact_text": "私のソーシャルメディアを通じてご連絡してください:"
+  },
+  "modals": {
+    "redirect": {
+      "ok": "新しいページに移動",
+      "no": "ここに留まる"
+    }
+  },
+  "chatgpt_redirect": {
+    "title": "変更のお知らせ",
+    "content": "ChatGPTのページが新しい場所に移動しました。新しいページを訪れて、さらに更新をご確認ください。"
   }
 }
