@@ -11,7 +11,7 @@
   "happy_reading": "Cảm ơn bạn đã ghé thăm!",
   "menu_blog": "Blog",
   "menu_snippets": "Ghi chú",
-  "menu_projects": "Dự án",
+  "menu_project": "Dự án",
   "menu_utils": "Tiện ích",
   "menu_about": "Thông tin",
   "menu_resume": "Lý lịch",
@@ -36,7 +36,7 @@
   "bio_i_share": "Mình viết blog này để chia sẻ những trải nghiệm và hành trình mà mình đã trải qua để đạt được mục tiêu của mình.",
   "menu_blog_2": "Blog của mình",
   "menu_snippets_2": "Bộ sưu tập đoạn mã của mình",
-  "menu_projects_2": "Các dự án mình làm",
+  "menu_project_2": "Các dự án mình làm",
   "menu_utils_2": "Các công cụ tiện ích mình làm",
   "menu_about_2": "Thông tin thêm về mình và blog này",
   "menu_resume_2": "Sự nghiệp của mình",
@@ -68,9 +68,9 @@
     "view_source": "Xem mã nguồn",
     "copyright_author": "Hoàng Văn Thắng / ThangChiba"
   },
-  "projects": {
-    "projects_description": "Danh sách những dự án mà mình đã và đang làm.",
-    "projects_title": "Dự án",
+  "project": {
+    "project_description": "Danh sách những dự án mà mình đã và đang làm.",
+    "project_title": "Dự án",
     "work_title": "Công việc",
     "side_title": "Dự án phụ",
     "learn_more": "Chi tiết",
@@ -95,5 +95,15 @@
   },
   "social_account": {
     "contact_text": "Dưới đây là địa chỉ liên lạc của mình:"
+  },
+  "modals": {
+    "redirect": {
+      "ok": "Đi đến trang mới",
+      "no": "Ở lại đây"
+    }
+  },
+  "chatgpt_redirect": {
+    "title": "Thông báo thay đổi",
+    "content": "Trang ChatGPT đã được chuyển đến một vị trí mới. Vui lòng truy cập trang mới để cập nhật thêm."
   }
 }

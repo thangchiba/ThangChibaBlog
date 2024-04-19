@@ -1,6 +1,6 @@
 import type { Project } from '~/types/data'
 
-export let projectsData: Project[] = [
+export let projectData: Project[] = [
   {
     type: 'work',
     title: 'Vegetable Wholesale DX',
@@ -33,7 +33,7 @@ export let projectsData: Project[] = [
     type: 'self',
     title: 'ChatGPT++',
     description: `ChatGPT++ is a web application that allows you to chat with OpenAI's GPT-3.5 Turbo AI model. The application can speak out loud response messages, learn new things, and save your conversations to your local machine. You can also use the same model with ChatGPT Plus for a very low cost.`,
-    imgSrc: `/static/images/projects/chatgptpp.png`,
+    imgSrc: `/static/images/project/chatgptpp.png`,
     repo: 'https://thangchiba.com',
     builtWith: ['ReactJS', 'OpenAI', 'AWS'],
     detail: 'blog.thangchiba.com/hihi',

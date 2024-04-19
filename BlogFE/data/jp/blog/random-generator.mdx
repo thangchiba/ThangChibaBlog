@@ -10,6 +10,7 @@ authors: ['default']
 ---
 
 import RandomGenerator from './utils/RandomGenerator/index.tsx'
+import YouTubeEmbed from "./media/YouTubeEmbed";
 
 ### **背景**
 
@@ -27,7 +28,7 @@ import RandomGenerator from './utils/RandomGenerator/index.tsx'
 
 実際には、JS/V8のランダムアルゴリズムを予測した記事もあります：
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/-h_rj2-HP2E?si=RxqQmPTKnQ1SVfx-" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin"  allowFullScreen></iframe>
+<YouTubeEmbed url="https://www.youtube.com/watch?v=-h_rj2-HP2E" />
 
 ハッカーがあなたのランダム秘密キー生成規則を把握できたら、それは非常に恐ろしいことです。
 
@@ -69,6 +70,8 @@ import RandomGenerator from './utils/RandomGenerator/index.tsx'
 ### **結果の評価**
 
 なかなか良いです👍🏻。ここに座ってデモをコーディングしているので、このブログですぐに試すことができます。😭
+
+<RandomGenerator />
 
 基本的に、撮影された各画像には、多少の光の違いがあります。カメラを天井に向けると、コードは正常に生成されます。
 

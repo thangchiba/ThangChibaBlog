@@ -1,6 +1,6 @@
 import type { ImageProps as NextImageProps } from 'next/image'
 import type React from 'react'
-import type { projectsData } from '~/data/en/projectsData'
+import type { projectData } from '~/data/en/projectData'
 import type { commentConfig } from '~/data/siteMetadata'
 import type { MdxFrontMatter, ProjectFrontMatter, ReadingTime } from './mdx'
 
@@ -16,7 +16,7 @@ export interface ImageProps extends NextImageProps {
   shouldOpenLightbox?: boolean
 }
 
-export type ProjectDataType = (typeof projectsData)[0]
+export type ProjectDataType = (typeof projectData)[0]
 
 export interface ProjectCardProps {
   project: ProjectFrontMatter
