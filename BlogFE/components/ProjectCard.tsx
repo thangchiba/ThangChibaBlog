@@ -13,56 +13,52 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <Image
           alt={title}
           src={images[0]}
-          className="object-cover object-center md:h-36 lg:h-60 rounded-lg"
+          className="object-cover object-center md:h-36 lg:h-60 rounded-2xl"
           width={1088}
           height={612}
-        />
+        />{' '}
         <div className="flex grow flex-col justify-between space-y-6 p-4 md:p-6">
-          <div className="space-y-3">
-            <h2 className="text-3xl font-bold leading-10 tracking-tight">
-              {slug ? (
-                <Link href={`/projects/${slug}`} aria-label={`Link to ${title}`}>
-                  <span data-umami-event="project-title-link">{title}</span>
-                </Link>
-              ) : (
-                title
-              )}
-            </h2>
-            <div className="max-w-none space-y-2 text-gray-500 dark:text-gray-400">
-              <p>{summary}</p>
-              <div className="space-y-2">
-                {['Built With', 'FE', 'BE', 'DB', 'Network', 'Infra', 'Tools', 'Keywords'].map(
-                  (category) => {
-                    const key = category.toLowerCase() // Convert category to lowercase to match the project2 keys
-                    const technologies = project[key] // Get technologies array using dynamic key
+          <Link href={`/projects/${slug}`} aria-label={`Link to ${title}`}>
+            <div className="space-y-3">
+              <h2 className="text-3xl font-bold leading-10 tracking-tight">
+                {slug ? <span data-umami-event="project-title-link">{title}</span> : title}
+              </h2>
+              <div className="max-w-none space-y-2 text-gray-500 dark:text-gray-400">
+                <p>{summary}</p>
+                <div className="space-y-2">
+                  {['Built With', 'FE', 'BE', 'DB', 'Network', 'Infra', 'Tools', 'Keywords'].map(
+                    (category) => {
+                      const key = category.toLowerCase() // Convert category to lowercase to match the project2 keys
+                      const technologies = project[key] // Get technologies array using dynamic key
 
-                    // Only render this category if there are technologies defined
-                    return (
-                      technologies &&
-                      technologies.length > 0 && (
-                        <div key={category} className="flex items-center flex-wrap">
-                          <span className="shrink-0 font-semibold text-gray-600 dark:text-gray-300 mr-2">
-                            {category} :
-                          </span>
-                          <div className="flex flex-wrap space-x-1.5">
-                            {technologies.map((tech, index) => (
-                              <span
-                                key={index}
-                                className="font-semibold text-gray-600 dark:text-gray-300"
-                              >
-                                {tech}
-                                {index !== technologies.length - 1 && ','}
-                              </span>
-                            ))}
+                      // Only render this category if there are technologies defined
+                      return (
+                        technologies &&
+                        technologies.length > 0 && (
+                          <div key={category} className="flex items-center flex-wrap">
+                            <span className="shrink-0 font-semibold text-gray-600 dark:text-gray-300 mr-2">
+                              {category} :
+                            </span>
+                            <div className="flex flex-wrap space-x-1.5">
+                              {technologies.map((tech, index) => (
+                                <span
+                                  key={index}
+                                  className="font-semibold text-gray-600 dark:text-gray-300"
+                                >
+                                  {tech}
+                                  {index !== technologies.length - 1 && ','}
+                                </span>
+                              ))}
+                            </div>
                           </div>
-                        </div>
+                        )
                       )
-                    )
-                  }
-                )}
+                    }
+                  )}
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
 
           <div className="flex justify-between cursor-pointer">
             {slug && (
@@ -87,7 +83,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               </Link>
             )}
           </div>
-        </div>
+        </div>{' '}
       </div>
     </div>
   )
