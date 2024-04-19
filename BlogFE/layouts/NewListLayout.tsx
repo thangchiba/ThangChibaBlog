@@ -4,6 +4,7 @@ import { PostsSearch } from '~/components/PostsSearch'
 import type { ListLayoutProps } from '~/types/layout'
 import { useTranslation } from 'next-i18next'
 import { BlogCard } from '~/components/BlogCard'
+import { BlogCardHorizontal } from '~/components/BlogCardHorizontal'
 
 export function NewListLayout(props: ListLayoutProps) {
   let { posts, title, initialDisplayPosts = [], pagination } = props
@@ -36,7 +37,20 @@ export function NewListLayout(props: ListLayoutProps) {
         <div className="container py-12">
           <div className="-m-4 flex flex-wrap">
             {displayPosts.map((frontMatter) => (
-              <BlogCard key={frontMatter.slug} frontMatter={frontMatter} />
+              <>
+                {/* Conditional rendering based on screen size */}
+                <div className={`w-full ${frontMatter.slug}`}>
+                  {/* Hide on small screens, show on medium and larger screens */}
+                  <div className="hidden md:block">
+                    <BlogCardHorizontal frontMatter={frontMatter} />
+                  </div>
+
+                  {/* Show on small screens, hide on medium and larger screens */}
+                  <div className="block md:hidden">
+                    <BlogCard frontMatter={frontMatter} />
+                  </div>
+                </div>
+              </>
             ))}
           </div>
         </div>
