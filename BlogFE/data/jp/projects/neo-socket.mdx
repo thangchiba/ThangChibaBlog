@@ -3,11 +3,11 @@ type: 'project'
 projectType: 'self'
 tags: ['dotnet','realtime','socket']
 title: 'Neo Socket'
-date: '2023-02-01'
+date: '2023-04-20'
 summary: "A High-Performance Framework for Real-Time Applications"
-images: ['/static/images/projects/NeoSocket-Thumbnail-FHD.jpg']
+images: ['/static/media/project/neo-socket/neosocket-thumbnail-horizontal.jpg']
 repo: 'NeoSocket'
-audioURL: '/static/audio/projects/neo-socket-jp.mp3'
+audioURL: '/static/media/project/neo-socket/neo-socket-jp.mp3'
 fe: ['TypeScript']
 be: ['Dotnet7', '.NET Standard2.0']
 network: ['TCP/UDP','Websocket']
@@ -42,29 +42,98 @@ draft: false
 ## **デモ**
 
 ### 2コアCPUのGoogle VMで400kリクエスト/秒を処理可能。 (VMは約15個のサービスをDocker上で稼働中です)。
-
+![Handles up to 400k requests/s](/static/media/project/neo-socket/metric.png)
 
 ### 同じシーンで1000人のプレイヤーを処理可能（メタバース内のコンサートシミュレーション）
-
+![Metaver Demo 1000 players](/static/media/project/neo-socket/metaverse.png)
 
 ### すべてのプロトコルに対応する一つのエンドポイント：
-
 TCP/UDP、Websocket、HTTP、Unixsocketなど、一つのエンドポイントで対応します。
-
+```csharp
+[NeoHandler]
+public class ChatHandler
+{
+    [Autowired] private ChatService _chatService { get; set; }
+    [HandleMethod]
+    public void HandleChat(MessageDTO packet)
+    {
+        _chatService.HandleChat(packet);
+    }
+}
+```
 
 ### Webのようにコードを書き、ゲームやリアルタイムアプリケーションのためのパフォーマンスを実現
+```csharp
+[Service]
+public class ChatService
+{
+    [Autowired] private IHandleContext _context { get; set; }
+    [Autowired] private IChatDB _chatDB { get; set; }
+    [Autowired] private ChatManager _chatManager { get; set; }
+
+    public void HandleChat(MessageDTO message)
+    {
+        //Send message to all user in chatroom
+        var chatRoom = _chatManager.GetUser(_context.Sender.State.IdentityId).ChatRoom;
+        chatRoom.HandleChat(message);
+
+        //Save message to database
+        _chatDB.AddMessage(new MessageEntity
+        {
+            MessageId = Guid.NewGuid().ToString(),
+            RoomName = chatRoom.RoomName,
+            UserName = message.UserName,
+            Content = message.Content,
+            CreatedAt = DateTime.Now
+        });
+    }
+}
+```
 
 
 ### パケット指向
 
 全てのことはパケットに関連しています。各パケットはPacketIDとPacketNameで識別され、MessagePackでシリアライズされて帯域を最適化します。.protobufファイルは必要ありません、これにより開発プロセスが軽減されます。
 
+```csharp
+[NeoPacket]
+public class MessageDTO : NeoPacket
+{
+    [Key(0)] public string UserName { get; set; }
+
+    [Key(1)] public string Content { get; set; }
+
+    [Key(2)] public DateTime CreatedAt { get; set; }
+}
+```
+
 Typescript SDKも用意されており、Webアプリケーションの開発が容易になります。
 
+```typescript
+@DNeoPacket(0, 'MessageDTO')
+export class MessageDTO extends NeoPacket {
+  @DKey(0)
+  public UserName: string = '';
+  @DKey(1)
+  public Content: string = '';
+  @DKey(2)
+  public CreatedAt: Date = new Date();
+}
+```
 
 ### 組み込みのコンテナ
 
 組み込みコンテナはDotnetやSpringのように、サービスライフタイム（Scoped, Transient, Singleton）に加えて、NeoClientに同伴するParasitic（寄生的）オプションを提供します。
+
+```csharp
+[Service]
+[Scope(ServiceLifeTime.Parasitic)]
+public class ConnectService : IConnectService
+{
+    [Autowired] private ChatManager _chatManager { get; set; }
+    [Autowired] private IHandleContext _context { get; set; }
+    [Autowired] private IChatDB _chatDB { get; set; }
+```
 
 SpringBootの[Qualifier]やDotnet8のKeyedServiceのようなサ
 
@@ -95,35 +164,16 @@ DotnetのService Workerとして、またはConsole Applicationとして実行�
 優れたパフォーマンスを達成することを目指しています。
 
 
-## Tech Keywords
+## Technology Overview
 
-- **Programming Languages & Environments:**
-- .NET 7 (Server side)
-- DotNet Standard 2.0 (Client side)
-- TypeScript
-- **Networking and Sockets:**
-- Socket Libraries
-- Stateful Connection
-- Parallel Programming:
-- Asynchronous Programming (Async/Await)
-- **Protocols:**
-- TCP (Transmission Control Protocol)
-- UDP (User Datagram Protocol)
-- WebSocket
-- **Network Utilities:**
-- UPnP (Universal Plug and Play)
-- UDP Hole Punching
-- **Serialization/Deserialization:**
-- MessagePack (for efficient data handling)
-- Scan and Caching
-- Reflection(for auto scan and cache necessary part)
-- Attribute(easy to program, readability code)
-- Operation：
-- Windows :
-- MacOS
-- Linux
-- Currently Support Platform :
-- Unity
-- ReactJS
-- Javascript/Typescript
-- DotNet application
+| Category                          | Details                                        |
+|-----------------------------------|------------------------------------------------|
+| **Environments** | C# .NET 7 (Server side), DotNet Standard 2.0 (Client side), TypeScript |
+| **Networking and Sockets**        | Socket Libraries, Stateful Connection          |
+| **Parallel Programming**          | Asynchronous Programming (Async/Await)         |
+| **Protocols**                     | TCP, UDP, WebSocket, HTTP, UnixSocket                            |
+| **Network Utilities**             | UPnP, UDP Hole Punching                        |
+| **Serialization/Deserialization** | MessagePack (for efficient data handling)      |
+| **Scan and Caching**              | Reflection, Attribute                          |
+| **Operation Systems Supported**   | Windows, MacOS, Linux                          |
+| **Currently Supported Platforms** | Unity, ReactJS, JavaScript/TypeScript, DotNet application |

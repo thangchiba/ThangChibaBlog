@@ -3,11 +3,11 @@ type: 'project'
 projectType: 'self'
 tags: ['dotnet','realtime','socket']
 title: 'Neo Socket'
-date: '2024-04-07'
+date: '2024-04-20'
 summary: "Framework Hiệu Năng Cao cho Ứng Dụng Thời Gian Thực"
-images: ['/static/images/projects/NeoSocket-Thumbnail-FHD.jpg']
+images: ['/static/media/project/neo-socket/neosocket-thumbnail-horizontal.jpg']
 repo: 'NeoSocket'
-audioURL: '/static/audio/projects/neo-socket-vi.mp3'
+audioURL: '/static/media/project/neo-socket/neo-socket-vi.mp3'
 fe: ['TypeScript']
 be: ['Dotnet7', '.NET Standard2.0']
 network: ['TCP/UDP','Websocket']
@@ -16,7 +16,7 @@ tools: [Prometheus,Grafana]
 draft: false
 ---
 
-# **NeoSocket: Một Framework Hiệu Năng Cao cho Ứng Dụng Thời Gian Thực**
+# **NeoSocket: Framework Hiệu Năng Cao cho Ứng Dụng Thời Gian Thực**
 
 ## **Tổng Quan**
 
@@ -42,35 +42,96 @@ draft: false
 ## Demo :
 
 ### Handle lên tới 400k request/s với 2core CPU Google VM. (VM còn đang chạy nền khoảng 15 service trên docker).
-
-
-### Handle 1000 người chơi trong cùng scene(Mô phỏng buổi hoà nhạc trong metaverse)
-
-
-### One endpoint for all protocol :
-
-Sử dụng chung 1 endpoint cho TCP/UDP, Websocket, HTTP hoặc Unixsocket,…
+![Handles up to 400k requests/s](/static/media/project/neo-socket/metric.png)
 
 ### Handle 1000 người chơi trong cùng scene(Mô phỏng buổi hoà nhạc trong metaverse)
+![Metaver Demo 1000 players](/static/media/project/neo-socket/metaverse.png)
 
-![Untitled](https://thangchiba.notion.site/image/https://prod-files-secure.s3.us-west-2.amazonaws.com/b910266f-9f2e-43ba-9e92-56e5600c24ba/bae86c8f-ecc4-4efa-a5aa-c0deadc58eab/Untitled.png?table=block&id=addc7256-3a6a-4675-b313-5991e30ff01f&spaceId=b910266f-9f2e-43ba-9e92-56e5600c24ba&width=1360&userId=&cache=v2)
+### Sử dụng chung 1 endpoint cho TCP/UDP, Websocket, HTTP hoặc Unixsocket,…
+```csharp
+[NeoHandler]
+public class ChatHandler
+{
+    [Autowired] private ChatService _chatService { get; set; }
+    [HandleMethod]
+    public void HandleChat(MessageDTO packet)
+    {
+        _chatService.HandleChat(packet);
+    }
+}
+```
 
-### One endpoint for all protocol :
 ### Viết và tổ chức code như web nhưng hiệu năng dành cho game, realtime app.
+```csharp
+[Service]
+public class ChatService
+{
+    [Autowired] private IHandleContext _context { get; set; }
+    [Autowired] private IChatDB _chatDB { get; set; }
+    [Autowired] private ChatManager _chatManager { get; set; }
 
-![Screenshot 0006-04-07 at 17.28.11.png](https://thangchiba.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fb910266f-9f2e-43ba-9e92-56e5600c24ba%2F34b6d135-a7b1-47aa-9b87-69ed0ecdd22f%2FScreenshot_0006-04-07_at_17.28.11.png?table=block&id=addc7256-3a6a-4675-b313-5991e30ff01f&spaceId=b910266f-9f2e-43ba-9e92-56e5600c24ba&width=1360&userId=&cache=v2)
+    public void HandleChat(MessageDTO message)
+    {
+        //Send message to all user in chatroom
+        var chatRoom = _chatManager.GetUser(_context.Sender.State.IdentityId).ChatRoom;
+        chatRoom.HandleChat(message);
+
+        //Save message to database
+        _chatDB.AddMessage(new MessageEntity
+        {
+            MessageId = Guid.NewGuid().ToString(),
+            RoomName = chatRoom.RoomName,
+            UserName = message.UserName,
+            Content = message.Content,
+            CreatedAt = DateTime.Now
+        });
+    }
+}
+```
 
 ### Hướng Packet.
 
 Mọi thứ sẽ xoay quanh packet. Mỗi packet sẽ được định danh bằng PacketID và PacketName, được serialize bằng MessagePack giúp tối ưu băng thông. Không cần .protobuf file giúp quy trình phát triển nhẹ nhàng hơn.
 
+```csharp
+[NeoPacket]
+public class MessageDTO : NeoPacket
+{
+    [Key(0)] public string UserName { get; set; }
+
+    [Key(1)] public string Content { get; set; }
+
+    [Key(2)] public DateTime CreatedAt { get; set; }
+}
+```
+
 Có SDK cho Typescript giúp việc phát triển ứng dụng web cũng đã có thể triển khai.
 
-
+```typescript
+@DNeoPacket(0, 'MessageDTO')
+export class MessageDTO extends NeoPacket {
+  @DKey(0)
+  public UserName: string = '';
+  @DKey(1)
+  public Content: string = '';
+  @DKey(2)
+  public CreatedAt: Date = new Date();
+}
+```
 
 ### Builtin Container
 
 Builtin container có 4 scope lifetime cho service như Dotnet, Spring (Scoped, Transient, Singleton) và thêm 1 lựa chọn là Parasitic (Lifetime sẽ đồng hành cùng với NeoClient).
+
+```csharp
+[Service]
+[Scope(ServiceLifeTime.Parasitic)]
+public class ConnectService : IConnectService
+{
+    [Autowired] private ChatManager _chatManager { get; set; }
+    [Autowired] private IHandleContext _context { get; set; }
+    [Autowired] private IChatDB _chatDB { get; set; }
+```
 
 Có hỗ trợ [Qualifier] giống như SpringBoot (giống KeyedService Dotnet8).
 
@@ -97,35 +158,17 @@ Hoặc cũng có thể chạy như Console Application.
 ### **Triển Vọng:**
 
 - **Tương Lai của NeoSocket:** NeoSocket là một framework socket hiệu suất cao được phát triển bằng C#. Các ứng dụng tương lai tiềm năng bao gồm việc tạo ra các giải pháp tiên tiến như hàng đợi thông điệp và một kiến trúc máy chủ game phân tán. Những ứng dụng này nhằm đạt được hiệu suất vượt trội với sự lãng phí băng thông tối thiểu, tận dụng thiết kế hiệu quả của NeoSocket.
-## Tech Keywords
 
-- **Programming Languages & Environments:**
-  - .NET 7 (Server side)
-  - DotNet Standard 2.0 (Client side)
-  - TypeScript
-- **Networking and Sockets:**
-  - Socket Libraries
-  - Stateful Connection
-- **Parallel Programming:**
-  - Asynchronous Programming (Async/Await)
-- **Protocols:**
-  - TCP (Transmission Control Protocol)
-  - UDP (User Datagram Protocol)
-  - WebSocket
-- **Network Utilities:**
-  - UPnP (Universal Plug and Play)
-  - UDP Hole Punching
-- **Serialization/Deserialization:**
-  - MessagePack (for efficient data handling)
-- **Scan and Caching:**
-  - Reflection(for auto scan and cache necessary part)
-  - Attribute(easy to program, readability code)
-- **Operation：**
-  - Windows :
-  - MacOS
-  - Linux
-- **Currently Support Platform :**
-  - Unity
-  - ReactJS
-  - Javascript/Typescript
-  - DotNet application
+## Technology Overview
+
+| Category                          | Details                                        |
+|-----------------------------------|------------------------------------------------|
+| **Environments** | C# .NET 7 (Server side), DotNet Standard 2.0 (Client side), TypeScript |
+| **Networking and Sockets**        | Socket Libraries, Stateful Connection          |
+| **Parallel Programming**          | Asynchronous Programming (Async/Await)         |
+| **Protocols**                     | TCP, UDP, WebSocket, HTTP, UnixSocket                            |
+| **Network Utilities**             | UPnP, UDP Hole Punching                        |
+| **Serialization/Deserialization** | MessagePack (for efficient data handling)      |
+| **Scan and Caching**              | Reflection, Attribute                          |
+| **Operation Systems Supported**   | Windows, MacOS, Linux                          |
+| **Currently Supported Platforms** | Unity, ReactJS, JavaScript/TypeScript, DotNet application |
