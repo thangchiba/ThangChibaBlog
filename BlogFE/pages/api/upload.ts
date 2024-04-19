@@ -28,11 +28,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const uploadSingle = upload.single('file')
 
+  // @ts-ignore
   uploadSingle(req, res, function (err) {
     if (err) return res.status(500).send(err)
     if (req.body.password !== process.env.THANG_CHIBA_SECRET_PASSWORD)
       return res.status(400).json({ messgae: 'Cannot upload!!!' })
 
+    // @ts-ignore
     const file = req.file
     const path = req.body.path ? req.body.path + '/' : ''
     const filePath = `${path}${file.originalname}` // Specify your path and filename
