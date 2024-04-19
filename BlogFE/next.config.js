@@ -11,8 +11,16 @@ module.exports = withBundleAnalyzer({
   eslint: {
     dirs: ['components', 'constant', 'layouts', 'libs', 'pages', 'scripts', 'utils'],
   },
+  webp: {
+    preset: 'default',
+    quality: 100,
+  },
   images: {
-    domains: ['i.scdn.co'],
+    domains: [
+      'i.scdn.co',
+      'images.unsplash.com',
+      'thangchiba-storage.s3.ap-northeast-1.amazonaws.com',
+    ],
   },
   typescript: { tsconfigPath: './tsconfig.json' },
   i18n,

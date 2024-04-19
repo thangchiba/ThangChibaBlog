@@ -1,0 +1,179 @@
+---
+type: 'project'
+projectType: 'self'
+tags: ['dotnet','realtime','socket']
+title: 'Neo Socket'
+date: '2023-04-20'
+summary: "A High-Performance Framework for Real-Time Applications"
+images: ['/static/media/project/neo-socket/neosocket-thumbnail-horizontal.jpg']
+repo: 'NeoSocket'
+audioURL: '/static/media/project/neo-socket/neo-socket-jp.mp3'
+fe: ['TypeScript']
+be: ['Dotnet7', '.NET Standard2.0']
+network: ['TCP/UDP','Websocket']
+infra: ['Windows','MacOS','Linux']
+tools: [Prometheus,Grafana]
+draft: false
+---
+
+# **NeoSocket: リアルタイムアプリケーション向けのハイパフォーマンスフレームワーク**
+
+## **概要**
+
+- **目的:** MMORPGやメタバースなど、高性能が求められ、拡張性のあるゲーム開発に最適な設計。リアルタイムチャットシステムやダッシュボードの管理インターフェイスにも応用可能です。
+- **背景:** 現在のオープンソースライブラリでは解決されていない、MMORPGやメタバースの独特な課題に応えるために開発されました。
+
+## **インスピレーションと基盤**
+
+- **Web開発からゲーム開発へ:** Web開発（Spring BootやASP.NETなどのフレームワーク経験）からゲーム開発へ転向した私は、Webフレームワークから多くのインスピレーションを得ています。
+- **主な動機:** 使いやすいAPIを持つフレームワークを作りたいという願望があり、それがリアルタイムゲームに適したパフォーマンスを提供します。
+
+## **NeoSocketの特徴**
+
+- **ステートフル接続:** リアルタイムアプリケーションに最適で、連続的な接続状態を保証します。データ転送量が多い長期タスクの無駄を避けます。
+- **ミドルウェア層:** 開発者が自由にカスタマイズ可能。DDoS防止策や認証/認可メカニズムなどの強力な機能を統合。
+- **Neo-Protocol:** 自分で設計したプロトコルで、データ処理の最適化と効率的なデータハンドリングにより、帯域幅の使用を大幅に削減。ビットを節約することがモットーです。
+- **帯域効率:** MessagePackやProtobufを使用してデータを標準化。JSONと比較して50-90%の帯域幅を削減。さらに、TCP/UDPパケットを1つにまとめることで帯域の消費を削減。
+- **開発のしやすさ:** Handlers（コントローラーに似ている）、Services、そして組み込みのIoC（Inversion of Control）コンテナを備えた、馴染みのある直感的な構造を提供。
+- **要求/一元要求機構:** Web開発で一般的な要求/応答モデルを反映し、効率的なネットワーク通信に適応させています。
+- **コマンドサポート（BiDirectional):** 応答を必要としないコマンド型の要求をサポートし、システムの柔軟性を高め、不要なデータ伝送を削減。
+- **パケット管理:** MessagePackを使用してパケットIDとPacketNameでパケットを識別するユニークなシステムを採用し、URLベースの従来の方法に代わります。
+
+## **デモ**
+
+### 2コアCPUのGoogle VMで400kリクエスト/秒を処理可能。 (VMは約15個のサービスをDocker上で稼働中です)。
+![Handles up to 400k requests/s](/static/media/project/neo-socket/metric.png)
+
+### 同じシーンで1000人のプレイヤーを処理可能（メタバース内のコンサートシミュレーション）
+![Metaver Demo 1000 players](/static/media/project/neo-socket/metaverse.png)
+
+### すべてのプロトコルに対応する一つのエンドポイント：
+TCP/UDP、Websocket、HTTP、Unixsocketなど、一つのエンドポイントで対応します。
+```csharp
+[NeoHandler]
+public class ChatHandler
+{
+    [Autowired] private ChatService _chatService { get; set; }
+    [HandleMethod]
+    public void HandleChat(MessageDTO packet)
+    {
+        _chatService.HandleChat(packet);
+    }
+}
+```
+
+### Webのようにコードを書き、ゲームやリアルタイムアプリケーションのためのパフォーマンスを実現
+```csharp
+[Service]
+public class ChatService
+{
+    [Autowired] private IHandleContext _context { get; set; }
+    [Autowired] private IChatDB _chatDB { get; set; }
+    [Autowired] private ChatManager _chatManager { get; set; }
+
+    public void HandleChat(MessageDTO message)
+    {
+        //Send message to all user in chatroom
+        var chatRoom = _chatManager.GetUser(_context.Sender.State.IdentityId).ChatRoom;
+        chatRoom.HandleChat(message);
+
+        //Save message to database
+        _chatDB.AddMessage(new MessageEntity
+        {
+            MessageId = Guid.NewGuid().ToString(),
+            RoomName = chatRoom.RoomName,
+            UserName = message.UserName,
+            Content = message.Content,
+            CreatedAt = DateTime.Now
+        });
+    }
+}
+```
+
+
+### パケット指向
+
+全てのことはパケットに関連しています。各パケットはPacketIDとPacketNameで識別され、MessagePackでシリアライズされて帯域を最適化します。.protobufファイルは必要ありません、これにより開発プロセスが軽減されます。
+
+```csharp
+[NeoPacket]
+public class MessageDTO : NeoPacket
+{
+    [Key(0)] public string UserName { get; set; }
+
+    [Key(1)] public string Content { get; set; }
+
+    [Key(2)] public DateTime CreatedAt { get; set; }
+}
+```
+
+Typescript SDKも用意されており、Webアプリケーションの開発が容易になります。
+
+```typescript
+@DNeoPacket(0, 'MessageDTO')
+export class MessageDTO extends NeoPacket {
+  @DKey(0)
+  public UserName: string = '';
+  @DKey(1)
+  public Content: string = '';
+  @DKey(2)
+  public CreatedAt: Date = new Date();
+}
+```
+
+### 組み込みのコンテナ
+
+組み込みコンテナはDotnetやSpringのように、サービスライフタイム（Scoped, Transient, Singleton）に加えて、NeoClientに同伴するParasitic（寄生的）オプションを提供します。
+
+```csharp
+[Service]
+[Scope(ServiceLifeTime.Parasitic)]
+public class ConnectService : IConnectService
+{
+    [Autowired] private ChatManager _chatManager { get; set; }
+    [Autowired] private IHandleContext _context { get; set; }
+    [Autowired] private IChatDB _chatDB { get; set; }
+```
+
+SpringBootの[Qualifier]やDotnet8のKeyedServiceのようなサ
+
+ポートが含まれています。
+
+
+DotnetのService Workerとして、またはConsole Applicationとして実行可能です。
+
+## **開発の進行**
+
+- **TCP/UDP接続の実装:** ゲームに焦点を当て、サーバーは.NET7、クライアントは.NET Standard 2.0を使用してUnityと統合。クライアントコードはUnity内で使用するためにDLLにコンパイルされ、サーバーとクライアント間の通信のパフォーマンスと効率を実現しました。
+- **TypeScriptライブラリの開発:** ReactJSを使用したWebアプリケーションの接続をサポートするために特別に作られたTypeScript SDKが提供されます。これは従来のRESTful HTTP APIよりも帯域を節約する選択肢ですが、そのstatefulアーキテクチャは一部のウェブサイトには適していません。
+- **監視ダッシュボードの開発:** 現在、NeoSocketの包括的なモニタリングを提供するReactJSベースのダッシュボードが開発中です。これにはサーバーのパフォーマンス測定やヘルスチェックが含まれます。
+- **メトリックの統合:** PrometheusとGrafanaを使用してメトリックを測定するためのミドルウェアが書かれました。
+
+## **課題と展望**
+
+### **主な課題:**
+
+- **パフォーマンスの最適化:** .NETの高度な機能を活用してパフォーマンスを向上させること、例えばデータ構造、不変データタイプ、ハッシュテーブル、キャッシュストレージ、並列プログラミング、コンテキストスイッチ、スレッドセーフコレクションなど。
+- **コードの微調整:** 現在のコードベースの独創性の欠如に直面し、主に利便性のためにシングルトンを使用しています。将来的にはコードのクリーンアップとベストプラクティスの適用を計画しています。
+- **フレームワークとAPIの研究:** 他のフレームワークやライブラリを分析して、どのAPIが開発者にとって最良の体験を提供するかを理解します。Spring BootのContainer IOCやAutowired、Serviceなどの注釈にインスピレーションを受け、.NETで同様の機能を模倣して開発者の利便性を向上させました。
+
+### **展望:**
+
+- **NeoSocketの未来:** NeoSocketは、C#で開発された高パフォーマンスのソケットフレームワークです。将来的なアプリケーションには、メッセージキューと分散ゲームサーバーアーキテクチャなどの先進的なソリューションが含まれ、NeoSocketの効率的なデザインを活かして、最小限の帯域幅の無駄で
+
+優れたパフォーマンスを達成することを目指しています。
+
+
+## Technology Overview
+
+| Category                          | Details                                        |
+|-----------------------------------|------------------------------------------------|
+| **Environments** | C# .NET 7 (Server side), DotNet Standard 2.0 (Client side), TypeScript |
+| **Networking and Sockets**        | Socket Libraries, Stateful Connection          |
+| **Parallel Programming**          | Asynchronous Programming (Async/Await)         |
+| **Protocols**                     | TCP, UDP, WebSocket, HTTP, UnixSocket                            |
+| **Network Utilities**             | UPnP, UDP Hole Punching                        |
+| **Serialization/Deserialization** | MessagePack (for efficient data handling)      |
+| **Scan and Caching**              | Reflection, Attribute                          |
+| **Operation Systems Supported**   | Windows, MacOS, Linux                          |
+| **Currently Supported Platforms** | Unity, ReactJS, JavaScript/TypeScript, DotNet application |
