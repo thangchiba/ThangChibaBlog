@@ -15,7 +15,7 @@ export function PostListItem({
   let { t, i18n } = useTranslation()
   let lang = i18n.language
   let isProject = type === POST_TYPE.PROJECT
-  let category = isProject ? 'projects' : 'blog'
+  let category = isProject ? 'project' : 'blog'
 
   return (
     <li key={slug}>

@@ -11,7 +11,7 @@
   "happy_reading": "Thanks for visit!",
   "menu_blog": "Blog",
   "menu_snippets": "Snippets",
-  "menu_projects": "Projects",
+  "menu_project": "Projects",
   "menu_utils": "Utils",
   "menu_about": "About",
   "menu_resume": "Resume",
@@ -36,7 +36,7 @@
   "bio_i_share": "I write this blog to share the experiences and journey I've undertaken to reach my goal.",
   "menu_blog_2": "My blog",
   "menu_snippets_2": "My snippets collection",
-  "menu_projects_2": "The projects I create",
+  "menu_project_2": "The project I create",
   "menu_utils_2": "The useful tools I create",
   "menu_about_2": "More about me",
   "menu_resume_2": "My career",
@@ -68,11 +68,11 @@
     "view_source": "View source",
     "copyright_author": "Hoang Van Thang / ThangChiba"
   },
-  "projects": {
-    "projects_description": "List of projects I have worked on and am currently working on.",
-    "projects_title": "Projects",
+  "project": {
+    "project_description": "List of project I have worked on and am currently working on.",
+    "project_title": "Projects",
     "work_title": "Work",
-    "side_title": "Side projects",
+    "side_title": "Side project",
     "learn_more": "More detail",
     "live_page": "Live",
     "built_with": "Built with"

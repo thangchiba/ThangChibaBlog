@@ -18,7 +18,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           height={612}
         />{' '}
         <div className="flex grow flex-col justify-between space-y-6 p-4 md:p-6">
-          <Link href={`/projects/${slug}`} aria-label={`Link to ${title}`}>
+          <Link href={`/project/${slug}`} aria-label={`Link to ${title}`}>
             <div className="space-y-3">
               <h2 className="text-3xl font-bold leading-10 tracking-tight">
                 {slug ? <span data-umami-event="project-title-link">{title}</span> : title}
@@ -63,11 +63,11 @@ export function ProjectCard({ project }: ProjectCardProps) {
           <div className="flex justify-between cursor-pointer">
             {slug && (
               <Link
-                href={`/projects/${slug}`}
+                href={`/project/${slug}`}
                 className="text-base font-medium leading-6 text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 animate-bounce cursor-pointer"
                 aria-label={`Link to detail of ${title}`}
               >
-                <span data-umami-event="project-learn-more">{t('projects.learn_more')} &rarr;</span>
+                <span data-umami-event="project-learn-more">{t('project.learn_more')} &rarr;</span>
               </Link>
             )}
             {url && (
@@ -79,7 +79,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 <svg className="ml-2 w-4 h-4" viewBox="0 0 8 8" fill="currentColor">
                   <circle cx="4" cy="4" r="3" />
                 </svg>
-                <span data-umami-event="project-learn-more">{t('projects.live_page')}</span>
+                <span data-umami-event="project-learn-more">{t('project.live_page')}</span>
               </Link>
             )}
           </div>

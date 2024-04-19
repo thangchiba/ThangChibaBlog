@@ -11,8 +11,8 @@ let SITE_URL = 'https://thangchiba.com'
     'pages/*.tsx',
     'data/blog/**/*.mdx',
     'data/blog/**/*.md',
-    'data/projects/**/*.mdx',
-    'data/projects/**/*.md',
+    'data/project/**/*.mdx',
+    'data/project/**/*.md',
     'public/tags/**/*.xml',
     '!pages/_*.tsx',
     '!pages/api',
@@ -26,14 +26,18 @@ let SITE_URL = 'https://thangchiba.com'
             let path = page
               .replace('pages/', '/')
               .replace('data/blog', '/blog')
-              .replace('data/projects', '/projects')
+              .replace('data/project', '/project')
               .replace('public/', '/')
               .replace('.tsx', '')
               .replace('.mdx', '')
               .replace('.md', '')
               .replace('/feed.xml', '')
             let route = path === '/index' ? '' : path
-            if (page === `pages/404.tsx` || page === `pages/blog/[...slug].tsx`) {
+            if (
+              page === `pages/404.tsx` ||
+              page === `pages/blog/[...slug].tsx` ||
+              page === `pages/project/[...slug].tsx`
+            ) {
               return
             }
             return `<url><loc>${SITE_URL}${route}</loc></url>\n`

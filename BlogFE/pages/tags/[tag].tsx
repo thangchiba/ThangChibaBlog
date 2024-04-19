@@ -13,7 +13,7 @@ import type { BlogFrontMatter } from '~/types/mdx'
 import { kebabCase } from '~/utils/string'
 
 export async function getStaticPaths({ locales }: { locales: string[] }) {
-  let tags = getAllTags(`${DEFAULT_LOCALE}/blog`, `${DEFAULT_LOCALE}/projects`)
+  let tags = getAllTags(`${DEFAULT_LOCALE}/blog`, `${DEFAULT_LOCALE}/project`)
   let paths = []
   for (let locale of locales) {
     for (let tag of Object.keys(tags)) {
@@ -50,7 +50,7 @@ export async function getStaticProps({
   params: { tag: string }
   locale: string
 }) {
-  let allPosts = getAllFilesFrontMatter(`${locale}/blog`, `${locale}/projects`)
+  let allPosts = getAllFilesFrontMatter(`${locale}/blog`, `${locale}/project`)
   let filteredPosts = allPosts.filter(
     (post) => post.draft !== true && post.tags.map((t) => kebabCase(t)).includes(params.tag)
   )

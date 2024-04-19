@@ -16,7 +16,7 @@ let DEFAULT_LAYOUT: MdxPageLayout = 'ProjectLayout'
 export async function getStaticPaths({ locales }: { locales: string[] }) {
   let paths = []
   for (let locale of locales) {
-    let posts = getFiles(`${locale}/projects`)
+    let posts = getFiles(`${locale}/project`)
     for (let post of posts) {
       paths.push({
         params: {
@@ -39,14 +39,14 @@ export async function getStaticProps({
   params: { slug: string[] }
   locale: string
 }) {
-  let allPosts = getAllFilesFrontMatter(`${locale}/projects`)
+  let allPosts = getAllFilesFrontMatter(`${locale}/project`)
 
   let postIndex = allPosts.findIndex((post) => formatSlug(post.slug) === params.slug.join('/'))
   let prev = allPosts[postIndex + 1] || null
   let next = allPosts[postIndex - 1] || null
   let page = Math.ceil((postIndex + 1) / POSTS_PER_PAGE)
 
-  let post = await getFileBySlug(locale, 'projects', params.slug.join('/'))
+  let post = await getFileBySlug(locale, 'project', params.slug.join('/'))
   let authors = post.frontMatter.authors || ['default']
   let authorDetails = await Promise.all(
     authors.map(async (author) => {
@@ -85,13 +85,13 @@ export default function Project(props: ProjectProps) {
           layout={frontMatter.layout || DEFAULT_LAYOUT}
           mdxSource={mdxSource}
           frontMatter={frontMatter}
-          type="projects"
+          type="project"
           {...rest}
         />
       ) : (
         <div className="mt-24 text-center">
           <PageTitle>
-            {t('projects.under_construction')}{' '}
+            {t('project.under_construction')}{' '}
             <span role="img" aria-label="roadwork sign">
               🚧
             </span>

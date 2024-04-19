@@ -14,10 +14,10 @@ export function BlogLinks() {
           {t('menu_blog_2')}
         </span>
       </Link>
-      <Link href="/projects" className="hover:underline">
+      <Link href="/BlogFE/pages/project" className="hover:underline">
         <Twemoji emoji="building-construction" />
-        <span data-umami-event="home-link-projects" className="ml-1.5">
-          {t('menu_projects_2')}
+        <span data-umami-event="home-link-project" className="ml-1.5">
+          {t('menu_project_2')}
         </span>
       </Link>
       <Link href="/utils" className="hover:underline">
