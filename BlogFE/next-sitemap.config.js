@@ -2,7 +2,7 @@ const fs = require('fs')
 const prettier = require('prettier')
 
 module.exports = {
-  siteUrl: 'https://thangchiba.com',
+  siteUrl: 'https://blog.thangchiba.com',
   generateRobotsTxt: true,
   exclude: ['/404'],
   outDir: './public',

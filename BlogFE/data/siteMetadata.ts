@@ -1,5 +1,5 @@
 export let siteMetadata = {
-  siteUrl: 'https://thangchiba.com',
+  siteUrl: 'https://blog.thangchiba.com',
   siteRepo: 'https://github.com/thangchiba',
   siteLogo: '/static/images/logo.jpg',
   image: '/static/images/logo.jpg',
