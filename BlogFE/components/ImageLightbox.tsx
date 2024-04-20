@@ -1,9 +1,9 @@
 import { useTheme } from 'next-themes'
 import React, {
+  type KeyboardEvent as ReactKeyboardEvent,
   useCallback,
   useEffect,
   useState,
-  type KeyboardEvent as ReactKeyboardEvent,
 } from 'react'
 import type { ImageLightBoxProps } from '~/types/components'
 import { Twemoji } from './Twemoji'
