@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import menuMap from '~/data/menuMap'
-import Sidebar from '~/pages/utils/Sidebar'
+import UtilSidebar from '~/components/UtilSidebar'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { PageSeo } from '~/components/SEO'
 import { useTranslation } from 'next-i18next'
@@ -36,7 +36,7 @@ const UtilsPage = () => {
         )}`}
         description={description}
       />
-      <Sidebar
+      <UtilSidebar
         onNavigate={handleNavigation}
         activeComponent={activeComponent}
         setActiveComponent={setActiveComponent}
