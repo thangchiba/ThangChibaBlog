@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Twemoji from '~/components/Twemoji'
 import menuMap from '~/data/menuMap'
 
-const Sidebar = ({ onNavigate, activeComponent, setActiveComponent }) => {
+const UtilSidebar = ({ onNavigate, activeComponent, setActiveComponent }) => {
   const [isSidebarOpen, setSidebarOpen] = useState(false)
 
   return (
@@ -51,4 +51,4 @@ const Sidebar = ({ onNavigate, activeComponent, setActiveComponent }) => {
   )
 }
 
-export default Sidebar
+export default UtilSidebar
