@@ -19,7 +19,7 @@ const ChatGPTPage = () => {
         isOpen={isModalOpen}
         title={t('chatgpt_redirect.title')}
         content={t('chatgpt_redirect.content')}
-        link="https://chatgpt.thangchiba.com"
+        link="https://ai.thangchiba.com"
         onClose={() => setModalOpen(false)}
       />
       {/* Other content of the page can go here */}
