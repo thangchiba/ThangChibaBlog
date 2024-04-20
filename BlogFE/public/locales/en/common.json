@@ -11,7 +11,7 @@
   "happy_reading": "Thanks for visit!",
   "menu_blog": "Blog",
   "menu_snippets": "Snippets",
-  "menu_project": "Projects",
+  "menu_project": "Project",
   "menu_utils": "Utils",
   "menu_about": "About",
   "menu_resume": "Resume",
@@ -70,7 +70,7 @@
   },
   "project": {
     "project_description": "List of project I have worked on and am currently working on.",
-    "project_title": "Projects",
+    "project_title": "Project",
     "work_title": "Work",
     "side_title": "Side project",
     "learn_more": "More detail",
