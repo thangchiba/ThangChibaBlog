@@ -27,9 +27,9 @@ export function BlogCardHorizontal({ frontMatter }: BlogCardProps) {
         <div className="flex flex-col justify-between w-3/5 p-6">
           <Link href={`/blog/${slug}`} aria-label={`Link to ${title}`} className="flex-grow">
             <div className="space-y-1 cursor-pointer">
-              <h2 className="text-3xl font-bold leading-tight">{title}</h2>
+              <h2 className="text-2xl font-bold leading-tight">{title}</h2>
               <div className="text-gray-500 dark:text-gray-400 overflow-hidden">
-                <p className="line-clamp-4 text-lg">{summary}</p>
+                <p className="line-clamp-6">{summary}</p>
               </div>
             </div>
           </Link>

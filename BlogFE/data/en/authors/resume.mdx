@@ -2,7 +2,7 @@
 layout: ResumeLayout
 avatar: /static/images/logo.jpg
 occupation: Software Engineer
-company: Insights Studio
+company: SIC System
 email: contact@thangchiba.com
 twitter: https://twitter.com/thangchiba_
 facebook: https://facebook.com/thangchiba
@@ -10,7 +10,10 @@ linkedin: https://www.linkedin.com
 github: https://github.com/thangchiba
 ---
 
+import Toggle from "./ui/Toggle.tsx";
+
 ## Hoang Van Thang
+
 Software Engineer - Tokyo, Japan
 
 ---
@@ -27,48 +30,137 @@ Therefore, I do a lot of personal projects to experiment with and research new t
 ---
 
 ## Professional Skills
-...
+
+- **Programming Language & Framework**: Proficient in using C#, SpringBoot (Java), and React (JS). Have experience and portfolio projects with ReactNative, Swift, FastAPI (Python), NestJS. Experienced in full-stack web development, focusing on performance and clean code.
+- **Infra**: Experience with various AWS services including Serverless, enabling cost-effective and scalable solutions. Capable of deploying small to medium scale Hybrid Clouds (Public Cloud + Private Cloud). Skilled in using Docker for deploying personal projects.
+- **Database**: Skilled in using and designing RDBMS, with experience in designing and managing databases for complex business applications. Also use NoSQL (MongoDB, DynamoDB) for personal projects.
+- **Performance Optimization**: Particularly interested in software performance.
+- **Clean Code**: Continuously learn best practices of each language to apply. Use design patterns to keep the codebase maintainable and scalable.
+- **Project Management**: Experienced in applying Scrum, setting up Sprints, making adjustments, and reporting. Experienced in managing the progress of outsourcing teams in Vietnam and Japan.
+- **UI/UX Design**: Always seek to enhance user experience, integrating UI with UX with a special focus on UX. The goal is for users to use the software without needing instructions.
+- **Personal Projects**: Developed high-performance frameworks like NeoSocket for gaming and metaverse applications. Various SaaS solutions leveraging Serverless architecture to reduce operational costs while maintaining high availability and security.
+
+**Special Interests**
+
+- **C# and .NET Technology**: Passionate about C#, commonly used for complex server-side systems and high-performance applications. Always exploring advanced features and optimizations in the .NET ecosystem to improve products.
 
 ---
 
 ## Work Experience
 _Tokyo, April 2022 - Now_
 
-**Project**: Vegetable/Fruit Wholesale DX
+### **Project: Digitization of a B2B Wholesale Business Model.**
 
-- **Description**: Digitalizing business processes for wholesale vegetable/fruit enterprises.
-  - Web-based ordering system (EC)
-  - Inventory management
-  - Order management
-  - Reporting and statistics.
-- **Technology**: ReactJS, Java-SpringBoot, PostgreSQL, AWS.
-- **Position**: SE, Instructor
+- Developed an order entry system that reduces manual operations and, most importantly, digitizes data. This digitization facilitates easier data analysis and historical data retrieval, enabling the business to expand its operations efficiently.
+
+- The project is divided into several phases, each lasting from six months to a year.
+
+- I was involved in every phase, from ideation and technology selection to system design, database, and codebase development.
+
+- Implemented the Scrum model, setting up bi-weekly Sprints and reporting progress to the CEO.
+
+- Tech stack: ReactJS/MUI, ReactNative, Swift, SpringBoot, PostgreSQL, AWS, OCR.
+
+    <Toggle text="Phase 1: April 2022 to March 2023">
+    Kickstarted the project by analyzing client business processes.
+
+    Produced documentation on business processes that could be digitized and estimated the impact of digital transformation.
+
+    Created documents on tech stacks and libraries to be used, and designed comparison charts to justify selections.
+
+    Developed an order system on the website to allow partners to place orders more simply and intuitively.
+
+    Prices are updated in real time, and data is refreshed in the system, making retrieval easier.
+
+    Tech stack: ReactJS, SpringBoot, PostgreSQL, AWS.
+    </Toggle>
+
+    <Toggle text="Phase 2: April 2023 to December 2023">
+    Researched the transformation of the client's old data entry system to a new one.
+
+    The old data entry system used an MS-DOS interface with text commands, and data was overwritten each fiscal year, leaving it almost valueless for AI-driven big data analysis.
+
+    Developed a new system:
+
+    Invested in UI/UX: Introduced a GUI that could be navigated with a mouse, allowing for historical reviews and statistics. Included responsive design for executives to monitor from smartphones.
+
+    In terms of UX, added Excel-like shortcut keys to increase productivity and reduce unnecessary operations.
+
+    Focused on performance: Since it’s a data entry application running on a web platform, performance was a priority. Employed techniques and strategies to optimize the performance of React.
+
+    Tech stack: ReactJS, SpringBoot, PostgreSQL, AWS.
+    </Toggle>
+
+    <Toggle text="Phase 3: January 2024 to Present">
+    "Paper Less"
+
+    Digitized procurement and sales invoices. Current invoices are handwritten and entered into the computer system at the end of the day.
+
+    Instead of writing on paper, staff use a stylus on tablets, with characters digitized in real-time and saved to the Database, eliminating the need for manual data entry and paper.
+
+    Tech stack: ReactNative - Swift, AI OCR (MNIST, TesseractOCR), Apple CoreML.
+    </Toggle>
 
 ---
 
-## Side Index
+*Tokyo, April 2021 - March 2022*
 
-- [ChatGPT++](https://github.com/thangchiba/ReactJS-ChatGPT): A ChatGPT clone that allows everyone to use their own API. It offers an experience similar to purchasing a premium package but at a much lower cost.
+### **Participation in 3 outsourcing projects with various operations and technologies.**
+
+1. Warehouse management system:
+
+        Description: A warehouse management system for a small e-commerce business. The EC site was designed by a third party. My role was to understand the third-party APIs to develop the warehouse management system.
+
+        Developed a responsive website. Designed invoices and exported data in PDF and CSV formats.
+
+        Technology: SpringBoot (Java), jQuery, Bootstrap, PostgreSQL.
+
+2. E-commerce:
+
+        Description: Developed the backend system for a fairly large e-commerce site. Responsible for writing functions for AWS Lambda to run end-of-month revenue summaries, error reporting, and emailing customers.
+
+        Handled programming invoices and data transfers from the Database to PDF with specified designs.
+
+        Technology: C# ASP.NET Core 3, PostgreSQL, AWS Serverless Lambda, Cognito, S3.
+
+3. Medical quiz system:
+
+        Description: Developed a system to add quiz questions and collect responses from users. Mainly involved in support and maintenance, not much in development.
+
+        Technology: Python Django, VueJS, PostgreSQL.
+
+---
+## **Personal Projects**
+
+- [NeoSocket](/project/neo-socket): NeoSocket is a high-performance framework designed for real-time applications, tailored for developing MMORPGs and Metaverse environments, as well as for use in chat systems and dashboard management. It was developed out of the need for a more robust solution than the current open-source frameworks, with a philosophy of maintaining clean, web-like code but with performance optimized for gaming.
+
+- [ChatGPT++](/project/chat-gpt-plus): A ChatGPT clone that allows everyone to use a personal API. It offers an experience comparable to purchasing a premium package but at a significantly lower cost.
+
+- [Cypher](/project/cypher): Inspired by World War II, Cypher is a special chat application that features two-way encryption using the NeoSocket framework. It can be used with a single step without needing installation on devices, yet still ensures high security.
+
+- [Apartment Management](/project/apartment-management): An SaaS application used for managing rental properties. With infrequent access in mind, the goal is to use AWS Serverless to optimize operational costs.
+
+- [MMORPG](/project/mmorpg): MMORPG.
 
 ---
 
-## Education
+## **Education**
 
 **Asahi Japanese Language School**
 
-_April 2015 - March 2017_
+*April 2015 - March 2017*
 
 **Shumei University**
 
-_April 2017 - March 2021_
+*April 2017 - March 2021*
 
 ---
 
-## Hobbies
+## **Interests**
 
-- Enjoy programming, reading technology documents, IT blogs.
-- Like playing games, genres include MMORPG, FPS, MOBA.
+- Enjoys programming, reading tech documents, and IT blogging.
+- Fond of playing video games, especially MMORPGs, FPS, and MOBA genres.
 
 ---
 
-Thank you for reading this far. If you have any questions, please contact me via email or the social networks below.
+Thank you for reading this far. If you have any questions, please feel free to contact me via email or through the social media links below.
