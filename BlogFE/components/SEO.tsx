@@ -2,15 +2,18 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { siteMetadata } from '~/data/siteMetadata'
 import type { AuthorSEO, BlogSeoProps, PageSeoProps } from '~/types/seo'
+import { createUrl } from '~/utils/format'
 
 export function PageSeo({ title, description }: PageSeoProps) {
   let router = useRouter()
+  const ogUrl = createUrl(siteMetadata.siteUrl, router.locale, router.asPath)
+
   return (
     <Head>
       <title>{title}</title>
       <meta name="robots" content="follow, index" />
       <meta name="description" content={description} />
-      <meta property="og:url" content={`${siteMetadata.siteUrl}${router.asPath}`} />
+      <meta property="og:url" content={`${ogUrl}`} />
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content={title} />
       <meta property="og:description" content={description} />
@@ -37,13 +40,14 @@ export function BlogSeo(props: BlogSeoProps) {
       : typeof images === 'string'
       ? [images]
       : images
-
   let featuredImages = imagesArr.map((img) => {
+    const isFullUrl = img.startsWith('http://') || img.startsWith('https://')
     return {
       '@type': 'ImageObject',
-      url: `${siteMetadata.siteUrl}${img}`,
+      url: isFullUrl ? img : createUrl(siteMetadata.siteUrl, img),
     }
   })
+  const ogUrl = createUrl(siteMetadata.siteUrl, router.locale, router.asPath)
 
   let authorList: AuthorSEO | AuthorSEO[] = []
   if (authorDetails) {
@@ -89,7 +93,7 @@ export function BlogSeo(props: BlogSeoProps) {
         <title>{`${title}`}</title>
         <meta name="robots" content="follow, index" />
         <meta name="description" content={summary} />
-        <meta property="og:url" content={`${siteMetadata.siteUrl}${router.asPath}`} />
+        <meta property="og:url" content={`${ogUrl}`} />
         <meta property="og:type" content="article" />
         <meta property="og:description" content={summary} />
         <meta property="og:title" content={`${title}`} />
@@ -103,7 +107,7 @@ export function BlogSeo(props: BlogSeoProps) {
         <meta name="twitter:image" content={featuredImages[0].url} />
         {date && <meta property="article:published_time" content={publishedAt} />}
         {lastmod && <meta property="article:modified_time" content={modifiedAt} />}
-        <link rel="canonical" href={`${siteMetadata.siteUrl}${router.asPath}`} />
+        <link rel="canonical" href={`${ogUrl}`} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData, null, 2) }}

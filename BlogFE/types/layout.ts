@@ -40,6 +40,7 @@ export interface ResumeLayoutProps {
 export interface ProjectLayoutProps {
   frontMatter: BlogFrontMatter
   commentConfig: CommentConfigType
+  authorDetails: AuthorFrontMatter[]
   children: React.ReactNode
   description: string
 }
