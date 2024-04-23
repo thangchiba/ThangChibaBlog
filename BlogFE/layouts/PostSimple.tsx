@@ -9,19 +9,17 @@ import { SocialShareButtons } from '~/components/SocialShareButtons'
 import { siteMetadata } from '~/data/siteMetadata'
 import type { PostSimpleLayoutProps } from '~/types/layout'
 import AudioPlayer from '~/components/media/AudioPlayer'
+import { useRouter } from 'next/router'
 
 export function PostSimple(props: PostSimpleLayoutProps) {
+  const router = useRouter()
   let { frontMatter, type, children, authorDetails, commentConfig } = props
   let { date, title, slug, fileName, tags, readingTime, audioURL } = frontMatter
-  let postUrl = `${siteMetadata.siteUrl}/${type}/${slug}`
+  let postUrl = `${siteMetadata.siteUrl}/${router.locale}/${type}/${slug}`
 
   return (
     <SectionContainer>
-      <BlogSeo
-        url={`${siteMetadata.siteUrl}/${type}/${slug}`}
-        authorDetails={authorDetails}
-        {...frontMatter}
-      />
+      <BlogSeo url={`${postUrl}`} authorDetails={authorDetails} {...frontMatter} />
       <ScrollTopButton />
       <article>
         <div>

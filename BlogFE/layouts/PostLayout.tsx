@@ -9,11 +9,13 @@ import { BlogSeo } from '~/components/SEO'
 import { SocialShareButtons } from '~/components/SocialShareButtons'
 import { siteMetadata } from '~/data/siteMetadata'
 import type { PostLayoutProps } from '~/types/layout'
+import { useRouter } from 'next/router'
 
 export function PostLayout(props: PostLayoutProps) {
+  const router = useRouter()
   let { frontMatter, authorDetails, page, children, commentConfig } = props
   let { slug, fileName, date, title, tags, readingTime } = frontMatter
-  let postUrl = `${siteMetadata.siteUrl}/blog/${slug}`
+  let postUrl = `${siteMetadata.siteUrl}/${router.locale}/blog/${slug}`
 
   return (
     <SectionContainer>
