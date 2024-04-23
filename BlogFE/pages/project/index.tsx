@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { PageSeo } from '~/components/SEO'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -18,11 +19,11 @@ export async function getStaticProps({ locale }) {
 }
 
 export default function Index({ projectData }: { projectData: ProjectFrontMatter[] }) {
-  let workProject = projectData.filter(({ projectType }) => projectType === PROJECT_TYPE.WORK)
-  let sideProject = projectData.filter(({ projectType }) => projectType === PROJECT_TYPE.SELF)
-  let { t } = useTranslation('common')
+  const [activeType, setActiveType] = useState(PROJECT_TYPE.SELF)
+  const { t } = useTranslation('common')
+  const description = t('project.project_description')
 
-  let description = t('project.project_description')
+  const filteredProjects = projectData.filter(({ projectType }) => projectType === activeType)
 
   return (
     <>
@@ -33,30 +34,39 @@ export default function Index({ projectData }: { projectData: ProjectFrontMatter
         description={description}
       />
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
-        <div className="space-y-2 pb-8 pt-6 md:space-y-5">
+        <div className="space-y-2 pb-0 pt-6 md:space-y-5">
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
             {t('project.project_title')}
           </h1>
           <p className="text-base md:text-lg md:leading-7 text-gray-500 dark:text-gray-400">
             {description}
           </p>
-        </div>
-        <div className="container py-12">
-          <h3 className="mb-4 text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100">
-            {t('project.work_title')}
-          </h3>
-          <div className="-m-4 flex flex-wrap">
-            {workProject.map((project) => (
-              <ProjectCard key={project.title} project={project} />
-            ))}
+          <div>
+            <button
+              className={`w-48 px-4 py-2 text-2xl font-semibold text-gray-900 bg-transparent hover:bg-gray-200 dark:text-gray-100 dark:hover:bg-gray-600 ${
+                activeType === PROJECT_TYPE.SELF
+                  ? 'border-b-4 border-blue-500 dark:border-orange-300'
+                  : ''
+              }`}
+              onClick={() => setActiveType(PROJECT_TYPE.SELF)}
+            >
+              {t('project.side_title')}
+            </button>
+            <button
+              className={`w-48 px-4 py-2 text-2xl font-semibold text-gray-900 bg-transparent hover:bg-gray-200 dark:text-gray-100 dark:hover:bg-gray-600 ${
+                activeType === PROJECT_TYPE.WORK
+                  ? 'border-b-4 border-blue-500 dark:border-orange-300'
+                  : ''
+              }`}
+              onClick={() => setActiveType(PROJECT_TYPE.WORK)}
+            >
+              {t('project.work_title')}
+            </button>
           </div>
         </div>
-        <div className="container py-12">
-          <h3 className="mb-4 text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100">
-            {t('project.side_title')}
-          </h3>
+        <div className="container py-8">
           <div className="-m-4 flex flex-wrap">
-            {sideProject.map((project) => (
+            {filteredProjects.map((project) => (
               <ProjectCard key={project.title} project={project} />
             ))}
           </div>
