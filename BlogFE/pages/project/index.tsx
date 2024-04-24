@@ -43,7 +43,7 @@ export default function Index({ projectData }: { projectData: ProjectFrontMatter
           </p>
           <div>
             <button
-              className={`w-48 px-4 py-2 text-2xl font-semibold text-gray-900 bg-transparent hover:bg-gray-200 dark:text-gray-100 dark:hover:bg-gray-600 ${
+              className={`w-44 px-4 py-2 text-2xl font-semibold text-gray-900 bg-transparent hover:bg-gray-200 dark:text-gray-100 dark:hover:bg-gray-600 ${
                 activeType === PROJECT_TYPE.SELF
                   ? 'border-b-4 border-blue-500 dark:border-orange-300'
                   : ''
@@ -53,7 +53,7 @@ export default function Index({ projectData }: { projectData: ProjectFrontMatter
               {t('project.side_title')}
             </button>
             <button
-              className={`w-48 px-4 py-2 text-2xl font-semibold text-gray-900 bg-transparent hover:bg-gray-200 dark:text-gray-100 dark:hover:bg-gray-600 ${
+              className={`w-44 px-4 py-2 text-2xl font-semibold text-gray-900 bg-transparent hover:bg-gray-200 dark:text-gray-100 dark:hover:bg-gray-600 ${
                 activeType === PROJECT_TYPE.WORK
                   ? 'border-b-4 border-blue-500 dark:border-orange-300'
                   : ''
