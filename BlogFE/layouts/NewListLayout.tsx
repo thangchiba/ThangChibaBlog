@@ -34,14 +34,13 @@ export function NewListLayout(props: ListLayoutProps) {
           <PostsSearch onChange={setSearchValue} />
         </header>
         {!filteredBlogPosts.length && t('blog.no_posts')}
-        <div className="container py-12 -m-4 flex flex-wrap">
+        <div className="container py-12 flex flex-wrap">
           {displayPosts.map((frontMatter) => (
             <div key={'post-' + frontMatter.title} className={`w-full ${frontMatter.slug}`}>
               {/* Hide on small screens, show on medium and larger screens */}
               <div className="hidden md:block">
                 <BlogCardHorizontal frontMatter={frontMatter} />
               </div>
-
               {/* Show on small screens, hide on medium and larger screens */}
               <div className="block md:hidden">
                 <BlogCard frontMatter={frontMatter} />
