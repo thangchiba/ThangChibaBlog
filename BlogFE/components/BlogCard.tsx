@@ -11,7 +11,7 @@ export function BlogCard({ frontMatter }: BlogCardProps) {
   let { title, summary, images, slug, tags, date, readingTime } = frontMatter
 
   return (
-    <div className="md p-4 md:w-1/2" style={{ maxWidth: '544px' }}>
+    <div className="md md:w-1/2" style={{ maxWidth: '544px' }}>
       <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-transparent shadow-nextjs dark:shadow-nextjs-dark">
         <Image
           alt={title}

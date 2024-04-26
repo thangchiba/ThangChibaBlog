@@ -28,12 +28,12 @@ const menuMap: MenuMap = {
   'morse-translator': {
     name: 'Morse Translator',
     component: MorseTranslator,
-    emoji: 'radio',
+    emoji: 'ferris-wheel',
   },
   'upload-file': {
     name: 'Upload File',
     component: UploadFile,
-    emoji: 'radio',
+    emoji: 'airplane-departure',
   },
 }
 
