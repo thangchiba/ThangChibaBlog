@@ -1,0 +1,41 @@
+---
+title: 'Jinki Development : Phase 4 - Abilities and Refining Stats'
+date: '2022-10-02'
+
+tags: ['jinki', 'mmorpg', 'moba', 'realtime', 'socket']
+draft: false
+summary: "Phase 4 of Jinki development focuses on refining my Ability and Stats systems, using design patterns for scalability and flexibility. This phase enhances combat dynamics with a robust Ability System and optimizes interactions through the Observer Pattern, setting the stage for network integration in my MMORPG."
+audioURL: '/static/media/blog/random-generator/jinki-devlog-phase-4-en.mp3'
+authors: ['default']
+images: ['/static/media/blog/jinki/0.4.0.png']
+---
+
+import YouTubeEmbed from "./media/YouTubeEmbed";
+
+## Introduce
+
+As development progresses, I'm excited to share the latest updates from Phase 4 of Jinki, where the focus has been on building the Ability system and revising the Stats mechanics. This phase lays the groundwork for integrating network features, crucial for evolving Jinki into a fully-fledged MMORPG with combat dynamics akin to MOBA games.
+
+<YouTubeEmbed url="https://www.youtube.com/watch?v=mkFDlAXRNb4&t=48s" />
+
+**What's New?**
+
+- **Ability System**: I've employed the Strategy Pattern to construct a robust and flexible Ability System. This design allows for easy adjustments and expansions of abilities as the game develops. Each ability type, like directional skills (skillshots) or area-of-effect (AOE), inherits from a **`TargetingStrategy`** class, facilitating diverse combat strategies.
+- **Stats Optimization**: To enhance the interaction of game stats with various gameplay elements, I've implemented the Observer Pattern. This ensures that any changes in stats are efficiently managed and propagated throughout the game systems.
+- **Core Features**: With the core gameplay features nearing completion, I'm beginning to lay the foundation for the networking aspects of the game. This transition is vital for supporting the expansive world and player interactions typical of MMORPGs.
+
+**Development Insights**
+
+You might often hear advice against using design patterns in game development due to their perceived complexity and performance impact. However, for larger projects aimed at scalability, understanding and utilizing fundamental patterns like Strategy and Observer can be crucial. They provide a structured approach to tackling complex systems, which is essential for maintaining and scaling the game effectively.
+
+For example, by analyzing skills from popular MOBA games like League of Legends, I've categorized skills into types and targeting methods. This analysis has helped streamline the ability creation process, where most skills utilize a few core targeting strategies, managed through ScriptableObjects for ease of use and modification.
+
+**Looking Ahead**
+
+The next step is developing a Player Killing (PK) system inspired by the dynamics of League of Legends, focusing on strategic gameplay and player interaction.
+
+**Feedback Wanted**
+
+As always, I value your thoughts and feedback. If you have any insights, questions, or suggestions, please feel free to share them. Your input is invaluable as I continue to refine and expand Jinki.
+
+Stay tuned for more updates as I navigate through these exciting development phases!
