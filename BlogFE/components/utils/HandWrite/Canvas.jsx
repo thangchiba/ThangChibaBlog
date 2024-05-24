@@ -6,6 +6,7 @@ const Canvas = ({ mainCanvasRef, hiddenCanvasRef, startDrawing, draw, stopDrawin
 
   return (
     <>
+      {/* eslint-disable-next-line jsx-a11y/mouse-events-have-key-events */}
       <canvas
         ref={mainCanvasRef}
         {...mainCanvasSize}

@@ -18,7 +18,7 @@ const useCanvas = (imageLabel) => {
     ctx.fillRect(0, 0, mainCanvasSize.width, mainCanvasSize.height)
     ctx.strokeStyle = 'black'
     ctx.lineWidth = 6
-  }, [])
+  }, [mainCanvasSize.width, mainCanvasSize.height])
 
   const getCoordinates = useCallback((event) => {
     const rect = mainCanvasRef.current.getBoundingClientRect()
@@ -54,49 +54,6 @@ const useCanvas = (imageLabel) => {
     [getCoordinates]
   )
 
-  const stopDrawing = useCallback(() => {
-    drawingRef.current = false
-    sendPredict()
-  }, [])
-
-  const clearCanvas = useCallback(() => {
-    const ctx = mainCanvasRef.current.getContext('2d')
-    const hiddenCtx = hiddenCanvasRef.current.getContext('2d')
-    ctx.clearRect(0, 0, mainCanvasSize.width, mainCanvasSize.height)
-    ctx.fillStyle = 'white'
-    ctx.fillRect(0, 0, mainCanvasSize.width, mainCanvasSize.height)
-    hiddenCtx.clearRect(0, 0, saveImageSize.width, saveImageSize.height)
-  }, [])
-
-  // const sendToServer = useCallback(async () => {
-  //   const hiddenCtx = hiddenCanvasRef.current.getContext("2d");
-  //   hiddenCtx.drawImage(
-  //     mainCanvasRef.current,
-  //     0,
-  //     0,
-  //     saveImageSize.width,
-  //     saveImageSize.height
-  //   );
-  //   const dataURL = hiddenCanvasRef.current.toDataURL("image/png");
-  //
-  //   try {
-  //     const response = await fetch("/api/save-image", {
-  //       method: "POST",
-  //       body: JSON.stringify({ imageLabel, imageData: dataURL }),
-  //       headers: { "Content-Type": "application/json" },
-  //     });
-  //
-  //     if (response.ok) {
-  //       console.log("Image saved successfully!");
-  //       clearCanvas();
-  //     } else {
-  //       console.error("Error saving image:", response.statusText);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error saving image:", error);
-  //   }
-  // }, [imageLabel, clearCanvas]);
-
   const sendPredict = useCallback(async () => {
     const hiddenCtx = hiddenCanvasRef.current.getContext('2d')
     hiddenCtx.drawImage(mainCanvasRef.current, 0, 0, saveImageSize.width, saveImageSize.height)
@@ -126,7 +83,49 @@ const useCanvas = (imageLabel) => {
     } catch (error) {
       console.error('Error predicting image:', error)
     }
-  }, [])
+  }, [saveImageSize.width, saveImageSize.height])
+  const stopDrawing = useCallback(() => {
+    drawingRef.current = false
+    sendPredict()
+  }, [sendPredict])
+
+  const clearCanvas = useCallback(() => {
+    const ctx = mainCanvasRef.current.getContext('2d')
+    const hiddenCtx = hiddenCanvasRef.current.getContext('2d')
+    ctx.clearRect(0, 0, mainCanvasSize.width, mainCanvasSize.height)
+    ctx.fillStyle = 'white'
+    ctx.fillRect(0, 0, mainCanvasSize.width, mainCanvasSize.height)
+    hiddenCtx.clearRect(0, 0, saveImageSize.width, saveImageSize.height)
+  }, [mainCanvasSize.width, mainCanvasSize.height, saveImageSize.width, saveImageSize.height])
+
+  // const sendToServer = useCallback(async () => {
+  //   const hiddenCtx = hiddenCanvasRef.current.getContext("2d");
+  //   hiddenCtx.drawImage(
+  //     mainCanvasRef.current,
+  //     0,
+  //     0,
+  //     saveImageSize.width,
+  //     saveImageSize.height
+  //   );
+  //   const dataURL = hiddenCanvasRef.current.toDataURL("image/png");
+  //
+  //   try {
+  //     const response = await fetch("/api/save-image", {
+  //       method: "POST",
+  //       body: JSON.stringify({ imageLabel, imageData: dataURL }),
+  //       headers: { "Content-Type": "application/json" },
+  //     });
+  //
+  //     if (response.ok) {
+  //       console.log("Image saved successfully!");
+  //       clearCanvas();
+  //     } else {
+  //       console.error("Error saving image:", response.statusText);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error saving image:", error);
+  //   }
+  // }, [imageLabel, clearCanvas]);
 
   return {
     mainCanvasRef,
