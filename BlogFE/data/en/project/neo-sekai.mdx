@@ -1,0 +1,81 @@
+---
+type: 'project'
+projectType: 'self'
+tags: ['neosekai', 'metaverse', 'mmorpg', 'realtime', 'socket']
+title: 'Neo Sekai'
+date: '2022-12-31'
+summary: "NeoSekai, my first metaverse MVP, showcases groundbreaking server optimizations. By combining packets and dynamically balancing load, it enables massive, cost-effective virtual worlds with thousands of concurrent users."
+images: ['/static/media/project/neo-sekai/metaverse.png']
+repo: 'NeoSekai'
+audioURL: '/static/media/project/neo-sekai/neo-sekai-en.mp3'
+fe: ['Unity']
+be: ['NeoSocket']
+network: ['TCP/UDP']
+infra: ['Windows','MacOS','Linux']
+draft: false
+---
+
+import YouTubeEmbed from "./media/YouTubeEmbed";
+
+
+# **Optimizing Server Performance for Massive Multiplayer Environments**
+
+I’m thrilled to share the latest breakthrough in my project, NeoSekai, which involves significant advancements in network optimization that could revolutionize server management for MMORPGs.
+
+<YouTubeEmbed url="https://www.youtube.com/watch?v=SSIhnSJQAHw" />
+
+**Efficient Packet Management**
+
+In my recent tests, I focused on handling up to 480 concurrent users (CCU) in a single cell/scene, a scenario that's crucial for MMORPGs where many players interact within the same environment. My approach revolves around combining packets to significantly reduce bandwidth usage and improve server performance.
+
+**The Challenge**
+
+Consider a scenario where 500 players in the same scene decide to jump simultaneously. Traditionally, this action would require transmitting individual packets for each player to every other player, totaling an immense 250,000 packets. Each packet not only burdens the server’s performance but also consumes about 8 to 20 bytes of bandwidth per packet header.
+
+**The Solution**
+
+By implementing a packet combining mechanism where all actions within a 100ms window (a cell tick rate of 10) are merged into a single packet, the number of packets drastically reduces. In the example of simultaneous jumps, instead of 250,000 packets, only 500 packets are generated and distributed, one for each user.
+
+**Dynamic Cell Tick Adjustment**
+
+For areas with high player density, like city centers or peaceful zones, a cell tick delay of up to 500ms is feasible without affecting gameplay experience. Conversely, in combat zones, reducing the cell tick delay to as low as 1ms ensures real-time responsiveness. The server dynamically adjusts this based on current load, optimizing performance efficiently.
+
+**Cost-Effective Server Infrastructure**
+
+This approach also allows for substantial cost savings. Instead of needing a high-end server costing thousands of dollars, my method can operate on a server costing just a few tens of dollars. This scalability means that with several modest servers, it’s feasible to support millions of users.
+
+**Comparative Analysis**
+
+I benchmarked this against previous tests done by Mirror on their uMMORPG, which used expensive servers. My method not only performs comparably but does so with much cheaper hardware, demonstrating that libraries like Mirror might not be the best fit for MMORPGs with dense player populations in the same scene. Instead, they are more suited for smaller, room-divided games where cost efficiency is paramount.
+
+**Conclusion**
+
+This demonstration highlights how tailored network solutions can lead to significant improvements in MMORPGs, handling large-scale interactions more efficiently and cost-effectively. By rethinking how data is managed and transmitted across the network, we can create more immersive and expansive virtual worlds without the burden of excessive costs.
+
+# **Scalable Server Architecture for NeoSekai**
+
+In NeoSekai, I've designed a scalable server architecture that efficiently manages player density and interaction, allowing for the support of millions of users without requiring excessively powerful or expensive hardware.
+
+**Cell-Based Division**
+
+The game world is divided into multiple 'Cells', each approximately the size of a single screen. This division helps in managing the game's physics and data transmission efficiently, making the environment more manageable and less taxing on the server resources.
+
+**State Server Management**
+
+Each StateServer is responsible for approximately 100 Cells. It handles all physics calculations and data transmission for players within these Cells. This setup ensures that each server can manage its load effectively without being overwhelmed by too many players or too much data.
+
+**Inter-Cell Player Movement**
+
+When a player moves from one Cell to another that is managed by a different StateServer, the servers communicate via a local area network (LAN). This method ensures negligible latency during such transitions, maintaining a seamless experience for the player.
+
+**Dynamic Load Balancing**
+
+The system is designed to monitor the player density in each set of 100 Cells. If a StateServer's Cells become overcrowded—indicating a high concentration of players—it automatically initiates a new StateServer. This new server will take over a portion of the load, either splitting it 50-50 or 60-40 based on the current server health and load conditions. This dynamic load balancing is crucial for maintaining optimal performance and server responsiveness.
+
+**Scaling to Millions**
+
+With this architecture, scaling up to handle millions of users becomes feasible. A single host in this setup can manage about 10,000 to 30,000 users before reaching its capacity threshold. Beyond this, additional servers can be seamlessly integrated, multiplying the system’s overall capacity while maintaining performance.
+
+**Cost Efficiency**
+
+This scalable approach significantly reduces the need for high-end server investments. By utilizing multiple moderately priced servers, the system can distribute the load effectively without any single server becoming a bottleneck. This not only improves the game's scalability but also optimizes the cost-efficiency of the infrastructure.
