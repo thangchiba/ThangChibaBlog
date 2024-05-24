@@ -4,6 +4,7 @@ import RandomGenerator from '~/components/utils/RandomGenerator'
 import MorseTranslator from '~/components/utils/MorseTranslator'
 import UploadFile from '~/components/utils/UploadFile'
 import HandwritingCanvas from '~/components/utils/HandwritingCanvas'
+import HandWriteRecognition from '~/components/utils/HandWrite/HandWriteRecognition'
 
 interface ComponentEntry {
   name: string
@@ -38,8 +39,8 @@ const menuMap: MenuMap = {
   },
   handwrite: {
     name: 'Hand Write',
-    component: HandwritingCanvas,
-    emoji: 'airplane-departure',
+    component: HandWriteRecognition,
+    emoji: 'handwrite',
   },
 }
 

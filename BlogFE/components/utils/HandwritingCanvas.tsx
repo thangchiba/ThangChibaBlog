@@ -16,17 +16,28 @@ const HandwritingCanvas: React.FC = () => {
       }
     }
   }, [])
-  const startDrawing = (e: React.MouseEvent) => {
+
+  const startDrawing = (e: React.MouseEvent | React.TouchEvent) => {
     setIsDrawing(true)
     draw(e)
   }
 
-  const draw = (e: React.MouseEvent) => {
+  const draw = (e: React.MouseEvent | React.TouchEvent) => {
     if (!isDrawing || !canvasRef.current) return
     const ctx = canvasRef.current.getContext('2d')
     const rect = canvasRef.current.getBoundingClientRect()
+    let clientX, clientY
+
+    if (e.type === 'mousemove') {
+      clientX = (e as React.MouseEvent).clientX
+      clientY = (e as React.MouseEvent).clientY
+    } else {
+      clientX = (e as React.TouchEvent).touches[0].clientX
+      clientY = (e as React.TouchEvent).touches[0].clientY
+    }
+
     if (ctx) {
-      ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top)
+      ctx.lineTo(clientX - rect.left, clientY - rect.top)
       ctx.stroke()
     }
   }
@@ -55,12 +66,14 @@ const HandwritingCanvas: React.FC = () => {
       document.body.removeChild(link)
     }
   }
+
   const handleClear = () => {
     if (canvasRef.current) {
       const ctx = canvasRef.current.getContext('2d')
       ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height)
     }
   }
+
   return (
     <form className="w-[512px]">
       <div className="flex flex-col space-y-4">
@@ -73,8 +86,6 @@ const HandwritingCanvas: React.FC = () => {
         />
 
         <div className="relative">
-          {' '}
-          {/* Container for canvas and downscaled image */}
           <canvas
             ref={canvasRef}
             width={512} /* Increased canvas size */
@@ -83,23 +94,28 @@ const HandwritingCanvas: React.FC = () => {
             onMouseDown={startDrawing}
             onMouseMove={draw}
             onMouseUp={stopDrawing}
+            onTouchStart={startDrawing}
+            onTouchMove={draw}
+            onTouchEnd={stopDrawing}
+            style={{ touchAction: 'none' }}
           />
           <canvas
             width={128}
             height={28}
             className="absolute top-0 left-0 pointer-events-none" /* Position on top of main canvas */
           />
-          {/* This canvas will show the downscaled image when saving */}
         </div>
 
         <div className="flex justify-between">
           <button
+            type="button"
             onClick={handleClear}
             className="bg-red-500 hover:bg-red-600-700 text-white font-bold py-2 px-4 rounded w-1/3"
           >
             Clear
           </button>
           <button
+            type="button"
             onClick={handleSave}
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-1/3"
           >
