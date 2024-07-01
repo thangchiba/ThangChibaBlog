@@ -1,0 +1,36 @@
+---
+title: 'Jingi Devlog : Phase 5 - ネットワークコア'
+date: '2022-12-11'
+
+tags: ['jingi', 'mmorpg', 'moba', 'realtime', 'socket']
+draft: false
+summary: "Jingi Betaバージョン0.5.0は、ネットワーキングにおいて大きな飛躍を遂げ、堅牢なMMORPG機能をサポートするためのコアネットワークインフラを確立します。このアップデートには、大規模なユーザーロードを処理するために最適化されたカスタムネットワークソリューションが含まれており、グローバルサーバーのアクセス可能性と高度な負荷分散も含まれています。"
+audioURL: '/static/media/blog/random-generator/jingi-devlog-phase-5-en.mp3'
+authors: ['default']
+images: ['/static/media/blog/jingi/0.5.0.png']
+---
+
+import YouTubeEmbed from "./media/YouTubeEmbed";
+
+## ご紹介 (Goshōkai)
+
+Jingi Betaバージョン0.5.0のリリースをお知らせいたします。これは、ゲームの開発、特にネットワーキングにおける大きな進歩です。今回のアップデートでは、JingiのMMORPG機能を実現するためのコアネットワークインフラの構築に重点を置いています。
+
+<YouTubeEmbed url="https://www.youtube.com/watch?v=U98MgNBLwfo" />
+
+**新機能 (Shin kinō)**
+
+- **Network Core Development**: Jingiのネットワークコアを完成させました。この開発は、独自のServerCoreを作成することに興味がある人にとって重要であり、ここで共有される洞察が役立つかもしれません。
+- **Why a Custom Network Solution?**: カスタムネットワークソリューションを開発するという決定は、多くのゲームサーバーで一般的なシーン分割を必要とせずに、大量の同時ユーザー負荷をサポートするという私の目標に由来しています。このアーキテクチャは、将来のプロジェクト、潜在的なメタバースサーバーを含む、再利用できるように設計されています。
+- **Technical Insights**:
+  - **Framework Choice**: プログラミング言語の選択は重要ではありませんが、パフォーマンスと利便性の面で、C#、特にDotnetCoreをお勧めします。Javaでの豊富な経験にもかかわらず、Dotnet 7はより良いパフォーマンスを提供し、コードをDotnetStandardライブラリに分割する機能は、特にUnityでの使用に非常に便利です。
+  - **Design Overview**: ネットワークアーキテクチャには、プレイヤーからの安全なリクエストを処理する様々なStateServerを管理するMasterServerが含まれています。負荷を分散するためにStateServerのヘルスチェックを行い、現在、将来のWebベースのプレイヤーアクセスのためのHTTPリクエストを処理しています。
+  - **Global Accessibility**: StateServerは、世界中のプレイヤーが最適なpingを得るために最も近いサーバーを選択できるように、戦略的に異なる国に配置されています。キャラクターデータベースはグローバルなので、プレイヤーは同じキャラクターでどのStateServerにもアクセスできます。
+- **Performance Testing**: シンガポールと日本のVPSソリューションでの初期テストでは、2コアのセットアップで、それぞれ5つのサブパケットを含む最大30,000 TCPパケット/秒を処理し、約10,000人の同時ユーザーをサポートできると推定される、優れたパフォーマンスとpingを示しました。
+- **Load Balancing**: アーキテクチャはSpatialOSと多少似ており、MasterServerはStateServerの健全性を監視し、プレイヤーの集中度が高い場所にサーバーを追加することができます。
+
+**フィードバック募集 (Fīdobakku boshū)**
+
+Jingiのネットワーク機能を改良し、拡張していく中で、皆様からのフィードバックは非常に貴重です。ネットワーク設定に関する技術的な質問や改善のための提案など、お気軽にご意見をお聞かせください。
+
+Jingiのこの複雑でスリリングなコンポーネントの開発を進めていく中で、さらなるアップデートにご期待ください！

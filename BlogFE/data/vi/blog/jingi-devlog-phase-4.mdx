@@ -1,0 +1,41 @@
+---
+title: 'Jingi Devlog : Phase 4 - Kĩ năng và chỉ số nhân vật'
+date: '2022-10-02'
+
+tags: ['jingi', 'mmorpg', 'moba', 'realtime', 'socket']
+draft: false
+summary: "Giai đoạn 4 của sự phát triển Jingi tập trung vào việc tinh chỉnh hệ thống Kĩ năng và Chỉ Số, sử dụng các mẫu thiết kế để mở rộng và linh hoạt. Giai đoạn này nâng cao động lực chiến đấu với Hệ thống Kĩ Năng mạnh mẽ và tối ưu hóa các tương tác thông qua Observer Pattern, chuẩn bị cho tích hợp mạng trong MMORPG của tôi."
+audioURL: '/static/media/blog/random-generator/jingi-devlog-phase-4-en.mp3'
+authors: ['default']
+images: ['/static/media/blog/jingi/0.4.0.png']
+---
+
+import YouTubeEmbed from "./media/YouTubeEmbed";
+
+## Giới Thiệu
+
+Khi quá trình phát triển diễn ra, tôi rất vui mừng được chia sẻ những cập nhật mới nhất từ Giai đoạn 4 của Jingi, nơi trọng tâm là xây dựng hệ thống Kỹ năng và sửa đổi cơ chế chỉ số. Giai đoạn này đặt nền tảng cho việc tích hợp các tính năng mạng, rất quan trọng để phát triển Jingi thành một MMORPG hoàn chỉnh với động lực chiến đấu giống như các trò chơi MOBA.
+
+<YouTubeEmbed url="https://www.youtube.com/watch?v=mkFDlAXRNb4&t=48s" />
+
+**Có Gì Mới?**
+
+- **Ability System**: Tôi đã sử dụng Strategy Pattern để xây dựng một Hệ thống Kỹ năng mạnh mẽ và linh hoạt. Thiết kế này cho phép dễ dàng điều chỉnh và mở rộng các kỹ năng khi trò chơi phát triển. Mỗi loại kỹ năng, chẳng hạn như kỹ năng định hướng (skillshots) hoặc hiệu ứng trên diện rộng (AOE), đều kế thừa từ lớp **`TargetingStrategy`**, tạo điều kiện cho các chiến lược chiến đấu đa dạng.
+- **Stats Optimization**: Để nâng cao sự tương tác của chỉ số trò chơi với các yếu tố chơi trò chơi khác nhau, tôi đã triển khai Observer Pattern. Điều này đảm bảo rằng mọi thay đổi về chỉ số được quản lý và lan truyền hiệu quả trong toàn bộ hệ thống trò chơi.
+- **Core Features**: Khi các tính năng chơi trò chơi cốt lõi sắp hoàn thành, tôi bắt đầu đặt nền móng cho các khía cạnh mạng của trò chơi. Quá trình chuyển đổi này là rất quan trọng để hỗ trợ thế giới rộng lớn và sự tương tác của người chơi điển hình của MMORPG.
+
+**Thông Tin Chi Tiết Phát Triển**
+
+Bạn có thể thường nghe lời khuyên không nên sử dụng các mẫu thiết kế trong phát triển trò chơi do độ phức tạp và tác động hiệu suất của chúng. Tuy nhiên, đối với các dự án lớn hơn nhằm mục đích mở rộng quy mô, việc hiểu và sử dụng các mẫu cơ bản như Strategy và Observer có thể rất quan trọng. Chúng cung cấp một cách tiếp cận có cấu trúc để giải quyết các hệ thống phức tạp, điều cần thiết để duy trì và mở rộng trò chơi một cách hiệu quả.
+
+Ví dụ: bằng cách phân tích các kỹ năng từ các trò chơi MOBA phổ biến như Liên Minh Huyền Thoại, tôi đã phân loại các kỹ năng thành các loại và phương pháp nhắm mục tiêu. Phân tích này đã giúp hợp lý hóa quá trình tạo khả năng, trong đó hầu hết các kỹ năng sử dụng một vài chiến lược nhắm mục tiêu cốt lõi, được quản lý thông qua ScriptableObjects để dễ sử dụng và sửa đổi.
+
+**Hướng Tới Tương Lai**
+
+Bước tiếp theo là phát triển hệ thống Player Killing (PK) lấy cảm hứng từ động lực của Liên Minh Huyền Thoại, tập trung vào lối chơi chiến lược và tương tác giữa người chơi.
+
+**Phản Hồi Mong Muốn**
+
+Như mọi khi, tôi đánh giá cao suy nghĩ và phản hồi của bạn. Nếu bạn có bất kỳ thông tin chi tiết, câu hỏi hoặc đề xuất nào, vui lòng chia sẻ chúng. Đầu vào của bạn là vô giá khi tôi tiếp tục tinh chỉnh và mở rộng Jingi.
+
+Hãy theo dõi để biết thêm các cập nhật khi tôi điều hướng qua các giai đoạn phát triển thú vị này!
