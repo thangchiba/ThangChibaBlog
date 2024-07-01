@@ -1,0 +1,53 @@
+---
+type: 'project'
+projectType: 'self'
+tags: ['admin']
+title: 'Quản Lý Phòng Trọ'
+date: '2023-02-01'
+summary: "Quản Lý Phòng Trọ là một ứng dụng SaaS được sử dụng để quản lý các bất động sản cho thuê. Ứng dụng sẽ quản lý các phòng đã cho thuê, thông tin khách hàng và tình trạng thanh toán. Do tần suất truy cập không thường xuyên, mục tiêu là sử dụng AWS Serverless để tối ưu hóa chi phí vận hành. Ví dụ, S3 cho web tĩnh, Cognito để xác thực và Lambda Function cho xử lý phụ trợ."
+images: ['/static/images/project/apartment-demo-image.png']
+url: 'https://apartment.thangchiba.com'
+repo: 'Apartment'
+fe: ['ReactJS', 'MUI']
+be: ['FastAPI']
+db: ['DynamoDB']
+infra: ['AWS','Cognito', 'Lambda','APIGateway','R53', 'CloudFront', 'S3']
+
+draft: false
+---
+
+import Twemoji from './Twemoji.tsx'
+import UnsplashPhotoInfo from './UnsplashPhotoInfo.tsx'
+
+### **Bối cảnh Dự án**
+
+- **Nhu cầu người dùng:** Chị gái tôi, người sở hữu một số căn hộ, yêu cầu một ứng dụng thân thiện với người dùng. Kỹ năng máy tính hạn chế và không có khả năng sử dụng các công cụ phức tạp như Excel đòi hỏi một giải pháp đơn giản và dễ tiếp cận.
+- **Yêu cầu về khả năng truy cập:** Nhu cầu về một nền tảng có thể truy cập từ nhiều thiết bị khác nhau, bao gồm cả PC và điện thoại thông minh, bất cứ lúc nào.
+- **Lựa chọn nền tảng:** Đã chọn ứng dụng dựa trên web để đảm bảo hỗ trợ đa nền tảng.
+
+### **Tại sao lại là Serverless?**
+
+- **Tối ưu hóa cho việc sử dụng không thường xuyên:** Do ứng dụng chỉ được truy cập vài lần một tháng, nhưng vẫn yêu cầu sử dụng bất cứ lúc nào, nên cơ sở hạ tầng serverless nổi lên như một lựa chọn phù hợp nhất. Cách tiếp cận này đảm bảo rằng các tài nguyên được sử dụng hiệu quả, phản ánh mô hình sử dụng của ứng dụng.
+- **Tận dụng Cơ sở hạ tầng serverless của AWS:** Quyết định sử dụng các dịch vụ của AWS được thúc đẩy bởi nhu cầu về một giải pháp hiệu quả về chi phí, hiệu quả và có thể mở rộng.
+  - **Xác thực mạnh mẽ:** AWS Cognito được sử dụng cho khả năng quản lý người dùng an toàn, đảm bảo an toàn và quyền riêng tư của dữ liệu người dùng.
+  - **Lưu trữ Frontend hiệu quả:** Sự kết hợp của AWS Route53, CloudFront và bộ chứa S3 cung cấp các giải pháp lưu trữ đáng tin cậy và có thể mở rộng. Việc tích hợp CDN (Mạng phân phối nội dung) của CloudFront cho phép truy cập nhanh từ mọi nơi trên thế giới.
+  - **Dịch vụ phụ trợ linh hoạt:** Các chức năng AWS Lambda và API Gateway tạo thành xương sống của phụ trợ, cung cấp một môi trường phản hồi nhanh và có thể thích ứng. Ưu điểm chính ở đây là tính khả dụng của chúng, điều quan trọng đối với một dịch vụ cần có thể truy cập 24/7.
+  - **Giải pháp cơ sở dữ liệu:** DynamoDB được sử dụng vì nó tích hợp liền mạch với kiến trúc serverless của AWS, cung cấp một giải pháp cơ sở dữ liệu đáng tin cậy và có thể mở rộng.
+
+### **Phương pháp phát triển**
+
+- **Phát triển Frontend:** Được phát triển bằng ReactJS, nổi tiếng về hiệu quả và thân thiện với người dùng. Thiết kế phản hồi cho cả thiết bị PC và thiết bị di động, thích ứng liền mạch với các kích thước và hướng màn hình khác nhau, bao gồm cả chế độ ngang và dọc.
+- **Phát triển phụ trợ:** FastAPI, một khung Python hiện đại, đã được chọn cho phụ trợ. Thời gian đánh thức nhanh chóng của Python đặc biệt có lợi cho các chức năng Lambda, phù hợp với kiến trúc serverless.
+
+### **Các tính năng ứng dụng**
+
+- **Giao diện người dùng:** Nhấn mạnh sự đơn giản và trực quan, được thiết kế đặc biệt cho những người dùng có ít chuyên môn kỹ thuật. Giao diện đơn giản, tạo điều kiện thuận lợi cho việc điều hướng và tương tác dễ dàng.
+- **Khả năng truy cập:** Ứng dụng có thể truy cập rộng rãi từ mọi thiết bị có truy cập internet, đảm bảo người dùng có thể quản lý tài sản của mình từ mọi nơi, mọi lúc.
+- **Chức năng:** Được tùy chỉnh để giải quyết các nhu cầu cụ thể của quản lý căn hộ. Ứng dụng bao gồm các tính năng quan trọng để quản lý tài sản hiệu quả, phục vụ đặc biệt cho các yêu cầu của chủ sở hữu căn hộ.
+
+### **Những cải tiến trong tương lai**
+
+- **Cải tiến liên tục:** Có kế hoạch cập nhật và nâng cao ứng dụng thường xuyên dựa trên phản hồi của người dùng và tiến bộ công nghệ.
+- **Mở rộng tính năng:** Có khả năng giới thiệu các tính năng mới như thu tiền thuê nhà tự động, theo dõi yêu cầu bảo trì và thông báo theo thời gian thực cho các cập nhật quan trọng.
+- **Báo cáo nâng cao:** Phát triển các công cụ báo cáo toàn diện hơn để giám sát tài chính và hoạt động tốt hơn đối với các tài sản.
+- **Tối ưu hóa trải nghiệm người dùng:** Nỗ lực liên tục để tinh chỉnh giao diện người dùng và thiết kế tương tác, đảm bảo ứng dụng vẫn thân thiện với người dùng và phù hợp với các xu hướng thiết kế mới nổi.

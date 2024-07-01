@@ -98,34 +98,28 @@ const useCanvas = (imageLabel) => {
     hiddenCtx.clearRect(0, 0, saveImageSize.width, saveImageSize.height)
   }, [mainCanvasSize.width, mainCanvasSize.height, saveImageSize.width, saveImageSize.height])
 
-  // const sendToServer = useCallback(async () => {
-  //   const hiddenCtx = hiddenCanvasRef.current.getContext("2d");
-  //   hiddenCtx.drawImage(
-  //     mainCanvasRef.current,
-  //     0,
-  //     0,
-  //     saveImageSize.width,
-  //     saveImageSize.height
-  //   );
-  //   const dataURL = hiddenCanvasRef.current.toDataURL("image/png");
-  //
-  //   try {
-  //     const response = await fetch("/api/save-image", {
-  //       method: "POST",
-  //       body: JSON.stringify({ imageLabel, imageData: dataURL }),
-  //       headers: { "Content-Type": "application/json" },
-  //     });
-  //
-  //     if (response.ok) {
-  //       console.log("Image saved successfully!");
-  //       clearCanvas();
-  //     } else {
-  //       console.error("Error saving image:", response.statusText);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error saving image:", error);
-  //   }
-  // }, [imageLabel, clearCanvas]);
+  const sendToSave = useCallback(async () => {
+    const hiddenCtx = hiddenCanvasRef.current.getContext('2d')
+    hiddenCtx.drawImage(mainCanvasRef.current, 0, 0, saveImageSize.width, saveImageSize.height)
+    const dataURL = hiddenCanvasRef.current.toDataURL('image/png')
+
+    try {
+      const response = await fetch('/api/save-image', {
+        method: 'POST',
+        body: JSON.stringify({ imageLabel, imageData: dataURL }),
+        headers: { 'Content-Type': 'application/json' },
+      })
+
+      if (response.ok) {
+        console.log('Image saved successfully!')
+        clearCanvas()
+      } else {
+        console.error('Error saving image:', response.statusText)
+      }
+    } catch (error) {
+      console.error('Error saving image:', error)
+    }
+  }, [imageLabel, clearCanvas])
 
   return {
     mainCanvasRef,
@@ -136,6 +130,7 @@ const useCanvas = (imageLabel) => {
     draw,
     stopDrawing,
     result,
+    sendToSave,
   }
 }
 

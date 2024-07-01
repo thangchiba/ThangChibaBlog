@@ -9,7 +9,7 @@ const TeachCanvas = () => {
     mainCanvasRef,
     hiddenCanvasRef,
     clearCanvas,
-    sendToServer,
+    sendToSave,
     startDrawing,
     draw,
     stopDrawing,
@@ -18,20 +18,11 @@ const TeachCanvas = () => {
   return (
     <div className="flex flex-col items-center">
       <form className="border rounded-md p-4 shadow-md">
-        {/*<div className="mb-4">*/}
-        {/*  <input*/}
-        {/*      type="text"*/}
-        {/*      id="imageLabel"*/}
-        {/*      value={imageLabel}*/}
-        {/*      onChange={(e) => setImageLabel(e.target.value)}*/}
-        {/*      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"*/}
-        {/*  />*/}
-        {/*</div>*/}
         <div className="mb-4">
           <input
             type="text"
             id="imageLabel"
-            value={result}
+            value={imageLabel}
             onChange={(e) => setImageLabel(e.target.value)}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
@@ -46,15 +37,15 @@ const TeachCanvas = () => {
         <div className="flex justify-end">
           <button
             type="button"
-            onClick={sendToServer}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-36 rounded-r mr-2"
+            onClick={sendToSave}
+            className="mt-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 w-36 rounded"
           >
             Send
           </button>
           <button
             type="button"
             onClick={clearCanvas}
-            className="bg-red-700 hover:bg-red-300 text-white font-bold py-2 px-8 rounded-l"
+            className="mt-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 w-36 rounded"
           >
             Clear
           </button>

@@ -3,7 +3,7 @@ type: 'project'
 projectType: 'self'
 tags: ['reactjs']
 title: 'Cypher ChatApp'
-date: '2023-02-01'
+date: '2024-01-01'
 summary: "An anonymous chat application that uses NeoSocket for end-to-end encryption. Users can start a chat session without login or authentication while ensuring security."
 images: ['/static/images/project/cypher-demo.png']
 audioURL: '/static/media/project/cypher/cypher-en.mp3'
@@ -41,10 +41,12 @@ import UnsplashPhotoInfo from './UnsplashPhotoInfo.tsx'
 - 📶**Connectivity:** Pings every 5 seconds. If a connection loss is detected, it automatically reconnects to the server.
 - 🎡**Utility:** Can be embedded in other websites to serve as a community chat room.
 
-### **Technology:**
+## Technology Overview
 
-- **FE:** Uses React-Typescript, Redux-Thunk. MUI CSS framework. NeoSocketSDK(TS)
-- **BE:** NeoSocket(Dotnet8)
-- **DB:** MongoDB
-- **Infra:** AWS serverless for FE. GCP VMInstance for running backend and DB, packaged by Docker.
-- Continuous Integration/Continuous Deployment (CICD) for FE.
+| Category | Details |
+| --- | --- |
+| Frontend (FE) | React-Typescript, Redux-Thunk, MUI CSS framework, NeoSocketSDK(TS) |
+| Backend (BE) | NeoSocket (Dotnet8) |
+| Database (DB) | MongoDB |
+| Infrastructure | AWS serverless (FE), GCP VM Instance (BE, DB) packaged by Docker |
+| Deployment | Continuous Integration/Continuous Deployment (CICD) for FE on AWS |

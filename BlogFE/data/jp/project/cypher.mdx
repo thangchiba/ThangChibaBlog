@@ -3,8 +3,8 @@ type: 'project'
 projectType: 'self'
 tags: ['reactjs']
 title: 'Cypher ChatApp'
-date: '2023-02-01'
-summary: "NeoSocketを使用したエンドツーエンド暗号化による匿名チャットアプリケーション。ユーザーは、ログインや認証なしでチャットセッションを開始でき、セキュリティを確保できます。"
+date: '2024-01-01'
+summary: "NeoSocket を利用した匿名チャットアプリです。ログインや認証なしでチャットセッションを開始でき、セキュリティも確保されています。"
 images: ['/static/images/project/cypher-demo.png']
 audioURL: '/static/media/project/cypher/cypher-jp.mp3'
 url: 'https://cypher.thangchiba.com'
@@ -41,10 +41,12 @@ import UnsplashPhotoInfo from './UnsplashPhotoInfo.tsx'
 - 📶**接続性:** 5秒ごとにピングが送信されます。接続が失われたと判断された場合、自動的にサーバーに再接続します。
 - 🎡**ユーティリティ:** 他のウェブサイトに埋め込んでコミュニティチャットルームとして利用できます。
 
-### 技術:
+## Technology Overview
 
-- **フロントエンド(FE):** React-Typescript、Redux-Thunkを使用。MUI CSSフレームワーク。NeoSocketSDK(TS)
-- **バックエンド(BE):** NeoSocket(Dotnet8)
-- **データベース (DB):** MongoDB
-- **インフラ:** フロントエンドにはAWSのサーバーレスを使用。バックエンドとDBを実行するためにGCP VMInstanceを使用し、Dockerによってパッケージ化されています。
-- フロントエンドの継続的インテグレーション/継続的デリバリー(CICD)。
+| Category | Details |
+| --- | --- |
+| Frontend (FE) | React-Typescript, Redux-Thunk, MUI CSS framework, NeoSocketSDK(TS) |
+| Backend (BE) | NeoSocket (Dotnet8) |
+| Database (DB) | MongoDB |
+| Infrastructure | AWS serverless (FE), GCP VM Instance (BE, DB) packaged by Docker |
+| Deployment | Continuous Integration/Continuous Deployment (CICD) for FE on AWS |
