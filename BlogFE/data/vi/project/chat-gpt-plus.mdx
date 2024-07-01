@@ -1,0 +1,105 @@
+---
+type: 'project'
+projectType: 'self'
+tags: ['admin', 'test']
+title: 'ChatGPT++'
+date: '2024-02-07'
+summary: "ChatGPT++ là ứng dụng web cho phép bạn trò chuyện với mô hình AI GPT-3.5 Turbo của OpenAI. Ứng dụng có thể đọc to tin nhắn trả lời, học hỏi điều mới và lưu các cuộc trò chuyện vào máy tính của bạn. Bạn cũng có thể sử dụng cùng một mô hình với ChatGPT Plus với chi phí rất thấp."
+images: ['/static/images/project/chatgptpp.png']
+url: 'https://thangchiba.com'
+repo: 'Cypher'
+fe: ['ReactJS', 'MUI']
+be: ['FastAPI']
+db: ['MongoDB']
+infra: ['AWS']
+draft: false
+---
+
+import Twemoji from './Twemoji.tsx'
+import UnsplashPhotoInfo from './UnsplashPhotoInfo.tsx'
+
+## License
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+
+# ChatGPT++
+
+ChatGPT++ là một ứng dụng web cho phép bạn trò chuyện với mô hình AI GPT-3.5 Turbo của OpenAI. Ứng dụng có thể đọc to tin nhắn trả lời, học hỏi điều mới và lưu các cuộc trò chuyện vào máy tính của bạn. Bạn cũng có thể sử dụng cùng một mô hình với ChatGPT Plus với chi phí rất thấp. Bạn cũng có thể chia sẻ với bạn bè và tài khoản OpenAI cung cấp $18 miễn phí để sử dụng làm ChatGPT Plus trong 3-6 tháng hoặc hơn.
+
+## Tính năng
+
+ChatGPT++ có các tính năng sau:
+
+- Đọc to câu trả lời: Câu trả lời của AI có thể được đọc to bởi trình duyệt của bạn.
+- Dạy AI: Bạn có thể dễ dàng dạy AI những điều mới bằng cách cung cấp cho nó các ví dụ về cách phản hồi các đầu vào nhất định.
+- Lưu trữ dữ liệu cục bộ: Các cuộc trò chuyện của bạn với AI được lưu trữ cục bộ trên máy tính của bạn bằng API lưu trữ cục bộ của trình duyệt. Không cần đăng nhập để sử dụng ứng dụng này.
+- Thiết kế responsive: Bạn có thể sử dụng cả PC hoặc Điện thoại. Tôi sẽ cập nhật cho máy tính bảng sau.
+
+## Cách sử dụng
+
+Để sử dụng ChatGPT++:
+
+1. Truy cập trang web trực tiếp [tại đây](https://thangchiba.com/chatgpt). Bạn có thể sử dụng khóa api openai của riêng mình hoặc nhập thangchiba để sử dụng khóa của tôi. (Trên thanh bên phải)
+2. Nhập tin nhắn của bạn vào hộp văn bản và nhấn "Send" để gửi nó đến AI.
+3. Câu trả lời của AI sẽ được hiển thị bên dưới tin nhắn của bạn.
+4. Để dạy AI một câu trả lời mới, hãy nhấp vào nút "New Teach" ở thanh bên trái bên cạnh câu trả lời của AI. Sau đó, nhập một hoặc nhiều ví dụ về đầu vào sẽ kích hoạt phản hồi này.
+
+## Cài đặt trên môi trường Node
+
+1. Sao chép kho lưu trữ này vào máy cục bộ của bạn:
+
+```
+git clone https://github.com/thangchiba/reactjs-chatgpt.git
+```
+
+TÙY CHỌN: Nếu bạn muốn thiết lập một freetoken (người dùng có thể sử dụng nó miễn phí khi họ nhập "thangchiba" để truy cập mã thông báo), bạn cần tạo một tệp `.env` cùng cấp với `package.json`.
+Nội dung sẽ có định dạng này:
+
+```
+REACT_APP_GPT_TOKENS=sk-*******,sk-******,sk-****
+```
+
+Bạn có thể chỉ thiết lập một, nhưng khi bạn thiết lập một mảng, mỗi khi người dùng gửi một tin nhắn, ứng dụng sẽ tự động chọn một mã thông báo để thêm vào request. Tránh bị giới hạn request/s.
+
+2. Cài đặt các dependency cần thiết bằng Yarn hoặc NPM:
+
+```jsx
+npm install
+```
+
+3. Khởi động:
+
+```jsx
+npm start
+```
+
+## Cài đặt trên Docker
+
+Trên Linux (64bit)
+
+```jsx
+docker run -p 3000:3000 thangchiba/chatgpt:amd64
+```
+
+MacOS chip m1/m2 (arm)
+
+```jsx
+docker run -p 3000:3000 thangchiba/chatgpt:arm64
+```
+
+Sau đó truy cập `http://localhost:3000` trong trình duyệt web của bạn để sử dụng ứng dụng.
+
+## Bảo mật
+
+Ứng dụng này chỉ phục vụ để giúp bạn kết nối với OpenAI. Nếu bạn muốn bảo mật ứng dụng của mình, bạn sẽ cần backend cho mục đích đó.
+
+## Hỗ trợ
+
+Để được hỗ trợ, hãy gửi email đến: thangchiba@gmail.com.
+Nếu có thể, vui lòng gửi phản hồi cho tôi để tôi có thể cải thiện nó.
+Tôi dự định xây dựng một ChatGPT full-stack trong tương lai gần và sẽ tạo một kho lưu trữ mới cho nó.
+Nếu bạn quan tâm, vui lòng đăng ký theo dõi tôi.
+
+## Giấy phép
+
+Dự án này được cấp phép theo Giấy phép MIT. Xem tệp `LICENSE` để biết chi tiết.
+Bạn có thể sử dụng cho bất kỳ mục đích nào. Nếu có thể, vui lòng gửi phản hồi cho tôi.

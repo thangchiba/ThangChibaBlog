@@ -1,0 +1,104 @@
+---
+type: 'project'
+projectType: 'self'
+tags: ['admin', 'test']
+title: 'ChatGPT++'
+date: '2024-02-07'
+summary: "ChatGPT++ は、OpenAI の GPT-3.5 Turbo AI モデルとチャットできるウェブアプリケーションです。このアプリは、レスポンスメッセージを読み上げたり、新しいことを学習したり、会話をローカルマシンに保存したりできます。また、ChatGPT Plus と同じモデルを、より低コストで利用することも可能です。"
+images: ['/static/images/project/chatgptpp.png']
+url: 'https://thangchiba.com'
+repo: 'Cypher'
+fe: ['ReactJS', 'MUI']
+be: ['FastAPI']
+db: ['MongoDB']
+infra: ['AWS']
+draft: false
+---
+
+import Twemoji from './Twemoji.tsx'
+import UnsplashPhotoInfo from './UnsplashPhotoInfo.tsx'
+
+## License
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+
+# ChatGPT++
+
+ChatGPT++ は、OpenAI の GPT-3.5 Turbo AI モデルとチャットできるウェブアプリケーションです。レスポンスメッセージを読み上げたり、新しいことを学習させたり、会話をローカルマシンに保存したりできます。また、ChatGPT Plus と同じモデルを、非常に低コストで利用することも可能です。友達と共有することもでき、OpenAI アカウントは、ChatGPT Plus を 3 ～ 6 か月以上無料で使用できる 18 ドルの無料提供をしています。
+
+## 機能
+
+ChatGPT++ は、以下の機能を備えています。
+
+- **読み上げ可能な応答:** AIからの応答を、ブラウザで読み上げることができます。
+- **AIに教える:** 特定の入力に対してどのように応答するかをAIに例で教えることが簡単にできます。
+- **ローカルデータストレージ:** AIとの会話は、ブラウザのローカルストレージAPIを使用して、お使いのマシンにローカルに保存されます。このアプリを使用するためにログインは必要ありません。
+- **レスポンシブデザイン:** PCでもモバイルでも利用できます。タブレット対応は後日アップデート予定です。
+
+## 使い方
+
+ChatGPT++ を使用するには:
+
+1. ライブウェブサイト [こちら](https://thangchiba.com/chatgpt) にアクセスします。独自のOpenAI APIキーを使用するか、または thangchiba と入力して私のキーを使用することができます。(右側のバーにあります)
+2. テキストボックスにメッセージを入力し、「Send」を押してAIに送信します。
+3. AIからの応答は、メッセージの下に表示されます。
+4. AIに新しい応答を教えるには、AIの応答の横にある左側のバーの「New Teach」ボタンをクリックします。次に、この応答を引き起こす入力の例を1つ以上入力します。
+
+## Node 環境でのインストール
+
+1. このリポジトリをローカルマシンにクローンします:
+
+```Bash
+git clone https://github.com/thangchiba/reactjs-chatgpt.git
+```
+
+**オプション:** 無料トークンを設定する場合（ユーザーが "thangchiba" と入力してトークンにアクセスすると無料で使用できます）、`package.json` と同じレベルに `.env` ファイルを作成する必要があります。内容は次の形式にします:
+
+```
+REACT_APP_GPT_TOKENS=sk-*******,sk-******,sk-****
+```
+
+1つだけ設定することもできますが、配列を設定すると、ユーザーがメッセージを送信するたびに、アプリケーションは自動的にトークンを選択してリクエストヘッダーに追加します。
+
+2. Yarn または NPM を使用して、必要な依存関係をインストールします。
+
+```Bash
+npm install
+```
+
+3. 開発サーバーを起動します。
+
+```Bash
+npm start
+```
+
+## Docker でのインストール
+
+Linux (64bit)
+
+```Bash
+docker run -p 3000:3000 thangchiba/chatgpt:amd64
+```
+
+MacOS m1/m2 chip (arm)
+
+```Bash
+docker run -p 3000:3000 thangchiba/chatgpt:arm64
+```
+
+次に、ウェブブラウザで `http://localhost:3000` にアクセスして、アプリを使用します。
+
+## セキュリティ
+
+このアプリケーションは、OpenAI に接続するためだけのものです。アプリケーションを保護したい場合は、そのためのバックエンドが必要になります。
+
+## サポート
+
+[thangchiba@gmail.com] までお問い合わせください。
+可能であれば、改善のためのフィードバックをいただけると幸いです。
+近い将来、フルスタックのChatGPTを構築する予定で、新しいリポジトリを作成する予定です。
+ご興味のある方は、ぜひご登録ください。
+
+## ライセンス
+
+このプロジェクトは、MITライセンスの下でライセンスされています。詳細は `LICENSE` ファイルを参照してください。
+どのような目的にも使用できます。可能であれば、フィードバックをお願いします。
