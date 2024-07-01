@@ -1,0 +1,80 @@
+---
+type: 'project'
+projectType: 'self'
+tags: ['neosekai', 'metaverse', 'mmorpg', 'realtime', 'socket']
+title: Neo Sekai
+date: '2022-12-31'
+summary: NeoSekai, sản phẩm MVP Metaverse đầu tiên của tôi, giới thiệu những cải tiến tối ưu hóa máy chủ đột phá. Bằng cách kết hợp các gói dữ liệu và cân bằng tải động, NeoSekai có khả năng tạo ra những thế giới ảo rộng lớn, tiết kiệm chi phí với sức chứa hàng nghìn người dùng đồng thời.
+images: ['/static/media/project/neo-sekai/metaverse.png']
+repo: 'NeoSekai'
+audioURL: '/static/media/project/neo-sekai/neo-sekai-en.mp3'
+fe: ['Unity']
+be: ['NeoSocket']
+network: ['TCP/UDP']
+infra: ['Windows','MacOS','Linux']
+draft: false
+---
+
+import YouTubeEmbed from "./media/YouTubeEmbed";
+
+# **Tối ưu hóa hiệu suất máy chủ cho môi trường nhiều người chơi**
+
+Tôi rất vui mừng được chia sẻ bước đột phá mới nhất trong dự án NeoSekai của mình, liên quan đến những tiến bộ đáng kể trong tối ưu hóa mạng có thể cách mạng hóa việc quản lý máy chủ cho MMORPG.
+
+<YouTubeEmbed url="https://www.youtube.com/watch?v=SSIhnSJQAHw" />
+
+**Quản lý gói tin hiệu quả**
+
+Trong các thử nghiệm gần đây, tôi tập trung vào việc xử lý tối đa 480 người dùng đồng thời (CCU) trong một cell/scene duy nhất, một kịch bản quan trọng đối với MMORPG, nơi nhiều người chơi tương tác trong cùng một môi trường. Cách tiếp cận của tôi xoay quanh việc kết hợp các gói tin để giảm đáng kể việc sử dụng băng thông và cải thiện hiệu suất máy chủ.
+
+**Thách thức**
+
+Hãy xem xét một kịch bản trong đó 500 người chơi trong cùng một cảnh quyết định nhảy cùng một lúc. Theo cách truyền thống, hành động này sẽ yêu cầu truyền các gói tin riêng lẻ cho mỗi người chơi đến mọi người chơi khác, tổng cộng là 250.000 gói tin. Mỗi gói tin không chỉ làm giảm hiệu suất của máy chủ mà còn tiêu tốn khoảng 8 đến 20 byte băng thông cho mỗi header gói tin.
+
+**Giải pháp**
+
+Bằng cách triển khai cơ chế kết hợp gói tin, trong đó tất cả các hành động trong khoảng 100ms (tốc độ cell tick là 10) được hợp nhất thành một gói tin duy nhất, số lượng gói tin giảm đáng kể. Trong ví dụ về các bước nhảy đồng thời, thay vì 250.000 gói tin, chỉ có 500 gói tin được tạo và phân phối, mỗi người dùng một gói.
+
+**Điều chỉnh Cell Tick động**
+
+Đối với những khu vực có mật độ người chơi cao, như trung tâm thành phố hoặc khu vực yên bình, độ trễ cell tick lên đến 500ms là khả thi mà không ảnh hưởng đến trải nghiệm chơi trò chơi. Ngược lại, trong các khu vực chiến đấu, việc giảm độ trễ cell tick xuống mức thấp nhất là 1ms đảm bảo khả năng phản hồi trong thời gian thực. Máy chủ tự động điều chỉnh điều này dựa trên tải hiện tại, tối ưu hóa hiệu suất một cách hiệu quả.
+
+**Cơ sở hạ tầng máy chủ hiệu quả về chi phí**
+
+Cách tiếp cận này cũng cho phép tiết kiệm chi phí đáng kể. Thay vì cần một máy chủ cao cấp có giá hàng nghìn đô la, phương pháp của tôi có thể hoạt động trên một máy chủ chỉ có giá vài chục đô la. Khả năng mở rộng này có nghĩa là với một số máy chủ khiêm tốn, có thể hỗ trợ hàng triệu người dùng.
+
+**Phân tích so sánh**
+
+Tôi đã so sánh điều này với các thử nghiệm trước đây được thực hiện bởi Mirror trên uMMORPG của họ, sử dụng các máy chủ đắt tiền. Phương pháp của tôi không chỉ hoạt động tương đương mà còn làm như vậy với phần cứng rẻ hơn nhiều, chứng tỏ rằng các thư viện như Mirror có thể không phù hợp nhất với MMORPG có mật độ người chơi dày đặc trong cùng một cảnh. Thay vào đó, chúng phù hợp hơn với các trò chơi nhỏ hơn, chia phòng, nơi hiệu quả chi phí là tối quan trọng.
+
+**Phần kết luận**
+
+Bản demo này làm nổi bật cách các giải pháp mạng được điều chỉnh có thể dẫn đến những cải tiến đáng kể trong MMORPG, xử lý các tương tác quy mô lớn hiệu quả hơn và tiết kiệm chi phí hơn. Bằng cách suy nghĩ lại cách quản lý và truyền dữ liệu qua mạng, chúng ta có thể tạo ra thế giới ảo rộng lớn và nhập vai hơn mà không phải chịu gánh nặng chi phí quá cao.
+
+# **Kiến trúc máy chủ có thể mở rộng cho NeoSekai**
+
+Trong NeoSekai, tôi đã thiết kế một kiến trúc máy chủ có thể mở rộng để quản lý hiệu quả mật độ và tương tác của người chơi, cho phép hỗ trợ hàng triệu người dùng mà không yêu cầu phần cứng quá mạnh hoặc đắt tiền.
+
+**Phân chia dựa trên Cell**
+
+Thế giới trò chơi được chia thành nhiều 'Cell', mỗi Cell có kích thước xấp xỉ một màn hình duy nhất. Sự phân chia này giúp quản lý vật lý và truyền dữ liệu của trò chơi một cách hiệu quả, giúp môi trường dễ quản lý hơn và ít gây áp lực lên tài nguyên máy chủ.
+
+**Quản lý State Server**
+
+Mỗi StateServer chịu trách nhiệm cho khoảng 100 Cell. Nó xử lý tất cả các phép tính vật lý và truyền dữ liệu cho người chơi trong các Cell này. Thiết lập này đảm bảo rằng mỗi máy chủ có thể quản lý tải của nó một cách hiệu quả mà không bị quá tải bởi quá nhiều người chơi hoặc quá nhiều dữ liệu.
+
+**Di chuyển người chơi giữa các Cell**
+
+Khi người chơi di chuyển từ Cell này sang Cell khác do StateServer khác quản lý, các máy chủ sẽ giao tiếp qua mạng cục bộ (LAN). Phương pháp này đảm bảo độ trễ không đáng kể trong các lần chuyển đổi như vậy, duy trì trải nghiệm liền mạch cho người chơi.
+
+**Cân bằng tải động**
+
+Hệ thống được thiết kế để theo dõi mật độ người chơi trong mỗi bộ 100 Cell. Nếu Cell của StateServer trở nên quá tải — cho thấy có nhiều người chơi tập trung — nó sẽ tự động khởi tạo StateServer mới. Máy chủ mới này sẽ tiếp quản một phần tải, chia 50-50 hoặc 60-40 dựa trên tình trạng sức khỏe và điều kiện tải của máy chủ hiện tại. Việc cân bằng tải động này rất quan trọng để duy trì hiệu suất tối ưu và khả năng phản hồi của máy chủ.
+
+**Mở rộng quy mô lên hàng triệu**
+
+Với kiến trúc này, việc mở rộng quy mô để xử lý hàng triệu người dùng trở nên khả thi. Một máy chủ duy nhất trong thiết lập này có thể quản lý khoảng 10.000 đến 30.000 người dùng trước khi đạt đến ngưỡng công suất. Ngoài ra, các máy chủ bổ sung có thể được tích hợp liền mạch, nhân lên tổng dung lượng của hệ thống trong khi vẫn duy trì hiệu suất.
+
+**Hiệu quả chi phí**
+
+Cách tiếp cận có thể mở rộng này làm giảm đáng kể nhu cầu đầu tư máy chủ cao cấp. Bằng cách sử dụng nhiều máy chủ có giá vừa phải, hệ thống có thể phân phối tải hiệu quả mà không có máy chủ nào trở thành nút cổ chai. Điều này không chỉ cải thiện khả năng mở rộng của trò chơi mà còn tối ưu hóa hiệu quả chi phí của cơ sở hạ tầng.

@@ -2,9 +2,9 @@
 type: 'project'
 projectType: 'self'
 tags: ['reactjs']
-title: 'Ứng dụng chat nặc danh mã hoá 2 đầu sử dụng NeoSocket. Người dùng có thể bắt đầu 1 đoạn chat mà không cần đăng nhập hay xác thực mà vẫn đảm bảo tính bảo mật.'
-date: '2023-02-01'
-summary: "Cypher."
+title: 'Cypher ChatApp'
+date: '2024-01-01'
+summary: "Một ứng dụng trò chuyện ẩn danh sử dụng NeoSocket để mã hóa đầu cuối. Người dùng có thể bắt đầu phiên trò chuyện mà không cần đăng nhập hay xác thực, đồng thời vẫn đảm bảo tính bảo mật."
 images: ['/static/images/project/cypher-demo.png']
 audioURL: '/static/media/project/cypher/cypher-vi.mp3'
 url: 'https://cypher.thangchiba.com'
@@ -41,10 +41,12 @@ import UnsplashPhotoInfo from './UnsplashPhotoInfo.tsx'
 - 📶**Kết nối :** Ping sẽ gửi mỗi 5 giây. Nếu nhận thấy mất kết nối sẽ tự động kết nối lại với server.
 - 🎡**Tiện ích :** Có thể nhúng vào trang web khác để làm chat room cộng đồng.
 
-### Công nghệ :
+## Technology Overview
 
-- **FE :** Sử dụng React-Typescript, Redux-Thunk. MUI css framework. NeoSocketSDK(TS)
-- **BE :** NeoSocket(Dotnet8)
-- **DB :** MongoDB
-- **Infra :** AWS serverless cho FE. GCP VMInstance để chạy backend và DB đã được đóng gói bởi docker.
-- CICD cho FE.
+| Category | Details |
+| --- | --- |
+| Frontend (FE) | React-Typescript, Redux-Thunk, MUI CSS framework, NeoSocketSDK(TS) |
+| Backend (BE) | NeoSocket (Dotnet8) |
+| Database (DB) | MongoDB |
+| Infrastructure | AWS serverless (FE), GCP VM Instance (BE, DB) packaged by Docker |
+| Deployment | Continuous Integration/Continuous Deployment (CICD) for FE on AWS |
