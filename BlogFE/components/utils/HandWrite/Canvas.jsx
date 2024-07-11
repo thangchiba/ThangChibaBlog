@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 
 const Canvas = ({ mainCanvasRef, hiddenCanvasRef, startDrawing, draw, stopDrawing }) => {

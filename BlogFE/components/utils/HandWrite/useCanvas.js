@@ -66,7 +66,7 @@ const useCanvas = (imageLabel) => {
     try {
       // const response = await fetch('http://192.168.1.104:55323/predict', {
       // const response = await fetch('http://192.168.1.74:8000/predict', {
-      const response = await fetch('https://api.thangchiba.com/handwrite/predict', {
+      const response = await fetch('https://api.thangchiba.com/handwrite/predict/digits', {
         method: 'POST',
         body: JSON.stringify({ image_data: base64Image }), // Gửi base64 string
         headers: { 'Content-Type': 'application/json' },
