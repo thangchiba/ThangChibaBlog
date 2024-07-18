@@ -32,12 +32,12 @@ export function BlogLinks() {
       {/*    {t('menu_snippets_2')}*/}
       {/*  </span>*/}
       {/*</Link>*/}
-      <Link href="/about" className="hover:underline">
-        <Twemoji emoji="face-with-monocle" />
-        <span data-umami-event="home-link-about" className="ml-1.5">
-          {t('menu_about_2')}
-        </span>
-      </Link>
+      {/*<Link href="/about" className="hover:underline">*/}
+      {/*  <Twemoji emoji="face-with-monocle" />*/}
+      {/*  <span data-umami-event="home-link-about" className="ml-1.5">*/}
+      {/*    {t('menu_about_2')}*/}
+      {/*  </span>*/}
+      {/*</Link>*/}
       <Link href="/resume" className="hover:underline">
         <Twemoji emoji="briefcase" />
         <span data-umami-event="home-link-resume" className="ml-1.5">
