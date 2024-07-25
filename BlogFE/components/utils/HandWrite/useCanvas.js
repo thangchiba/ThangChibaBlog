@@ -119,7 +119,7 @@ const useCanvas = (imageLabel) => {
     } catch (error) {
       console.error('Error saving image:', error)
     }
-  }, [imageLabel, clearCanvas])
+  }, [saveImageSize.width, saveImageSize.height, imageLabel, clearCanvas])
 
   return {
     mainCanvasRef,

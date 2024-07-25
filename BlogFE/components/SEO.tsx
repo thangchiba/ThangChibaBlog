@@ -49,7 +49,7 @@ export function BlogSeo(props: BlogSeoProps) {
   })
   const ogUrl = createUrl(siteMetadata.siteUrl, router.locale, router.asPath)
 
-  console.log({ featuredImages, ogUrl })
+  // console.log({ featuredImages, ogUrl })
 
   let authorList: AuthorSEO | AuthorSEO[] = []
   if (authorDetails) {

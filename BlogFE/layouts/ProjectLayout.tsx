@@ -4,17 +4,19 @@ import { Comments } from '~/components/comments'
 import { PageTitle } from '~/components/PageTitle'
 import { ScrollTopButton } from '~/components/ScrollTopButton'
 import { SectionContainer } from '~/components/SectionContainer'
-import { BlogSeo, PageSeo } from '~/components/SEO'
+import { BlogSeo } from '~/components/SEO'
 import type { ProjectLayoutProps } from '~/types/layout'
 import AudioPlayer from '~/components/media/AudioPlayer'
 import { SocialShareButtons } from '~/components/SocialShareButtons'
 import { siteMetadata } from '~/data/siteMetadata'
 import { useRouter } from 'next/router'
+import React from 'react'
+import MediaDisplay from '~/components/MediaDisplay'
 
 export function ProjectLayout(props: ProjectLayoutProps) {
   const router = useRouter()
   let { frontMatter, children, description, commentConfig, authorDetails } = props
-  let { date, title, slug, fileName, tags, readingTime, audioURL } = frontMatter
+  let { date, title, slug, fileName, tags, readingTime, audioURL, images, video } = frontMatter
   let postUrl = `${siteMetadata.siteUrl}/${router.locale}/project/${slug}`
 
   return (
@@ -33,6 +35,7 @@ export function ProjectLayout(props: ProjectLayoutProps) {
                   <BlogMeta date={date} slug={slug} readingTime={readingTime} showView={true} />
                 </div>
               </dl>
+              <MediaDisplay title={'Demo'} video={video} images={images} />
             </div>
           </header>
           <div className="pb-8" style={{ gridTemplateRows: 'auto 1fr' }}>
