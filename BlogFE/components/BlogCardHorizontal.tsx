@@ -1,28 +1,21 @@
 import { useTranslation } from 'next-i18next'
-import { Image } from './Image'
 import { Link } from './Link'
 import type { BlogFrontMatter } from '~/types/mdx'
 import { BlogMeta } from '~/components/blog/BlogMeta'
+import MediaDisplay from '~/components/MediaDisplay'
 
 type BlogCardProps = { frontMatter: BlogFrontMatter }
 
 export function BlogCardHorizontal({ frontMatter }: BlogCardProps) {
   const { t } = useTranslation('common')
-  const { title, summary, images, slug, tags, date, readingTime } = frontMatter
+  const { title, summary, images, slug, tags, date, readingTime, video } = frontMatter
   const defaultImage = '/static/images/dog-no-avaiable-banner.webp'
 
   return (
     <div className="md p-4 md:w-full ">
       <div className="flex h-full w-full overflow-hidden rounded-2xl border border-transparent shadow-nextjs dark:shadow-nextjs-dark">
         <div className="w-2/5">
-          <Image
-            alt={title}
-            src={(images && images[0]) || defaultImage}
-            className="rounded-2xl object-cover"
-            style={{ objectFit: 'cover', objectPosition: 'center' }}
-            width={1088}
-            height={300}
-          />
+          <MediaDisplay title={'Demo'} video={video} images={images} />
         </div>
         <div className="flex flex-col justify-between w-3/5 p-6">
           <Link href={`/blog/${slug}`} aria-label={`Link to ${title}`} className="flex-grow">

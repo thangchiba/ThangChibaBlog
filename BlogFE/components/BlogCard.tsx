@@ -1,25 +1,19 @@
 import { useTranslation } from 'next-i18next'
-import { Image } from './Image'
 import { Link } from './Link'
 import type { BlogFrontMatter } from '~/types/mdx'
 import { BlogMeta } from '~/components/blog/BlogMeta'
+import MediaDisplay from '~/components/MediaDisplay'
 
 type BlogCardProps = { frontMatter: BlogFrontMatter }
 
 export function BlogCard({ frontMatter }: BlogCardProps) {
   let { t } = useTranslation('common')
-  let { title, summary, images, slug, tags, date, readingTime } = frontMatter
+  let { title, summary, images, slug, tags, date, readingTime, video } = frontMatter
 
   return (
     <div className="md md:w-1/2 py-2" style={{ maxWidth: '544px' }}>
       <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-transparent shadow-nextjs dark:shadow-nextjs-dark">
-        <Image
-          alt={title}
-          src={images[0]}
-          className="object-cover object-center md:h-36 lg:h-60 rounded-2xl"
-          width={1088}
-          height={612}
-        />
+        <MediaDisplay title={'Demo'} video={video} images={images} />
         <div className="flex grow flex-col justify-between p-4 md:p-6">
           <Link href={`/blog/${slug}`} aria-label={`Link to ${title}`}>
             <div className="space-y-3 cursor-pointer">

@@ -10,11 +10,12 @@ import { siteMetadata } from '~/data/siteMetadata'
 import type { PostSimpleLayoutProps } from '~/types/layout'
 import AudioPlayer from '~/components/media/AudioPlayer'
 import { useRouter } from 'next/router'
+import MediaDisplay from '~/components/MediaDisplay'
 
 export function PostSimple(props: PostSimpleLayoutProps) {
   const router = useRouter()
   let { frontMatter, type, children, authorDetails, commentConfig } = props
-  let { date, title, slug, fileName, tags, readingTime, audioURL } = frontMatter
+  let { date, title, slug, fileName, tags, readingTime, audioURL, images, video } = frontMatter
   let postUrl = `${siteMetadata.siteUrl}/${router.locale}/${type}/${slug}`
 
   return (
@@ -33,6 +34,7 @@ export function PostSimple(props: PostSimpleLayoutProps) {
                   <BlogMeta date={date} slug={slug} readingTime={readingTime} showView={true} />
                 </div>
               </dl>
+              <MediaDisplay title={'Demo'} video={video} images={images} />
             </div>
           </header>
           <div className="pb-8" style={{ gridTemplateRows: 'auto 1fr' }}>
