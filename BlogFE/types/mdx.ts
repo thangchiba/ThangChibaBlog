@@ -53,6 +53,7 @@ export interface ProjectFrontMatter extends BlogFrontMatter {
   type: POST_TYPE
   projectType: PROJECT_TYPE
   images?: string[] | string
+  video?: string
   url?: string
   repo?: string
   fe?: string[]

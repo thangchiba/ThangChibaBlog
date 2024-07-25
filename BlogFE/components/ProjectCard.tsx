@@ -2,21 +2,32 @@ import { useTranslation } from 'next-i18next'
 import type { ProjectCardProps } from '~/types/components'
 import { Image } from './Image'
 import { Link } from './Link'
+import { DemoVideo } from '~/components/DemoVideo'
 
 export function ProjectCard({ project }: ProjectCardProps) {
   let { t } = useTranslation('common')
-  let { title, summary, images, url, slug, repo } = project
-
+  let { title, summary, images, video, url, slug, repo } = project
+  let demo = video || images[0]
   return (
     <div className="md p-4 md:w-1/2" style={{ maxWidth: '544px' }}>
       <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-transparent shadow-nextjs dark:shadow-nextjs-dark">
-        <Image
-          alt={title}
-          src={images[0]}
-          className="object-cover object-center md:h-36 lg:h-60 rounded-2xl"
-          width={1088}
-          height={612}
-        />{' '}
+        {video ? (
+          <DemoVideo
+            className="object-cover object-center md:h-36 lg:h-60 rounded-2xl"
+            width={1088}
+            height={612}
+            shouldOpenLightbox={true}
+            url={video}
+          />
+        ) : (
+          <Image
+            alt={title}
+            src={images[0]}
+            className="object-cover object-center md:h-36 lg:h-60 rounded-2xl"
+            width={1088}
+            height={612}
+          />
+        )}
         <div className="flex grow flex-col justify-between space-y-6 p-4 md:p-6">
           <Link href={`/project/${slug}`} aria-label={`Link to ${title}`}>
             <div className="space-y-3">
