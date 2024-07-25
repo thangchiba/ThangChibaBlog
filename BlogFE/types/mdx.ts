@@ -17,6 +17,7 @@ export type MdxFrontMatterCategory =
   | 'software'
   | 'life'
   | 'security'
+
 export interface MdxFrontMatter {
   layout?: MdxPageLayout
   title: string
@@ -26,7 +27,8 @@ export interface MdxFrontMatter {
   tags: string[]
   draft?: boolean
   summary: string
-  images?: string[] | string
+  images?: string[]
+  video?: string
   authors?: string[]
   slug: string
   category: MdxFrontMatterCategory
@@ -38,6 +40,7 @@ export enum POST_TYPE {
   BLOG = 'blog',
   PROJECT = 'project',
 }
+
 export enum PROJECT_TYPE {
   WORK = 'work',
   SELF = 'self',
@@ -52,8 +55,6 @@ export interface BlogFrontMatter extends MdxFrontMatter {
 export interface ProjectFrontMatter extends BlogFrontMatter {
   type: POST_TYPE
   projectType: PROJECT_TYPE
-  images?: string[] | string
-  video?: string
   url?: string
   repo?: string
   fe?: string[]

@@ -1,9 +1,6 @@
-import React, { useState } from 'react'
-import clsx from 'clsx'
-import { VideoLightbox } from './VideoLightbox'
+import React from 'react'
 
 interface VideoProps {
-  shouldOpenLightbox?: boolean
   url: string
 
   [key: string]: any // Allows for additional props
@@ -14,30 +11,12 @@ const getEmbedUrl = (url: string) => {
   return `https://www.youtube.com/embed/${videoId}`
 }
 
-export function DemoVideo({ shouldOpenLightbox = true, url, ...rest }: VideoProps) {
-  const [openLightbox, setOpenLightbox] = useState(false)
-
-  const handleOpenLightbox = () => {
-    if (!shouldOpenLightbox) return
-    document.documentElement.classList.add('lightbox-loading')
-    setOpenLightbox(true)
-  }
-
+export function DemoVideo({ url, ...rest }: VideoProps) {
   const embedUrl = getEmbedUrl(url)
-  const className = clsx(
-    'flex justify-center',
-    shouldOpenLightbox && 'cursor-zoom-in',
-    rest.className
-  )
 
   return (
     <>
-      <div
-        className={className}
-        onClick={handleOpenLightbox}
-        style={{ position: 'relative', width: '100%', paddingBottom: '56.25%' }}
-        {...rest}
-      >
+      <div style={{ position: 'relative', width: '100%', paddingBottom: '56.25%' }} {...rest}>
         <iframe
           src={embedUrl}
           title="YouTube video player"
@@ -47,9 +26,8 @@ export function DemoVideo({ shouldOpenLightbox = true, url, ...rest }: VideoProp
           style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
         ></iframe>
       </div>
-      {openLightbox && (
-        <VideoLightbox closeLightbox={() => setOpenLightbox(false)} url={embedUrl} />
-      )}
     </>
   )
 }
+
+export default DemoVideo
