@@ -26,7 +26,14 @@ const FilePreview: React.FC<FilePreviewProps> = ({ file, onRemove }) => {
 
   return (
     <div className="relative flex p-0 md:p-2 border rounded-lg items-center space-x-4 my-2">
-      <Image src={file.preview} alt={file.name} className="w-24 h-24 object-cover" />
+      <Image
+        src={file.preview}
+        alt={file.name}
+        width={96}
+        height={96}
+        className="w-24 h-24 object-cover"
+      />
+
       <div className="flex flex-col flex-grow py-1">
         <p className="text-md truncate font-semibold text-left">File Name: {file.name}</p>
         <p className="text-md text-left">Size: {formatSize(file.size)}</p>
