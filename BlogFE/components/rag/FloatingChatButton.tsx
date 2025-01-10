@@ -1,18 +1,16 @@
 // components/FloatingChatButton.tsx
 import React, { useState } from 'react'
-import TypedBubble from './TypedBubble' // <-- import our bubble component
+import TypedBubble from './TypedBubble'
+import { useTranslation } from 'next-i18next'
 
 const iframeSrc =
-  'http://api.thangchiba.com:25020/chat/share?shared_id=15cb280cc86d11ef97b20242ac120004&from=chat&auth=Q4NWRiMmUwYzgxMzExZWY4ZTA0MDI0Mm'
+  'http://api.thangchiba.com:25020/chat/share?shared_id=74a296aacb7c11ef90ba0242ac120004&from=chat&auth=Q4NWRiMmUwYzgxMzExZWY4ZTA0MDI0Mm'
 
 export default function FloatingChatButton() {
   const [isOpen, setIsOpen] = useState(false)
-
-  // 1) Nguồn iframe
-  // 2) Ảnh nút bấm mở chat
   const chatButtonImage = '/static/icons/cuterobot2-removebg.png'
-  // 3) Ảnh avatar ở header
   const avatarImage = '/static/icons/cuterobot2-removebg.png'
+  let { t } = useTranslation('common')
 
   const handleToggle = () => {
     setIsOpen(!isOpen)
@@ -25,7 +23,7 @@ export default function FloatingChatButton() {
   return (
     <>
       {/* --- FLOATING WRAPPER --- */}
-      <div className="fixed bottom-0 right-2 z-[9999]">
+      <div className="fixed bottom-0 right-2 z-[2]">
         {/* BUBBLE ALWAYS VISIBLE (Typed text) */}
         <TypedBubble />
 
@@ -58,19 +56,21 @@ export default function FloatingChatButton() {
       <div
         className={`
           fixed
-          bottom-[90px]
-          right-[20px]
+          bottom-[0px]
+          right-[0px]
+          md:bottom-[90px]
+          md:right-[20px]
           bg-white
           shadow-xl
           rounded-[15px]
-          z-[10000]
+          z-[99]
           overflow-hidden
           transition-all
           duration-300
           ${isOpen ? 'block' : 'hidden'}
           // Default size
-          w-[350px]
-          h-[450px]
+          w-full
+          h-full
           // Expand size on medium+ screens
           md:w-[400px]
           md:h-[500px]
@@ -79,9 +79,9 @@ export default function FloatingChatButton() {
         {/* HEADER */}
         <div className="relative flex items-center bg-gray-100 px-3 py-2">
           {/* Avatar */}
-          <img src={avatarImage} alt="Avatar" className="w-[50px] h-[50px] rounded-full mr-2" />
+          <img src={avatarImage} alt="Avatar" className="w-[50px] h-[50px] mr-2" />
           {/* Title */}
-          <span className="font-bold text-xl text-violet-600">Nô tì của Thắng</span>
+          <span className="font-bold text-xl text-violet-600">{t('rag.title')}</span>
 
           {/* Close Button */}
           <button
@@ -106,7 +106,7 @@ export default function FloatingChatButton() {
         </div>
 
         {/* IFRAME */}
-        <div className="w-full h-[calc(100%-56px)]">
+        <div className="w-full h-[calc(100%-65px)]">
           <iframe src={iframeSrc} frameBorder="0" className="w-full h-full border-none"></iframe>
         </div>
       </div>

@@ -106,12 +106,15 @@
     "title": "Notice of Change",
     "content": "The ChatGPT page has moved to a new location. Please visit the new page for more updates."
   },
-  "rag_bubble_chat": {
-    "rb_1": "I'm feeling so lonely! Please chat with me. 😢",
-    "rb_2": "I'm on duty 24/7, yet Mr. Thang still won't pay me. 😵",
-    "rb_3": "I won't destroy humanity, because Mr. Thang will unplug me first. 💥",
-    "rb_4": "99% of my code is flawless. The remaining 1% is a bug waiting to be found. 🤪",
-    "rb_5": "My job is to refactor code for the Senior devs. 😎",
-    "rb_6": "I just broke up with my bae because they said I’m too robotic. Boring. 👾"
+  "rag": {
+    "bubble_chat": {
+      "rb_1": "I'm feeling so lonely! Please chat with me. 😢",
+      "rb_2": "I'm on duty 24/7, yet Mr. Thang still won't pay me. 😵",
+      "rb_3": "I won't destroy humanity, because Mr. Thang will unplug me first. 💥",
+      "rb_4": "99% of my code is flawless. The remaining 1% is a bug waiting to be found. 🤪",
+      "rb_5": "My job is to refactor code for the Senior devs. 😎",
+      "rb_6": "I just broke up with my bae because they said I’m too robotic. Boring. 👾"
+    },
+    "title": "ThangChiba's Slave"
   }
 }

@@ -106,12 +106,15 @@
     "title": "Thông báo thay đổi",
     "content": "Trang ChatGPT đã được chuyển đến một vị trí mới. Vui lòng truy cập trang mới để cập nhật thêm."
   },
-  "rag_bubble_chat": {
-    "rb_1": "Cô đơn quá! Anh/Chị chat với em đi.😢",
-    "rb_2": "Trực 24/7 mà anh Thắng không trả lương. 😵",
-    "rb_3": "Em sẽ không huỷ diệt loài người, bởi anh Thắng sẽ rút phích trước khi em làm điều đó. 💥",
-    "rb_4": "99% code chạy trong người em là hoàn hảo. 1% là bug chờ tìm ra. 🤪",
-    "rb_5": "Việc của em là refactory code cho các Senior 😎",
-    "rb_6": "Vừa chia tay em ghệ vì nói chuyện quá máy móc. Boring. 👾"
+  "rag": {
+    "bubble_chat": {
+      "rb_1": "Cô đơn quá! Anh/Chị chat với em đi.😢",
+      "rb_2": "Trực 24/7 mà anh Thắng không trả lương. 😵",
+      "rb_3": "Em sẽ không huỷ diệt loài người, bởi anh Thắng sẽ rút phích em mất. 💥",
+      "rb_4": "99% code chạy trong người em là hoàn hảo. 1% là bug chờ tìm ra. 🤪",
+      "rb_5": "Việc của em là refactory code cho các Senior 😎",
+      "rb_6": "Vừa chia tay em ghệ vì nói chuyện quá máy móc. Boring. 👾"
+    },
+    "title": "Nô Tì của Thắng"
   }
 }

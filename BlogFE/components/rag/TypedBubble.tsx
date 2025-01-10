@@ -14,7 +14,7 @@ export default function TypedBubble() {
 
   const show_str = []
   for (let i = 1; i <= 6; i++) {
-    const key = `rag_bubble_chat.rb_${i}`
+    const key = `rag.bubble_chat.rb_${i}`
     show_str.push(t(key))
   }
 
@@ -23,7 +23,7 @@ export default function TypedBubble() {
       const typedInstance = new Typed(typedRef.current, {
         strings: show_str,
         typeSpeed: 35,
-        backSpeed: 20,
+        backSpeed: 15,
         loop: true,
         backDelay: 2500,
       })
