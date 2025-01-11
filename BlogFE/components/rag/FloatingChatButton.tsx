@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import TypedBubble from './TypedBubble'
 import { useTranslation } from 'next-i18next'
+import Image from 'next/image'
 
 const iframeSrc =
   'http://api.thangchiba.com:25020/chat/share?shared_id=74a296aacb7c11ef90ba0242ac120004&from=chat&auth=Q4NWRiMmUwYzgxMzExZWY4ZTA0MDI0Mm'
@@ -41,7 +42,7 @@ export default function FloatingChatButton() {
             scale-x-[-1]
           "
         >
-          <img
+          <Image
             src={chatButtonImage}
             alt="Chat Button"
             className="
@@ -79,7 +80,7 @@ export default function FloatingChatButton() {
         {/* HEADER */}
         <div className="relative flex items-center bg-gray-100 px-3 py-2">
           {/* Avatar */}
-          <img src={avatarImage} alt="Avatar" className="w-[50px] h-[50px] mr-2" />
+          <Image src={avatarImage} alt="Avatar" className="w-[50px] h-[50px] mr-2" />
           {/* Title */}
           <span className="font-bold text-xl text-violet-600">{t('rag.title')}</span>
 
@@ -107,7 +108,12 @@ export default function FloatingChatButton() {
 
         {/* IFRAME */}
         <div className="w-full h-[calc(100%-65px)]">
-          <iframe src={iframeSrc} frameBorder="0" className="w-full h-full border-none"></iframe>
+          <iframe
+            title="RAGChatBot"
+            src={iframeSrc}
+            frameBorder="0"
+            className="w-full h-full border-none"
+          ></iframe>
         </div>
       </div>
     </>

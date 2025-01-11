@@ -1,4 +1,3 @@
-// components/TypedBubble.tsx
 import React, { useEffect, useRef } from 'react'
 import Typed from 'typed.js'
 import { useLocale } from '~/hooks/useLocale'
@@ -6,22 +5,15 @@ import { useTranslation } from 'next-i18next'
 
 export default function TypedBubble() {
   const typedRef = useRef<HTMLSpanElement>(null)
+  const [locale] = useLocale() // Keeping this if locale usage is planned in future
+  const { t } = useTranslation('common')
 
-  let el = useRef(null)
-  let typed = useRef(null)
-  let [locale] = useLocale()
-  let { t } = useTranslation('common')
-
-  const show_str = []
-  for (let i = 1; i <= 6; i++) {
-    const key = `rag.bubble_chat.rb_${i}`
-    show_str.push(t(key))
-  }
+  const showStrings = Array.from({ length: 6 }, (_, i) => t(`rag.bubble_chat.rb_${i + 1}`))
 
   useEffect(() => {
     if (typedRef.current) {
       const typedInstance = new Typed(typedRef.current, {
-        strings: show_str,
+        strings: showStrings,
         typeSpeed: 35,
         backSpeed: 15,
         loop: true,
@@ -32,7 +24,7 @@ export default function TypedBubble() {
         typedInstance.destroy()
       }
     }
-  }, [t])
+  }, [showStrings])
 
   return (
     <div
