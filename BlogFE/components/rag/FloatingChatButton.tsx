@@ -5,7 +5,7 @@ import { useTranslation } from 'next-i18next'
 import Image from 'next/image'
 
 const iframeSrc =
-  'https://api.thangchiba.com/chat/share?shared_id=bc1e2c54cb6a11ef8a120242ac120004&from=chat&auth=Q4NWRiMmUwYzgxMzExZWY4ZTA0MDI0Mm'
+  'https://api.thangchiba.com/chat/share?shared_id=74a296aacb7c11ef90ba0242ac120004&from=chat&auth=Q4NWRiMmUwYzgxMzExZWY4ZTA0MDI0Mm'
 
 export default function FloatingChatButton() {
   const [isOpen, setIsOpen] = useState(false)
