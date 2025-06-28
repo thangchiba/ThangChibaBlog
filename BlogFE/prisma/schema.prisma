@@ -15,3 +15,14 @@ model views {
   slug  String @unique // Ensure `slug` is unique across documents
   count Int    @default(1) // Use `Int` for MongoDB instead of `BigInt`
 }
+
+model Webhook {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  method    String
+  headers   String   // JSON string of headers
+  body      String   // JSON string of body
+  source    String?  // Source of the webhook (e.g., "github", "stripe", etc.)
+  timestamp DateTime @default(now())
+  ip        String?
+  userAgent String?
+}

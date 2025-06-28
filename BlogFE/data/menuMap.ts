@@ -5,6 +5,7 @@ import MorseTranslator from '~/components/utils/MorseTranslator'
 import UploadFile from '~/components/utils/UploadFile'
 import HandwritingCanvas from '~/components/utils/HandwritingCanvas'
 import HandWriteRecognition from '~/components/utils/HandWrite/HandWriteRecognition'
+import WebhookMonitor from '~/components/utils/WebhookMonitor'
 
 interface ComponentEntry {
   name: string
@@ -41,6 +42,11 @@ const menuMap: MenuMap = {
     name: 'Hand Write',
     component: HandWriteRecognition,
     emoji: 'handwrite',
+  },
+  'webhook-monitor': {
+    name: 'Webhook Monitor',
+    component: WebhookMonitor,
+    emoji: 'hook',
   },
 }
 

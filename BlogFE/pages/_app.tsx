@@ -19,7 +19,7 @@ function App({ Component, pageProps }) {
       <Analytics />
       <LayoutWrapper>
         <Component {...pageProps} />
-        <FloatingChatButton />
+        {/* <FloatingChatButton /> */}
       </LayoutWrapper>
     </ThemeProvider>
   )
