@@ -17,12 +17,31 @@ model views {
 }
 
 model Webhook {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  method    String
-  headers   String   // JSON string of headers
-  body      String   // JSON string of body
-  source    String?  // Source of the webhook (e.g., "github", "stripe", etc.)
-  timestamp DateTime @default(now())
-  ip        String?
-  userAgent String?
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  method          String
+  headers         String   // JSON string of headers
+  body            String   // JSON string of body
+  source          String?  // Source of the webhook
+  eventType       String?  // Specific event type (e.g., "meeting.created", "user.created")
+  timestamp       DateTime @default(now())
+  ip              String?
+  userAgent       String?
+  
+  // Webhook delivery tracking
+  deliveryStatus  String   @default("received") // received, processing, delivered, failed
+  retryCount      Int      @default(0)
+  lastRetryAt     DateTime?
+  deliveredAt     DateTime?
+  failedAt        DateTime?
+  failureReason   String?
+  
+  // Security & verification
+  signature       String?  // Webhook signature for verification
+  signatureValid  Boolean? // Whether signature verification passed
+  verifiedAt      DateTime?
+  
+  // Additional metadata
+  processingTime  Int?     // Time taken to process in milliseconds
+  responseCode    Int?     // HTTP response code if webhook was forwarded
+  responseBody    String?  // Response body if webhook was forwarded
 }
