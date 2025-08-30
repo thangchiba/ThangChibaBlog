@@ -97,12 +97,12 @@ const HandwritingCanvas: React.FC = () => {
             onTouchStart={startDrawing}
             onTouchMove={draw}
             onTouchEnd={stopDrawing}
-            style={{ 
+            style={{
               touchAction: 'none',
               userSelect: 'none',
               WebkitUserSelect: 'none',
               MozUserSelect: 'none',
-              msUserSelect: 'none'
+              msUserSelect: 'none',
             }}
           />
           <canvas

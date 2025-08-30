@@ -63,7 +63,7 @@ const useCanvas = (imageLabel, selectedModel) => {
 
     // Use API route proxy to avoid mixed content issues
     const endpoint = `/api/predict/${selectedModel || 'digits'}`
-    
+
     console.log(base64Image)
     try {
       const response = await fetch(endpoint, {
