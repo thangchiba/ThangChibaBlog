@@ -41,6 +41,13 @@ const PredictCanvas = () => {
             <span className="flex-1">{result?.predictResult || '...'}</span>
             {result?.confidence !== null && result?.confidence !== undefined && (
               <span
+                style={{
+                  touchAction: 'none',
+                  userSelect: 'none',
+                  WebkitUserSelect: 'none',
+                  MozUserSelect: 'none',
+                  msUserSelect: 'none',
+                }}
                 className={`text-sm font-semibold px-2 py-1 rounded ml-auto ${
                   result.confidence > 0.8
                     ? 'bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-100'

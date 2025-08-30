@@ -61,11 +61,10 @@ const useCanvas = (imageLabel, selectedModel) => {
 
     const base64Image = dataURL.split(',')[1]
 
-    // const baseEndpoint = 'https://cloud.thangchiba.com/handwrite/predict/'
-    const baseEndpoint = 'http://192.168.1.5:8000/predict/'
+    // Use API route proxy to avoid mixed content issues
+    const endpoint = `/api/predict/${selectedModel || 'digits'}`
+    
     console.log(base64Image)
-    // const endpoint = 'http://34.85.21.80:8000/predict/digits';
-    const endpoint = selectedModel ? `${baseEndpoint}${selectedModel}` : `${baseEndpoint}digits`
     try {
       const response = await fetch(endpoint, {
         method: 'POST',

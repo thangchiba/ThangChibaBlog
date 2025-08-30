@@ -19,7 +19,13 @@ const Canvas = ({ mainCanvasRef, hiddenCanvasRef, startDrawing, draw, stopDrawin
         onTouchMove={draw}
         onTouchEnd={stopDrawing}
         onTouchCancel={stopDrawing}
-        style={{ touchAction: 'none' }}
+        style={{ 
+          touchAction: 'none',
+          userSelect: 'none',
+          WebkitUserSelect: 'none',
+          MozUserSelect: 'none',
+          msUserSelect: 'none'
+        }}
         className="border rounded-md mb-4"
       />
       <canvas ref={hiddenCanvasRef} {...saveImageSize} style={{ display: 'none' }} />
