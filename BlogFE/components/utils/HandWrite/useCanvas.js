@@ -10,7 +10,7 @@ const useCanvas = (imageLabel, selectedModel) => {
   // Drawing State (refs instead of state)
   const drawingRef = useRef(false)
   const positionRef = useRef({ x: 0, y: 0 })
-  const [result, setResult] = useState('')
+  const [result, setResult] = useState({ predictResult: '', confidence: null })
 
   useEffect(() => {
     const ctx = mainCanvasRef.current.getContext('2d')
@@ -61,7 +61,8 @@ const useCanvas = (imageLabel, selectedModel) => {
 
     const base64Image = dataURL.split(',')[1]
 
-    const baseEndpoint = 'https://cloud.thangchiba.com/handwrite/predict/'
+    // const baseEndpoint = 'https://cloud.thangchiba.com/handwrite/predict/'
+    const baseEndpoint = 'http://192.168.1.5:8000/predict/'
     console.log(base64Image)
     // const endpoint = 'http://34.85.21.80:8000/predict/digits';
     const endpoint = selectedModel ? `${baseEndpoint}${selectedModel}` : `${baseEndpoint}digits`
@@ -75,7 +76,15 @@ const useCanvas = (imageLabel, selectedModel) => {
       if (response.ok) {
         const result = await response.json() // Lấy kết quả dự đoán từ server
         console.log('Prediction result:', result)
-        setResult(result?.predictResult)
+        setResult({
+          predictResult: result?.predictResult || '',
+          confidence:
+            result?.confidence !== undefined
+              ? result.confidence
+              : result?.confident !== undefined
+              ? result.confident
+              : null,
+        })
         // Xử lý kết quả dự đoán ở đây (ví dụ: hiển thị lên giao diện)
       } else {
         console.error('Error predicting image:', response.statusText)
@@ -96,7 +105,7 @@ const useCanvas = (imageLabel, selectedModel) => {
     ctx.fillStyle = 'white'
     ctx.fillRect(0, 0, mainCanvasSize.width, mainCanvasSize.height)
     hiddenCtx.clearRect(0, 0, saveImageSize.width, saveImageSize.height)
-    setResult('')
+    setResult({ predictResult: '', confidence: null })
   }, [mainCanvasSize.width, mainCanvasSize.height, saveImageSize.width, saveImageSize.height])
 
   const sendToSave = useCallback(async () => {
