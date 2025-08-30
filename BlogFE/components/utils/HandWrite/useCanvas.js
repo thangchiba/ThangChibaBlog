@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 
-const useCanvas = (imageLabel) => {
+const useCanvas = (imageLabel, selectedModel) => {
   const mainCanvasRef = useRef(null)
   const hiddenCanvasRef = useRef(null)
   const mainCanvasSize = { width: 512, height: 128 }
@@ -63,7 +63,7 @@ const useCanvas = (imageLabel) => {
 
     console.log(base64Image)
     // const endpoint = 'http://34.85.21.80:8000/predict/digits';
-    const endpoint = 'https://cloud.thangchiba.com/handwrite/predict/digits'
+    const endpoint = selectedModel ? `https://cloud.thangchiba.com/handwrite/predict/${selectedModel}` : 'https://cloud.thangchiba.com/handwrite/predict/digits'
     try {
       const response = await fetch(endpoint, {
         method: 'POST',
@@ -82,7 +82,7 @@ const useCanvas = (imageLabel) => {
     } catch (error) {
       console.error('Error predicting image:', error)
     }
-  }, [saveImageSize.width, saveImageSize.height])
+  }, [saveImageSize.width, saveImageSize.height, selectedModel])
   const stopDrawing = useCallback(() => {
     drawingRef.current = false
     sendPredict()
@@ -95,6 +95,7 @@ const useCanvas = (imageLabel) => {
     ctx.fillStyle = 'white'
     ctx.fillRect(0, 0, mainCanvasSize.width, mainCanvasSize.height)
     hiddenCtx.clearRect(0, 0, saveImageSize.width, saveImageSize.height)
+    setResult('')
   }, [mainCanvasSize.width, mainCanvasSize.height, saveImageSize.width, saveImageSize.height])
 
   const sendToSave = useCallback(async () => {
