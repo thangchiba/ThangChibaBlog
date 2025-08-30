@@ -62,8 +62,10 @@ const useCanvas = (imageLabel) => {
     const base64Image = dataURL.split(',')[1]
 
     console.log(base64Image)
+    // const endpoint = 'http://34.85.21.80:8000/predict/digits';
+    const endpoint = 'https://cloud.thangchiba.com/handwrite/predict/digits'
     try {
-      const response = await fetch('http://34.85.21.80:8000/predict/digits', {
+      const response = await fetch(endpoint, {
         method: 'POST',
         body: JSON.stringify({ imageData: base64Image }), // Gửi base64 string
         headers: { 'Content-Type': 'application/json' },
