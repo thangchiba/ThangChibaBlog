@@ -2,8 +2,8 @@
 import React from 'react'
 
 const Canvas = ({ mainCanvasRef, hiddenCanvasRef, startDrawing, draw, stopDrawing }) => {
-  const mainCanvasSize = { width: 512, height: 112 }
-  const saveImageSize = { width: 128, height: 28 }
+  const mainCanvasSize = { width: 512, height: 128 }
+  const saveImageSize = { width: 128, height: 32 }
 
   return (
     <>

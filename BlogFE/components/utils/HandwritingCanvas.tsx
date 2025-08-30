@@ -89,7 +89,7 @@ const HandwritingCanvas: React.FC = () => {
           <canvas
             ref={canvasRef}
             width={512} /* Increased canvas size */
-            height={112}
+            height={128}
             className="border bg-white border-red cursor-crosshair"
             onMouseDown={startDrawing}
             onMouseMove={draw}
@@ -101,7 +101,7 @@ const HandwritingCanvas: React.FC = () => {
           />
           <canvas
             width={128}
-            height={28}
+            height={32}
             className="absolute top-0 left-0 pointer-events-none" /* Position on top of main canvas */
           />
         </div>

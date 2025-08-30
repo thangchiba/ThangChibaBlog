@@ -3,8 +3,8 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 const useCanvas = (imageLabel) => {
   const mainCanvasRef = useRef(null)
   const hiddenCanvasRef = useRef(null)
-  const mainCanvasSize = { width: 512, height: 112 }
-  const saveImageSize = { width: 128, height: 28 }
+  const mainCanvasSize = { width: 512, height: 128 }
+  const saveImageSize = { width: 128, height: 32 }
 
   console.log('Reload')
   // Drawing State (refs instead of state)
@@ -17,7 +17,7 @@ const useCanvas = (imageLabel) => {
     ctx.fillStyle = 'white'
     ctx.fillRect(0, 0, mainCanvasSize.width, mainCanvasSize.height)
     ctx.strokeStyle = 'black'
-    ctx.lineWidth = 6
+    ctx.lineWidth = 4
   }, [mainCanvasSize.width, mainCanvasSize.height])
 
   const getCoordinates = useCallback((event) => {
@@ -59,23 +59,20 @@ const useCanvas = (imageLabel) => {
     hiddenCtx.drawImage(mainCanvasRef.current, 0, 0, saveImageSize.width, saveImageSize.height)
     const dataURL = hiddenCanvasRef.current.toDataURL('image/png')
 
-    // Loại bỏ phần đầu "data:image/png;base64," để chỉ còn lại base64 string
     const base64Image = dataURL.split(',')[1]
 
     console.log(base64Image)
     try {
-      // const response = await fetch('http://192.168.1.104:55323/predict', {
-      // const response = await fetch('http://192.168.1.74:8000/predict', {
-      const response = await fetch('https://api.thangchiba.com/handwrite/predict/digits', {
+      const response = await fetch('http://34.85.21.80:8000/predict/digits', {
         method: 'POST',
-        body: JSON.stringify({ image_data: base64Image }), // Gửi base64 string
+        body: JSON.stringify({ imageData: base64Image }), // Gửi base64 string
         headers: { 'Content-Type': 'application/json' },
       })
 
       if (response.ok) {
         const result = await response.json() // Lấy kết quả dự đoán từ server
         console.log('Prediction result:', result)
-        setResult(result?.predicted_text)
+        setResult(result?.predictResult)
         // Xử lý kết quả dự đoán ở đây (ví dụ: hiển thị lên giao diện)
       } else {
         console.error('Error predicting image:', response.statusText)
