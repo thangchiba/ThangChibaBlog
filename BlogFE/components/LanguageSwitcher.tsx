@@ -7,6 +7,8 @@ import { Popover, PopoverClose, PopoverContent, PopoverTrigger } from './ui/Popo
 export function LanguageSwitcher() {
   let [locale, localeCodes, updateLocale] = useLocale()
 
+  if (!locale) return null
+
   return (
     <Popover>
       <PopoverTrigger className="p-1.5 hover:bg-gray-200 dark:hover:bg-gray-700 rounded cursor-pointer animate-wiggle">
@@ -28,7 +30,7 @@ export function LanguageSwitcher() {
                 onClick={() => updateLocale(code)}
                 className={clsx(
                   'inline-flex w-full font-normal items-center gap-3 px-2 py-1 rounded w-fdivl text-left hover:bg-gray-100 dark:hover:bg-gray-700',
-                  code === locale.code && 'text-primary-500 dark:text-primary-400'
+                  code === locale?.code && 'text-primary-500 dark:text-primary-400'
                 )}
               >
                 <Image
