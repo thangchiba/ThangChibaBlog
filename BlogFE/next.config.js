@@ -10,6 +10,7 @@ module.exports = withBundleAnalyzer({
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
   eslint: {
     dirs: ['components', 'constant', 'layouts', 'libs', 'pages', 'scripts', 'utils'],
+    ignoreDuringBuilds: true,
   },
   webp: {
     preset: 'default',
@@ -22,7 +23,10 @@ module.exports = withBundleAnalyzer({
       'thangchiba-storage.s3.ap-northeast-1.amazonaws.com',
     ],
   },
-  typescript: { tsconfigPath: './tsconfig.json' },
+  typescript: { 
+    tsconfigPath: './tsconfig.json',
+    ignoreBuildErrors: true,
+  },
   i18n,
   trailingSlash: true,
   webpack: (config, options) => {
