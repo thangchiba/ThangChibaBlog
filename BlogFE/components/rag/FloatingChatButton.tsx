@@ -4,8 +4,7 @@ import TypedBubble from './TypedBubble'
 import { useTranslation } from 'next-i18next'
 import Image from 'next/image'
 
-const iframeSrc =
-  'https://api.thangchiba.com/chat/share?shared_id=74a296aacb7c11ef90ba0242ac120004&from=chat&auth=Q4NWRiMmUwYzgxMzExZWY4ZTA0MDI0Mm'
+const iframeSrc = 'https://app.bakabot.fun/chat?id=agent_1ff99f7b'
 
 export default function FloatingChatButton() {
   const [isOpen, setIsOpen] = useState(false)

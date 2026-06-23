@@ -73,8 +73,9 @@ const useCanvas = (imageLabel, selectedModel) => {
       })
 
       if (response.ok) {
-        const result = await response.json() // Lấy kết quả dự đoán từ server
-        console.log('Prediction result:', result)
+        const jsonResponse = await response.json() // Lấy kết quả dự đoán từ server
+        console.log('Prediction result:', jsonResponse)
+        const result = jsonResponse.results
         setResult({
           predictResult: result?.predictResult || '',
           confidence:

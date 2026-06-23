@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Canvas from './Canvas'
 import useCanvas from './useCanvas'
 
@@ -14,6 +14,34 @@ const PredictCanvas = () => {
 
   const { mainCanvasRef, hiddenCanvasRef, clearCanvas, startDrawing, draw, stopDrawing, result } =
     useCanvas(imageLabel, selectedModel)
+
+  useEffect(() => {
+    // Disable text selection on the entire page
+    const originalStyle = document.body.style.cssText
+    document.body.style.userSelect = 'none'
+    document.body.style.webkitUserSelect = 'none'
+    document.body.style.mozUserSelect = 'none'
+    document.body.style.msUserSelect = 'none'
+    
+    // Also prevent text selection on all elements
+    const style = document.createElement('style')
+    style.textContent = `
+      * {
+        -webkit-user-select: none !important;
+        -moz-user-select: none !important;
+        -ms-user-select: none !important;
+        user-select: none !important;
+      }
+    `
+    document.head.appendChild(style)
+
+    // Cleanup function to restore original state
+    return () => {
+      document.body.style.cssText = originalStyle
+      document.head.removeChild(style)
+    }
+  }, [])
+
   return (
     <div className="flex items-center w-screen">
       <form className="border rounded-md p-4 shadow-md">
@@ -73,6 +101,13 @@ const PredictCanvas = () => {
             type="button"
             onClick={clearCanvas}
             className="mt-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 w-36 rounded"
+            style={{
+              touchAction: 'none',
+              userSelect: 'none',
+              WebkitUserSelect: 'none',
+              MozUserSelect: 'none',
+              msUserSelect: 'none',
+            }}
           >
             Clear
           </button>
