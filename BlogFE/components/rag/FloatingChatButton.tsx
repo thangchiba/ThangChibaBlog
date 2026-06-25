@@ -1,7 +1,6 @@
 // components/FloatingChatButton.tsx
 import React, { useState } from 'react'
 import TypedBubble from './TypedBubble'
-import { useTranslation } from 'next-i18next'
 import Image from 'next/image'
 
 const iframeSrc = 'https://app.bakabot.fun/chat?id=agent_1ff99f7b'
@@ -9,8 +8,6 @@ const iframeSrc = 'https://app.bakabot.fun/chat?id=agent_1ff99f7b'
 export default function FloatingChatButton() {
   const [isOpen, setIsOpen] = useState(false)
   const chatButtonImage = '/static/icons/cuterobot2-removebg.png'
-  const avatarImage = '/static/icons/cuterobot2-removebg.png'
-  let { t } = useTranslation('common')
 
   const handleToggle = () => {
     setIsOpen(!isOpen)
@@ -24,8 +21,8 @@ export default function FloatingChatButton() {
     <>
       {/* --- FLOATING WRAPPER --- */}
       <div className="fixed bottom-0 right-2 z-[2]">
-        {/* BUBBLE ALWAYS VISIBLE (Typed text) */}
-        <TypedBubble />
+        {/* BUBBLE (Typed text) — hidden while chat is open */}
+        {!isOpen && <TypedBubble />}
 
         {/* FLOATING BUTTON */}
         <button
@@ -76,37 +73,8 @@ export default function FloatingChatButton() {
           md:h-[500px]
         `}
       >
-        {/* HEADER */}
-        <div className="relative flex items-center bg-gray-100 px-3 py-2">
-          {/* Avatar */}
-          <Image src={avatarImage} alt="Avatar" className="w-[50px] h-[50px] mr-2" />
-          {/* Title */}
-          <span className="font-bold text-xl text-violet-600">{t('rag.title')}</span>
-
-          {/* Close Button */}
-          <button
-            onClick={handleClose}
-            className="
-              absolute
-              top-1/2
-              right-4
-              -translate-y-1/2
-              w-[30px]
-              h-[30px]
-              rounded-full
-              bg-red-500
-              text-white
-              font-bold
-              border-none
-              cursor-pointer
-            "
-          >
-            X
-          </button>
-        </div>
-
         {/* IFRAME */}
-        <div className="w-full h-[calc(100%-65px)]">
+        <div className="w-full h-full">
           <iframe
             title="RAGChatBot"
             src={iframeSrc}
@@ -115,6 +83,34 @@ export default function FloatingChatButton() {
           ></iframe>
         </div>
       </div>
+
+      {/* CLOSE BUTTON — floats near the bot's head, above the chat window */}
+      {isOpen && (
+        <button
+          onClick={handleClose}
+          aria-label="Close chat"
+          className="
+            fixed
+            bottom-[78px]
+            right-3
+            z-[100]
+            flex
+            items-center
+            justify-center
+            w-[36px]
+            h-[36px]
+            rounded-full
+            bg-red-500
+            text-white
+            font-bold
+            border-none
+            cursor-pointer
+            shadow-lg
+          "
+        >
+          X
+        </button>
+      )}
     </>
   )
 }
