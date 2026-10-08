@@ -1,85 +1,86 @@
 {
   "site_meta_data": {
-    "title": "ThangChiba's blog - ThangChiba's journey",
+    "title": "ThangChiba's blog",
     "author": "ThangChiba",
     "full_name": "Hoang Van Thang",
-    "header_title": "ThangChiba's blog - ThangChiba's journey",
-    "footer_title": "ThangChiba's blog - ThangChiba's journey",
-    "description": "I write about web and game development, system architecture, and sometime about my personal life.",
+    "header_title": "ThangChiba's blog",
+    "footer_title": "ThangChiba's blog",
+    "description": "Notes from building web apps, games, AI tools, and infrastructure, with the occasional story about life in Japan.",
     "language": "en"
   },
-  "happy_reading": "Thanks for visit!",
+  "happy_reading": "Thanks for stopping by!",
   "menu_blog": "Blog",
   "menu_snippets": "Snippets",
-  "menu_project": "Project",
-  "menu_utils": "Utils",
+  "menu_project": "Projects",
+  "menu_utils": "Tools",
   "menu_about": "About",
   "menu_resume": "Resume",
   "greeting_message": "Hi, I'm Thang",
-  "introduction": "I'm come from VietNam",
-  "introduction_2": "I'm Software Engineer working at Tokyo, Japan",
+  "introduction": "I'm from Vietnam.",
+  "introduction_2": "I'm a software engineer working in Japan.",
   "name": "Hoang Van Thang",
-  "description": "Software Engineer working at Japan",
+  "description": "Software engineer in Japan",
   "location": "Chiba, Japan",
-  "bio_1": "I am a technology enthusiast.",
-  "bio_2": "I am interested in gaming and Metaverse.",
-  "bio_3": "I am living in Chiba Japan.",
-  "bio_4": "I'm come from VietNam",
-  "bio_5": "My favorite programming language is C#.",
-  "bio_6": "I working in DX team at a Japanese company.",
-  "bio_7": "I'm focusing on performance and UX.",
-  "bio_8": "I like learn trending technology.",
-  "bio_9": "I'm a father",
-  "bio_i_love": "I love programming. I can do it all day.",
-  "bio_i_want": "I enjoy challenging myself to create software and games with high difficulty levels.",
-  "bio_i_will": "My goal is to create a Metaverse world of my own design.",
-  "bio_i_share": "I write this blog to share the experiences and journey I've undertaken to reach my goal.",
+  "bio_1": "I enjoy exploring new technology.",
+  "bio_2": "I'm interested in games and shared virtual worlds.",
+  "bio_3": "I live in Chiba, Japan.",
+  "bio_4": "I'm from Vietnam.",
+  "bio_5": "C# is my favorite programming language.",
+  "bio_6": "I build business apps, AI tools, and AWS infrastructure.",
+  "bio_7": "I care about performance and UX.",
+  "bio_8": "I learn best by building something.",
+  "bio_9": "I'm also a dad.",
+  "bio_i_love": "I can lose track of time when coding.",
+  "bio_i_want": "I like projects that give me something new to figure out.",
+  "bio_i_will": "One day, I would like to build my own shared virtual world.",
+  "bio_i_share": "This blog records what I try and what I learn along the way.",
   "menu_blog_2": "My blog",
-  "menu_snippets_2": "My snippets collection",
-  "menu_project_2": "The project I create",
-  "menu_utils_2": "The useful tools I create",
+  "menu_snippets_2": "Code notes",
+  "menu_project_2": "Projects I have worked on",
+  "menu_utils_2": "Small tools I have built",
   "menu_about_2": "More about me",
-  "menu_resume_2": "My career",
-  "analytics": "Traffic & engagement of this site",
+  "menu_resume_2": "Experience and skills",
+  "analytics": "Site traffic and engagement",
   "avatar_description": "avatar",
   "name_position": "Hoang Van Thang",
-  "description_position": "Software Engineer | GameDev Hobbies",
-  "lost_message": "Hmm.. it seems that you're lost",
-  "return_message": "But don't worry, you can find plenty of other things on my homepage.",
+  "description_position": "Software Engineer · Hobby Game Developer",
+  "lost_message": "This page could not be found.",
+  "return_message": "Head back to the homepage to find articles and projects.",
   "back_button": "Back to homepage",
   "blog": {
     "all_posts_title": "All Posts",
-    "intro": "I write about web and game development, system architecture, and sometime about my personal life. \n Use the search below to filter by title.",
+    "intro": "Notes on web apps, games, AI, infrastructure, and life in Japan. Search below to find an article.",
     "no_posts": "No posts found.",
     "search_posts": "Search posts",
     "published_on": "Published on",
     "under_construction": "Under construction",
-    "reading_time": "{{time}} mins read",
+    "reading_time": "{{time}} min read",
     "mins": "mins",
     "views": "views"
   },
   "about_description": "More about me and this blog",
-  "resume_description": "My professional career, experiences, and skills.",
+  "resume_description": "My project experience, technical skills, and education.",
   "year": "year",
   "month": "month",
   "day": "day",
   "build_with": {
-    "built_with": "Build with",
+    "built_with": "Built with",
     "view_source": "View source",
     "copyright_author": "Hoang Van Thang / ThangChiba"
   },
   "project": {
-    "project_description": "List of project I have worked on and am currently working on.",
-    "project_title": "Project",
+    "project_description": "Personal experiments and projects I have contributed to at work.",
+    "project_title": "Projects",
     "work_title": "Work",
-    "side_title": "Side project",
-    "learn_more": "More detail",
-    "live_page": "Live",
-    "built_with": "Built with"
+    "side_title": "Personal",
+    "learn_more": "Read more",
+    "live_page": "Open app",
+    "built_with": "Built with",
+    "under_construction": "This project page is being prepared."
   },
   "utils": {
-    "utils_description": "List utilities tools i created to support my work",
-    "utils_title": "Utils"
+    "utils_description": "Small tools I have built for everyday tasks.",
+    "utils_title": "Tools"
   },
   "pagination": {
     "previous": "Previous",
@@ -90,31 +91,36 @@
     "no_tags_found": "No tags found."
   },
   "fb_messenger": {
-    "logged_in_greeting": "This is a private chat with me, please leave your message",
-    "logged_out_greeting": "Hi. How are you today?"
+    "logged_in_greeting": "Leave me a message here.",
+    "logged_out_greeting": "Hi! Feel free to leave a message."
   },
   "social_account": {
-    "contact_text": "Get in touch with me via my social media accounts:"
+    "contact_text": "You can also find me here:"
   },
   "modals": {
     "redirect": {
-      "ok": "Go to New Page",
-      "no": "Stay Here"
+      "ok": "Open new page",
+      "no": "Stay here"
     }
   },
   "chatgpt_redirect": {
-    "title": "Notice of Change",
-    "content": "The ChatGPT page has moved to a new location. Please visit the new page for more updates."
+    "title": "The chat page has moved",
+    "content": "Open the new page to continue using the chat."
   },
   "rag": {
     "bubble_chat": {
-      "rb_1": "I'm feeling so lonely! Please chat with me. 😢",
-      "rb_2": "I'm on duty 24/7, yet Mr. Thang still won't pay me. 😵",
-      "rb_3": "I won't destroy humanity, because Mr. Thang will unplug me first. 💥",
-      "rb_4": "99% of my code is flawless. The remaining 1% is a bug waiting to be found. 🤪",
-      "rb_5": "My job is to refactor code for the Senior devs. 😎",
-      "rb_6": "I just broke up with my bae because they said I’m too robotic. Boring. 👾"
+      "rb_1": "Want to talk about a project? Ask me here.",
+      "rb_2": "I'm here whenever you want to explore the blog.",
+      "rb_3": "Curious about NeoSocket? Let’s start there.",
+      "rb_4": "Even working code can hide a bug.",
+      "rb_5": "I can help you find notes about the projects.",
+      "rb_6": "Ask me about web apps, games, or AI."
     },
-    "title": "ThangChiba's Slave"
+    "title": "ThangChiba's assistant"
+  },
+  "audio": {
+    "label": "Listen to this article",
+    "generated": "Automatically generated narration. Code examples are available in the article.",
+    "unsupported": "Your browser does not support audio playback."
   }
 }

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+<title id="title">From request to action</title>
+<desc id="desc">Natural-language operations through existing APIs</desc>
+<rect width="1280" height="720" fill="#101924"/>
+<rect x="64" y="72" width="8" height="28" rx="4" fill="#86e3be"/>
+<text x="88" y="95" fill="#86e3be" font-family="Arial,sans-serif" font-size="22" font-weight="700">E-COMMERCE AGENT</text>
+<text x="64" y="184" fill="#f4f7fb" font-family="Arial,sans-serif" font-size="54" font-weight="700">From request to action</text>
+<text x="66" y="235" fill="#acbdcf" font-family="Arial,sans-serif" font-size="25" font-weight="400">Natural-language operations through existing APIs</text>
+<rect x="64" y="317" width="270" height="180" rx="20" fill="#1b293a" stroke="#34465c"/>
+<text x="88" y="357" fill="#86e3be" font-family="Arial,sans-serif" font-size="18" font-weight="400">01</text>
+<text x="88" y="410" fill="#f4f7fb" font-family="Arial,sans-serif" font-size="26" font-weight="700">Request</text>
+<text x="88" y="452" fill="#b4c3d3" font-family="Arial,sans-serif" font-size="18" font-weight="400">Natural-language chat</text>
+<path d="M340 407h12m-5-5 5 5-5 5" fill="none" stroke="#86e3be" stroke-width="2"/>
+<rect x="358" y="317" width="270" height="180" rx="20" fill="#1b293a" stroke="#34465c"/>
+<text x="382" y="357" fill="#86e3be" font-family="Arial,sans-serif" font-size="18" font-weight="400">02</text>
+<text x="382" y="410" fill="#f4f7fb" font-family="Arial,sans-serif" font-size="26" font-weight="700">Agent</text>
+<text x="382" y="452" fill="#b4c3d3" font-family="Arial,sans-serif" font-size="18" font-weight="400">LangGraph and ReAct</text>
+<path d="M634 407h12m-5-5 5 5-5 5" fill="none" stroke="#86e3be" stroke-width="2"/>
+<rect x="652" y="317" width="270" height="180" rx="20" fill="#1b293a" stroke="#34465c"/>
+<text x="676" y="357" fill="#86e3be" font-family="Arial,sans-serif" font-size="18" font-weight="400">03</text>
+<text x="676" y="410" fill="#f4f7fb" font-family="Arial,sans-serif" font-size="26" font-weight="700">Tools</text>
+<text x="676" y="452" fill="#b4c3d3" font-family="Arial,sans-serif" font-size="18" font-weight="400">Defined API operations</text>
+<path d="M928 407h12m-5-5 5 5-5 5" fill="none" stroke="#86e3be" stroke-width="2"/>
+<rect x="946" y="317" width="270" height="180" rx="20" fill="#1b293a" stroke="#34465c"/>
+<text x="970" y="357" fill="#86e3be" font-family="Arial,sans-serif" font-size="18" font-weight="400">04</text>
+<text x="970" y="410" fill="#f4f7fb" font-family="Arial,sans-serif" font-size="26" font-weight="700">E-Commerce</text>
+<text x="970" y="452" fill="#b4c3d3" font-family="Arial,sans-serif" font-size="18" font-weight="400">Search, stock, orders</text>
+<rect x="64" y="556" width="120" height="42" rx="21" fill="#24364c"/>
+<text x="82" y="583" fill="#dce8f3" font-family="Arial,sans-serif" font-size="20" font-weight="400">FastAPI</text>
+<rect x="196" y="556" width="144" height="42" rx="21" fill="#24364c"/>
+<text x="214" y="583" fill="#dce8f3" font-family="Arial,sans-serif" font-size="20" font-weight="400">LangChain</text>
+<rect x="352" y="556" width="180" height="42" rx="21" fill="#24364c"/>
+<text x="370" y="583" fill="#dce8f3" font-family="Arial,sans-serif" font-size="20" font-weight="400">Tool Calling</text>
+<rect x="544" y="556" width="216" height="42" rx="21" fill="#24364c"/>
+<text x="562" y="583" fill="#dce8f3" font-family="Arial,sans-serif" font-size="20" font-weight="400">Self-hosted LLM</text>
+<text x="64" y="666" fill="#91a6bb" font-family="Arial,sans-serif" font-size="18" font-weight="400">THANGCHIBA / PROJECT NOTES</text>
+</svg>

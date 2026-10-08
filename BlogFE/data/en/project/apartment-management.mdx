@@ -4,7 +4,7 @@ projectType: 'self'
 tags: ['admin']
 title: 'Apartment Management'
 date: '2023-02-01'
-summary: "Apartment Management is a SaaS application used for managing rental properties. The application will manage the rented rooms, customer information, and payment status. Since access is not frequent, the goal is to use AWS Serverless to optimize operational costs. For example, S3 for static web, Cognito for authentication, and Lambda Function for backend processing."
+summary: "A rental-management app for rooms, tenants, and payment status. I used AWS serverless services to suit an app opened only a few times a month."
 images: ['/static/images/project/apartment-demo-image.png']
 video: 'https://www.youtube.com/watch?v=3tEyVJi3TEc&ab_channel=ThangChiba'
 audioURL: '/static/media/project/apartment/apartment-en.mp3'
@@ -18,39 +18,24 @@ infra: ['AWS','Cognito', 'Lambda','APIGateway','R53', 'CloudFront', 'S3']
 draft: false
 ---
 
-import Twemoji from './Twemoji.tsx'
-import UnsplashPhotoInfo from './UnsplashPhotoInfo.tsx'
+## An app for my sister
 
-### **Project Context**
+My sister manages several rental properties and needed an easier way to keep track of rooms, tenants, and payments. A complicated spreadsheet was not a good fit for how she wanted to work, so I built a small web app around those tasks.
 
-- **User Need:** My sister, who owns several apartments, required a user-friendly application. Her limited computer skills and inability to use complex tools like Excel necessitated a simple, accessible solution.
-- **Accessibility Requirements:** The need for a platform accessible from various devices, including PCs and smartphones, at any time.
-- **Choice of Platform:** Opted for a web-based application to ensure multi-platform support.
+The main goal was straightforward: she should be able to open it on a phone or computer and find the information she needs without learning a complicated interface.
 
-### **Why Serverless?**
+## Why serverless fit this project
 
-- **Optimized for Infrequent Use:** Given that the application is accessed only a few times a month, yet requires constant availability, serverless infrastructure emerged as the most suitable choice. This approach ensures that resources are efficiently utilized, reflecting the application's usage pattern.
-- **Leveraging AWS Serverless Infrastructure:** The decision to use AWS services was driven by the need for a cost-effective, efficient, and scalable solution.
-  - **Robust Authentication:** AWS Cognito is employed for its secure user management capabilities, ensuring the safety and privacy of user data.
-  - **Efficient Frontend Hosting:** The combination of AWS Route53, CloudFront, and S3 bucket provides reliable and scalable hosting solutions. The integration of CloudFront's CDN (Content Delivery Network) enables fast access from anywhere in the world.
-  - **Flexible Backend Services:** AWS Lambda functions and API Gateway form the backbone of the backend, offering a responsive and adaptable environment. The key advantage here is their constant availability, crucial for a service that needs to be accessible 24/7.
-  - **Database Solution:** DynamoDB is utilized for its seamless integration with AWS serverless architecture, providing a reliable and scalable database solution.
+The app is used only a few times a month, but needs to be available whenever it is needed. I chose AWS serverless services to avoid maintaining a continuously running application server for that usage pattern.
 
+The React frontend is hosted in S3 and served through CloudFront, with Route 53 for DNS. Cognito handles authentication. API Gateway routes requests to the FastAPI backend on Lambda, and DynamoDB stores the application data.
 
-### **Development Approach**
+## Building around the user
 
-- **Frontend Development:** Developed with ReactJS, renowned for its efficiency and user-friendliness. The design is responsive for both PC and mobile devices, adapting seamlessly to different screen sizes and orientations, including landscape and portrait modes.
-- **Backend Development:** FastAPI, a modern Python framework, was chosen for the backend. Python's rapid wake-up time is particularly beneficial for Lambda functions, aligning well with the serverless architecture.
+I kept the interface focused on rooms, tenant information, and payment status. The layout adapts to desktop and mobile screens, including portrait and landscape views.
 
-### **Application Features**
+FastAPI let me build the backend in Python. For this project, I was more interested in keeping deployment and maintenance manageable than in adding a large set of features.
 
-- **User Interface:** Emphasizes simplicity and intuitiveness, specifically designed for users with minimal technical expertise. The interface is straightforward, facilitating easy navigation and interaction.
-- **Accessibility:** The application is universally accessible from any device with internet access, ensuring users can manage their properties from anywhere, at any time.
-- **Functionality:** Custom-tailored to address the specific needs of apartment management. The application encompasses features vital for efficient property management, catering specifically to the requirements of apartment owners.
+## Possible next steps
 
-### **Future Enhancements**
-
-- **Continuous Improvement:** Plans to regularly update and enhance the application based on user feedback and technological advancements.
-- **Feature Expansion:** Potential introduction of new features such as automated rent collection, maintenance request tracking, and real-time notifications for important updates.
-- **Enhanced Reporting:** Developing more comprehensive reporting tools for better financial and operational oversight of properties.
-- **User Experience Optimization:** Ongoing efforts to refine the user interface and interaction design, ensuring the application remains user-friendly and aligns with emerging design trends.
+Rent collection, maintenance requests, notifications, and more detailed reports are ideas for future work. I would add them based on actual use and feedback, rather than treating them as features already delivered.

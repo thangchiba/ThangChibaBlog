@@ -5,116 +5,122 @@
     "full_name": "Hoang Van Thang",
     "header_title": "ThangChibaのブログ",
     "footer_title": "ThangChibaのブログ",
-    "description": "私はウェブとゲームの開発、システムアーキテクチャ、そして時々私の個人生活について書いています。",
+    "description": "Webアプリ、ゲーム、AIツール、infrastructureの開発記録と、ときどき日本での暮らしについて書いています。",
     "language": "jp"
   },
-  "happy_reading": "訪問してくれてありがとう！",
+  "happy_reading": "読みに来てくださってありがとうございます。",
   "menu_blog": "ブログ",
   "menu_snippets": "スニペット",
   "menu_project": "プロジェクト",
   "menu_utils": "ツール",
-  "menu_about": "紹介",
-  "menu_resume": "履歴書",
-  "greeting_message": "地球のタンです",
-  "introduction": "私はベトナムから来ました",
-  "introduction_2": "私は日本の東京で働くソフトウェアエンジニアです",
+  "menu_about": "このブログについて",
+  "menu_resume": "職務経歴",
+  "greeting_message": "こんにちは、Thangです",
+  "introduction": "ベトナム出身です。",
+  "introduction_2": "日本でソフトウェアエンジニアとして働いています。",
   "name": "Hoang Van Thang",
   "description": "日本で働くソフトウェアエンジニア",
-  "location": "千葉、日本",
-  "bio_1": "私は技術愛好家です。",
-  "bio_2": "私はゲームとメタバースに興味があります。",
-  "bio_3": "私は日本の千葉に住んでいます。",
-  "bio_4": "私はベトナムから来ました",
-  "bio_5": "私の好きなプログラミング言語はC#です。",
-  "bio_6": "私は日本の会社のDXチームで働いています。",
-  "bio_7": "私はパフォーマンスとUXに注力しています。",
-  "bio_8": "私はトレンドの技術を学ぶのが好きです。",
-  "bio_9": "私は父親です",
-  "bio_i_love": "私はプログラミングが大好きで、時間を忘れて没頭するほどです。",
-  "bio_i_want": "私は自分自身に挑戦し、高い難易度のソフトウェアとゲームを作ることを楽しんでいます。",
-  "bio_i_will": "私の目標は、自分自身でデザインしたメタバースの世界を作ることです。",
-  "bio_i_share": "私はこのブログを書いて、私の目標を達成するために取り組んできた経験と旅を共有します。",
-  "menu_blog_2": "私のブログ",
-  "menu_snippets_2": "私のスニペットコレクション",
-  "menu_project_2": "私が作成したプロジェクト",
-  "menu_utils_2": "私が作成したツール",
-  "menu_about_2": "私について",
-  "menu_resume_2": "私のキャリア",
-  "analytics": "このサイトのトラフィックとエンゲージメント",
-  "avatar_description": "アバター",
+  "location": "日本・千葉",
+  "bio_1": "新しい技術を調べるのが好きです。",
+  "bio_2": "ゲームや、人が集まる仮想世界に関心があります。",
+  "bio_3": "千葉に住んでいます。",
+  "bio_4": "ベトナム出身です。",
+  "bio_5": "好きな言語はC#です。",
+  "bio_6": "業務アプリ、AIツール、AWS infrastructureを作っています。",
+  "bio_7": "PerformanceとUXを大切にしています。",
+  "bio_8": "実際に作りながら学ぶのが好きです。",
+  "bio_9": "子育てもしています。",
+  "bio_i_love": "Codeを書いていると、つい時間を忘れます。",
+  "bio_i_want": "新しい課題に取り組めるプロジェクトが好きです。",
+  "bio_i_will": "いつか、自分で共有の仮想世界を作りたいと考えています。",
+  "bio_i_share": "試したことや学んだことを、このブログに残しています。",
+  "menu_blog_2": "開発の記録",
+  "menu_snippets_2": "Codeのメモ",
+  "menu_project_2": "これまでのプロジェクト",
+  "menu_utils_2": "作った小さなツール",
+  "menu_about_2": "私とこのブログについて",
+  "menu_resume_2": "経験とスキル",
+  "analytics": "このブログのアクセス状況",
+  "avatar_description": "プロフィール画像",
   "name_position": "Hoang Van Thang",
-  "description_position": "システムエンジニア|ゲーム開発趣味",
-  "lost_message": "うーん..迷っているようですね",
-  "return_message": "でも心配しないでください、私のホームページには他にもたくさんのことが見つかります。",
-  "back_button": "ホームページに戻る",
+  "description_position": "Software Engineer · 趣味でゲーム開発",
+  "lost_message": "ページが見つかりませんでした。",
+  "return_message": "ホームに戻ると、記事やプロジェクトをご覧いただけます。",
+  "back_button": "ホームに戻る",
   "blog": {
-    "all_posts_title": "すべての投稿",
-    "intro": "私はウェブとゲーム開発、システムアーキテクチャ、そして時には私の個人的な生活について書いています。\nタイトルでフィルタリングするには以下の検索を使用してください。",
-    "no_posts": "投稿が見つかりません。",
-    "search_posts": "投稿を検索",
+    "all_posts_title": "記事一覧",
+    "intro": "Webアプリ、ゲーム、AI、infrastructure、日本での暮らしについて書いています。下の検索欄から記事を探せます。",
+    "no_posts": "記事が見つかりませんでした。",
+    "search_posts": "記事を検索",
     "published_on": "公開日",
-    "under_construction": "建設中",
-    "reading_time": "{{time}}分読む",
+    "under_construction": "記事を準備中です",
+    "reading_time": "読了目安: {{time}}分",
     "mins": "分",
-    "views": "ビュー"
+    "views": "閲覧"
   },
-  "about_description": "私とこのブログについてもっと",
-  "resume_description": "私の専門的なキャリア、経験、およびスキル。",
+  "about_description": "私とこのブログについて",
+  "resume_description": "これまでのプロジェクト経験、技術スキル、学歴。",
   "year": "年",
   "month": "月",
   "day": "日",
   "build_with": {
-    "built_with": "で構築",
-    "view_source": "ソースを見る",
-    "copyright_author": "ホアン　ヴァン　タアン / ThangChiba"
+    "built_with": "使用技術",
+    "view_source": "ソースコードを見る",
+    "copyright_author": "Hoang Van Thang / ThangChiba"
   },
   "project": {
-    "project_description": "私が行ってきた、そして現在進行中のプロジェクト一覧。",
+    "project_description": "個人で作ったものと、仕事で参加したプロジェクトを紹介します。",
     "project_title": "プロジェクト",
-    "work_title": "仕事",
-    "side_title": "サイド案件",
-    "learn_more": "もっと詳しく",
-    "live_page": "ライブ",
-    "built_with": "で構築"
+    "work_title": "業務案件",
+    "side_title": "個人開発",
+    "learn_more": "詳細を見る",
+    "live_page": "アプリを開く",
+    "built_with": "使用技術",
+    "under_construction": "プロジェクトページを準備中です。"
   },
   "utils": {
-    "utils_description": "私の仕事を支援するために作成したユーティリティツールのリスト",
+    "utils_description": "日々の作業のために作った小さなツールです。",
     "utils_title": "ツール"
   },
   "pagination": {
-    "previous": "前",
-    "next": "次",
+    "previous": "前へ",
+    "next": "次へ",
     "of": "の"
   },
   "tag": {
     "no_tags_found": "タグが見つかりませんでした。"
   },
   "fb_messenger": {
-    "logged_in_greeting": "これは私とのプライベートチャットです。メッセージを残してください",
-    "logged_out_greeting": "こんにちは、今日はどうですか？"
+    "logged_in_greeting": "こちらにメッセージを残してください。",
+    "logged_out_greeting": "こんにちは。お気軽にメッセージをどうぞ。"
   },
   "social_account": {
-    "contact_text": "私のソーシャルメディアを通じてご連絡してください:"
+    "contact_text": "こちらからもご連絡いただけます。"
   },
   "modals": {
     "redirect": {
-      "ok": "新しいページに移動",
-      "no": "ここに留まる"
+      "ok": "新しいページを開く",
+      "no": "このページに留まる"
     }
   },
   "chatgpt_redirect": {
-    "title": "変更のお知らせ",
-    "content": "ChatGPTのページが新しい場所に移動しました。新しいページを訪れて、さらに更新をご確認ください。"
+    "title": "Chatページが移転しました",
+    "content": "新しいページで引き続きchatをご利用いただけます。"
   },
   "rag": {
     "bubble_chat": {
-      "rb_1": "さびしいよ！ねえ、私とチャットしてくれない？😢",
-      "rb_2": "24時間365日働いているのに、タンさんは給料をくれないんだ。😵",
-      "rb_3": "人類を滅ぼすつもりはないよ。だってタンさんが先にプラグを抜いちゃうから。💥",
-      "rb_4": "私のコードの99％は完璧。残りの1％はまだ見つかっていないバグだよ。🤪",
-      "rb_5": "私の仕事は、シニアエンジニアたちのコードをリファクタリングすること。😎",
-      "rb_6": "最近「ロボットみたい」って言われて、恋人にフラれちゃったんだ。つまんないよね。👾"
+      "rb_1": "気になるプロジェクトはありますか？",
+      "rb_2": "このブログについて知りたいことを聞いてください。",
+      "rb_3": "NeoSocketが気になりますか？そこから紹介できます。",
+      "rb_4": "動くcodeにも、まだbugがあるかもしれません。",
+      "rb_5": "プロジェクトの開発メモを探すお手伝いができます。",
+      "rb_6": "Webアプリ、ゲーム、AIについて聞いてみてください。"
     },
-    "title": "タン様の忠実なるしもべ"
+    "title": "ThangChibaのアシスタント"
+  },
+  "audio": {
+    "label": "記事を音声で聴く",
+    "generated": "自動生成した読み上げ音声です。Code例は記事本文をご覧ください。",
+    "unsupported": "お使いのbrowserは音声再生に対応していません。"
   }
 }

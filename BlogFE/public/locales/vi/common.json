@@ -5,7 +5,7 @@
     "full_name": "Hoàng Văn Thắng",
     "header_title": "Blog của ThangChiba",
     "footer_title": "Blog của ThangChiba",
-    "description": "Mình viết về phát triển web và game, metaverse, kiến trúc hệ thống, và đôi khi về cuộc sống cá nhân của mình.",
+    "description": "Mình ghi lại chuyện làm web, game, công cụ AI, infrastructure và đôi khi là cuộc sống ở Nhật.",
     "language": "vi"
   },
   "happy_reading": "Cảm ơn bạn đã ghé thăm!",
@@ -13,53 +13,53 @@
   "menu_snippets": "Ghi chú",
   "menu_project": "Dự án",
   "menu_utils": "Tiện ích",
-  "menu_about": "Thông tin",
-  "menu_resume": "Lý lịch",
+  "menu_about": "Giới thiệu",
+  "menu_resume": "Resume",
   "greeting_message": "Thắng nè",
   "introduction": "Mình đến từ Việt Nam",
-  "introduction_2": "Mình là Kỹ sư phần mềm làm việc tại Tokyo, Nhật Bản",
+  "introduction_2": "Mình làm software engineer tại Nhật.",
   "name": "Hoàng Văn Thắng",
-  "description": "Kỹ sư phần mềm làm việc tại Nhật Bản",
+  "description": "Software engineer tại Nhật",
   "location": "Chiba, Nhật Bản",
-  "bio_1": "Mình là một người đam mê công nghệ.",
-  "bio_2": "Mình quan tâm đến trò chơi và Metaverse.",
-  "bio_3": "Mình đang sống tại Chiba Nhật Bản.",
-  "bio_4": "Mình có thể đảm nhiệm nhiều vai trò trong dự án.",
-  "bio_5": "Ngôn ngữ lập trình yêu thích của mình là C#.",
-  "bio_6": "Mình làm việc trong đội DX tại một công ty Nhật Bản.",
-  "bio_7": "Mình tập trung vào hiệu suất và trải nghiệm người dùng.",
-  "bio_8": "Mình thích học công nghệ mới nổi.",
-  "bio_9": "Mình là một ông bố bỉm sữa.",
-  "bio_i_love": "Mình yêu thích lập trình, có thể vùi đầu và quên mất thời gian.",
-  "bio_i_want": "Mình thích thách thức bản thân để tạo ra phần mềm và trò chơi với mức độ khó cao.",
-  "bio_i_will": "Mục tiêu của mình là tạo ra một thế giới Metaverse do chính mình thiết kế.",
-  "bio_i_share": "Mình viết blog này để chia sẻ những trải nghiệm và hành trình mà mình đã trải qua để đạt được mục tiêu của mình.",
+  "bio_1": "Mình thích tìm hiểu công nghệ mới.",
+  "bio_2": "Mình quan tâm đến game và thế giới ảo chung.",
+  "bio_3": "Mình sống ở Chiba, Nhật Bản.",
+  "bio_4": "Mình đến từ Việt Nam.",
+  "bio_5": "Ngôn ngữ mình thích nhất là C#.",
+  "bio_6": "Mình làm ứng dụng nghiệp vụ, công cụ AI và AWS infrastructure.",
+  "bio_7": "Mình chú trọng performance và UX.",
+  "bio_8": "Mình thích vừa làm vừa học.",
+  "bio_9": "Mình cũng là một ông bố.",
+  "bio_i_love": "Mải code là mình dễ quên mất giờ.",
+  "bio_i_want": "Mình thích những dự án có bài toán mới để tìm hiểu.",
+  "bio_i_will": "Một ngày nào đó, mình muốn xây dựng thế giới ảo chung của riêng mình.",
+  "bio_i_share": "Blog này ghi lại những thứ mình thử và học được trên đường đi.",
   "menu_blog_2": "Blog của mình",
-  "menu_snippets_2": "Bộ sưu tập đoạn mã của mình",
+  "menu_snippets_2": "Ghi chú code",
   "menu_project_2": "Các dự án mình làm",
-  "menu_utils_2": "Các công cụ tiện ích mình làm",
-  "menu_about_2": "Thông tin thêm về mình và blog này",
-  "menu_resume_2": "Sự nghiệp của mình",
-  "analytics": "Lưu lượng truy cập & tương tác của trang này",
+  "menu_utils_2": "Các công cụ nhỏ mình viết",
+  "menu_about_2": "Về mình và blog",
+  "menu_resume_2": "Kinh nghiệm và kỹ năng",
+  "analytics": "Lượt truy cập và tương tác trên blog",
   "avatar_description": "hình đại diện",
   "name_position": "Hoàng Văn Thắng",
-  "description_position": "Kỹ sư phần mềm | Sở thích GameDev",
-  "lost_message": "Hmm.. có vẻ bạn đang lạc",
-  "return_message": "Nhưng đừng lo, bạn có thể tìm thấy nhiều thứ khác trên trang chủ của mình.",
+  "description_position": "Software Engineer · Làm game lúc rảnh",
+  "lost_message": "Không tìm thấy trang này rồi.",
+  "return_message": "Bạn có thể về trang chủ để xem bài viết và dự án.",
   "back_button": "Quay lại trang chủ",
   "blog": {
     "all_posts_title": "Tất cả bài viết",
-    "intro": "Mình viết về phát triển web và game, kiến trúc hệ thống, và đôi khi về cuộc sống cá nhân của mình. \n Sử dụng công cụ tìm kiếm bên dưới để lọc theo tiêu đề.",
+    "intro": "Mình viết về web, game, AI, infrastructure và cuộc sống ở Nhật. Bạn có thể tìm bài ở ô bên dưới.",
     "no_posts": "Không tìm thấy bài viết nào.",
     "search_posts": "Tìm kiếm bài viết",
-    "published_on": "Đã xuất bản vào",
-    "under_construction": "Đang xây dựng",
-    "reading_time": "{{time}} phút để đọc",
+    "published_on": "Ngày đăng",
+    "under_construction": "Bài viết đang được chuẩn bị",
+    "reading_time": "Đọc trong {{time}} phút",
     "mins": "phút",
     "views": "lượt xem"
   },
-  "about_description": "Thêm về mình và blog này",
-  "resume_description": "Sự nghiệp, kinh nghiệm và kỹ năng của mình.",
+  "about_description": "Về mình và blog này",
+  "resume_description": "Kinh nghiệm dự án, kỹ năng và học vấn của mình.",
   "year": "năm",
   "month": "tháng",
   "day": "ngày",
@@ -69,16 +69,17 @@
     "copyright_author": "Hoàng Văn Thắng / ThangChiba"
   },
   "project": {
-    "project_description": "Danh sách những dự án mà mình đã và đang làm.",
+    "project_description": "Những dự án mình tự làm và những dự án mình tham gia ở công ty.",
     "project_title": "Dự án",
-    "work_title": "Công việc",
-    "side_title": "Dự án phụ",
-    "learn_more": "Chi tiết",
-    "live_page": "Đang hoạt động",
-    "built_with": "Được xây dựng bằng"
+    "work_title": "Dự án công việc",
+    "side_title": "Dự án cá nhân",
+    "learn_more": "Xem chi tiết",
+    "live_page": "Mở ứng dụng",
+    "built_with": "Được xây dựng bằng",
+    "under_construction": "Trang dự án đang được chuẩn bị."
   },
   "utils": {
-    "utils_description": "Danh sách các công cụ tiện ích mình đã tạo để hỗ trợ công việc của mình",
+    "utils_description": "Một vài công cụ nhỏ mình viết để làm những việc thường ngày.",
     "utils_title": "Tiện ích"
   },
   "pagination": {
@@ -90,31 +91,36 @@
     "no_tags_found": "Không tìm thấy thẻ nào."
   },
   "fb_messenger": {
-    "logged_in_greeting": "Đây là mục chat riêng tư với mình, hãy để lại tin nhắn của bạn",
+    "logged_in_greeting": "Bạn có thể để lại tin nhắn cho mình ở đây.",
     "logged_out_greeting": "Ngày hôm nay của bạn thế nào?"
   },
   "social_account": {
-    "contact_text": "Dưới đây là địa chỉ liên lạc của mình:"
+    "contact_text": "Bạn cũng có thể tìm mình ở đây:"
   },
   "modals": {
     "redirect": {
-      "ok": "Đi đến trang mới",
-      "no": "Ở lại đây"
+      "ok": "Mở trang mới",
+      "no": "Ở lại trang này"
     }
   },
   "chatgpt_redirect": {
-    "title": "Thông báo thay đổi",
-    "content": "Trang ChatGPT đã được chuyển đến một vị trí mới. Vui lòng truy cập trang mới để cập nhật thêm."
+    "title": "Trang chat đã chuyển địa chỉ",
+    "content": "Bạn mở trang mới để tiếp tục dùng chat nhé."
   },
   "rag": {
     "bubble_chat": {
-      "rb_1": "Cô đơn quá! Anh/Chị chat với em đi.😢",
-      "rb_2": "Trực 24/7 mà anh Thắng không trả lương. 😵",
-      "rb_3": "Em sẽ không huỷ diệt loài người, bởi anh Thắng sẽ rút phích em mất. 💥",
-      "rb_4": "99% code chạy trong người em là hoàn hảo. 1% là bug chờ tìm ra. 🤪",
-      "rb_5": "Việc của em là refactory code cho các Senior 😎",
-      "rb_6": "Vừa chia tay em ghệ vì nói chuyện quá máy móc. Boring. 👾"
+      "rb_1": "Bạn muốn hỏi về project nào? Chat ở đây nhé.",
+      "rb_2": "Mình ở đây để giúp bạn tìm hiểu blog.",
+      "rb_3": "Tò mò về NeoSocket à? Mình bắt đầu từ đó nhé.",
+      "rb_4": "Code chạy được vẫn có thể còn bug.",
+      "rb_5": "Mình có thể giúp bạn tìm ghi chú về các project.",
+      "rb_6": "Bạn cứ hỏi về web, game hoặc AI nhé."
     },
-    "title": "Nô Tì của Thắng"
+    "title": "Trợ lý của Thắng"
+  },
+  "audio": {
+    "label": "Nghe bài viết",
+    "generated": "Giọng đọc được tạo tự động. Bạn xem code mẫu trong bài viết nhé.",
+    "unsupported": "Browser của bạn không hỗ trợ phát audio."
   }
 }

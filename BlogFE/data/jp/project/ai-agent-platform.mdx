@@ -1,0 +1,44 @@
+---
+audioURL: '/static/media/project/ai-agent-platform/ai-agent-platform-jp.mp3'
+type: "project"
+projectType: "work"
+title: "AI Agent作成プラットフォーム"
+summary: "自社の資料からagentを作れるプラットフォームです。RAG、modelの切り替え、real-timeの音声対話を実装しました。"
+images: ["/static/images/project/ai-agent-platform.svg"]
+draft: false
+date: "2025-04-01"
+tags: ["ai-agent", "rag", "llm", "voice"]
+fe: ["React"]
+be: ["Python", "FastAPI"]
+db: ["Qdrant", "MongoDB"]
+infra: ["AWS", "EC2", "S3", "CloudFront", "Route 53"]
+tools: ["OCR", "Embedding", "Gemini Live API", "RAGFlow (evaluation)"]
+---
+
+## 事業者が自分でagentを作る
+
+飲食店、店舗、企業などが、自分たちの情報をもとにchat agentを作れるプラットフォームを開発しました。Web画面でagentを作成し、FAQ、マニュアル、業務資料、websiteの情報をアップロードできます。
+
+資料からtextを抽出し、必要に応じてOCRを行い、chunkingとembeddingを経てvectorをQdrantに保存します。Chatでは関連する内容を検索し、LLMに渡して回答を生成するRAG構成です。
+
+## Team Leadとして担当したこと
+
+5人のチームで、初期architecture、技術選定、MVP実装を担当しました。まずagent作成、資料のupload、embedding、knowledge検索、回答生成までの一連の流れを動かすことを優先しました。
+
+Reactの基本画面と、agent、user、document、chat、embedding、vector searchを扱うFastAPI endpointを実装しました。設定、userとfileの情報、chat履歴、knowledge管理のmetadataはMongoDBに保存します。
+
+MVPの完成後はtaskを分割し、実装ルールの整理、code review、技術課題の調査、進捗管理を行いました。
+
+## Modelの選択と音声対話
+
+用途に応じてlocal LLM、OpenAI API、Gemini APIを使い分け、agentごとにmodel設定を持たせられる構成です。Document処理の検討では、RAGFlowも評価しました。
+
+Gemini Live APIでreal-timeの音声対話も実装しました。Textの入力だけでなく、話しかけて質問できるようにしています。
+
+## Deploymentと学んだこと
+
+FastAPI backendはEC2上に構築しました。FrontendはS3に配置し、CloudFrontで配信し、domainにはRoute 53を使っています。
+
+RAGの回答品質はLLMだけでなく、資料を処理するpipeline全体に左右されると実感しました。OCR、chunking、embedding、retrievalをそれぞれ確認する必要があります。音声対話では、回答の質に加えて、応答時間や会話のUXも重要でした。
+
+**役割:** Team Lead · **チーム:** 5人 · **期間:** 2025年4月〜7月。

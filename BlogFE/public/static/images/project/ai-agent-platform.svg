@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+<title id="title">From documents to conversation</title>
+<desc id="desc">Knowledge retrieval with text and real-time voice</desc>
+<rect width="1280" height="720" fill="#101924"/>
+<rect x="64" y="72" width="8" height="28" rx="4" fill="#bea1ff"/>
+<text x="88" y="95" fill="#bea1ff" font-family="Arial,sans-serif" font-size="22" font-weight="700">AI AGENT PLATFORM</text>
+<text x="64" y="184" fill="#f4f7fb" font-family="Arial,sans-serif" font-size="54" font-weight="700">From documents to conversation</text>
+<text x="66" y="235" fill="#acbdcf" font-family="Arial,sans-serif" font-size="25" font-weight="400">Knowledge retrieval with text and real-time voice</text>
+<rect x="64" y="317" width="270" height="180" rx="20" fill="#1b293a" stroke="#34465c"/>
+<text x="88" y="357" fill="#bea1ff" font-family="Arial,sans-serif" font-size="18" font-weight="400">01</text>
+<text x="88" y="410" fill="#f4f7fb" font-family="Arial,sans-serif" font-size="26" font-weight="700">Documents</text>
+<text x="88" y="452" fill="#b4c3d3" font-family="Arial,sans-serif" font-size="18" font-weight="400">FAQ and manuals</text>
+<path d="M340 407h12m-5-5 5 5-5 5" fill="none" stroke="#bea1ff" stroke-width="2"/>
+<rect x="358" y="317" width="270" height="180" rx="20" fill="#1b293a" stroke="#34465c"/>
+<text x="382" y="357" fill="#bea1ff" font-family="Arial,sans-serif" font-size="18" font-weight="400">02</text>
+<text x="382" y="410" fill="#f4f7fb" font-family="Arial,sans-serif" font-size="26" font-weight="700">Processing</text>
+<text x="382" y="452" fill="#b4c3d3" font-family="Arial,sans-serif" font-size="18" font-weight="400">OCR and embeddings</text>
+<path d="M634 407h12m-5-5 5 5-5 5" fill="none" stroke="#bea1ff" stroke-width="2"/>
+<rect x="652" y="317" width="270" height="180" rx="20" fill="#1b293a" stroke="#34465c"/>
+<text x="676" y="357" fill="#bea1ff" font-family="Arial,sans-serif" font-size="18" font-weight="400">03</text>
+<text x="676" y="410" fill="#f4f7fb" font-family="Arial,sans-serif" font-size="26" font-weight="700">Retrieval</text>
+<text x="676" y="452" fill="#b4c3d3" font-family="Arial,sans-serif" font-size="18" font-weight="400">Qdrant and RAG</text>
+<path d="M928 407h12m-5-5 5 5-5 5" fill="none" stroke="#bea1ff" stroke-width="2"/>
+<rect x="946" y="317" width="270" height="180" rx="20" fill="#1b293a" stroke="#34465c"/>
+<text x="970" y="357" fill="#bea1ff" font-family="Arial,sans-serif" font-size="18" font-weight="400">04</text>
+<text x="970" y="410" fill="#f4f7fb" font-family="Arial,sans-serif" font-size="26" font-weight="700">Conversation</text>
+<text x="970" y="452" fill="#b4c3d3" font-family="Arial,sans-serif" font-size="18" font-weight="400">Text and live voice</text>
+<rect x="64" y="556" width="96" height="42" rx="21" fill="#24364c"/>
+<text x="82" y="583" fill="#dce8f3" font-family="Arial,sans-serif" font-size="20" font-weight="400">React</text>
+<rect x="172" y="556" width="120" height="42" rx="21" fill="#24364c"/>
+<text x="190" y="583" fill="#dce8f3" font-family="Arial,sans-serif" font-size="20" font-weight="400">FastAPI</text>
+<rect x="304" y="556" width="108" height="42" rx="21" fill="#24364c"/>
+<text x="322" y="583" fill="#dce8f3" font-family="Arial,sans-serif" font-size="20" font-weight="400">Qdrant</text>
+<rect x="424" y="556" width="216" height="42" rx="21" fill="#24364c"/>
+<text x="442" y="583" fill="#dce8f3" font-family="Arial,sans-serif" font-size="20" font-weight="400">Gemini Live API</text>
+<text x="64" y="666" fill="#91a6bb" font-family="Arial,sans-serif" font-size="18" font-weight="400">THANGCHIBA / PROJECT NOTES</text>
+</svg>

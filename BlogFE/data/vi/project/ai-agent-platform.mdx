@@ -1,0 +1,44 @@
+---
+audioURL: '/static/media/project/ai-agent-platform/ai-agent-platform-vi.mp3'
+type: "project"
+projectType: "work"
+title: "Nền tảng tạo AI Agent"
+summary: "Người dùng tạo agent từ tài liệu của mình, với RAG, tùy chọn model và hội thoại bằng giọng nói real-time."
+images: ["/static/images/project/ai-agent-platform.svg"]
+draft: false
+date: "2025-04-01"
+tags: ["ai-agent", "rag", "llm", "voice"]
+fe: ["React"]
+be: ["Python", "FastAPI"]
+db: ["Qdrant", "MongoDB"]
+infra: ["AWS", "EC2", "S3", "CloudFront", "Route 53"]
+tools: ["OCR", "Embedding", "Gemini Live API", "RAGFlow (evaluation)"]
+---
+
+## Để doanh nghiệp tự tạo agent
+
+Mình tham gia làm nền tảng cho nhà hàng, cửa hàng và các doanh nghiệp tự tạo chat agent từ thông tin của họ. Người dùng tạo agent trên web rồi tải lên FAQ, hướng dẫn, tài liệu nghiệp vụ hoặc nội dung website.
+
+Pipeline xử lý tài liệu gồm trích text, OCR khi cần, chunking, tạo embedding và lưu vector vào Qdrant. Khi chat, backend tìm nội dung liên quan rồi đưa cho LLM để tạo câu trả lời.
+
+## Vai trò Team Lead của mình
+
+Mình dẫn nhóm năm người ở phần architecture ban đầu, chọn công nghệ và triển khai MVP. Mục tiêu đầu tiên là chạy được toàn bộ flow: tạo agent, upload tài liệu, tạo embedding, tìm knowledge và trả lời câu hỏi.
+
+Mình làm các màn hình React nền tảng và endpoint FastAPI cho agent, user, document, chat, embedding và vector search. MongoDB lưu cấu hình, thông tin user và file, lịch sử chat cùng metadata quản lý knowledge.
+
+Khi MVP chạy được, mình chia các task còn lại, ghi lại quy tắc triển khai, review code, tìm hướng xử lý các vấn đề kỹ thuật và theo dõi tiến độ cùng nhóm.
+
+## Tùy chọn model và voice
+
+Architecture cho phép mỗi agent có cấu hình model riêng, dùng local LLM hoặc OpenAI và Gemini API tùy bài toán. Trong quá trình tìm hướng xử lý document, mình cũng đánh giá RAGFlow.
+
+Mình triển khai hội thoại giọng nói real-time bằng Gemini Live API, để người dùng có thể hỏi bằng cách nói thay vì chỉ nhập text.
+
+## Deployment và những gì học được
+
+Backend FastAPI chạy trên EC2. Frontend đặt ở S3, phân phối qua CloudFront và dùng Route 53 cho domain.
+
+Dự án giúp mình thấy chất lượng RAG phụ thuộc cả pipeline tài liệu, không chỉ LLM. OCR, chunking, embedding và retrieval đều cần được xem kỹ. Với voice, tốc độ phản hồi và conversational UX cũng quan trọng như chất lượng câu trả lời.
+
+**Vai trò:** Team Lead · **Nhóm:** 5 người · **Thời gian:** 04–07/2025.

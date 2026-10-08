@@ -1,9 +1,9 @@
 ---
-title: 'How aquarium fish help me to protect my Server?'
+title: "An aquarium, a camera, and an experiment with randomness"
 date: '2024-04-04'
-tags: ['security', 'random-generator']
+tags: ["security", "random-generator"]
 draft: false
-summary: "Ever wondered if computers can truly generate random numbers? How could seemingly clueless aquarium fish help in concocting random codes to thwart hackers? This is akin to what CloudFlare is doing to safeguard a huge chunk of the world's internet traffic."
+summary: "I tried using images of my fish tank as input for a random-number experiment. Here is the setup, the demo, and what it taught me about entropy."
 audioURL: '/static/media/blog/random-generator/random-generator-en.mp3'
 authors: ['default']
 images: ['https://images.unsplash.com/photo-1550016681-60a1d9d23bf7?q=80&w=2963&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D']
@@ -12,70 +12,40 @@ images: ['https://images.unsplash.com/photo-1550016681-60a1d9d23bf7?q=80&w=2963&
 import RandomGenerator from './utils/RandomGenerator/index.tsx'
 import YouTubeEmbed from "./media/YouTubeEmbed";
 
-### **Background**
+## Why I started
 
-Recently, I've been grappling with the randomness aspect in my game.
+While working on my game, I needed random values for gameplay and started thinking about how they are generated. I also needed secret keys for server requests. Those two uses led me to look more closely at the difference between ordinary randomness and cryptographic randomness.
 
-Absolutely! Randomness is pivotal in games, making them more engaging. That's why the Gacha and Pachinko games in Japan are thriving :))).
+That research gave me an excuse to involve the fish tank at home. About twenty fish were swimming around in it, and I already had an old camera. Why not try turning the images into input for an experiment?
 
-Besides, there are times when I need to generate secret keys for client requests to my server. 🔐
+## Random values are not all the same
 
-So, I need to devise a service that can be shared across my game and other apps, ensuring high traffic and robust security. (Tough, right? 🥲)
+A pseudorandom generator produces a sequence from its internal state. For gameplay, that can be useful. For secret keys, I would use a cryptographically secure pseudorandom number generator, or CSPRNG, supplied by the platform. In JavaScript, `Math.random()` is not intended for cryptography; the [Web Crypto API](https://developer.mozilla.org/en-US/docs/Web/API/Crypto/getRandomValues) provides cryptographic random values.
 
-### **Can computers really generate random numbers?**
-
-I always wonder, can computers genuinely create random numbers? Given they operate on bits and bytes, needing input to produce output. Indeed, most random number generation algorithms are based on the computer’s clock and complex calculations. Theoretically, their pattern could be predicted.
-
-There are even articles that have predicted the random algorithm of JS/V8, like this one:
+The video below was one of the things that got me interested in predictable random sequences.
 
 <YouTubeEmbed url="https://www.youtube.com/watch?v=-h_rj2-HP2E" />
 
-It would be a nightmare if a hacker could decipher the pattern of your random secret key generation.
+Cloudflare's [LavaRand setup](https://blog.cloudflare.com/randomness-101-lavarand-in-production/) also caught my attention. It uses camera footage as an additional source of entropy for cryptographic randomness. My aquarium experiment is much simpler.
 
-Thus, we need something outside the computer's lifecycle, something utterly ordinary and random ^^.
+## The setup at home
 
-### **Solution**
+I pointed a camera at the tank and placed a plasma globe behind it. The fish, changing light, and camera noise make the images vary. The plasma globe also gave me something moving in the background without leaving the aquarium light on all night. My electricity bill, and my wife, appreciated that part of the plan.
 
-For an algorithm to meet my standards, it must have the following qualities:
+The camera can capture 30 frames per second, but I chose one frame per second for the experiment. I hash each image with SHA-256 to get a 64-character hexadecimal string. For each request, the prototype combines that string with a request ID and server time to produce a seed for the next step.
 
-1. **Unpredictability**: It should be impossible to predict the next value based on previous outputs, even with knowledge of all previously generated values.
-2. **Uniformity**: The numbers generated must be evenly distributed, meaning each number should have an equal chance of appearing.
-3. **Irreproducibility**: The random number sequence cannot be recreated, even with information on how the algorithm operates.
+Changing the seed is not the same as changing the algorithm. A timestamp or counter is not a secret, and hashing an image does not create entropy that was absent from the input.
 
-### **Requirements**
-
-I've decided the inputs for the random number algorithm (CSRNGs) will be:
-
-1. **System entropy**: Certain information only known to the server like MachineTime or RequestID.
-2. **Environmental entropy**: Noise from the server's surroundings, images of animals/street scenes, etc.
-3. **Random seed**: CSRNGs often start with a random "seed", an initial value used to kick-start the number generation process. This seed must be random enough to ensure the generated sequence is unpredictable.
-4. **Periodic entropy collection**: To maintain randomness, CSRNGs may periodically gather more entropy from the system and update their state.
-5. **Combining entropy sources**: Some CSRNGs use various entropy sources and combine them to produce the output, increasing complexity and reducing predictability.
-
-### **Implementation**
-
-I'll select representatives for each of the above points.
-
-1. I choose the server's machine time and **requestID** of the client. When a client sends a request for a random number, I will increment the **requestID** and take the **current server time** as the Seed.
-2. I decided to use a camera to capture images. After obtaining the image data, I will hash it with SHA256 to create a **hash string** (64 characters).
-Due to a tight budget, we use what we have. There's a fish tank with around twenty different-sized fish 🐳, constantly swimming around, so the chance of capturing two identical images is nearly zero (a minor change like a light ray altering the color of one pixel would make the **hash string** entirely different). 🌝
-Also, to avoid the wrath of my wife over the electric bill from keeping the fish tank light on all night, I placed a **plasma globe** behind it. This globe is pretty dynamic and unpredictable, making it a great choice for this setup. Hehe. ⚡
-3. Naturally, a random **seed** will be synthesized from 1 and 2, then used in regular random number generation algorithms.
-4. My old camera does 30fps. 📸 Thus, capturing 30 images per second would mean you're updating the random number generation algorithm 30 times a second, automatically and impartially. Wow. But I think 1FPS is enough. Who would bother hacking my humble server, right? 🔥
-5. I think this is sufficient for my needs. Summing up: I will capture an image every second → Hash it to get a 64-character string → For each request, use that code + requestID and Server Time (if needed for security) as the Seed and then use regular random number generation algorithms.
-
-### **Result Evaluation**
-
-Pretty good 👍🏻. You can try it out right here on this blog; I've been coding a demo, and it was a real struggle. 😭
+## Try the demo
 
 <RandomGenerator />
 
-Essentially, each captured image has slight differences in lighting. You could point the camera at the ceiling, and the code would still generate normally.
+Pointing the camera at the ceiling still gave me changing hashes because the captured images differed slightly. Covering the camera produced repeated hashes in my test. It was a useful way to see how much the output depends on the input.
 
-BUT, if you point the camera down at a table where everything is pitch black, you'll end up with the same code every time.
+I also mapped some results to numbers from 1 to 10. The distribution looked reasonably even in that small sample, but that observation does not establish cryptographic security or prove the absence of bias.
 
-Fundamentally, it's quite challenging to predict and replicate. A supercomputer would need to mind-hack my aquarium to figure out where each fish will be and in what position in the next second. 🦈
+## What I took from it
 
-Regarding uniformity, I've tested converting the hash string into numbers ranging from 1 to 10, and it looks quite stable.
+As a home experiment, this was fun and helped me understand entropy more concretely. The fish got an unexpected role in a programming project.
 
-Overall, I'm satisfied and will be implementing this in my games and servers. Gamers will play in a fair and clean environment, free from manipulated outcomes, except for those I dislike. 😈
+For production secret keys and tokens, I would still use the platform's CSPRNG. This demo shows image-derived values; it is not a validated replacement for cryptographic key generation.

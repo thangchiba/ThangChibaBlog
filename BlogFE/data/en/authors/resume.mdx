@@ -6,172 +6,114 @@ company: SIC
 email: contact@thangchiba.com
 twitter: https://twitter.com/thangchiba_
 facebook: https://facebook.com/thangchiba
-linkedin: https://www.linkedin.com
+linkedin: https://www.linkedin.com/in/thangchiba/
 github: https://github.com/thangchiba
 ---
 
-
-
-import Toggle from "./ui/Toggle.tsx";
-import FlexContainer from "./ui/FlexContainer.tsx"
-
 ## Hoang Van Thang
 
-Software Engineer - Tokyo, Japan
+Software Engineer · Japan
 
----
+## Profile
 
-## Introduction
-Software development engineer working in the DX (Digital Transformation) department.
-Experienced in building web applications from the ideation, design, development, deployment, and maintenance stages.
-Always interested in emerging technologies, performance, and user experience.
+I am a software engineer with experience in full-stack development, business automation, AI agents, and AWS infrastructure. I have worked across the development lifecycle, from exploring an idea and designing the system to implementation, deployment, and maintenance.
 
-Because my job is to apply digital technology to improve work efficiency by changing the way and processes of customers, I always try to learn and research the latest technologies to apply to my work.
-However, applying new technology is not always effective, so I always consider and test before implementing it in products.
-Therefore, I do a lot of personal projects to experiment with and research new technology before proposing it to the company.
+Recent projects include a document-based AI agent platform, an agent that operates E-Commerce APIs, and SRE work on a Data Lake module. I enjoy researching new technology, but prefer to test it on a small scale before bringing it into a business workflow.
 
----
+This resume reflects my experience as recorded in May 2026.
 
-## Professional Skills
+## Skills
 
-- **Programming Language & Framework**: Proficient in using C#, SpringBoot (Java), and React (JS). Have experience and portfolio projects with ReactNative, Swift, FastAPI (Python), NestJS. Experienced in full-stack web development, focusing on performance and clean code.
-- **Infra**: Experience with various AWS services including Serverless, enabling cost-effective and scalable solutions. Capable of deploying small to medium scale Hybrid Clouds (Public Cloud + Private Cloud). Skilled in using Docker for deploying personal projects.
-- **Database**: Skilled in using and designing RDBMS, with experience in designing and managing databases for complex business applications. Also use NoSQL (MongoDB, DynamoDB) for personal projects.
-- **Performance Optimization**: Particularly interested in software performance.
-- **Clean Code**: Continuously learn best practices of each language to apply. Use design patterns to keep the codebase maintainable and scalable.
-- **Project Management**: Experienced in applying Scrum, setting up Sprints, making adjustments, and reporting. Experienced in managing the progress of outsourcing teams in Vietnam and Japan.
-- **UI/UX Design**: Always seek to enhance user experience, integrating UI with UX with a special focus on UX. The goal is for users to use the software without needing instructions.
-- **Personal Projects**: Developed high-performance frameworks like NeoSocket for gaming and metaverse applications. Various SaaS solutions leveraging Serverless architecture to reduce operational costs while maintaining high availability and security.
+- **Application development:** Java / Spring Boot, JavaScript / React, Python / FastAPI, C# / .NET, and TypeScript. I have also used React Native and Swift for mobile work.
+- **AI and automation:** LangChain, LangGraph, ReAct, Tool Calling, self-hosted LLM evaluation, RAG, OCR, chunking, embeddings, Qdrant, and real-time voice integration with Gemini Live API.
+- **Infrastructure:** AWS, Terraform, Multi VPC networking, PrivateLink, IAM, KMS, Secrets Manager, GitHub Actions, CodePipeline, and CodeBuild. I use Docker for personal projects.
+- **Data:** PostgreSQL for business applications, alongside MongoDB, DynamoDB, and Qdrant for other workloads.
+- **Team work:** Initial architecture and MVP implementation as Team Lead, task breakdown, code review, progress tracking, and BrSE coordination with engineers in Vietnam.
+- **Focus:** Performance, maintainable code, and interfaces that make everyday tasks easier.
 
-**Special Interests**
+## Project experience
 
-- **C# and .NET Technology**: Passionate about C#, commonly used for complex server-side systems and high-performance applications. Always exploring advanced features and optimizations in the .NET ecosystem to improve products.
+### Data Lake platform — SRE
 
----
+**November 2025 onward, as of May 2026** · Overall project: approximately 300 people
 
-## Work Experience
-_Tokyo, April 2022 - Now_
+Implemented infrastructure for the Data Lake module of a major Japanese telecom platform. Specialist teams provided architecture and security designs; I translated them into Terraform and checked the resulting AWS resources.
 
-### **Project: Digitization of a B2B Wholesale Business Model.**
+My work included Multi VPC connectivity, permissions and security settings, environment differences, and CI/CD automation with GitHub Actions and CodePipeline / CodeBuild.
 
-- Developed an order entry system that reduces manual operations and, most importantly, digitizes data. This digitization facilitates easier data analysis and historical data retrieval, enabling the business to expand its operations efficiently.
+[Project details](/project/data-lake-platform)
 
-- The project is divided into several phases, each lasting from six months to a year.
+### E-Commerce AI Agent — Team Lead
 
-- I was involved in every phase, from ideation and technology selection to system design, database, and codebase development.
+**July–October 2025** · Team: 4
 
-- Implemented the Scrum model, setting up bi-weekly Sprints and reporting progress to the CEO.
+Designed and implemented an agent that handles natural-language requests through an existing E-Commerce API. Tools cover product and customer lookup, stock checks, and order creation.
 
-- Tech stack: ReactJS/MUI, ReactNative, Swift, SpringBoot, PostgreSQL, AWS, OCR.
+Used FastAPI, LangChain, LangGraph, ReAct, MongoDB, and AWS. I built the agent flow, tool integration, a simple JavaScript chat UI, and evaluated self-hosted LLMs for answer quality, tool selection, speed, and cost.
 
-<Toggle text="Phase 1: April 2022 to March 2023">
-    Kickstarted the project by analyzing client business processes.
+[Project details](/project/ecommerce-ai-agent)
 
-    Produced documentation on business processes that could be digitized and estimated the impact of digital
-    transformation.
+### AI Agent platform — Team Lead
 
-    Created documents on tech stacks and libraries to be used, and designed comparison charts to justify selections.
+**April–July 2025** · Team: 5
 
-    Developed an order system on the website to allow partners to place orders more simply and intuitively.
+Built the initial architecture and MVP for a platform where businesses create agents from uploaded documents. Implemented the flow from OCR and text extraction through chunking, embeddings, Qdrant retrieval, and chat answers.
 
-    Prices are updated in real time, and data is refreshed in the system, making retrieval easier.
+Used React, FastAPI, MongoDB, and AWS, with configurable model providers and real-time voice conversations through Gemini Live API. After the MVP, I split tasks, reviewed code, supported technical decisions, and tracked progress.
 
-    Tech stack: ReactJS, SpringBoot, PostgreSQL, AWS.
-</Toggle>
+[Project details](/project/ai-agent-platform)
 
-<Toggle text="Phase 2: April 2023 to December 2023">
-    Researched the transformation of the client's old data entry system to a new one.
+### B2B wholesale DX — SE / BrSE responsibilities
 
-    The old data entry system used an MS-DOS interface with text commands, and data was overwritten each fiscal year,
-    leaving it almost valueless for AI-driven big data analysis.
+**April 2022–March 2025** · Team: 6
 
-    Developed a new system:
+Studied a produce wholesaler's workflows and developed systems in three stages: online ordering with real-time prices, a responsive replacement for an MS-DOS entry system, and tablet-based invoice entry with handwriting recognition.
 
-    Invested in UI/UX: Introduced a GUI that could be navigated with a mouse, allowing for historical reviews and
-    statistics. Included responsive design for executives to monitor from smartphones.
+Handled technical research, design, database and base-code development, implementation, and maintenance. I prepared documentation for the Vietnam outsourcing team, coordinated questions and progress, and reported to the CEO every two weeks.
 
-    In terms of UX, added Excel-like shortcut keys to increase productivity and reduce unnecessary operations.
+Stack: React, Spring Boot, PostgreSQL, AWS, React Native, Swift, Python / FastAPI, and TensorFlow.
 
-    Focused on performance: Since it’s a data entry application running on a web platform, performance was a priority.
-    Employed techniques and strategies to optimize the performance of React.
+[Project details](/project/vegetable-wholesale-dx)
 
-    Tech stack: ReactJS, SpringBoot, PostgreSQL, AWS.
-</Toggle>
+### E-Commerce backend — SE
 
-<Toggle text="Phase 3: January 2024 to Present">
-    "Paper Less"
+**October 2021–April 2022** · Team: approximately 30
 
-    Digitized procurement and sales invoices. Current invoices are handwritten and entered into the computer system at
-    the end of the day.
+Worked on the backend of an E-Commerce site selling anime merchandise. Implemented monthly sales-summary batches, error reporting, and customer emails with AWS Lambda.
 
-    Instead of writing on paper, staff use a stylus on tablets, with characters digitized in real-time and saved to the
-    Database, eliminating the need for manual data entry and paper.
+Stack: C# / ASP.NET Core 3, PostgreSQL, Lambda, Cognito, and S3.
 
-    Tech stack: ReactNative - Swift, AI Handwriting Recognition(Keras/Tensorflow).
-</Toggle>
+### Warehouse management — SE
 
----
+**September–December 2021** · Team: 5
 
-*Tokyo, April 2021 - March 2022*
+Worked with a third-party E-Commerce API to develop a warehouse-management system. Built responsive screens, invoice layouts, and PDF / CSV exports using Java, Spring MVC, and PostgreSQL.
 
-### **Participation in 3 outsourcing projects with various operations and technologies.**
+### Internal and external project support — SE
 
-1. Warehouse management system:
+**April–August 2021** · Team: 12
 
-    Description: A warehouse management system for a small e-commerce business. The EC site was designed by a third party. My role was to understand the third-party APIs to develop the warehouse management system.
+Developed a book-management application in Java and an employee-management application with C# WinForms. Participated in project support and maintenance while learning the team's development practices.
 
-    Developed a responsive website. Designed invoices and exported data in PDF and CSV formats.
+## Personal projects
 
-    Technology: SpringBoot (Java), jQuery, Bootstrap, PostgreSQL.
+- [NeoSocket](/project/neo-socket): A C# networking framework with packet handlers, middleware, an IoC container, and Unity / TypeScript clients.
+- [Jingi](/project/jingi): A Unity MMORPG prototype combining quests and equipment with MOBA-inspired combat.
+- [NeoSekai](/project/neo-sekai): A metaverse MVP for testing packet batching and cell-based server management.
+- [Cypher](/project/cypher): A real-time chat experiment with client-side encryption and shared passwords.
+- [Apartment Management](/project/apartment-management): A small rental-management web app built with AWS serverless services.
+- [ChatGPT++](/project/chat-gpt-plus): An early OpenAI API chat client with browser speech and local conversation history.
 
-2. E-commerce:
+## Education and languages
 
-    Description: Developed the backend system for a fairly large e-commerce site. Responsible for writing functions for AWS Lambda to run end-of-month revenue summaries, error reporting, and emailing customers.
+**Shumei University — English and Information Management** · April 2017–March 2021
 
-    Handled programming invoices and data transfers from the Database to PDF with specified designs.
+Japanese language studies · April 2015–March 2017
 
-    Technology: C# ASP.NET Core 3, PostgreSQL, AWS Serverless Lambda, Cognito, S3.
+Japanese: business conversation, JLPT N2 obtained in 2018. English: reading and listening.
 
-3. Medical quiz system:
+## Interests
 
-    Description: Developed a system to add quiz questions and collect responses from users. Mainly involved in support and maintenance, not much in development.
+Programming, technical reading, and writing about what I build. I also enjoy MMORPG, FPS, and MOBA games, and exploring C# / .NET performance.
 
-    Technology: Python Django, VueJS, PostgreSQL.
-
----
-## **Personal Projects**
-
-- [NeoSocket](/project/neo-socket): A high-performance framework for real-time applications, designed for developing MMORPG games and Metaverse, as well as for chat systems and dashboard management. Efficiently uses resources to handle up to 400k requests with just 1 CPU core on GCP. Developed from the need for a more powerful solution than existing open-source frameworks, with the principle of writing clean code like web development but with gaming-level performance.
-
-- [ChatGPT++](/project/chat-gpt-plus): A chat interface for everyone to use OpenAI's API. Provides an experience equivalent to buying a premium package but at a much lower cost.
-
-- [Cypher](/project/cypher): Inspired by World War II. An anonymous chat application using NeoSocket for end-to-end encryption. Users can start chat sessions without logging in or authentication, while still ensuring security.
-
-- [Apartment Management](/project/apartment-management): A SaaS application used to manage rental properties. The application manages rented rooms, tenant information, and payment status. Due to infrequent access, the goal is to use AWS Serverless to optimize operating costs. For example, S3 for static web hosting, Cognito for authentication, and Lambda Functions for backend processing.
-
-- [Jingi](/project/jingi): An MMORPG game that combines Diablo's inventory and quest systems with the complex combat mechanics of League of Legends. Uses NeoSocket to build a complex open world while ensuring performance and player experience.
-
-- [NeoSekai](/project/neo-sekai): My first Metaverse MVP product, introducing breakthrough server optimization improvements. By combining data packets and dynamic load balancing, NeoSekai can create vast virtual worlds cost-effectively with the capacity to host thousands of simultaneous users.
-
----
-## **Education**
-
-*April 2015 - March 2017*
-
-**Asahi Japanese Language School**
-
-*April 2017 - March 2021*
-
-**Shumei University**
-
-
----
-
-## **Interests**
-
-- Enjoys programming, reading tech documents, and IT blogging.
-- Fond of playing video games, especially MMORPGs, FPS, and MOBA genres.
-
----
-
-Thank you for reading this far. If you have any questions, please feel free to contact me via email or through the social media links below.
+Contact: [contact@thangchiba.com](mailto:contact@thangchiba.com)

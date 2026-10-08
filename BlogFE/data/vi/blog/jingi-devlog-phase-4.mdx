@@ -1,41 +1,35 @@
 ---
-title: 'Jingi Devlog : Phase 4 - Kĩ năng và chỉ số nhân vật'
+title: "Jingi Devlog: Phase 4 — Ability và chỉ số nhân vật"
 date: '2022-10-02'
 
 tags: ['jingi', 'mmorpg', 'moba', 'realtime', 'socket']
 draft: false
-summary: "Giai đoạn 4 của sự phát triển Jingi tập trung vào việc tinh chỉnh hệ thống Kĩ năng và Chỉ Số, sử dụng các mẫu thiết kế để mở rộng và linh hoạt. Giai đoạn này nâng cao động lực chiến đấu với Hệ thống Kĩ Năng mạnh mẽ và tối ưu hóa các tương tác thông qua Observer Pattern, chuẩn bị cho tích hợp mạng trong MMORPG của tôi."
-audioURL: '/static/media/blog/random-generator/jingi-devlog-phase-4-en.mp3'
+summary: "Mình tổ chức lại ability theo targeting strategy và dùng Observer Pattern để cập nhật các hệ thống liên quan khi chỉ số nhân vật thay đổi."
+audioURL: '/static/media/blog/jingi/jingi-devlog-phase-4-vi.mp3'
 authors: ['default']
 images: ['/static/media/blog/jingi/0.4.0.png']
 ---
 
 import YouTubeEmbed from "./media/YouTubeEmbed";
 
-## Giới Thiệu
+## Sắp xếp lại combat trước khi làm networking
 
-Khi quá trình phát triển diễn ra, tôi rất vui mừng được chia sẻ những cập nhật mới nhất từ Giai đoạn 4 của Jingi, nơi trọng tâm là xây dựng hệ thống Kỹ năng và sửa đổi cơ chế chỉ số. Giai đoạn này đặt nền tảng cho việc tích hợp các tính năng mạng, rất quan trọng để phát triển Jingi thành một MMORPG hoàn chỉnh với động lực chiến đấu giống như các trò chơi MOBA.
+Ở phase này, mình làm hệ thống ability và sửa lại phần chỉ số nhân vật. Trước khi đưa chúng vào multiplayer, mình muốn trách nhiệm của từng phần rõ ràng hơn để sau này dễ sửa.
 
 <YouTubeEmbed url="https://www.youtube.com/watch?v=mkFDlAXRNb4&t=48s" />
 
-**Có Gì Mới?**
+## Ability và cách chọn mục tiêu
 
-- **Ability System**: Tôi đã sử dụng Strategy Pattern để xây dựng một Hệ thống Kỹ năng mạnh mẽ và linh hoạt. Thiết kế này cho phép dễ dàng điều chỉnh và mở rộng các kỹ năng khi trò chơi phát triển. Mỗi loại kỹ năng, chẳng hạn như kỹ năng định hướng (skillshots) hoặc hiệu ứng trên diện rộng (AOE), đều kế thừa từ lớp **`TargetingStrategy`**, tạo điều kiện cho các chiến lược chiến đấu đa dạng.
-- **Stats Optimization**: Để nâng cao sự tương tác của chỉ số trò chơi với các yếu tố chơi trò chơi khác nhau, tôi đã triển khai Observer Pattern. Điều này đảm bảo rằng mọi thay đổi về chỉ số được quản lý và lan truyền hiệu quả trong toàn bộ hệ thống trò chơi.
-- **Core Features**: Khi các tính năng chơi trò chơi cốt lõi sắp hoàn thành, tôi bắt đầu đặt nền móng cho các khía cạnh mạng của trò chơi. Quá trình chuyển đổi này là rất quan trọng để hỗ trợ thế giới rộng lớn và sự tương tác của người chơi điển hình của MMORPG.
+Mình nhìn các skill trong League of Legends rồi nhóm chúng theo cách chọn mục tiêu. Skillshot và AOE có cách hoạt động khác nhau, nhưng nhiều skill có thể dùng chung targeting logic.
 
-**Thông Tin Chi Tiết Phát Triển**
+Phần này mình dùng Strategy Pattern. Các kiểu targeting kế thừa `TargetingStrategy`, còn cấu hình được lưu trong ScriptableObject. Khi thêm skill, mình có thể dùng lại cách chọn mục tiêu có sẵn, đỡ phải copy logic.
 
-Bạn có thể thường nghe lời khuyên không nên sử dụng các mẫu thiết kế trong phát triển trò chơi do độ phức tạp và tác động hiệu suất của chúng. Tuy nhiên, đối với các dự án lớn hơn nhằm mục đích mở rộng quy mô, việc hiểu và sử dụng các mẫu cơ bản như Strategy và Observer có thể rất quan trọng. Chúng cung cấp một cách tiếp cận có cấu trúc để giải quyết các hệ thống phức tạp, điều cần thiết để duy trì và mở rộng trò chơi một cách hiệu quả.
+## Cập nhật chỉ số
 
-Ví dụ: bằng cách phân tích các kỹ năng từ các trò chơi MOBA phổ biến như Liên Minh Huyền Thoại, tôi đã phân loại các kỹ năng thành các loại và phương pháp nhắm mục tiêu. Phân tích này đã giúp hợp lý hóa quá trình tạo khả năng, trong đó hầu hết các kỹ năng sử dụng một vài chiến lược nhắm mục tiêu cốt lõi, được quản lý thông qua ScriptableObjects để dễ sử dụng và sửa đổi.
+Với chỉ số nhân vật, mình dùng Observer Pattern để các phần liên quan nhận được thay đổi. Mục tiêu là tránh rải logic cập nhật khắp nơi, khiến sửa một chỉ số lại phải tìm nhiều chỗ.
 
-**Hướng Tới Tương Lai**
+Mình dùng design pattern khi nó giúp giải quyết một vấn đề cụ thể. Đổi lại, vẫn cần cân nhắc độ phức tạp của code và cách nó chạy trong game.
 
-Bước tiếp theo là phát triển hệ thống Player Killing (PK) lấy cảm hứng từ động lực của Liên Minh Huyền Thoại, tập trung vào lối chơi chiến lược và tương tác giữa người chơi.
+## Việc tiếp theo
 
-**Phản Hồi Mong Muốn**
-
-Như mọi khi, tôi đánh giá cao suy nghĩ và phản hồi của bạn. Nếu bạn có bất kỳ thông tin chi tiết, câu hỏi hoặc đề xuất nào, vui lòng chia sẻ chúng. Đầu vào của bạn là vô giá khi tôi tiếp tục tinh chỉnh và mở rộng Jingi.
-
-Hãy theo dõi để biết thêm các cập nhật khi tôi điều hướng qua các giai đoạn phát triển thú vị này!
+Khi các phần cốt lõi này ổn hơn, mình sẽ chuyển sang networking và hệ thống PK lấy cảm hứng từ MOBA. Đó là hướng làm tiếp, chưa phải tính năng đã hoàn thành ở bản này.

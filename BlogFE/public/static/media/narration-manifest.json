@@ -1,0 +1,386 @@
+{
+  "data/en/blog/jingi-devlog-phase-1.mdx": {
+    "audioURL": "/static/media/blog/jingi/jingi-devlog-phase-1-en.mp3",
+    "voice": "Samantha",
+    "sourceHash": "c2827ea68ce3999b3d15d00d4b70f9014221f891343da56c4aec4f6276e94119",
+    "durationSeconds": 54.144,
+    "contentHash": "312fbebfa9456fc962e97334d24226ac682bcb8c3598c076f807314b71b49d09",
+    "audioHash": "9dd1b3b33b0505e1f9c0345872a659bc831fe6c261bb0c54f2923c075e4fa24d"
+  },
+  "data/en/blog/jingi-devlog-phase-2.mdx": {
+    "audioURL": "/static/media/blog/jingi/jingi-devlog-phase-2-en.mp3",
+    "voice": "Samantha",
+    "sourceHash": "820ccc5a4408d239476d3a95df89f8725e115fdce80c2a49a71746fa890cdef0",
+    "durationSeconds": 59.52,
+    "contentHash": "0f7e015f77032408f96cfcd99b4eb855c6e705bacfb0ae57ab583ae40b27d869",
+    "audioHash": "dd182d61014aabdd02500468fb8be3c143f45ba05b977dc55a0dff29d967aa2e"
+  },
+  "data/en/blog/jingi-devlog-phase-3.mdx": {
+    "audioURL": "/static/media/blog/jingi/jingi-devlog-phase-3-en.mp3",
+    "voice": "Samantha",
+    "sourceHash": "31ea158b90aec0e9be96c1bee8d4f95a6eb27b12fa524bde0856887bbfc1788b",
+    "durationSeconds": 54.12,
+    "contentHash": "8d8588e600b581142ef2f9184bb574243c6e1a8d6d072faccec29ecd11ab6bb3",
+    "audioHash": "08b6d1d6c58c0e4151efa1cf2ab73554cd859eb616cdeaa2cc459403f702c582"
+  },
+  "data/en/blog/jingi-devlog-phase-4.mdx": {
+    "audioURL": "/static/media/blog/jingi/jingi-devlog-phase-4-en.mp3",
+    "voice": "Samantha",
+    "sourceHash": "63e829f6bb3a09363d4bc9352eb6dca1e3aa7d35adb2f63925b738d421721cd3",
+    "durationSeconds": 74.328,
+    "contentHash": "992b16d789c2d498186abd3247ba19249b7f1aea59facd56197b60ae284110b6",
+    "audioHash": "9a0a0b883481facd8f06df793b8a13135a66bdf2858193bf360d113d2818bde8"
+  },
+  "data/en/blog/jingi-devlog-phase-5.mdx": {
+    "audioURL": "/static/media/blog/jingi/jingi-devlog-phase-5-en.mp3",
+    "voice": "Samantha",
+    "sourceHash": "a15ec4c663450766635ab345efc77b0a0c25b76d25e3498d3e185c085de2ee78",
+    "durationSeconds": 92.232,
+    "contentHash": "865a02e9d7022b5b97c6ab1649987ee0e98c5381f1070338617cd3c1ebd0ac1d",
+    "audioHash": "7a39d6277bc8680ebde1829c7ae8c40aac4181ce8a6ee68bc013122b284de7c5"
+  },
+  "data/en/blog/random-generator.mdx": {
+    "audioURL": "/static/media/blog/random-generator/random-generator-en.mp3",
+    "voice": "Samantha",
+    "sourceHash": "ec3d1bbeed201caec5318061121734b9c81f1aa758c2ba4c2c23f9f27aeef8b4",
+    "durationSeconds": 168.264,
+    "contentHash": "60b4adb031cacd5a95d9dbef60dfa2cfe1ddcce79230f07373ad445468e3822b",
+    "audioHash": "6c165fd521c7e36052a3258105ce43ee572a47dab07bb4165b3f71dcb1f01862"
+  },
+  "data/en/project/ai-agent-platform.mdx": {
+    "audioURL": "/static/media/project/ai-agent-platform/ai-agent-platform-en.mp3",
+    "voice": "Samantha",
+    "sourceHash": "56d7d34e2bdf69137ed3d8d9c9453278539e78f6d9bf1fbb5b67fd22e4e0ce89",
+    "durationSeconds": 131.736,
+    "contentHash": "e68c4e47a01c32fbc5550157f7261150bbe61401dc3b001ca0feb4b92666a19c",
+    "audioHash": "b143cc8ae1a1ff2a1b8694dd734125cbe971a818efa1e4251281c595098b3de4"
+  },
+  "data/en/project/apartment-management.mdx": {
+    "audioURL": "/static/media/project/apartment/apartment-en.mp3",
+    "voice": "Samantha",
+    "sourceHash": "4b7d51d12f3944f9133642d3052ffc1c270c2c05fb4b8448daf13dbc41118274",
+    "durationSeconds": 90.576,
+    "contentHash": "f9a2dbba6b85a0bc53da739553191079dc41ba74a8aaf9da00c2fb9d22514f8b",
+    "audioHash": "2a76e1a85575976bc942f64c1be83901ad6e991780f462adeda0cde291df84e2"
+  },
+  "data/en/project/chat-gpt-plus.mdx": {
+    "audioURL": "/static/media/project/chatgpt/chatgpt-en.mp3",
+    "voice": "Samantha",
+    "sourceHash": "dd0dd8a17cb355cc30dacd4df79480a04f0277ab96983bddf870605b4aa69b7f",
+    "durationSeconds": 93.864,
+    "contentHash": "39a961555597ac57963b40ef3208d7c88bce605bd95d228acbd05f88e347b451",
+    "audioHash": "d9fc56494d1b9f7272921d1be7651a87be5df7c1950322ff2debc70632950933"
+  },
+  "data/en/project/cypher.mdx": {
+    "audioURL": "/static/media/project/cypher/cypher-en.mp3",
+    "voice": "Samantha",
+    "sourceHash": "be63a181ac6292344e8a97e31ecc3eba6b912b554587b1b1e37e72f5ca60525a",
+    "durationSeconds": 102.504,
+    "contentHash": "ceef384d246beec8922533b3d92b7b2dec06e79e0f4104d210332350188ba5f9",
+    "audioHash": "14baddc08ff2729bbdced7710fc7177797279f70db96016d7e3d0501d8a6c7c7"
+  },
+  "data/en/project/data-lake-platform.mdx": {
+    "audioURL": "/static/media/project/data-lake-platform/data-lake-platform-en.mp3",
+    "voice": "Samantha",
+    "sourceHash": "41c2cf5ee06e7bbaaf9418f928c6e8022b60bd30892f1dd730d2c74f0e5ee25a",
+    "durationSeconds": 110.256,
+    "contentHash": "696231203837bdb6aeeec195b572d428f604e4f552bee31c588bf2dcd4c11f74",
+    "audioHash": "c5e675a8a69b2d2a60609464a83dade2b7027bfcf55db2608fe3dee0c62ac1dd"
+  },
+  "data/en/project/ecommerce-ai-agent.mdx": {
+    "audioURL": "/static/media/project/ecommerce-ai-agent/ecommerce-ai-agent-en.mp3",
+    "voice": "Samantha",
+    "sourceHash": "0007a96ded3b320dd08d15a5a2931fa718b8d6bb63b6104067bf86ff29ac32d1",
+    "durationSeconds": 95.088,
+    "contentHash": "bb1ea26cc28af1bf61dfeae89ea295244a47e121a6cd6f396e37f99d646185c9",
+    "audioHash": "f47e570d956de1cf0fb7d8901c7b2ef7f527ae7656607af2a497fa37417abb3b"
+  },
+  "data/en/project/jingi.mdx": {
+    "audioURL": "/static/media/project/jingi/jingi-en.mp3",
+    "voice": "Samantha",
+    "sourceHash": "b3e95a20cebb5ec639f7e16679c39d132e289fa4876c6f499a365c26a9788f29",
+    "durationSeconds": 88.272,
+    "contentHash": "4232402a6a0a2e3dfeb6bbde33be1077eedf480708d9a0dc03bee94e9fb639d5",
+    "audioHash": "16dc4f4e5f80f6567ada94a4cb097bd37ad2bed87a44ec8f60510409365afe08"
+  },
+  "data/en/project/neo-sekai.mdx": {
+    "audioURL": "/static/media/project/neo-sekai/neo-sekai-en.mp3",
+    "voice": "Samantha",
+    "sourceHash": "dc017db38d2576e12e224989ac88713710c8290917f2830fbabfe3fb7df178e7",
+    "contentHash": "e3be14a27011f20f6a199b06961eca3a36527437bec3ba71f30bcaf4a2779ae3",
+    "audioHash": "0ba3c097ef692150abe53bd77623b6b46b12470a6349dce185451ac4e1caf487",
+    "durationSeconds": 124.128
+  },
+  "data/en/project/neo-socket.mdx": {
+    "audioURL": "/static/media/project/neo-socket/neo-socket-en.mp3",
+    "voice": "Samantha",
+    "sourceHash": "ff4857f2c69626bb3c896bef974799449489e595972bf182e00de3f9e58368c2",
+    "durationSeconds": 234.024,
+    "contentHash": "b703b1d8a041c38859e76563a959325708465a73e510ff01a1ac9659d3394750",
+    "audioHash": "f9b524a2f9c12f62624b8484be3342760c520d45e8c527e8fdc658669926671c"
+  },
+  "data/en/project/vegetable-wholesale-dx.mdx": {
+    "audioURL": "/static/media/project/vegetable-wholesale-dx/vegetable-wholesale-dx-en.mp3",
+    "voice": "Samantha",
+    "sourceHash": "ffa1c5a7c5b7f4a13884be099df55f2cabcf87061ba3c46f1bc13a2b43913e01",
+    "durationSeconds": 131.808,
+    "contentHash": "7d9a15247af4af2c5341527e246bb7891dd857822e3fc09cbdcdafae30e32aa4",
+    "audioHash": "9b6eb0b46861f17439066c4cc19ced8135c973b4bd13d1507dd88fa5abb2d50d"
+  },
+  "data/vi/blog/jingi-devlog-phase-1.mdx": {
+    "audioURL": "/static/media/blog/jingi/jingi-devlog-phase-1-vi.mp3",
+    "voice": "Linh",
+    "sourceHash": "483e277bc0672b2a951867690cd4312453b8fc9f170c84dfb713b710c001ce76",
+    "durationSeconds": 65.832,
+    "contentHash": "7fd65635156314dcc1d5667744ab494dd84adf56621fd089299b0adc705994ab",
+    "audioHash": "2c93d29c752bd482c00e52bf005afe59527ed9d85cf94b452117d941d0c52ef7"
+  },
+  "data/vi/blog/jingi-devlog-phase-2.mdx": {
+    "audioURL": "/static/media/blog/jingi/jingi-devlog-phase-2-vi.mp3",
+    "voice": "Linh",
+    "sourceHash": "7f0466161d70f3dbc0feb0585ab4e90b28540b4d9f65f4a149a4d907fc03fa5e",
+    "durationSeconds": 72.552,
+    "contentHash": "e8d7f46455f2b2efb94f1e0f77076ebd3e0b32467fb6955a327c1c8a6427fc0b",
+    "audioHash": "42225e2b596f84f8f04bfe6e7123fe52e07368165cd543826200dd2fcf0a3459"
+  },
+  "data/vi/blog/jingi-devlog-phase-3.mdx": {
+    "audioURL": "/static/media/blog/jingi/jingi-devlog-phase-3-vi.mp3",
+    "voice": "Linh",
+    "sourceHash": "6ef79cebc987b5ddfedbc0157a1b4cde5c2ae8a653a0448bf2f358d380f6700c",
+    "durationSeconds": 62.592,
+    "contentHash": "5bcb860f180bed72b56679d77d33f74ca6dff20fe18c96dacff589b031333c3b",
+    "audioHash": "7912d4bfd6663c69902608cb0d9ec3f0836327ee94a9f84d509edff5909544aa"
+  },
+  "data/vi/blog/jingi-devlog-phase-4.mdx": {
+    "audioURL": "/static/media/blog/jingi/jingi-devlog-phase-4-vi.mp3",
+    "voice": "Linh",
+    "sourceHash": "fee101e034485b6746a1a74d9a28cab6da90943135a0492134f46ea64eaee97e",
+    "durationSeconds": 91.992,
+    "contentHash": "c53709f19df93748e344fae1cb968ce80de3761b6869915d212cdaaa63d74728",
+    "audioHash": "0065f275fa4cef95ffaf4b8025a5c57fecd779cd4f8cf9b878f29c636f575320"
+  },
+  "data/vi/blog/jingi-devlog-phase-5.mdx": {
+    "audioURL": "/static/media/blog/jingi/jingi-devlog-phase-5-vi.mp3",
+    "voice": "Linh",
+    "sourceHash": "b512dfc4dfd3fe9c73add9a7bc1f02e6650204d23e1030d8cdac8f0755094106",
+    "durationSeconds": 107.112,
+    "contentHash": "3a8d4000d2879cf081203a1b7ba779bd0d58ec50279a5fe55621627b9b9cd5e7",
+    "audioHash": "d72e836fb943c699b5f9fdd1a8e20ef5a841305b9903abedb2ea704eedec6edd"
+  },
+  "data/vi/blog/random-generator.mdx": {
+    "audioURL": "/static/media/blog/random-generator/random-generator-vi.mp3",
+    "voice": "Linh",
+    "sourceHash": "b16ce217ddd142ca258be62d9025a54bff7ed9e0418d4dc0d2376d39aabe7af1",
+    "durationSeconds": 198.432,
+    "contentHash": "c4db82bcdb97665fc7405bbeb950b4435a921f7963e8c7df5b1364d553ddc96e",
+    "audioHash": "db6ad1dcbc1f7a9ac310b243780f81779e19f4725d6c4f078ad158cec7814f9b"
+  },
+  "data/vi/project/ai-agent-platform.mdx": {
+    "audioURL": "/static/media/project/ai-agent-platform/ai-agent-platform-vi.mp3",
+    "voice": "Linh",
+    "sourceHash": "e86b2dad467f00fa0a520ef1071d84ef8a2f28a4401db9df771020869155c65d",
+    "durationSeconds": 145.008,
+    "contentHash": "b93a1b49a758767e7f86e659ffd963af01664165342d781933db7a4fb0ce3269",
+    "audioHash": "fd270bbe79c99e9ce7e2fd6c9f841e8927bf167ee8a9d667440f212386b1a6fa"
+  },
+  "data/vi/project/apartment-management.mdx": {
+    "audioURL": "/static/media/project/apartment/apartment-vi.mp3",
+    "voice": "Linh",
+    "sourceHash": "d9c2e38d7052b513bc78f22917e64254831d2044d13e435588859b706c6bc521",
+    "contentHash": "d3a0c9e680bf090b9ee1f5c4e7112e2672f039142be376c41b9741d11f901602",
+    "audioHash": "0809479c25ae546bec8d6f30d626907f01a4b06ac23f533e44ba2947b93e36c2",
+    "durationSeconds": 103.968
+  },
+  "data/vi/project/chat-gpt-plus.mdx": {
+    "audioURL": "/static/media/project/chatgpt/chatgpt-vi.mp3",
+    "voice": "Linh",
+    "sourceHash": "c4065e38d8e99a0d74a368eb718b43d62bfd78b02f334d93d55ab40d412388e7",
+    "durationSeconds": 108.936,
+    "contentHash": "741a0fb1c103f4bb613cb950a1cfdeac5aaaa2bef7a4275d6c5b02e1ddd3aeaa",
+    "audioHash": "0e9540be4c23a633ff1536f0f3e3bc3b332fdfdb4a2e3aa4689a8a814f5b7f64"
+  },
+  "data/vi/project/cypher.mdx": {
+    "audioURL": "/static/media/project/cypher/cypher-vi.mp3",
+    "voice": "Linh",
+    "sourceHash": "98e4e59483929c1fb9db0c7f5060508adbebb9c4ff70292c9846f4203152ab4c",
+    "durationSeconds": 117.552,
+    "contentHash": "524c7f421a1f9ef64746888ab597eff514ba3de9a2c39e51b1f07696cc94e75b",
+    "audioHash": "504fb77798c716e152313990dacd43d077c56d8679ef0e7eba2047aa268d8961"
+  },
+  "data/vi/project/data-lake-platform.mdx": {
+    "audioURL": "/static/media/project/data-lake-platform/data-lake-platform-vi.mp3",
+    "voice": "Linh",
+    "sourceHash": "c14e360843f5076255bc342afff6f4adc3fc4af4d46c99e4e99f1ebba6fd36c0",
+    "durationSeconds": 124.224,
+    "contentHash": "cc38024ea94bbd40ea99055f278668ad54515c239f3d72711b313f0addece3d5",
+    "audioHash": "00e1f6cb30767b934fb34ea9c3e051ac0eefca8ddb1e06e10ed9bbbf361378bd"
+  },
+  "data/vi/project/ecommerce-ai-agent.mdx": {
+    "audioURL": "/static/media/project/ecommerce-ai-agent/ecommerce-ai-agent-vi.mp3",
+    "voice": "Linh",
+    "sourceHash": "bef67f6fc6f1c1ffdfe34159223be7dc9620665cea1cbe8b4fc70d9043ee62f5",
+    "durationSeconds": 112.872,
+    "contentHash": "6e31f3ca9293f4b43bfc59b1c32bb398c54f50286f978ec6bc942e17f7fe3560",
+    "audioHash": "58eb6eea04abb8f51768d15bd4aa4d9643b6f9442acb33c876f2b487461f9fab"
+  },
+  "data/vi/project/jingi.mdx": {
+    "audioURL": "/static/media/project/jingi/jingi-vi.mp3",
+    "voice": "Linh",
+    "sourceHash": "61567d77ff07152440632a7c1296668e4d58b8bc45c3584640e88966db4003a7",
+    "contentHash": "85f9d2d5df3dba6c46c64b4a218085f5066a235bdfec43a686870ffbf3e03fc4",
+    "audioHash": "36af654b80e76da489fb20bd89d9f7762f4401772eac97a605787acdab7e8921",
+    "durationSeconds": 108.024
+  },
+  "data/vi/project/neo-sekai.mdx": {
+    "audioURL": "/static/media/project/neo-sekai/neo-sekai-vi.mp3",
+    "voice": "Linh",
+    "sourceHash": "7196b762a2d4db1cb143ec2699f9d6d0aa536af08a0e0809938ea1ca00a88f26",
+    "contentHash": "e97e0ec6fb75793f1abf7fb77b228b7e5b5462d3a2ec80d83b21a2b85d475a62",
+    "audioHash": "7d9e382b6fdae29cdb11623af19687a514541bbb29899a141ea69b8f971abcea",
+    "durationSeconds": 142.752
+  },
+  "data/vi/project/neo-socket.mdx": {
+    "audioURL": "/static/media/project/neo-socket/neo-socket-vi.mp3",
+    "voice": "Linh",
+    "sourceHash": "304bd76f6eba632dd656f922ff5f40d4ae5d845e7ed725dd6163fdd4f17cc553",
+    "durationSeconds": 278.376,
+    "contentHash": "7d96cea5a135b49e989311ecc6ebbccc1c2bf51f464b3c71693d12ce8226c4dd",
+    "audioHash": "f1912d45afb18abe1a7919ed658231bd4fb1fb5dec7038e159eb32b4c90f3773"
+  },
+  "data/vi/project/vegetable-wholesale-dx.mdx": {
+    "audioURL": "/static/media/project/vegetable-wholesale-dx/vegetable-wholesale-dx-vi.mp3",
+    "voice": "Linh",
+    "sourceHash": "4e52511deed979164e85af98f225bc949128b32eecca5b20def72f31d62383bb",
+    "durationSeconds": 151.296,
+    "contentHash": "bd195418459e89554f20ce424d5c32f6c9f75b5fc7e9a36a4bd46b04a2feff35",
+    "audioHash": "383691cd90416a8b10f379dd6cf9d235fc5558a01e8258df763a144081ddbd74"
+  },
+  "data/jp/blog/jingi-devlog-phase-1.mdx": {
+    "audioURL": "/static/media/blog/jingi/jingi-devlog-phase-1-jp.mp3",
+    "voice": "Kyoko (Enhanced)",
+    "sourceHash": "ab0bad7fd1b10e2b66f478cc8844422d0146a92e31b4faba1563f6b0382d3a6c",
+    "durationSeconds": 73.392,
+    "contentHash": "b30bc8709f0e87c24cc6842e995f2081e4f703f08a6a5c663681086a74970ead",
+    "audioHash": "0aa86278ce440e89ea8671d8ba759f867e33cb139c043d7939cfa661e6027595"
+  },
+  "data/jp/blog/jingi-devlog-phase-2.mdx": {
+    "audioURL": "/static/media/blog/jingi/jingi-devlog-phase-2-jp.mp3",
+    "voice": "Kyoko (Enhanced)",
+    "sourceHash": "91d2e672762b29a3ed92fe4130de9961e33b2ac56418b8568fcce996476e2db9",
+    "durationSeconds": 76.56,
+    "contentHash": "14a9f8bf17dc98942dc96e313c8b3eefea8570d0aafbd33723f85df9b04362ec",
+    "audioHash": "aa286111cbf23ba17c3cf2acb88f569da5d055bab8663826d0a3606cef16b777"
+  },
+  "data/jp/blog/jingi-devlog-phase-3.mdx": {
+    "audioURL": "/static/media/blog/jingi/jingi-devlog-phase-3-jp.mp3",
+    "voice": "Kyoko (Enhanced)",
+    "sourceHash": "17afeb2c0f8b18405cf1714e1f0d96a2f2279d0530ed854f267d3b4157f4ba15",
+    "durationSeconds": 66.888,
+    "contentHash": "318b0a9349352a410e7de07776224553d89b62fd324f52734cb61bacc87a3c5a",
+    "audioHash": "5a79dc5018e9d77350c77032c80f4c5cce877710fe4b5a8418322da9c822c74f"
+  },
+  "data/jp/blog/jingi-devlog-phase-4.mdx": {
+    "audioURL": "/static/media/blog/jingi/jingi-devlog-phase-4-jp.mp3",
+    "voice": "Kyoko (Enhanced)",
+    "sourceHash": "fd72a3fb43ad8cf9489ee4a4e2e61a08f8a6e72112096ffcb4b01deb85c2f60b",
+    "durationSeconds": 96.12,
+    "contentHash": "5264aab3189b8caa184719b5132011ddf49e28b496d839f623d759ba784b258e",
+    "audioHash": "445f0a16a9c00fa313bb929cebd28b4d2de0f29bccbf463e08dc891183766fb0"
+  },
+  "data/jp/blog/jingi-devlog-phase-5.mdx": {
+    "audioURL": "/static/media/blog/jingi/jingi-devlog-phase-5-jp.mp3",
+    "voice": "Kyoko (Enhanced)",
+    "sourceHash": "bf3379bed69dc99935e78cb148812ae131f3f915e21aa6f1c4d4c4b7db80edcf",
+    "durationSeconds": 125.64,
+    "contentHash": "0316729531847ba815eb9a80ea61a8b4b8b0100108ffb37afc2708828ef8fdb1",
+    "audioHash": "1ca5fd9ad57f110d6d9600691efe7569ab87dec2ff958e7f7f904e8391dcc35f"
+  },
+  "data/jp/blog/random-generator.mdx": {
+    "audioURL": "/static/media/blog/random-generator/random-generator-jp.mp3",
+    "voice": "Kyoko (Enhanced)",
+    "sourceHash": "9339a3d05621263772f23375d78bf6a363d7859311640ff1d2457f33431a03be",
+    "durationSeconds": 210.864,
+    "contentHash": "f5a966b3b206e47dab1e41ff5a0e25245e75799366531a5fe25122b3f6e74d6d",
+    "audioHash": "82dbbabd5448c9f399e416becba980d7099bc33e8d491b180fdeecae8bc41e41"
+  },
+  "data/jp/project/ai-agent-platform.mdx": {
+    "audioURL": "/static/media/project/ai-agent-platform/ai-agent-platform-jp.mp3",
+    "voice": "Kyoko (Enhanced)",
+    "sourceHash": "e89a017dcb035b44a7d712b8507761294a4c03a764c832deb555ff9cd8c9c32c",
+    "durationSeconds": 167.352,
+    "contentHash": "529958824fc6548e45b29772c063a8ab67346ca0d1371b5cdd124c0a4ac85293",
+    "audioHash": "95b38a13d299fb18f48c6f0cb5dadea4c1f2d4ef09aeabef22ca3af58a465734"
+  },
+  "data/jp/project/apartment-management.mdx": {
+    "audioURL": "/static/media/project/apartment/apartment-jp.mp3",
+    "voice": "Kyoko (Enhanced)",
+    "sourceHash": "8401c74c48ca4fbe9e72b8c70d7886ef27fa61dc97f0072a3781cb05374e4f78",
+    "durationSeconds": 108,
+    "contentHash": "092eecd584b4626646ddaf78974c16c254960e90f2a7b7833a15c284511d4b40",
+    "audioHash": "08f2d160d115a41ff00941abfa886aebf5db8fc3bd6baba334ac5f822e238de3"
+  },
+  "data/jp/project/chat-gpt-plus.mdx": {
+    "audioURL": "/static/media/project/chatgpt/chatgpt-jp.mp3",
+    "voice": "Kyoko (Enhanced)",
+    "sourceHash": "1e320b2b22575c093bee3e43a7b7073f2ae33a32d6007144a24a044260c28840",
+    "durationSeconds": 117.192,
+    "contentHash": "fdebfd4e962bf10ff9eb38fbdd76922b9249a2bc9665ed98afbd0b184cda30d0",
+    "audioHash": "01b2d99a07dd278be05d92391b73065c2c45ec887fe0bde01c20d39fdb3711c2"
+  },
+  "data/jp/project/cypher.mdx": {
+    "audioURL": "/static/media/project/cypher/cypher-jp.mp3",
+    "voice": "Kyoko (Enhanced)",
+    "sourceHash": "5eef1f9eaae6be7e21a01b281553d6010a42c48b507c60370ab075d28d5036c5",
+    "durationSeconds": 134.184,
+    "contentHash": "716ce8997ca49307f739335cd1bef6a8ef55585e416b6d2aa0cc5352581ff014",
+    "audioHash": "273359c94db365b2e9e02b2d1539fbe599e5353d50ac1f85123e5471f1609abf"
+  },
+  "data/jp/project/data-lake-platform.mdx": {
+    "audioURL": "/static/media/project/data-lake-platform/data-lake-platform-jp.mp3",
+    "voice": "Kyoko (Enhanced)",
+    "sourceHash": "0abb5c050554268dca6d1aaad335f45ab04a410727b678bbf34f255e76c969ee",
+    "durationSeconds": 139.896,
+    "contentHash": "97f2dee300366a814064fe6f5c09fc3e00ab6e88fe867f650f133231645d72b6",
+    "audioHash": "831d5237715bcac10664a7c0ab7a1d047f0bc483bc186b6c940a290c1d77773e"
+  },
+  "data/jp/project/ecommerce-ai-agent.mdx": {
+    "audioURL": "/static/media/project/ecommerce-ai-agent/ecommerce-ai-agent-jp.mp3",
+    "voice": "Kyoko (Enhanced)",
+    "sourceHash": "cc227c0179c73f79a2dd9c49c11f75c7ff3fff835ef9660d09df34c8d690111b",
+    "durationSeconds": 121.368,
+    "contentHash": "65f3aee8271a3a08abfe75a0a9554093162cba082a6197ff39e53e26ef554b4b",
+    "audioHash": "75710d2612fbaeba4294ccf12ead1500d5f327a0c3f4505ef4615b58491404e7"
+  },
+  "data/jp/project/jingi.mdx": {
+    "audioURL": "/static/media/project/jingi/jingi-jp.mp3",
+    "voice": "Kyoko (Enhanced)",
+    "sourceHash": "e3f58fd0d2236d84575414703f8c37931e10590239204dec98b1125236944879",
+    "durationSeconds": 114.96,
+    "contentHash": "7991a98a2fa3ef9e65a8116af73300557a00d958cc33b6130c430b16852531dd",
+    "audioHash": "5e49587f5f15c1f9316d4e365a2bf730439bb157ae9d661e823f30c13a131562"
+  },
+  "data/jp/project/neo-sekai.mdx": {
+    "audioURL": "/static/media/project/neo-sekai/neo-sekai-jp.mp3",
+    "voice": "Kyoko (Enhanced)",
+    "sourceHash": "f2a4ba2f96f69e6845fd26064e33db6918b4ac4939f6431c3884af5c9d7c688d",
+    "contentHash": "2bcae684f47bcb30a6a3b708972a040790175137524b85a5ecc15e9f7973f1d7",
+    "audioHash": "80ee5310e08bc91de489eeacebf9c79154a10996d0315aea11fa0e8d08944341",
+    "durationSeconds": 158.568
+  },
+  "data/jp/project/neo-socket.mdx": {
+    "audioURL": "/static/media/project/neo-socket/neo-socket-jp.mp3",
+    "voice": "Kyoko (Enhanced)",
+    "sourceHash": "ab97c3d4e7e1666bce2c9f1090877f9735002b7b335a0a5721424f70f098d3d1",
+    "durationSeconds": 297.144,
+    "contentHash": "dab4a173fce89ea152233270561f377cc2e4e111cd078c9098e4ec7b98db90be",
+    "audioHash": "eb01a8a28add641396b624e8a34e72f420676f725207b1952a028fd78e9cca55"
+  },
+  "data/jp/project/vegetable-wholesale-dx.mdx": {
+    "audioURL": "/static/media/project/vegetable-wholesale-dx/vegetable-wholesale-dx-jp.mp3",
+    "voice": "Kyoko (Enhanced)",
+    "sourceHash": "5988b2d85ddd4ad350cc4bf8b669c0b9649c532a0cca9ea4b56842437221e231",
+    "durationSeconds": 157.248,
+    "contentHash": "85ab5be88f45c79d95e19ed2bfbeab278143cc5eb70ec7e6bf20c39b846a50ab",
+    "audioHash": "d2bc3acbd790d6d4228fa8e03dfdb171dd793546916f4f148171eb64840bc5cb"
+  }
+}

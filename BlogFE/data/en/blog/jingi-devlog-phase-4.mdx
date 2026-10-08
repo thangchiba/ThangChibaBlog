@@ -1,41 +1,35 @@
 ---
-title: 'Jingi Devlog : Phase 4 - Abilities and Refining Stats'
+title: "Jingi Devlog: Phase 4 — Abilities and character stats"
 date: '2022-10-02'
 
 tags: ['jingi', 'mmorpg', 'moba', 'realtime', 'socket']
 draft: false
-summary: "Phase 4 of Jingi development focuses on refining my Ability and Stats systems, using design patterns for scalability and flexibility. This phase enhances combat dynamics with a robust Ability System and optimizes interactions through the Observer Pattern, setting the stage for network integration in my MMORPG."
-audioURL: '/static/media/blog/random-generator/jingi-devlog-phase-4-en.mp3'
+summary: "I rebuilt abilities around targeting strategies and used the Observer Pattern to keep character stats and related systems in sync."
+audioURL: '/static/media/blog/jingi/jingi-devlog-phase-4-en.mp3'
 authors: ['default']
 images: ['/static/media/blog/jingi/0.4.0.png']
 ---
 
 import YouTubeEmbed from "./media/YouTubeEmbed";
 
-## Introduce
+## Organizing combat before adding networking
 
-As development progresses, I'm excited to share the latest updates from Phase 4 of Jingi, where the focus has been on building the Ability system and revising the Stats mechanics. This phase lays the groundwork for integrating network features, crucial for evolving Jingi into a fully-fledged MMORPG with combat dynamics akin to MOBA games.
+In this phase, I worked on abilities and revised the character stat system. Before bringing these systems into multiplayer, I wanted their responsibilities to be easier to follow.
 
 <YouTubeEmbed url="https://www.youtube.com/watch?v=mkFDlAXRNb4&t=48s" />
 
-**What's New?**
+## Abilities and targeting
 
-- **Ability System**: I've employed the Strategy Pattern to construct a robust and flexible Ability System. This design allows for easy adjustments and expansions of abilities as the game develops. Each ability type, like directional skills (skillshots) or area-of-effect (AOE), inherits from a **`TargetingStrategy`** class, facilitating diverse combat strategies.
-- **Stats Optimization**: To enhance the interaction of game stats with various gameplay elements, I've implemented the Observer Pattern. This ensures that any changes in stats are efficiently managed and propagated throughout the game systems.
-- **Core Features**: With the core gameplay features nearing completion, I'm beginning to lay the foundation for the networking aspects of the game. This transition is vital for supporting the expansive world and player interactions typical of MMORPGs.
+I looked at skills in games such as League of Legends and grouped them by how they choose a target. A skillshot and an area-of-effect ability behave differently, but many skills can share the same targeting logic.
 
-**Development Insights**
+I used the Strategy Pattern for this part. Targeting types inherit from `TargetingStrategy`, while ScriptableObjects hold configuration. This lets me reuse targeting behavior when adding a skill instead of copying it each time.
 
-You might often hear advice against using design patterns in game development due to their perceived complexity and performance impact. However, for larger projects aimed at scalability, understanding and utilizing fundamental patterns like Strategy and Observer can be crucial. They provide a structured approach to tackling complex systems, which is essential for maintaining and scaling the game effectively.
+## Keeping stats in sync
 
-For example, by analyzing skills from popular MOBA games like League of Legends, I've categorized skills into types and targeting methods. This analysis has helped streamline the ability creation process, where most skills utilize a few core targeting strategies, managed through ScriptableObjects for ease of use and modification.
+For stats, I used the Observer Pattern so that other parts of the game can react when a value changes. The aim is to avoid spreading update logic across unrelated systems.
 
-**Looking Ahead**
+Design patterns are useful here when they simplify a specific problem. I still need to consider their cost in code complexity and runtime behavior.
 
-The next step is developing a Player Killing (PK) system inspired by the dynamics of League of Legends, focusing on strategic gameplay and player interaction.
+## What comes next
 
-**Feedback Wanted**
-
-As always, I value your thoughts and feedback. If you have any insights, questions, or suggestions, please feel free to share them. Your input is invaluable as I continue to refine and expand Jingi.
-
-Stay tuned for more updates as I navigate through these exciting development phases!
+With these core pieces in place, I can move toward networking and a PK system inspired by MOBA combat. Those are the next tasks, rather than features completed in this version.

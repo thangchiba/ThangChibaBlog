@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+<title id="title">AWS infrastructure</title>
+<desc id="desc">Terraform implementation and deployment automation</desc>
+<rect width="1280" height="720" fill="#101924"/>
+<rect x="64" y="72" width="8" height="28" rx="4" fill="#71d3ed"/>
+<text x="88" y="95" fill="#71d3ed" font-family="Arial,sans-serif" font-size="22" font-weight="700">DATA LAKE</text>
+<text x="64" y="184" fill="#f4f7fb" font-family="Arial,sans-serif" font-size="54" font-weight="700">AWS infrastructure</text>
+<text x="66" y="235" fill="#acbdcf" font-family="Arial,sans-serif" font-size="25" font-weight="400">Terraform implementation and deployment automation</text>
+<rect x="64" y="317" width="270" height="180" rx="20" fill="#1b293a" stroke="#34465c"/>
+<text x="88" y="357" fill="#71d3ed" font-family="Arial,sans-serif" font-size="18" font-weight="400">01</text>
+<text x="88" y="410" fill="#f4f7fb" font-family="Arial,sans-serif" font-size="26" font-weight="700">Design</text>
+<text x="88" y="452" fill="#b4c3d3" font-family="Arial,sans-serif" font-size="18" font-weight="400">Provided architecture</text>
+<path d="M340 407h12m-5-5 5 5-5 5" fill="none" stroke="#71d3ed" stroke-width="2"/>
+<rect x="358" y="317" width="270" height="180" rx="20" fill="#1b293a" stroke="#34465c"/>
+<text x="382" y="357" fill="#71d3ed" font-family="Arial,sans-serif" font-size="18" font-weight="400">02</text>
+<text x="382" y="410" fill="#f4f7fb" font-family="Arial,sans-serif" font-size="26" font-weight="700">Terraform</text>
+<text x="382" y="452" fill="#b4c3d3" font-family="Arial,sans-serif" font-size="18" font-weight="400">Modules and state</text>
+<path d="M634 407h12m-5-5 5 5-5 5" fill="none" stroke="#71d3ed" stroke-width="2"/>
+<rect x="652" y="317" width="270" height="180" rx="20" fill="#1b293a" stroke="#34465c"/>
+<text x="676" y="357" fill="#71d3ed" font-family="Arial,sans-serif" font-size="18" font-weight="400">03</text>
+<text x="676" y="410" fill="#f4f7fb" font-family="Arial,sans-serif" font-size="26" font-weight="700">AWS resources</text>
+<text x="676" y="452" fill="#b4c3d3" font-family="Arial,sans-serif" font-size="18" font-weight="400">Multi VPC and IAM</text>
+<path d="M928 407h12m-5-5 5 5-5 5" fill="none" stroke="#71d3ed" stroke-width="2"/>
+<rect x="946" y="317" width="270" height="180" rx="20" fill="#1b293a" stroke="#34465c"/>
+<text x="970" y="357" fill="#71d3ed" font-family="Arial,sans-serif" font-size="18" font-weight="400">04</text>
+<text x="970" y="410" fill="#f4f7fb" font-family="Arial,sans-serif" font-size="26" font-weight="700">CI/CD</text>
+<text x="970" y="452" fill="#b4c3d3" font-family="Arial,sans-serif" font-size="18" font-weight="400">Repeatable updates</text>
+<rect x="64" y="556" width="72" height="42" rx="21" fill="#24364c"/>
+<text x="82" y="583" fill="#dce8f3" font-family="Arial,sans-serif" font-size="20" font-weight="400">SRE</text>
+<rect x="148" y="556" width="144" height="42" rx="21" fill="#24364c"/>
+<text x="166" y="583" fill="#dce8f3" font-family="Arial,sans-serif" font-size="20" font-weight="400">Terraform</text>
+<rect x="304" y="556" width="72" height="42" rx="21" fill="#24364c"/>
+<text x="322" y="583" fill="#dce8f3" font-family="Arial,sans-serif" font-size="20" font-weight="400">AWS</text>
+<rect x="388" y="556" width="204" height="42" rx="21" fill="#24364c"/>
+<text x="406" y="583" fill="#dce8f3" font-family="Arial,sans-serif" font-size="20" font-weight="400">GitHub Actions</text>
+<text x="64" y="666" fill="#91a6bb" font-family="Arial,sans-serif" font-size="18" font-weight="400">THANGCHIBA / PROJECT NOTES</text>
+</svg>

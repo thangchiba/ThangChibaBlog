@@ -4,50 +4,45 @@ projectType: 'self'
 tags: ['reactjs']
 title: 'Cypher ChatApp'
 date: '2024-01-01'
-summary: "NeoSocket を利用した匿名チャットアプリです。ログインや認証なしでチャットセッションを開始でき、セキュリティも確保されています。"
+summary: "アカウント登録なしで使えるchatの試作です。共通passwordでclient側の暗号化を行い、real-time接続にはNeoSocketを使っています。"
 images: ['/static/images/project/cypher-demo.png']
 video: 'https://www.youtube.com/watch?v=Gnl-ggfQhPM&ab_channel=ThangChiba'
 audioURL: '/static/media/project/cypher/cypher-jp.mp3'
 url: 'https://cypher.thangchiba.com'
-repo: 'Apartment'
-fe: ['ReactJS', 'MUI']
-be: ['FastAPI']
-db: ['DynamoDB']
-infra: ['AWS','Cognito', 'Lambda','APIGateway','R53', 'CloudFront', 'S3']
+repo: "Cypher"
+fe: ["React", "TypeScript", "Redux Thunk", "MUI"]
+be: ["NeoSocket", ".NET 8"]
+db: ["MongoDB"]
+infra: ["AWS", "GCP", "Docker"]
 
 draft: false
+network: ["WebSocket"]
 ---
 
-import Twemoji from './Twemoji.tsx'
-import UnsplashPhotoInfo from './UnsplashPhotoInfo.tsx'
+## Cypherを作った理由
 
-### 背景:
+アカウントを作らず、linkだけで参加できるchat roomを作りたいと思いました。発想のきっかけはEnigmaです。メッセージを受信できても、内容を読めるとは限らない、という仕組みに興味がありました。
 
-- 🧠**考え:** 第二次世界大戦からのインスピレーションを得て、エニグママシンを使用したドイツ軍は連合軍にとって頭痛の種でした。メッセージを傍受できても、その内容を解読するのは困難でした。
-- 💡**アイデア:** ユーザー側でメッセージを暗号化するチャットアプリ。ユーザーは共通のパスワード（エニグマと呼ばれる）を使用してメッセージを暗号化し、送受信します。チャットルームはURLで誰でもアクセスできますが、パスワードがないとメッセージを読むことはできません。
+Cypherでは、参加者が事前に共通のpasswordを決めます。このpasswordを「enigma」と呼んでいます。メッセージは送信前にclient側で暗号化します。URLはroomへの参加に、passwordはメッセージの復号に使います。
 
-→ **アクセスプロセスを簡素化しつつ、セキュリティを維持します。🔐**
+自作のnetworking framework、[NeoSocket](/project/neo-socket)で完成させた最初のアプリでもあります。
 
-- 🥇**ファーストタイム:** NeoSocket（私が設計したリアルタイムアプリ用のフレームワーク）を使用して完成した最初のアプリケーションです。
-- 🏭**ユースケース:** これはただのチャットアプリではありません。互いにパスワードを交わした2人のプライベートチャットに使用することをお勧めします（例えば、直接会う場合）。他のウェブサイトに埋め込んでコミュニティチャットを提供し、人々が匿名で意見を自由に表現できるようにすることもできます（私も自分のブログに統合しています）。
+## chatの使い方
 
-### 特徴:
+roomとnicknameを選び、相手と決めたpasswordを入力します。loginは不要です。nicknameは表示名なので、同じ名前を複数の人が使うこともできます。
 
-- 🏙️**インターフェース:** ダークモード、レスポンシブデザインを含む。モバイル、タブレット、PCに優しいウェブページです。
-- 📱**アクセス:** ログイン不要。URLまたは部屋名とメッセージを解読するためのコードがあれば十分です。
-- 🚂**機能:** メッセージングアプリの基本要件を満たしています。メッセージはリアルタイムで送受信されます。
-- 🤝🏻**ルール:** 任意のチャットルームにアクセスできます。メッセージを解読するには、他の人と一致するパスワードが必要です。
-- 🔔**注意:** メッセージはニックネームで送信され、誰が送ったかを識別できます。任意のニックネームを選択でき、他の誰もそのニックネームを選択できます。もちろん、同じパスワードを持つ人のみが通信できます。
-- 💾**ストレージ:** メッセージはサーバーに24時間保存されます。しかし、安心してください。サーバーはあなたが何をメッセージしたかを知りません。
-- 📶**接続性:** 5秒ごとにピングが送信されます。接続が失われたと判断された場合、自動的にサーバーに再接続します。
-- 🎡**ユーティリティ:** 他のウェブサイトに埋め込んでコミュニティチャットルームとして利用できます。
+メッセージはreal-timeで送受信し、serverに24時間保存します。clientは5秒ごとに接続を確認し、切断された場合はreconnectします。dark modeに対応し、スマートフォン、tablet、PCで使えます。他のwebsiteへの埋め込みも可能です。
 
-## Technology Overview
+## passwordの役割
 
-| Category | Details |
+共通passwordはメッセージの暗号化に使うもので、送信者の本人確認にはなりません。手間の少ないchatへの参加方法を試すために作ったもので、独立したsecurity auditを受けたsecure messengerとして紹介しているわけではありません。
+
+## Stack
+
+| 構成 | 技術 |
 | --- | --- |
-| Frontend (FE) | React-Typescript, Redux-Thunk, MUI CSS framework, NeoSocketSDK(TS) |
-| Backend (BE) | NeoSocket (Dotnet8) |
-| Database (DB) | MongoDB |
-| Infrastructure | AWS serverless (FE), GCP VM Instance (BE, DB) packaged by Docker |
-| Deployment | Continuous Integration/Continuous Deployment (CICD) for FE on AWS |
+| Frontend | React、TypeScript、Redux Thunk、MUI、NeoSocket TypeScript SDK |
+| Backend | .NET 8上のNeoSocket |
+| Database | MongoDB |
+| Hosting | FrontendはAWS、backendとdatabaseはGCP VMとDocker |
+| Deployment | AWSでfrontendのCI/CD |

@@ -1,0 +1,36 @@
+---
+audioURL: '/static/media/project/ecommerce-ai-agent/ecommerce-ai-agent-jp.mp3'
+type: "project"
+projectType: "work"
+title: "E-Commerce向けAI Agent"
+summary: "自然言語の依頼を受け、既存のE-Commerce APIを通じて商品・顧客検索、在庫確認、注文作成を行うagentを開発しました。"
+images: ["/static/images/project/ecommerce-ai-agent.svg"]
+draft: false
+date: "2025-07-01"
+tags: ["ai-agent", "llm", "langgraph", "ecommerce"]
+fe: ["JavaScript"]
+be: ["Python", "FastAPI", "LangChain", "LangGraph"]
+db: ["MongoDB"]
+infra: ["AWS", "Self-hosted LLM"]
+tools: ["ReAct", "Tool Calling"]
+---
+
+## Chatの依頼から注文作成へ
+
+E-Commerce管理システムを自然言語で操作するためのAI Agentを開発しました。「顧客Aが商品Bを3個購入したので、注文を作成してください」といった依頼を受け、既存のbackend APIを通じて処理します。
+
+LangChainとLangGraphを使い、ReActのflowで事前に定義したtoolを選択・実行します。Toolには商品検索、顧客検索、在庫確認、注文作成があります。
+
+## 担当したこと
+
+4人のチームでTeam Leadを担当し、agentの設計、FastAPI backend、toolの定義、self-hosted LLMとの連携、AWS環境の構築を行いました。結果や確認メッセージを表示する、JavaScriptのシンプルなchat UIも実装しました。
+
+Backendにはchatとagent実行のAPIを用意し、toolから既存のE-Commerce APIを呼び出して、MongoDBとも連携します。注文の依頼では、商品と顧客の情報取得、数量確認、注文作成APIの実行につなげる構成です。
+
+## Self-hosted modelの検証
+
+外部のmodel APIに依存しない構成を検討するため、self-hosted LLMを評価しました。回答品質、tool選択の安定性、応答速度、infrastructureの負荷、運用コストを比較しています。
+
+この開発ではtool設計の重要性を実感しました。API contract、入力検証、実行前の確認、error handlingが、agentで実際の業務を扱えるかどうかに関わります。
+
+**役割:** Team Lead · **チーム:** 4人 · **期間:** 2025年7月〜10月。

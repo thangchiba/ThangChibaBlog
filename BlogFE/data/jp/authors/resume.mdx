@@ -6,157 +6,114 @@ company: SIC
 email: contact@thangchiba.com
 twitter: https://twitter.com/thangchiba_
 facebook: https://facebook.com/thangchiba
-linkedin: https://www.linkedin.com/thangchiba
+linkedin: https://www.linkedin.com/in/thangchiba/
 github: https://github.com/thangchiba
 ---
 
-import Toggle from "./ui/Toggle.tsx";
+## Hoang Van Thang
 
-## ホアン　ヴァン　タアン
-Hoang Van Thang
+Software Engineer · 日本
 
-Software Engineer - Tokyo, Japan
+## プロフィール
 
----
+Full-stack開発、業務自動化、AI Agent、AWS infrastructureに携わるソフトウェアエンジニアです。アイデアの検討から設計、実装、deploy、保守まで、開発の一連の工程を経験してきました。
 
-## 紹介
-デジタルトランスフォーメーション部門で働くソフトウェア開発エンジニアです。ウェブアプリケーションの構想から設計、開発、展開、保守に至るまでの経験があります。新しい技術、パフォーマンス、そしてユーザーエクスペリエンスに常に注目しています。
+最近は、資料からAI Agentを作るプラットフォーム、E-Commerce APIを操作するagent、Data Lake moduleのSRE業務に取り組みました。新しい技術を調べることが好きですが、業務へ導入する前に、小規模な検証で使い方や課題を確認するようにしています。
 
-私の仕事はデジタル技術を応用して、顧客の業務効率を改善するための方法やプロセスを変革することです。そのため、常に最新の技術を学び、研究し、仕事に応用するよう努めています。しかし、新技術の適用が常に効果的とは限らないため、製品に導入する前に慎重に検討し、テストを行います。そのため、新技術の試験や研究を行うために多くの個人プロジェクトを行っています。
-
----
+このページは、2026年5月時点のスキルシートに記載した経験をもとにしています。
 
 ## スキル
-- **プログラミング言語＆フレームワーク**: C#、SpringBoot（Java）、React（JS）を熟練して使用。ReactNative、Swift、FastAPI（Python）、NestJSでの経験とポートフォリオプロジェクトを持つ。パフォーマンスとクリーンコードに焦点を当てたフルスタックWeb開発の経験がある。
-- **インフラ**: AWSサービスに関する幅広い経験を持ち、コスト効果の高い拡張可能なソリューションを実現。中小規模のハイブリッドクラウド（パブリッククラウド + プライベートクラウド）のデプロイが可能。個人プロジェクトのデプロイにDockerを使用。
-- **データベース**: RDBMSの使用と設計に熟練し、複雑なビジネスアプリケーションのデータベース設計と管理の経験がある。個人プロジェクトではNoSQL（MongoDB、DynamoDB）を使用。
-- **パフォーマンス最適化**: ソフトウェアのパフォーマンスに特に興味を持つ。
-- **クリーンコード**: 各言語のベストプラクティスを学習し続け、適用。デザインパターンを使用して、コードベースを保守しやすく拡張可能にする。
-- **プロジェクト管理**: スクラムを適用し、スプリントを設定、調整、報告の経験。ベトナムと日本のアウトソースチームの進捗管理の経験がある。
-- **UI/UXデザイン**: 常にユーザー体験を向上させることを目指し、UIとUXを統合し、特にUXに重点を置く。ユーザーが説明書を読まずにソフトウェアを使用できるようにすることが目標。
-- **個人プロジェクト**: ゲームやメタバースアプリケーション用の高性能フレームワーク、NeoSocketを開発。運用コストを低減しつつ高可用性とセキュリティを維持するServerlessアーキテクチャを活用したさまざまなSaaSソリューション。
 
-**特別な関心事**
+- **アプリ開発:** Java / Spring Boot、JavaScript / React、Python / FastAPI、C# / .NET、TypeScript。Mobile開発ではReact NativeとSwiftも使用しました。
+- **AI・自動化:** LangChain、LangGraph、ReAct、Tool Calling、self-hosted LLMの評価、RAG、OCR、chunking、embedding、Qdrant、Gemini Live APIでのreal-time音声連携。
+- **Infrastructure:** AWS、Terraform、Multi VPC、PrivateLink、IAM、KMS、Secrets Manager、GitHub Actions、CodePipeline、CodeBuild。個人プロジェクトではDockerも使っています。
+- **データ:** 業務アプリのPostgreSQLに加え、MongoDB、DynamoDB、Qdrantを用途に応じて使用。
+- **チーム開発:** Team Leadとして初期architectureとMVPを実装し、task分割、code review、進捗管理を担当。BrSEとしてベトナムのエンジニアとも連携しました。
+- **重視すること:** Performance、保守しやすいcode、日常の作業を進めやすいUI。
 
-- **C#及び.NET技術**: C#に情熱を持ち、複雑なサーバーサイドシステムや高性能アプリケーションによく使用される。常に.NETエコシステム内の高度な機能と最適化を探求し、製品を改善する。
+## プロジェクト経験
 
-## 職歴
+### Data Lake基盤 — SRE
 
-*東京、2022年4月 - 現在*
+**2025年11月から（2026年5月時点）** · 全体規模: 約300人
 
-### **プロジェクト：B2B卸売ビジネスのデジタル化**
+大手通信企業向けData Lake moduleのinfrastructureを実装しました。専門チームが作成したarchitectureとsecurity designをもとに、Terraform codeへの落とし込みとAWS resourceの構築・確認を行いました。
 
-- 手作業を減らし、データをデジタル化する注文入力システムを構築。このデジタル化はデータ分析と履歴の照会を容易にし、ビジネスの効果的な拡大を可能にする。
+Multi VPCの接続、permissionとsecurity設定、環境差分の確認、GitHub ActionsとCodePipeline / CodeBuildによるCI/CD自動化を担当しました。
 
-- プロジェクトは複数のフェーズに分かれており、各フェーズは約6ヶ月から1年間。
+[プロジェクトの詳細](/project/data-lake-platform)
 
-- アイデアの提案から技術選定、システム設計、データベース構築、プロジェクトのコードベースの作成まで、すべてのフェーズに参加。
+### E-Commerce向けAI Agent — Team Lead
 
-- スクラムモデルを採用し、2週間ごとにスプリントを設定し、CEOへ進捗を報告。
+**2025年7月〜10月** · チーム: 4人
 
-- 技術スタック：ReactJS/MUI、ReactNative、Swift、SpringBoot、PostgreSQL、AWS、OCR。
+自然言語の依頼を受け、既存のE-Commerce APIを通じて処理するagentを設計・実装しました。Toolは商品検索、顧客検索、在庫確認、注文作成に対応しています。
 
-    <Toggle text="フェーズ1：2022年4月〜2023年3月">
-    プロジェクトの立ち上げ、クライアントのビジネスプロセスの分析。
+FastAPI、LangChain、LangGraph、ReAct、MongoDB、AWSを使用しました。Agent flow、tool連携、JavaScriptのchat UIを実装し、self-hosted LLMの回答品質、tool選択、速度、コストを評価しました。
 
-    デジタル化可能なビジネスプロセスに関するドキュメント作成と、デジタル変換後の効果の見積もり。
+[プロジェクトの詳細](/project/ecommerce-ai-agent)
 
-    使用する技術スタックやライブラリについてのドキュメント作成、種類の比較図を作成し、選択理由を説明。
+### AI Agent作成プラットフォーム — Team Lead
 
-    ウェブサイト上での注文システムを構築し、パートナーがよりシンプルで直感的に注文できるように。
+**2025年4月〜7月** · チーム: 5人
 
-    価格はリアルタイムで更新され、システム内のデータも更新され、照会が容易に。
+事業者が自社の資料からagentを作るプラットフォームで、初期architectureとMVPを実装しました。OCRとtext抽出、chunking、embedding、Qdrantでのretrieval、回答生成までの流れを構築しました。
 
-    技術スタック：ReactJS、SpringBoot、PostgreSQL、AWS。
-    </Toggle>
+React、FastAPI、MongoDB、AWSを使い、modelの選択とGemini Live APIによるreal-time音声対話に対応しました。MVP後はtask分割、code review、技術面のサポート、進捗管理を行いました。
 
-    <Toggle text="フェーズ2：2023年4月〜2023年12月">
-    クライアントの古いデータ入力システムを新しいシステムに変換するための研究。
+[プロジェクトの詳細](/project/ai-agent-platform)
 
-    古いデータ入力システムはMS-DOSインターフェースでテキストコマンドを使用し、毎年の会計年度後にデータが上書きされるため、AIによる大規模データ分析にはほとんど価値がない。
+### B2B卸売業務のDX — SE、BrSE業務も担当
 
-    新しいシステムの構築：
+**2022年4月〜2025年3月** · チーム: 6人
 
-    UI/UXに投資：マウスで操作できるGUIを導入し、履歴の確認や統計が可能に。スマートフォンから管理者が監視できるようにレスポンシブデザインをサポート。
+青果卸売企業の業務を調べ、real-time価格更新のオンライン受注、MS-DOS入力システムのweb化、handwriting recognitionを使うtabletでの伝票入力を、3段階で開発しました。
 
-    UXにはExcelのようなショートカットキーを追加し、生産性を向上させ、余計な操作を減らす。
+技術調査、設計、databaseとbase codeの実装、開発、保守を担当しました。ベトナムのoutsourceチーム向けの資料を作り、Q&Aと進捗管理を行い、2週間ごとにCEOへ報告しました。
 
-    パフォーマンスに投資：ウェブサイト上で動作するデータ入力アプリケーションのため、パフォーマンスに特に注目。Reactのパフォーマンスを最適化するための技術と戦略を使用。
+Stack: React、Spring Boot、PostgreSQL、AWS、React Native、Swift、Python / FastAPI、TensorFlow。
 
-    技術スタック：ReactJS、SpringBoot、PostgreSQL、AWS。
-    </Toggle>
+[プロジェクトの詳細](/project/vegetable-wholesale-dx)
 
-    <Toggle text="フェーズ3：2024年1月〜現在">
-    「ペーパーレス」
+### E-Commerce backend — SE
 
-    発注と販売の請求書をデジタル化。現在の請求書は手書きで、日終わりにコンピュータシステムに入力される。
+**2021年10月〜2022年4月** · チーム: 約30人
 
-    紙に書く代わりに、スタッフはタブレットにスタイラスで書き、文字はリアルタイムでデジタル化され、データベースに保存される。これにより、コンピュータへのデータ入力と紙の使用が削減される。
+アニメ関連商品を販売するECサイトのbackendを担当しました。AWS Lambdaで月末の売上集計batch、error report、顧客へのメール送信を実装しました。
 
-    技術スタック： ReactNative - Swift, AI Handwriting Recognition(Keras/Tensorflow).
-    </Toggle>
+Stack: C# / ASP.NET Core 3、PostgreSQL、Lambda、Cognito、S3。
 
----
+### 倉庫管理システム — SE
 
-*東京、2021年4月 - 2022年3月*
+**2021年9月〜12月** · チーム: 5人
 
-### **3つの異なる業務と技術を持つアウトソーシングプロジェクトに参加。**
+第三者のE-Commerce APIと連携する倉庫管理システムを開発しました。Java、Spring MVC、PostgreSQLを使い、responsive画面、伝票layout、PDF / CSV出力を実装しました。
 
-1. 倉庫管理システム：
+### 社内・社外プロジェクトのサポート — SE
 
-    説明：小規模なeコマース企業向けの倉庫管理システム。ECサイトは第三者によって設計されています。その第三者のAPIを理解し、倉庫管理システムを構築することが任務です。
+**2021年4月〜8月** · チーム: 12人
 
-    レスポンシブデザインのウェブサイトを構築。請求書をデザインし、PDF、CSV形式でデータを出力。
-
-    技術：SpringBoot(Java)、JQuery、Bootstrap、PostgreSQL。
-
-2. eコマース：
-
-    説明：比較的大規模なeコマースサイトのバックエンドシステムを構築。月末の売上集計バッチ、エラーレポート、顧客へのメール送信などの機能をAWS Lambdaで実装。
-
-    請求書のプログラミングと、指定されたデザインでデータベースからPDFにデータを移動。
-
-    技術：C# ASP.NET Core 3、PostgreSQL、AWS Serverless Lambda、Cognito、S3。
-
-
-3. 医療クイズシステム：
-
-    説明：クイズの質問を追加し、ユーザーからの回答を収集するシステムを構築。開発よりもサポートとメンテナンスに主に関与。
-
-    技術：Python Django、VueJS、PostgreSQL。
-
----
+Javaの書籍管理アプリと、C# WinFormsの従業員管理アプリを開発しました。サポートや保守に参加しながら、チームの開発手順を学びました。
 
 ## 個人プロジェクト
 
-- [NeoSocket](/project/neo-socket): リアルタイムアプリケーション用の高性能フレームワークで、MMORPGゲームやメタバースの開発、チャットシステムやダッシボード管理に適しています。リソースを効率的に使用し、GCPの1CPUコアで最大40万のリクエストを処理できます。既存のオープンソースフレームワークよりも強力なソリューションの必要性から開発され、ウェブ開発のようにクリーンなコードを書きながら、ゲームレベルのパフォーマンスを実現することを原則としています。
+- [NeoSocket](/project/neo-socket): Packet handler、middleware、IoC container、Unity / TypeScript clientを持つC#のnetworking framework。
+- [Jingi](/project/jingi): Questや装備と、MOBA風の戦闘を組み合わせたUnityのMMORPG prototype。
+- [NeoSekai](/project/neo-sekai): Packet batchingとcell単位のserver管理を試すmetaverse MVP。
+- [Cypher](/project/cypher): 共通passwordでclient側の暗号化を試したreal-time chat。
+- [Apartment Management](/project/apartment-management): AWS serverlessで構成した小さな賃貸管理web app。
+- [ChatGPT++](/project/chat-gpt-plus): Browserでの読み上げとlocalの会話履歴を備えた初期のOpenAI API chat client。
 
-- [ChatGPT++](/project/chat-gpt-plus): 誰でもOpenAIのAPIを使用できるチャットインターフェース。プレミアムパッケージを購入するのと同等の体験を、はるかに低コストで提供します。
+## 学歴・語学
 
-- [Cypher](/project/cypher): 第二次世界大戦からインスピレーションを得ています。NeoSocketを使用してエンドツーエンドの暗号化を行う匿名チャットアプリケーション。ユーザーはログインや認証なしでチャットセッションを開始でき、同時にセキュリティも確保します。
+**秀明大学 — 英語情報マネジメント専攻** · 2017年4月〜2021年3月
 
-- [Apartment Management](/project/apartment-management): レンタル物件を管理するためのSaaSアプリケーション。賃貸部屋、テナント情報、支払い状況を管理します。アクセス頻度が低いため、AWS Serverlessを使用して運用コストを最適化することが目標です。例えば、静的ウェブホスティングにS3、認証にCognito、バックエンド処理にLambda Functionsを使用します。
+日本語学校での学習 · 2015年4月〜2017年3月
 
-- [Jingi](/project/jingi): DiabloのインベントリとクエストシステムとLeague of Legendsの複雑な戦闘メカニクスを組み合わせたMMORPGゲーム。NeoSocketを使用して複雑なオープンワールドを構築しながら、パフォーマンスとプレイヤー体験を確保します。
-
-- [NeoSekai](/project/neo-sekai): 私の最初のメタバースMVP製品で、画期的なサーバー最適化の改善を導入しています。データパケットの組み合わせとダイナミックロードバランシングにより、NeoSekaiは数千人の同時ユーザーをホストできる能力を持つ、コスト効率の高い広大な仮想世界を作成できます。
----
-
-## 学歴
-_2015年4月 - 2017年3月_
-
-**朝国際学院日本語学校**
-
-_2017年4月 - 2021年3月_
-
-**秀明大学**
-
----
+日本語: ビジネス会話、JLPT N2取得（2018年）。英語: 読解・聴解。
 
 ## 趣味
-- プログラミング、技術文書、ITブログを読むこと。
-- MMORPG、FPS、MOBAなどのゲームをすること。
 
----
+プログラミング、技術資料を読むこと、開発経験を記事にまとめることが好きです。MMORPG、FPS、MOBAを遊び、C# / .NETのperformanceも調べています。
 
-ここまで読んでいただきありがとうございます。ご質問がある場合は、以下のEメールまたはソーシャルメディアを通じてお問い合わせください。
+連絡先: [contact@thangchiba.com](mailto:contact@thangchiba.com)

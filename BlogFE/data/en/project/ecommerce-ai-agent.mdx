@@ -1,0 +1,36 @@
+---
+audioURL: '/static/media/project/ecommerce-ai-agent/ecommerce-ai-agent-en.mp3'
+type: "project"
+projectType: "work"
+title: "E-Commerce AI Agent"
+summary: "An agent that turns chat requests into product lookups, customer searches, stock checks, and order creation through existing E-Commerce APIs."
+images: ["/static/images/project/ecommerce-ai-agent.svg"]
+draft: false
+date: "2025-07-01"
+tags: ["ai-agent", "llm", "langgraph", "ecommerce"]
+fe: ["JavaScript"]
+be: ["Python", "FastAPI", "LangChain", "LangGraph"]
+db: ["MongoDB"]
+infra: ["AWS", "Self-hosted LLM"]
+tools: ["ReAct", "Tool Calling"]
+---
+
+## From a chat request to an order
+
+This project explored letting staff operate an E-Commerce management system through natural language. A request such as “Customer A bought three units of product B; create an order” gives the agent a task to complete through the existing backend APIs.
+
+The agent uses LangChain and LangGraph with a ReAct flow to choose and call predefined tools. Those tools look up products and customers, check stock, and create orders.
+
+## My role
+
+As Team Lead in a four-person team, I handled agent design, FastAPI backend implementation, tool definitions, self-hosted LLM integration, and AWS setup. I also built a simple JavaScript chat UI that shows results and confirmation messages.
+
+The backend provides chat and agent-execution APIs, calls the existing E-Commerce API through tools, and works with MongoDB. For an order request, the agent can look up the product and customer, check the quantity, and call the order-creation API.
+
+## Working with self-hosted models
+
+I evaluated self-hosted LLMs to explore a setup that did not depend on an external model API. I compared answer quality, tool-selection stability, response speed, infrastructure load, and operating cost.
+
+The work made tool design particularly important: API contracts, input validation, confirmation before execution, and error handling all affect whether the agent can carry out a useful action.
+
+**Role:** Team Lead · **Team:** 4 · **Period:** July–October 2025.

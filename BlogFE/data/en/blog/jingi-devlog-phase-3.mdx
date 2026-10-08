@@ -1,33 +1,29 @@
 ---
-title: 'Jingi Devlog : Phase 3 - Quest and Dialogue'
+title: "Jingi Devlog: Phase 3 — Quests and dialogue"
 date: '2022-09-22'
 
 tags: ['jingi', 'mmorpg', 'moba', 'realtime', 'socket']
 draft: false
-summary: "Dive into Jingi Beta version 0.3.0, featuring new dialogue and quest systems that enrich gameplay and narrative. Enhanced with multilingual bot interactions via ChatGPT-2 and AWS Translate, this update aims to make Jingi more interactive and inclusive. Share your feedback as we prepare for future PvP enhancements and continue developing a dynamic game world."
-audioURL: '/static/media/blog/random-generator/jingi-devlog-phase-3-en.mp3'
+summary: "Beta 0.3.0 adds basic quests and dialogue, alongside an experiment with AI-assisted bot conversations and multilingual text."
+audioURL: '/static/media/blog/jingi/jingi-devlog-phase-3-en.mp3'
 authors: ['default']
 images: ['/static/media/blog/jingi/0.3.0.png']
 ---
 
 import YouTubeEmbed from "./media/YouTubeEmbed";
 
-## Introduce
-I’m thrilled to roll out Beta version 0.3.0 of Jingi, which introduces key features such as dialogues and quests, enhancing the depth and interactivity of the game.
+## Giving players something to do
+
+Beta 0.3.0 adds basic quests and dialogue. Until now, the prototype was mostly about moving and fighting. These systems give players a reason to talk to characters and a task to follow.
 
 <YouTubeEmbed url="https://www.youtube.com/watch?v=mjxqQPazVLI&t=6s" />
 
-**What’s New?**
+## Trying more flexible bot conversations
 
-- **Dialogue and Quests**: This update introduces a basic yet functional system for dialogues and quests. These features are designed to provide more structured gameplay and narrative direction, making the in-game world more engaging.
-- **Advanced Bot Interaction**: To keep the bots interesting and less monotonous, I've implemented a version of ChatGPT-2 for dialogue interactions. This AI assistant can respond to player inquiries in any language. However, currently, the supported font languages are English, Japanese, and Vietnamese. For broader language support, I'm utilizing AWS Translate to bridge any gaps, ensuring that players from different backgrounds can enjoy the game in their preferred language.
+I also experimented with AI-assisted dialogue so that bots could respond to player questions instead of repeating only fixed lines. The font setup supports English, Japanese, and Vietnamese, with AWS Translate used for translation.
 
-**Development Notes**
+This is still an experiment. Generating a response and displaying it correctly in the game are separate problems, so I do not treat it as support for every language.
 
-While the quest and dialogue systems are still quite basic, my main focus for Jingi will eventually shift towards PvP features. This is where I plan to develop the most exciting and competitive aspects of the gameplay.
+## Next steps
 
-**Feedback Wanted**
-
-I value your feedback immensely! If you have any questions or suggestions regarding the new features or future updates, please share them. Your input helps me improve the game and make it more enjoyable for everyone.
-
-Stay tuned for more updates as I continue to develop Jingi into the rich and dynamic game world I envision!
+The quest and dialogue systems are basic at this stage. My longer-term focus is PvP combat, but I wanted to try these interactions before moving on.

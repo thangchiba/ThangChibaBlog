@@ -4,50 +4,45 @@ projectType: 'self'
 tags: ['reactjs']
 title: 'Cypher ChatApp'
 date: '2024-01-01'
-summary: "Một ứng dụng trò chuyện ẩn danh sử dụng NeoSocket để mã hóa đầu cuối. Người dùng có thể bắt đầu phiên trò chuyện mà không cần đăng nhập hay xác thực, đồng thời vẫn đảm bảo tính bảo mật."
+summary: "Chat không cần tài khoản, thử nghiệm mã hóa phía client bằng password dùng chung và dùng NeoSocket cho kết nối real-time."
 images: ['/static/images/project/cypher-demo.png']
 video: 'https://www.youtube.com/watch?v=Gnl-ggfQhPM&ab_channel=ThangChiba'
 audioURL: '/static/media/project/cypher/cypher-vi.mp3'
 url: 'https://cypher.thangchiba.com'
-repo: 'Apartment'
-fe: ['ReactJS', 'MUI']
-be: ['FastAPI']
-db: ['DynamoDB']
-infra: ['AWS','Cognito', 'Lambda','APIGateway','R53', 'CloudFront', 'S3']
+repo: "Cypher"
+fe: ["React", "TypeScript", "Redux Thunk", "MUI"]
+be: ["NeoSocket", ".NET 8"]
+db: ["MongoDB"]
+infra: ["AWS", "GCP", "Docker"]
 
 draft: false
+network: ["WebSocket"]
 ---
 
-import Twemoji from './Twemoji.tsx'
-import UnsplashPhotoInfo from './UnsplashPhotoInfo.tsx'
+## Vì sao mình làm Cypher?
 
-### Bối cảnh :
+Mình muốn có một phòng chat chỉ cần link là vào được, không phải tạo tài khoản. Ý tưởng lấy cảm hứng từ Enigma: nhận được tin nhắn không đồng nghĩa với việc đọc được nội dung.
 
-- 🧠**Think :** Lấy ý tưởng từ cuộc thế chiến thứ 2, quân đội Đức với chiếc máy Enigma đã khiến quân đồng minh đau đầu. Mặc dù có thể lấy được tin tức nhưng rất khó để giải được nội dung.
-- 💡**Idea :** Một ứng dụng chat được mã hoá gói tin ở phía người dùng. Những người dùng sẽ thống nhất dùng chung một mật mã ( được gọi là enigma ) để mã hoá và gửi/nhận gói tin. Phòng chat sẽ cho phép bất kì ai truy cập khi có url NHƯNG nếu không có mật mã sẽ không đọc được gói tin.
+Trong Cypher, những người tham gia thống nhất trước một password, mình gọi nó là “enigma”. Tin nhắn được mã hóa ở client trước khi gửi đi. URL dùng để vào phòng, còn password dùng để giải mã nội dung.
 
-→ **Đơn giản hoá quy trình truy cập nhưng vẫn giữ được tính bảo mật.🔐**
+Đây cũng là ứng dụng đầu tiên mình hoàn thành bằng [NeoSocket](/project/neo-socket), framework networking mình tự viết.
 
-- 🥇**First time :** Ứng dụng đầu tiên hoàn thiện bởi sử dụng NeoSocket( Framework cho realtime app do mình tự thiết kế).
-- 🏭**Use case :** Đây là một chat app khá đặc biệt. Nên sử dụng để chat riêng tư 2 người với mật khẩu đã được giao kèo với nhau ( ví dụ gặp mặt trực tiếp ). Nhúng vào một trang web khác để phục vụ chat cho cộng đồng, mọi người có thể tự do nêu ý kiến mà không ai biết họ là ai ( mình cũng đang tích hợp vào blog của mình )
+## Cách phòng chat hoạt động
 
-### Tính năng :
+Bạn chọn phòng, đặt nickname và nhập password đã thống nhất với người còn lại. Không có bước login. Nickname chỉ là tên hiển thị, nên nhiều người có thể đặt trùng nhau.
 
-- 🏙️**Giao diện :** Có dark mode, responsive design. Webpage thân thiện với mobile, table và cả PC.
-- 📱**Truy cập :** Không yêu cầu đăng nhập. Chỉ cần có URL hoặc tên phòng và mã code để giải mã tin nhắn.
-- 🚂**Tính năng :** Đáp ứng cơ bản một ứng dụng nhắn tin. Gói tin được gửi và nhận trong thời gian thực.
-- 🤝🏻**Luật :** Có thể truy cập vào bất cứ phòng chat nào. Cần mật khẩu trùng với người khác để có thể dịch được nội dung.
-- 🔔**Lưu ý :** Gói tin được gửi sẽ kèm Nickname để nhận biết ai đã gửi. Bạn có thể chọn bất cứ Nickname nào, và bất kì ai cũng có thể chọn bí danh đó. Tất nhiên chỉ có những người có chung mật khẩu mới có thể giao tiếp.
-- 💾**Lưu trữ :** Gói tin được lưu ở server trong 24 tiếng. Nhưng yên tâm, server cũng không biết bạn đã nhắn gì.
-- 📶**Kết nối :** Ping sẽ gửi mỗi 5 giây. Nếu nhận thấy mất kết nối sẽ tự động kết nối lại với server.
-- 🎡**Tiện ích :** Có thể nhúng vào trang web khác để làm chat room cộng đồng.
+Tin nhắn được gửi và nhận real-time, lưu trên server trong 24 giờ. Client kiểm tra kết nối mỗi năm giây và tự reconnect khi mất kết nối. Giao diện có dark mode, dùng được trên điện thoại, tablet và máy tính. Phòng chat cũng có thể embed vào website khác.
 
-## Technology Overview
+## Password có vai trò gì?
 
-| Category | Details |
+Password dùng chung phục vụ việc mã hóa tin nhắn, không xác minh danh tính người gửi. Mình làm dự án này để thử một cách vào phòng chat ít thao tác. Đây chưa phải một secure messenger đã qua security audit độc lập.
+
+## Stack
+
+| Thành phần | Công nghệ |
 | --- | --- |
-| Frontend (FE) | React-Typescript, Redux-Thunk, MUI CSS framework, NeoSocketSDK(TS) |
-| Backend (BE) | NeoSocket (Dotnet8) |
-| Database (DB) | MongoDB |
-| Infrastructure | AWS serverless (FE), GCP VM Instance (BE, DB) packaged by Docker |
-| Deployment | Continuous Integration/Continuous Deployment (CICD) for FE on AWS |
+| Frontend | React, TypeScript, Redux Thunk, MUI, NeoSocket TypeScript SDK |
+| Backend | NeoSocket trên .NET 8 |
+| Database | MongoDB |
+| Hosting | Frontend trên AWS; backend và database trên GCP VM, đóng gói bằng Docker |
+| Deployment | CI/CD cho frontend trên AWS |

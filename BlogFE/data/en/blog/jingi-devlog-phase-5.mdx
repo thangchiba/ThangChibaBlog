@@ -1,36 +1,39 @@
 ---
-title: 'Jingi Devlog : Phase 5 - Network Core'
+title: "Jingi Devlog: Phase 5 — Building the network core"
 date: '2022-12-11'
 
 tags: ['jingi', 'mmorpg', 'moba', 'realtime', 'socket']
 draft: false
-summary: "Jingi Beta version 0.5.0 marks a significant leap in networking, establishing a core network infrastructure to support robust MMORPG functionalities. This update features a custom network solution optimized for handling large user loads and includes global server accessibility and advanced load balancing. "
-audioURL: '/static/media/blog/random-generator/jingi-devlog-phase-5-en.mp3'
+summary: "Beta 0.5.0 introduces a custom network core, with MasterServer and StateServer roles, regional connections, and early packet-processing tests."
+audioURL: '/static/media/blog/jingi/jingi-devlog-phase-5-en.mp3'
 authors: ['default']
 images: ['/static/media/blog/jingi/0.5.0.png']
 ---
 
 import YouTubeEmbed from "./media/YouTubeEmbed";
 
-## Introduce
+## The first network core
 
-I'm excited to announce the release of Jingi Beta version 0.5.0, marking a significant advancement in the game's development—particularly in networking. This update has been all about setting up the core network infrastructure for the MMORPG capabilities of Jingi.
+Beta 0.5.0 focuses on networking. I built a custom core for Jingi because I wanted to experiment with many players sharing a world, and reuse the networking work in other projects later.
 
 <YouTubeEmbed url="https://www.youtube.com/watch?v=U98MgNBLwfo" />
 
-**What’s New?**
+## Why C# and .NET?
 
-- **Network Core Development**: I've completed the network core for Jingi. This development is pivotal for those of you interested in creating your own ServerCore and might find the insights shared here useful.
-- **Why a Custom Network Solution?**: The decision to develop a custom network solution stems from my goal to support a large concurrent user load without the need for scene splitting that is common in many game servers. This architecture is also designed to be reusable for future projects, including potential metaverse servers.
-- **Technical Insights**:
-  - **Framework Choice**: While the choice of programming language isn't critical, I recommend C# and specifically DotnetCore for superior performance and convenience. Despite my extensive experience with Java, Dotnet 7 offers better performance, and its ability to compartmentalize code into DotnetStandard libraries is incredibly handy, especially for use with Unity.
-  - **Design Overview**: The network architecture includes a MasterServer that manages various StateServers, handling secure requests from players. It performs health checks on StateServers to balance the load and currently handles HTTP requests for future web-based player access.
-  - **Global Accessibility**: StateServers are strategically located in different countries to ensure players worldwide can select the closest server for optimal ping. The character database is global, allowing players to access any StateServer with the same character.
-- **Performance Testing**: Initial tests on VPS solutions in Singapore and Japan show excellent performance and ping, with a two-core setup handling up to 30,000 TCP packets per second, each containing five sub-packets—this is estimated to support around 10,000 concurrent users.
-- **Load Balancing**: The architecture is somewhat similar to SpatialOS, where the MasterServer monitors the health of StateServers and can spin up additional servers in locations with high player concentrations.
+I chose C# and .NET for this implementation. I was already interested in the ecosystem, and sharing client code with Unity through .NET Standard libraries was convenient. This was a practical choice for my project, rather than a general ranking of languages.
 
-**Feedback Wanted**
+## MasterServer and StateServers
 
-As I continue to refine and expand Jingi’s network capabilities, your feedback is invaluable. Whether you have technical questions about the network setup or suggestions for improvements, please share your thoughts.
+The MasterServer handles entry requests and checks the health of StateServers. StateServers manage the game state. The design includes HTTP entry points so that a web client could be added later.
 
-Stay tuned for more updates as I push forward with developing this complex yet thrilling component of Jingi!
+I tested servers in Singapore and Japan. The idea is to let players choose a nearby StateServer while keeping character data shared across regions.
+
+## Early performance tests
+
+In the initial test, a two-core VPS processed around 30,000 TCP packets per second, with five sub-packets in each packet. I used that result to estimate a possible workload of roughly 10,000 concurrent users.
+
+That estimate is not a test with 10,000 real players. Actual capacity will depend on gameplay, update frequency, packet size, and the work done for each player.
+
+## Scaling the design
+
+The next goal is to use StateServer health and regional load to decide where additional servers are needed. The core is in place; the broader distributed setup still needs more testing.

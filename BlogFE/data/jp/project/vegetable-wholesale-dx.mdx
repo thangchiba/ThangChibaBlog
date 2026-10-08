@@ -1,24 +1,44 @@
 ---
-type: 'project'
-projectType: 'work'
-tags: ['admin', 'test']
-title: 'Vegetable Wholesale DX'
-date: '2024-02-07'
-summary: "Transforming a traditional vegetable wholesale business into a digital platform, including a mobile app for customers and a web app for the business owner."
-images: ['/static/images/dog-no-avaiable-banner.webp']
-url: 'https://thangchiba.com'
-repo: 'Cypher'
-fe: ['ReactJS', 'ReactNative', 'TypeScript']
-be: ['SpringBoot']
-db: ['PostgreSQL']
-infra: ['AWS']
-tools: ['Figma', 'Excel', 'PowerPoint']
+audioURL: '/static/media/project/vegetable-wholesale-dx/vegetable-wholesale-dx-jp.mp3'
+type: "project"
+projectType: "work"
+title: "B2B卸売業務のDX"
+summary: "青果卸売企業の業務を、オンライン受注、MS-DOS入力システムの刷新、tabletでの伝票入力の3段階でデジタル化しました。"
+images: ["/static/images/project/vegetable-wholesale-dx.svg"]
 draft: false
+date: "2022-04-01"
+tags: ["dx", "b2b", "ecommerce"]
+fe: ["React", "React Native", "Swift"]
+be: ["Java", "Spring Boot", "Python", "FastAPI"]
+db: ["PostgreSQL"]
+infra: ["AWS"]
+tools: ["TensorFlow", "OCR", "Figma"]
 ---
 
-import Twemoji from './Twemoji.tsx'
-import UnsplashPhotoInfo from './UnsplashPhotoInfo.tsx'
+## 業務を理解するところから
 
-# Test Post For Project
+2022年4月から2025年3月まで、スーパーや飲食店に青果を卸す日本企業のDXプロジェクトに参加しました。6人のチームで、日々の作業を改善しながら、後から活用できるデータを残すことに取り組みました。
 
-The project content here
+まず業務を調べ、デジタル化できる箇所を整理しました。優先順位を相談し、資料を作成して、2週間ごとにCEOへ報告しました。
+
+## 3段階の開発
+
+最初は、価格がreal-timeで更新される受注システムを作りました。顧客がwebから注文でき、注文データも確認しやすくなりました。
+
+次に、古いMS-DOSの入力システムをresponsiveなweb appに置き換えました。GUI、履歴検索、集計、Excelのようなshortcut、Reactの性能改善に取り組み、日常の入力作業で使いやすい形にしました。
+
+3段階目は紙の伝票のデジタル化です。Tabletにstylusで記入し、handwriting recognitionを使ってデータ化することで、終業時に同じ内容を入力し直す作業を減らす構成にしました。
+
+## 担当したこと
+
+業務分析、技術調査、設計、databaseとbase codeの実装、開発、保守に携わりました。ベトナムのoutsourceチーム向けに基盤と資料を準備し、BrSEとしてQ&Aや進捗管理を行いながら、社内で担当する部分も開発しました。
+
+StackはReact、Spring Boot、PostgreSQL、AWS、React Native、Swift、FastAPIやTensorFlowなどのPython技術です。
+
+## 学んだこと
+
+開発の多くの工程を経験できたプロジェクトでした。新しい技術を導入するときは、まず小さな個人プロジェクトで試してから、顧客の業務に提案するようになりました。
+
+デジタル化した履歴は、将来の分析にも活用できます。市場予測やAIによる仕入れ改善は長期的な可能性であり、このプロジェクトで実現した成果としては扱っていません。
+
+**役割:** SE、BrSE業務も担当 · **チーム:** 6人 · **期間:** 2022年4月〜2025年3月。

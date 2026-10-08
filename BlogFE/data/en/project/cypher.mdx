@@ -4,50 +4,45 @@ projectType: 'self'
 tags: ['reactjs']
 title: 'Cypher ChatApp'
 date: '2024-01-01'
-summary: "An anonymous chat application that uses NeoSocket for end-to-end encryption. Users can start a chat session without login or authentication while ensuring security."
+summary: "A chat experiment with client-side encryption, shared passwords, and no account registration. NeoSocket handles the real-time connection."
 images: ['/static/images/project/cypher-demo.png']
 video: 'https://www.youtube.com/watch?v=Gnl-ggfQhPM&ab_channel=ThangChiba'
 audioURL: '/static/media/project/cypher/cypher-en.mp3'
 url: 'https://cypher.thangchiba.com'
-repo: 'Apartment'
-fe: ['ReactJS', 'MUI']
-be: ['FastAPI']
-db: ['DynamoDB']
-infra: ['AWS','Cognito', 'Lambda','APIGateway','R53', 'CloudFront', 'S3']
+repo: "Cypher"
+fe: ["React", "TypeScript", "Redux Thunk", "MUI"]
+be: ["NeoSocket", ".NET 8"]
+db: ["MongoDB"]
+infra: ["AWS", "GCP", "Docker"]
 
 draft: false
+network: ["WebSocket"]
 ---
 
-import Twemoji from './Twemoji.tsx'
-import UnsplashPhotoInfo from './UnsplashPhotoInfo.tsx'
+## Why I built it
 
-### **Background:**
+I wanted a chat room people could join with a link, without creating an account. The idea was inspired by Enigma: being able to receive a message should not automatically mean being able to read it.
 
-- 🧠**Think:** Drawing inspiration from World War II, the German military with their Enigma machine caused headaches for the Allied forces. Despite being able to intercept messages, decrypting the content was a challenge.
-- 💡**Idea:** A chat application that encrypts messages on the user's side. Users will agree to use a common password (called enigma) to encrypt and send/receive messages. The chat room will allow anyone access with a URL BUT they cannot read the messages without the password.
+In Cypher, participants agree on a shared password, which I called an “enigma.” Messages are encrypted on the client before being sent. The room URL lets someone join the room; the password is used to decrypt the messages.
 
-→ **Simplifies the access process while maintaining security.🔐**
+This was also the first application I completed with [NeoSocket](/project/neo-socket), my real-time networking framework.
 
-- 🥇**First time:** The first application completed using NeoSocket (a framework for realtime apps designed by me).
-- 🏭**Use case:** This is not just another chat app. It should be used for private chats between two people who have agreed on a password (e.g., meeting in person). It can be embedded in another website to facilitate community chats, allowing people to express their opinions anonymously (I am also integrating it into my blog).
+## How the chat works
 
-### **Features:**
+Choose a room and a nickname, then enter the password agreed with the other participants. There is no login. Nicknames are just display names, so two people can choose the same one.
 
-- 🏙️**Interface:** Includes dark mode, responsive design. Webpage is mobile, tablet, and PC friendly.
-- 📱**Access:** No login required. Just need a URL or room name and a code to decrypt the messages.
-- 🚂**Functionality:** Meets the basic requirements of a messaging app. Messages are sent and received in real-time.
-- 🤝🏻**Rules:** Access any chat room. Need a matching password with others to decrypt messages.
-- 🔔**Note:** Messages are sent with a Nickname for identification. You can choose any Nickname, and anyone else can choose the same one. Of course, only those with the same password can communicate.
-- 💾**Storage:** Messages are stored on the server for 24 hours. But don't worry, the server won't know what you've messaged.
-- 📶**Connectivity:** Pings every 5 seconds. If a connection loss is detected, it automatically reconnects to the server.
-- 🎡**Utility:** Can be embedded in other websites to serve as a community chat room.
+Messages are sent and received in real time, and the server stores them for 24 hours. The client checks its connection every five seconds and reconnects if the connection drops. The interface supports dark mode and works on phones, tablets, and computers. Rooms can also be embedded in another website.
 
-## Technology Overview
+## What the password does
 
-| Category | Details |
+The shared password is part of the message-encryption design, not a verified identity for the person sending a message. I built this to explore a simple, low-friction chat flow. I have not presented it as an independently audited secure messenger.
+
+## Stack
+
+| Part | Technology |
 | --- | --- |
-| Frontend (FE) | React-Typescript, Redux-Thunk, MUI CSS framework, NeoSocketSDK(TS) |
-| Backend (BE) | NeoSocket (Dotnet8) |
-| Database (DB) | MongoDB |
-| Infrastructure | AWS serverless (FE), GCP VM Instance (BE, DB) packaged by Docker |
-| Deployment | Continuous Integration/Continuous Deployment (CICD) for FE on AWS |
+| Frontend | React, TypeScript, Redux Thunk, MUI, NeoSocket TypeScript SDK |
+| Backend | NeoSocket on .NET 8 |
+| Database | MongoDB |
+| Hosting | AWS for the frontend; GCP VM and Docker for backend and database |
+| Deployment | Frontend CI/CD on AWS |

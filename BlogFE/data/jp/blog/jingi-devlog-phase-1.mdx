@@ -1,38 +1,27 @@
 ---
-title: 'Jingi Devlog : Phase 1 - 最初のステップ'
+title: "Jingi Devlog: Phase 1 — 最初のプレイ可能なバージョン"
 date: '2022-08-01'
 
 tags: ['jingi', 'mmorpg', 'moba', 'realtime', 'socket']
 draft: false
-summary: "Jingiの有望な新しいMMORPGの初期開発段階を探索してください。複雑なPvE戦闘、高度な移動メカニクス、洗練されたAIなど、私が作り上げた基礎的な要素に飛び込んでください。"
-audioURL: '/static/media/blog/random-generator/jingi-devlog-phase-1-en.mp3'
+summary: "Unityを約200時間学び、移動、PvE戦闘、bot AI、武器、キャラクターのステータスを組み合わせた最初の試作ができました。"
+audioURL: '/static/media/blog/jingi/jingi-devlog-phase-1-jp.mp3'
 authors: ['default']
 images: ['/static/media/blog/jingi/0.1.0.png']
 ---
 
 import YouTubeEmbed from "./media/YouTubeEmbed";
 
-## 🎮 旅の始まり (Tabi no hajimari)
+## まずは遊べる形に
 
-Unityでの開発に約200時間を費やし、最新プロジェクト「Jingi」の初期段階の進捗を共有できることを嬉しく思います。このフェーズは、ゲーム開発における大きなマイルストーンです。
+Unityを約200時間学んで、ようやくJingiを自分で遊べるところまで作れました。まだ小さな試作ですが、キャラクターを動かし、botと戦い、武器やステータスによる違いを確認できます。自分で書いた処理が一つのゲームとして動くと、やはりうれしいものです。
 
 <YouTubeEmbed url="https://www.youtube.com/watch?v=mkFDlAXRNb4&t=48s" />
 
-## 🛠️ 基礎の構築 (Kiso no kōchiku)
+## 今回できたこと
 
-ゲームプレイを定義する重要な機能を基礎として組み込みました：
+移動、PvE戦闘、基本的なbot AI、武器とステータスの仕組みを実装しました。機能を増やす前に、まずはこれらをつなげて遊べるようにすることを優先しています。実際に操作すると、移動の違和感や戦闘で直したいところも見つけやすくなります。
 
-- **Player vs Environment (PvE) Combat**: AI が操作する敵とのダイナミックな戦闘を体験できます。
-- **Movement Mechanics**: 滑らかで反応の良いプレイヤーの動きを実現しました。
-- **Advanced Bot AI**: プレイヤーの戦略に挑戦し、適応する洗練された AI に遭遇します。
-- **Enhanced Weaponry and Stats**: 多様な武器を装備し、プレイヤーの統計情報を追跡することで、包括的な RPG 体験を提供します。
+## これからの方向性
 
-これらの要素は、魅力的であるだけでなく、没入感があり、挑戦的なゲームプレイ環境を作成するために不可欠です。
-
-## 🌟 未来へのビジョン (Mirai e no bijon)
-
-今後、Jingi を大規模で活発なプレイヤーベースをサポートするように設計された基本プレイ無料のモバイル MMORPG に進化させることを目指しています。このゲームは、世界中のプレイヤーをつなぎ、豊かで没入感のある広大な共有宇宙を作り出すことを目指しています。
-
-## 🔍 最新情報にご期待ください (Saishin jōhō ni gokitai kudasai)
-
-Jingi の世界を構築し、拡大していく中で、さらなる最新情報にご期待ください！皆様からのフィードバックとご参加は、類まれなゲーム体験を作り出すための私の旅にとって非常に重要です。
+長期的には、MOBAの戦闘要素を取り入れた、基本無料のモバイルMMORPGを作りたいと考えています。そこまでには、特にnetworkingを含め、まだ多くの作業が必要です。まずは一つずつ仕組みを作り、ゲームの中で試していきます。

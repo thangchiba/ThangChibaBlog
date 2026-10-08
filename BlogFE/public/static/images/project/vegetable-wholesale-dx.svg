@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+<title id="title">Digitizing everyday work</title>
+<desc id="desc">An ordering, data-entry, and invoice workflow</desc>
+<rect width="1280" height="720" fill="#101924"/>
+<rect x="64" y="72" width="8" height="28" rx="4" fill="#f7c580"/>
+<text x="88" y="95" fill="#f7c580" font-family="Arial,sans-serif" font-size="22" font-weight="700">B2B WHOLESALE DX</text>
+<text x="64" y="184" fill="#f4f7fb" font-family="Arial,sans-serif" font-size="54" font-weight="700">Digitizing everyday work</text>
+<text x="66" y="235" fill="#acbdcf" font-family="Arial,sans-serif" font-size="25" font-weight="400">An ordering, data-entry, and invoice workflow</text>
+<rect x="64" y="317" width="270" height="180" rx="20" fill="#1b293a" stroke="#34465c"/>
+<text x="88" y="357" fill="#f7c580" font-family="Arial,sans-serif" font-size="18" font-weight="400">01</text>
+<text x="88" y="410" fill="#f4f7fb" font-family="Arial,sans-serif" font-size="26" font-weight="700">Workflow</text>
+<text x="88" y="452" fill="#b4c3d3" font-family="Arial,sans-serif" font-size="18" font-weight="400">Analyze and prioritize</text>
+<path d="M340 407h12m-5-5 5 5-5 5" fill="none" stroke="#f7c580" stroke-width="2"/>
+<rect x="358" y="317" width="270" height="180" rx="20" fill="#1b293a" stroke="#34465c"/>
+<text x="382" y="357" fill="#f7c580" font-family="Arial,sans-serif" font-size="18" font-weight="400">02</text>
+<text x="382" y="410" fill="#f4f7fb" font-family="Arial,sans-serif" font-size="26" font-weight="700">Ordering</text>
+<text x="382" y="452" fill="#b4c3d3" font-family="Arial,sans-serif" font-size="18" font-weight="400">Real-time pricing</text>
+<path d="M634 407h12m-5-5 5 5-5 5" fill="none" stroke="#f7c580" stroke-width="2"/>
+<rect x="652" y="317" width="270" height="180" rx="20" fill="#1b293a" stroke="#34465c"/>
+<text x="676" y="357" fill="#f7c580" font-family="Arial,sans-serif" font-size="18" font-weight="400">03</text>
+<text x="676" y="410" fill="#f4f7fb" font-family="Arial,sans-serif" font-size="26" font-weight="700">Data entry</text>
+<text x="676" y="452" fill="#b4c3d3" font-family="Arial,sans-serif" font-size="18" font-weight="400">Responsive web UI</text>
+<path d="M928 407h12m-5-5 5 5-5 5" fill="none" stroke="#f7c580" stroke-width="2"/>
+<rect x="946" y="317" width="270" height="180" rx="20" fill="#1b293a" stroke="#34465c"/>
+<text x="970" y="357" fill="#f7c580" font-family="Arial,sans-serif" font-size="18" font-weight="400">04</text>
+<text x="970" y="410" fill="#f4f7fb" font-family="Arial,sans-serif" font-size="26" font-weight="700">Invoices</text>
+<text x="970" y="452" fill="#b4c3d3" font-family="Arial,sans-serif" font-size="18" font-weight="400">Tablet handwriting</text>
+<rect x="64" y="556" width="96" height="42" rx="21" fill="#24364c"/>
+<text x="82" y="583" fill="#dce8f3" font-family="Arial,sans-serif" font-size="20" font-weight="400">React</text>
+<rect x="172" y="556" width="168" height="42" rx="21" fill="#24364c"/>
+<text x="190" y="583" fill="#dce8f3" font-family="Arial,sans-serif" font-size="20" font-weight="400">Spring Boot</text>
+<rect x="352" y="556" width="156" height="42" rx="21" fill="#24364c"/>
+<text x="370" y="583" fill="#dce8f3" font-family="Arial,sans-serif" font-size="20" font-weight="400">PostgreSQL</text>
+<rect x="520" y="556" width="72" height="42" rx="21" fill="#24364c"/>
+<text x="538" y="583" fill="#dce8f3" font-family="Arial,sans-serif" font-size="20" font-weight="400">AWS</text>
+<text x="64" y="666" fill="#91a6bb" font-family="Arial,sans-serif" font-size="18" font-weight="400">THANGCHIBA / PROJECT NOTES</text>
+</svg>

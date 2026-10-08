@@ -1,0 +1,35 @@
+---
+audioURL: '/static/media/project/data-lake-platform/data-lake-platform-jp.mp3'
+type: "project"
+projectType: "work"
+title: "AWS Data Lake基盤"
+summary: "大手通信企業のData Lake moduleでSREを担当。Terraformによる実装、AWS resourceの構築、CI/CDの自動化に取り組みました。"
+images: ["/static/images/project/data-lake-platform.svg"]
+draft: false
+date: "2025-11-01"
+tags: ["aws", "terraform", "sre", "data-lake"]
+infra: ["AWS", "Multi VPC", "PrivateLink", "EC2", "Lambda", "ECR", "ElastiCache", "MSK", "Aurora", "S3", "IAM", "KMS", "Secrets Manager"]
+tools: ["Terraform", "GitHub Actions", "CodePipeline", "CodeBuild"]
+---
+
+## プロジェクトの背景
+
+2025年11月から、日本の大手通信企業向けData Lake基盤のSREチームに参加しました。システム全体では、約9,000万人規模のユーザーデータをreal-timeに収集・分析することが要件でした。
+
+全体で約300人が関わり、複数のチームで分担していました。私の担当はData Lake moduleのinfrastructureです。全体のarchitectureやsecurity designは、専門チームが担当していました。
+
+## 担当したこと
+
+提供された設計をTerraform codeに落とし込み、AWS resourceの構築・確認とCI/CD pipelineの整備を行いました。環境ごとの差分や、既存resourceとの整合性を確認しながら進めています。
+
+Multi VPC構成では、service間の通信経路、VPC PeeringとPrivateLink、Security Group、Route Tableを確認しました。IAM permission、KMS、Secrets Managerについても、設計上のsecurity要件を実装に反映しました。
+
+自動化にはGitHub ActionsとAWS CodePipeline / CodeBuildを使用しました。Lambda、ECR、MSK、Auroraに関連する処理のpipelineを作成・改善し、環境構築や更新作業を再現しやすくしました。
+
+## 学んだこと
+
+すべての設計判断を自分で行うのではなく、専門チームと分担する大規模プロジェクトを経験しました。Terraformのstate管理、moduleの再利用、環境差分の扱いに加え、networkやpermissionが日々の構築作業に与える影響を学びました。
+
+ユーザー数はプロジェクト全体の要件の規模です。私が単独で構築したシステムのbenchmarkではありません。
+
+**役割:** SRE · **期間:** 2025年11月から。2026年5月のスキルシートに記載された内容です。

@@ -2,59 +2,38 @@
 type: 'project'
 projectType: 'self'
 tags: ['dotnet','realtime','socket']
-title: 'Neo Socket'
+title: "NeoSocket"
 date: '2023-04-20'
-summary: "NeoSocketは、MMORPGやメタバースなどのリアルタイムアプリケーション向けに設計された高性能フレームワークです。Web開発フレームワークに触発され、ユーザーフレンドリーなAPIを提供し、これらの要求の厳しいアプリケーションのユニークな課題に取り組みます。"
+summary: "Statefulなreal-timeアプリ向けに作ったC#のnetworking frameworkです。Packet handler、middleware、IoC container、UnityとTypeScriptのclientを備えています。"
 images: ['/static/media/project/neo-socket/neosocket-thumbnail-horizontal.jpg']
 repo: 'NeoSocket'
 audioURL: '/static/media/project/neo-socket/neo-socket-jp.mp3'
 fe: ['TypeScript']
-be: ['Dotnet7', '.NET Standard2.0']
-network: ['TCP/UDP','Websocket']
-infra: ['Windows','MacOS','Linux']
+be: [".NET 7", ".NET Standard 2.0"]
+network: ["TCP", "UDP", "WebSocket"]
+infra: ["Windows", "macOS", "Linux"]
 tools: [Prometheus,Grafana]
 draft: false
 ---
 
-# **NeoSocket: リアルタイムアプリケーション向けのハイパフォーマンスフレームワーク**
+## Networking frameworkを自作した理由
 
-## **概要**
+NeoSocketは、[Jingi](/project/jingi)やmultiplayer sceneの実験から生まれました。Web開発で使っていたSpring BootやASP.NETのように、handler、service、dependency injectionで処理を整理したいと考えました。
 
-- **目的:** MMORPGやメタバースなど、高性能が求められ、拡張性のあるゲーム開発に最適な設計。リアルタイムチャットシステムやダッシュボードの管理インターフェイスにも応用可能です。
-- **背景:** 現在のオープンソースライブラリでは解決されていない、MMORPGやメタバースの独特な課題に応えるために開発されました。
+その構成をstatefulなreal-timeアプリでも使いやすくすることが課題でした。ゲームやmetaverseのprototypeに加え、chatアプリの[Cypher](/project/cypher)でも使っています。
 
-## **インスピレーションと基盤**
+## Connection、packet、middleware
 
-- **Web開発からゲーム開発へ:** Web開発（Spring BootやASP.NETなどのフレームワーク経験）からゲーム開発へ転向した私は、Webフレームワークから多くのインスピレーションを得ています。
-- **主な動機:** 使いやすいAPIを持つフレームワークを作りたいという願望があり、それがリアルタイムゲームに適したパフォーマンスを提供します。
+NeoSocketはconnection stateを保持し、packetをhandlerに振り分けます。Middlewareにはauthentication、authorization、traffic制御を追加できます。実際の方針はアプリ側で決める必要があり、middlewareがあるだけで攻撃を防げるわけではありません。
 
-## **NeoSocketの特徴**
+Neo-Protocolではpacketを番号と名前で識別します。Serializationの標準はMessagePackで、データ交換にはProtobufも検討しました。Binary serializationとpacket batchingで、繰り返しのmetadataや送信時のoverheadを減らします。削減量はpayloadによるため、以前の50〜90%という見積もりは、すべてのケースに当てはまる値ではありません。
 
-- **ステートフル接続:** リアルタイムアプリケーションに最適で、連続的な接続状態を保証します。データ転送量が多い長期タスクの無駄を避けます。
-- **ミドルウェア層:** 開発者が自由にカスタマイズ可能。DDoS防止策や認証/認可メカニズムなどの強力な機能を統合。
-- **Neo-Protocol:** 自分で設計したプロトコルで、データ処理の最適化と効率的なデータハンドリングにより、帯域幅の使用を大幅に削減。ビットを節約することがモットーです。
-- **帯域効率:** MessagePackやProtobufを使用してデータを標準化。JSONと比較して50-90%の帯域幅を削減。さらに、TCP/UDPパケットを1つにまとめることで帯域の消費を削減。
-- **開発のしやすさ:** Handlers（コントローラーに似ている）、Services、そして組み込みのIoC（Inversion of Control）コンテナを備えた、馴染みのある直感的な構造を提供。
-- **要求/一元要求機構:** Web開発で一般的な要求/応答モデルを反映し、効率的なネットワーク通信に適応させています。
-- **コマンドサポート（BiDirectional):** 応答を必要としないコマンド型の要求をサポートし、システムの柔軟性を高め、不要なデータ伝送を削減。
-- **パケット管理:** MessagePackを使用してパケットIDとPacketNameでパケットを識別するユニークなシステムを採用し、URLベースの従来の方法に代わります。
+Request-responseと、一方向のcommandの両方に対応しています。処理に合った通信方式を選べるようにすることが目的です。
 
-## **デモ**
+## Handlerとservice
 
-### 1コアCPUのGoogle VMで400kリクエスト/秒を処理可能。 (VMは約15個のサービスをDocker上で稼働中です)。
-![Handles up to 400k requests/s](/static/media/project/neo-socket/metric.png)
+Handlerからserviceへ、アプリの処理を渡します。Chat handlerの構成例です。
 
-### Server Architecture
-![Server architecture](/static/media/project/neo-socket/neo-server-architecture.png)
-
-### Middleware Interfaceを実装したら簡単に調整できる
-![Server architecture](/static/media/project/neo-socket/neo-middleware-architecture.png)
-
-### 同じシーンで1000人のプレイヤーを処理可能（メタバース内のコンサートシミュレーション）
-![Metaver Demo 1000 players](/static/media/project/neo-socket/metaverse.png)
-
-### すべてのプロトコルに対応する一つのエンドポイント：
-TCP/UDP、Websocket、HTTP、Unixsocketなど、一つのエンドポイントで対応します。
 ```csharp
 [NeoHandler]
 public class ChatHandler
@@ -68,7 +47,8 @@ public class ChatHandler
 }
 ```
 
-### Webのようにコードを書き、ゲームやリアルタイムアプリケーションのためのパフォーマンスを実現
+Serviceではconnectionのcontextを取得し、roomへの配信とデータの保存を行えます。
+
 ```csharp
 [Service]
 public class ChatService
@@ -96,10 +76,11 @@ public class ChatService
 }
 ```
 
+TCP、UDP、WebSocket、HTTP、Unix socketで同じhandlerモデルを使うことを目指しています。ただし、各transportの特性はそれぞれ異なります。
 
-### パケット指向
+## Packetの定義とclient
 
-全てのことはパケットに関連しています。各パケットはPacketIDとPacketNameで識別され、MessagePackでシリアライズされて帯域を最適化します。.protobufファイルは必要ありません、これにより開発プロセスが軽減されます。
+PacketにはIDと名前があり、MessagePackのkeyでfieldを定義します。
 
 ```csharp
 [NeoPacket]
@@ -113,7 +94,7 @@ public class MessageDTO : NeoPacket
 }
 ```
 
-Typescript SDKも用意されており、Webアプリケーションの開発が容易になります。
+Web client向けのTypeScript SDKにも、対応する定義を用意しました。
 
 ```typescript
 @DNeoPacket(0, 'MessageDTO')
@@ -127,9 +108,11 @@ export class MessageDTO extends NeoPacket {
 }
 ```
 
-### 組み込みのコンテナ
+Serverは.NET 7、Unity向けclientは.NET Standard 2.0から開発を始めました。TypeScript SDKにより、web appでもpacketを中心にした通信ができます。Stateful connectionはこうした用途に合いますが、すべてのwebsiteに必要な構成ではありません。
 
-組み込みコンテナはDotnetやSpringのように、サービスライフタイム（Scoped, Transient, Singleton）に加えて、NeoClientに同伴するParasitic（寄生的）オプションを提供します。
+## Service lifetime
+
+IoC containerにはScoped、Transient、Singletonと、NeoClientに合わせて寿命が決まるParasiticがあります。複数のimplementationがある場合にはQualifierで選択します。
 
 ```csharp
 [Service]
@@ -139,47 +122,38 @@ public class ConnectService : IConnectService
     [Autowired] private ChatManager _chatManager { get; set; }
     [Autowired] private IHandleContext _context { get; set; }
     [Autowired] private IChatDB _chatDB { get; set; }
+}
 ```
 
-SpringBootの[Qualifier]やDotnet8のKeyedServiceのようなサ
+Console applicationとしても、.NETアプリのbackground serviceとしても動かせます。
 
-ポートが含まれています。
+## 構成とテストの記録
 
+![NeoSocketのserver構成](/static/media/project/neo-socket/neo-server-architecture.png)
 
-DotnetのService Workerとして、またはConsole Applicationとして実行可能です。
+![NeoSocketのmiddleware構成](/static/media/project/neo-socket/neo-middleware-architecture.png)
 
-## **開発の進行**
+初期のテストでは、1 CPU core、2 threadのGCP VMで、最大毎秒400,000 requestを記録しました。同じVMでは他のDocker serviceも動かしていました。以下はそのテストのchartです。この構成でのrequest処理は、ゲーム全体の処理やproductionでの容量保証と同じではありません。
 
-- **TCP/UDP接続の実装:** ゲームに焦点を当て、サーバーは.NET7、クライアントは.NET Standard 2.0を使用してUnityと統合。クライアントコードはUnity内で使用するためにDLLにコンパイルされ、サーバーとクライアント間の通信のパフォーマンスと効率を実現しました。
-- **TypeScriptライブラリの開発:** ReactJSを使用したWebアプリケーションの接続をサポートするために特別に作られたTypeScript SDKが提供されます。これは従来のRESTful HTTP APIよりも帯域を節約する選択肢ですが、そのstatefulアーキテクチャは一部のウェブサイトには適していません。
-- **監視ダッシュボードの開発:** 現在、NeoSocketの包括的なモニタリングを提供するReactJSベースのダッシュボードが開発中です。これにはサーバーのパフォーマンス測定やヘルスチェックが含まれます。
-- **メトリックの統合:** PrometheusとGrafanaを使用してメトリックを測定するためのミドルウェアが書かれました。
+![NeoSocketの初期テストのmetric](/static/media/project/neo-socket/metric.png)
 
-## **課題と展望**
+密集したupdateを試すため、1,000人のプレイヤーを模擬したsceneも使いました。
 
-### **主な課題:**
+![1,000人を模擬したmetaverse scene](/static/media/project/neo-socket/metaverse.png)
 
-- **パフォーマンスの最適化:** .NETの高度な機能を活用してパフォーマンスを向上させること、例えばデータ構造、不変データタイプ、ハッシュテーブル、キャッシュストレージ、並列プログラミング、コンテキストスイッチ、スレッドセーフコレクションなど。
-- **コードの微調整:** 現在のコードベースの独創性の欠如に直面し、主に利便性のためにシングルトンを使用しています。将来的にはコードのクリーンアップとベストプラクティスの適用を計画しています。
-- **フレームワークとAPIの研究:** 他のフレームワークやライブラリを分析して、どのAPIが開発者にとって最良の体験を提供するかを理解します。Spring BootのContainer IOCやAutowired、Serviceなどの注釈にインスピレーションを受け、.NETで同様の機能を模倣して開発者の利便性を向上させました。
+## これから改善したいこと
 
-### **展望:**
+PrometheusとGrafana向けのmetric middlewareを実装し、Reactの監視dashboardも作り始めました。便利だからと多用していたSingletonの見直し、concurrencyとcachingの改善、APIの分かりやすさが今後の課題です。
 
-- **NeoSocketの未来:** NeoSocketは、C#で開発された高パフォーマンスのソケットフレームワークです。将来的なアプリケーションには、メッセージキューと分散ゲームサーバーアーキテクチャなどの先進的なソリューションが含まれ、NeoSocketの効率的なデザインを活かして、最小限の帯域幅の無駄で
+Async programming、thread-safe collection、context switching、serialization、reflection、service lifetimeについて学ぶ機会になりました。Message queueやdistributed game serverは、今後の応用先として考えているものです。
 
-優れたパフォーマンスを達成することを目指しています。
+## Stack
 
-
-## Technology Overview
-
-| Category                          | Details                                        |
-|-----------------------------------|------------------------------------------------|
-| **Environments** | C# .NET 7 (Server side), DotNet Standard 2.0 (Client side), TypeScript |
-| **Networking and Sockets**        | Socket Libraries, Stateful Connection          |
-| **Parallel Programming**          | Asynchronous Programming (Async/Await)         |
-| **Protocols**                     | TCP, UDP, WebSocket, HTTP, UnixSocket                            |
-| **Network Utilities**             | UPnP, UDP Hole Punching                        |
-| **Serialization/Deserialization** | MessagePack (for efficient data handling)      |
-| **Scan and Caching**              | Reflection, Attribute                          |
-| **Operation Systems Supported**   | Windows, MacOS, Linux                          |
-| **Currently Supported Platforms** | Unity, ReactJS, JavaScript/TypeScript, DotNet application |
+| 分野 | 技術 |
+| --- | --- |
+| Serverとclient | C#、.NET 7、.NET Standard 2.0、TypeScript |
+| Transport | TCP、UDP、WebSocket、HTTP、Unix socket |
+| Serialization | MessagePack |
+| Connection utility | UPnP、UDP hole punching |
+| Metric | Prometheus、Grafana |
+| 環境 | Windows、macOS、Linux、Unityとweb client |

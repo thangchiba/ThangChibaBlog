@@ -1,35 +1,33 @@
 ---
-title: 'Jingi Devlog : Phase 2 - Hệ thống kho đồ và GUI'
+title: "Jingi Devlog: Phase 2 — Inventory, GUI và pet"
 date: '2022-08-15'
 
 tags: ['jingi', 'mmorpg', 'moba', 'realtime', 'socket']
 draft: false
-summary: "Khám phá các cải tiến mới nhất trong Jingi phiên bản Beta 0.2.0, với các cập nhật lớn cho hệ thống kho đồ và GUI, và sự giới thiệu của cơ chế thú cưng. Những cải tiến này được thiết kế để làm phong phú trải nghiệm người dùng và chuẩn bị trò chơi cho các nâng cấp mạng sắp tới."
-audioURL: '/static/media/blog/random-generator/jingi-devlog-phase-2-en.mp3'
+summary: "Beta 0.2.0 bổ sung kéo thả, trang bị và sử dụng item, cập nhật health bar cùng loading scene, và thêm pet đi theo nhân vật."
+audioURL: '/static/media/blog/jingi/jingi-devlog-phase-2-vi.mp3'
 authors: ['default']
 images: ['/static/media/blog/jingi/0.2.0.png']
 ---
 
 import YouTubeEmbed from "./media/YouTubeEmbed";
 
-## Giới Thiệu
+## Làm bản thử dễ chơi hơn
 
-Tôi rất vui mừng thông báo về việc phát hành Jingi Beta phiên bản 0.2.0! Bản cập nhật này mang đến những cải tiến đáng kể cho giao diện và hệ thống kho đồ của trò chơi, là những yếu tố quan trọng để nâng cao trải nghiệm chơi trò chơi tổng thể.
+Ở Beta 0.2.0, mình tập trung vào những phần xung quanh combat: quản lý item, hiển thị máu và chuyển scene.
 
 <YouTubeEmbed url="https://www.youtube.com/watch?v=mkFDlAXRNb4&t=48s" />
 
-**Có Gì Mới?**
+## Inventory và GUI
 
-- **Inventory System**: Hệ thống kho đồ mới cho phép kéo, trang bị và sử dụng vật phẩm. Có chú giải công cụ cho các vật phẩm để giúp hiểu các thuộc tính và cách sử dụng của chúng. Tôi đã tạo tính năng này bằng cách sử dụng các tài sản từ trò chơi di động indie, kết hợp với các tập lệnh tùy chỉnh mà tôi đã viết để phù hợp với các yêu cầu riêng của mình.
-- **Graphical User Interface (GUI)**: Các cải tiến đối với GUI bao gồm HealthBar mới và các cảnh Loading, giúp trò chơi trở nên trực quan và hấp dẫn hơn về mặt hình ảnh.
-- **Pet Mechanics**: Hiện tại, thú cưng sẽ đi theo chủ nhân của chúng xung quanh thế giới trò chơi. Tôi vẫn chưa triển khai các tập lệnh tấn công cho thú cưng, nhưng nó nằm trong lộ trình của tôi!
+Inventory đã hỗ trợ kéo thả, trang bị và sử dụng item. Mỗi item có tooltip để người chơi xem thông tin. Mình dùng asset từ các game mobile indie rồi viết script để ghép vào hệ thống của Jingi.
 
-**Ghi Chú Phát Triển**
+Mình cũng cập nhật health bar và loading scene. Những thay đổi này không lớn, nhưng giúp bản thử dễ theo dõi hơn khi chơi.
 
-Khi tôi chuẩn bị giải quyết khía cạnh mạng của Jingi, tôi dự đoán sẽ viết lại khoảng 70% mã hiện tại để đảm bảo khả năng mở rộng và hiệu suất. Điều này có nghĩa là một số tính năng vẫn đang được phát triển và sẽ được cải thiện trong các bản cập nhật trong tương lai.
+## Pet hiện làm được gì?
 
-**Phản Hồi Mong Muốn**
+Pet đã biết đi theo chủ. Phần tấn công thì chưa có, mình sẽ cần viết thêm script cho nó.
 
-Phản hồi của bạn là vô giá! Nếu bạn có bất kỳ câu hỏi nào về các tính năng đã phát hành hoặc đề xuất cho các bản cập nhật trong tương lai, vui lòng để lại chúng trong phần bình luận bên dưới. Tôi ở đây để trả lời các câu hỏi của bạn và ghi nhận những đóng góp quý giá của bạn.
+## Chuẩn bị làm networking
 
-Hãy theo dõi để biết thêm các cập nhật khi tôi tiếp tục xây dựng và tinh chỉnh Jingi thành trải nghiệm PvE nhập vai mà tôi hình dung!
+Networking sẽ là phần việc lớn tiếp theo. Mình dự tính phải viết lại khoảng 70% code để phù hợp với multiplayer. Đây là ước lượng ở thời điểm này, chưa phải kết quả của một lần chuyển đổi đã hoàn thành. Một số hệ thống hiện tại chắc sẽ còn thay đổi trong quá trình đó.

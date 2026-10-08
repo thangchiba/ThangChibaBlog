@@ -1,36 +1,39 @@
 ---
-title: 'Jingi Devlog : Phase 5 - Lõi mạng'
+title: "Jingi Devlog: Phase 5 — Xây dựng network core"
 date: '2022-12-11'
 
 tags: ['jingi', 'mmorpg', 'moba', 'realtime', 'socket']
 draft: false
-summary: "Jingi phiên bản Beta 0.5.0 đánh dấu một bước nhảy vọt đáng kể trong mạng, thiết lập cơ sở hạ tầng mạng cốt lõi để hỗ trợ các chức năng MMORPG mạnh mẽ. Bản cập nhật này có giải pháp mạng tùy chỉnh được tối ưu hóa để xử lý tải người dùng lớn và bao gồm khả năng truy cập máy chủ toàn cầu và cân bằng tải nâng cao."
-audioURL: '/static/media/blog/random-generator/jingi-devlog-phase-5-en.mp3'
+summary: "Beta 0.5.0 có network core tự viết, tách MasterServer và StateServer, thử kết nối theo khu vực và đo khả năng xử lý packet ban đầu."
+audioURL: '/static/media/blog/jingi/jingi-devlog-phase-5-vi.mp3'
 authors: ['default']
 images: ['/static/media/blog/jingi/0.5.0.png']
 ---
 
 import YouTubeEmbed from "./media/YouTubeEmbed";
 
-## Giới Thiệu
+## Network core đầu tiên
 
-Tôi rất vui mừng thông báo về việc phát hành Jingi Beta phiên bản 0.5.0, đánh dấu một bước tiến đáng kể trong quá trình phát triển trò chơi — đặc biệt là về mạng. Bản cập nhật này là tất cả về việc thiết lập cơ sở hạ tầng mạng cốt lõi cho các khả năng MMORPG của Jingi.
+Beta 0.5.0 tập trung vào networking. Mình tự viết core cho Jingi vì muốn thử bài toán nhiều người cùng chơi trong một thế giới, đồng thời có thể dùng lại phần này cho các dự án sau.
 
 <YouTubeEmbed url="https://www.youtube.com/watch?v=U98MgNBLwfo" />
 
-**Có Gì Mới?**
+## Vì sao chọn C# và .NET?
 
-- **Network Core Development**: Tôi đã hoàn thành cốt lõi mạng cho Jingi. Sự phát triển này rất quan trọng đối với những người bạn quan tâm đến việc tạo ServerCore của riêng mình và có thể thấy những hiểu biết được chia sẻ ở đây hữu ích.
-- **Tại sao lại là giải pháp mạng tùy chỉnh?**: Quyết định phát triển một giải pháp mạng tùy chỉnh xuất phát từ mục tiêu của tôi là hỗ trợ một lượng lớn người dùng đồng thời mà không cần phân chia cảnh thường thấy trong nhiều máy chủ trò chơi. Kiến trúc này cũng được thiết kế để có thể tái sử dụng cho các dự án trong tương lai, bao gồm cả các máy chủ metaverse tiềm năng.
-- **Thông Tin Chi Tiết Kỹ Thuật**:
-  - **Lựa chọn Framework**: Mặc dù việc lựa chọn ngôn ngữ lập trình không quan trọng nhưng tôi khuyên bạn nên sử dụng C# và cụ thể là DotnetCore để có hiệu suất và sự tiện lợi vượt trội. Mặc dù tôi có nhiều kinh nghiệm với Java nhưng Dotnet 7 cung cấp hiệu suất tốt hơn và khả năng phân chia mã thành các thư viện DotnetStandard cực kỳ tiện dụng, đặc biệt là để sử dụng với Unity.
-  - **Tổng quan về thiết kế**: Kiến trúc mạng bao gồm MasterServer quản lý nhiều StateServer khác nhau, xử lý các yêu cầu an toàn từ người chơi. Nó thực hiện kiểm tra sức khỏe trên StateServers để cân bằng tải và hiện xử lý các yêu cầu HTTP để truy cập người chơi dựa trên web trong tương lai.
-  - **Khả năng truy cập toàn cầu**: StateServers được đặt chiến lược ở các quốc gia khác nhau để đảm bảo người chơi trên toàn thế giới có thể chọn máy chủ gần nhất để có ping tối ưu. Cơ sở dữ liệu nhân vật là toàn cầu, cho phép người chơi truy cập bất kỳ StateServer nào với cùng một nhân vật.
-- **Kiểm tra hiệu suất**: Các bài kiểm tra ban đầu trên các giải pháp VPS ở Singapore và Nhật Bản cho thấy hiệu suất và ping tuyệt vời, với thiết lập hai lõi xử lý tới 30.000 gói TCP mỗi giây, mỗi gói chứa năm gói con — ước tính hỗ trợ khoảng 10.000 người dùng đồng thời.
-- **Cân bằng tải**: Kiến trúc này hơi giống với SpatialOS, trong đó MasterServer giám sát tình trạng của StateServers và có thể khởi động thêm máy chủ ở những vị trí có mật độ người chơi cao.
+Mình chọn C# và .NET cho bản này. Một phần vì thích hệ sinh thái này, một phần vì chia sẻ code phía client với Unity qua thư viện .NET Standard khá tiện. Đây là lựa chọn phù hợp với dự án của mình, không phải kết luận ngôn ngữ nào luôn nhanh hơn.
 
-**Phản Hồi Mong Muốn**
+## MasterServer và StateServer
 
-Khi tôi tiếp tục tinh chỉnh và mở rộng khả năng mạng của Jingi, phản hồi của bạn là vô giá. Cho dù bạn có câu hỏi kỹ thuật về thiết lập mạng hay đề xuất cải tiến, vui lòng chia sẻ suy nghĩ của bạn.
+MasterServer xử lý request ban đầu và kiểm tra tình trạng của các StateServer. StateServer quản lý game state. Thiết kế cũng có HTTP endpoint để sau này thử thêm web client.
 
-Hãy theo dõi để biết thêm các cập nhật khi tôi tiếp tục phát triển thành phần phức tạp nhưng ly kỳ này của Jingi!
+Mình đã thử server ở Singapore và Nhật. Ý tưởng là cho người chơi chọn StateServer gần mình, còn dữ liệu nhân vật được dùng chung giữa các khu vực.
+
+## Đo thử hiệu năng
+
+Trong lần thử ban đầu, VPS hai core xử lý khoảng 30.000 TCP packet mỗi giây, mỗi packet chứa năm sub-packet. Từ đó mình ước tính một workload có thể tương ứng với khoảng 10.000 người chơi đồng thời.
+
+Con số đó chưa phải kết quả test với 10.000 người chơi thật. Sức tải còn phụ thuộc vào gameplay, tần suất cập nhật, kích thước packet và lượng xử lý cho từng người chơi.
+
+## Hướng mở rộng
+
+Bước tiếp theo là dùng tình trạng StateServer và tải theo khu vực để quyết định nơi cần thêm server. Core đã có, còn kiến trúc phân tán rộng hơn vẫn cần thử nghiệm thêm.

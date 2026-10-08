@@ -1,0 +1,35 @@
+---
+audioURL: '/static/media/project/data-lake-platform/data-lake-platform-vi.mp3'
+type: "project"
+projectType: "work"
+title: "Data Lake trên AWS"
+summary: "Tham gia SRE cho module Data Lake của hệ thống viễn thông lớn: triển khai Terraform, dựng AWS resource và tự động hóa CI/CD."
+images: ["/static/images/project/data-lake-platform.svg"]
+draft: false
+date: "2025-11-01"
+tags: ["aws", "terraform", "sre", "data-lake"]
+infra: ["AWS", "Multi VPC", "PrivateLink", "EC2", "Lambda", "ECR", "ElastiCache", "MSK", "Aurora", "S3", "IAM", "KMS", "Secrets Manager"]
+tools: ["Terraform", "GitHub Actions", "CodePipeline", "CodeBuild"]
+---
+
+## Bối cảnh dự án
+
+Từ tháng 11/2025, mình tham gia nhóm SRE trong dự án Data Lake cho một doanh nghiệp viễn thông lớn ở Nhật. Hệ thống tổng thể hướng tới thu thập và phân tích dữ liệu real-time ở quy mô khoảng 90 triệu người dùng.
+
+Toàn dự án có khoảng 300 người, chia thành nhiều nhóm. Mình phụ trách infrastructure của module Data Lake, không phải toàn bộ nền tảng. Architecture và security design do các nhóm chuyên trách cung cấp.
+
+## Phần mình phụ trách
+
+Mình chuyển thiết kế thành Terraform code, dựng và kiểm tra AWS resource, đồng thời làm các pipeline CI/CD. Khi triển khai, mình kiểm tra khác biệt giữa các environment và tính nhất quán với resource đã có.
+
+Với cấu hình Multi VPC, mình kiểm tra đường giao tiếp giữa service, kết nối VPC Peering và PrivateLink, Security Group cùng Route Table. Mình cũng làm việc với IAM permission, KMS và Secrets Manager để triển khai các yêu cầu security từ thiết kế.
+
+Phần tự động hóa dùng GitHub Actions và AWS CodePipeline / CodeBuild. Mình làm các pipeline cho Lambda, ECR và xử lý liên quan đến MSK, Aurora, nhằm giúp dựng environment và cập nhật có thể lặp lại ổn định hơn.
+
+## Những gì mình học được
+
+Đây là trải nghiệm làm trong một dự án lớn với các nhóm chuyên trách, thay vì tự quyết định mọi phần thiết kế. Mình hiểu thêm về Terraform state, cách dùng lại module, khác biệt giữa environment và ảnh hưởng của network cùng permission đến công việc infrastructure hằng ngày.
+
+Con số người dùng ở trên mô tả quy mô yêu cầu của toàn dự án, không phải benchmark của một hệ thống mình tự xây độc lập.
+
+**Vai trò:** SRE · **Thời gian:** từ 11/2025, theo CV cập nhật tháng 5/2026.

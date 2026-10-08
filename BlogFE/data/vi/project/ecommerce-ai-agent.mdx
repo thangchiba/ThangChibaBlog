@@ -1,0 +1,36 @@
+---
+audioURL: '/static/media/project/ecommerce-ai-agent/ecommerce-ai-agent-vi.mp3'
+type: "project"
+projectType: "work"
+title: "AI Agent cho E-Commerce"
+summary: "Agent nhận yêu cầu qua chat rồi tìm sản phẩm, khách hàng, kiểm tra tồn kho và tạo đơn thông qua API của hệ thống E-Commerce có sẵn."
+images: ["/static/images/project/ecommerce-ai-agent.svg"]
+draft: false
+date: "2025-07-01"
+tags: ["ai-agent", "llm", "langgraph", "ecommerce"]
+fe: ["JavaScript"]
+be: ["Python", "FastAPI", "LangChain", "LangGraph"]
+db: ["MongoDB"]
+infra: ["AWS", "Self-hosted LLM"]
+tools: ["ReAct", "Tool Calling"]
+---
+
+## Từ một câu chat đến thao tác tạo đơn
+
+Dự án này thử cho nhân viên vận hành hệ thống quản lý E-Commerce bằng ngôn ngữ tự nhiên. Ví dụ: “Khách hàng A mua ba sản phẩm B, hãy tạo đơn giúp tôi.” Agent nhận yêu cầu rồi thực hiện qua backend API có sẵn.
+
+Agent dùng LangChain và LangGraph với flow ReAct để chọn và gọi các tool đã định nghĩa. Tool có thể tìm sản phẩm, tìm khách hàng, kiểm tra tồn kho và tạo đơn.
+
+## Phần mình phụ trách
+
+Mình làm Team Lead trong nhóm bốn người, phụ trách thiết kế agent, backend FastAPI, định nghĩa tool, tích hợp self-hosted LLM và dựng môi trường AWS. Mình cũng làm chat UI đơn giản bằng JavaScript để hiển thị kết quả và thông báo xác nhận.
+
+Backend có API cho chat và agent execution, gọi API của hệ thống E-Commerce qua tool và liên kết với MongoDB. Với yêu cầu tạo đơn, agent có thể lấy thông tin sản phẩm, tìm khách hàng, kiểm tra số lượng rồi gọi API tạo đơn.
+
+## Thử self-hosted model
+
+Mình đánh giá các self-hosted LLM để thử cấu hình không phụ thuộc external model API. Các điểm so sánh gồm chất lượng câu trả lời, độ ổn định khi chọn tool, tốc độ phản hồi, tải infrastructure và chi phí vận hành.
+
+Qua đó mình thấy thiết kế tool quan trọng đến mức nào. API contract, input validation, xác nhận trước khi thực thi và error handling đều ảnh hưởng trực tiếp đến việc agent có làm được việc hữu ích hay không.
+
+**Vai trò:** Team Lead · **Nhóm:** 4 người · **Thời gian:** 07–10/2025.

@@ -1,34 +1,33 @@
 ---
-title: 'Jingi Devlog : Phase 2 - Inventory System and GUI'
+title: "Jingi Devlog: Phase 2 — Inventory, GUI, and pets"
 date: '2022-08-15'
 
 tags: ['jingi', 'mmorpg', 'moba', 'realtime', 'socket']
 draft: false
-summary: "Discover the latest enhancements in Jingi Beta version 0.2.0, featuring major updates to the inventory and GUI systems, and the introduction of pet mechanics. These improvements are designed to enrich the user experience and prepare the game for upcoming networking enhancements."
-audioURL: '/static/media/blog/random-generator/jingi-devlog-phase-2-en.mp3'
+summary: "Beta 0.2.0 adds an inventory with item tooltips, updates the health bar and loading scenes, and introduces pets that follow the player."
+audioURL: '/static/media/blog/jingi/jingi-devlog-phase-2-en.mp3'
 authors: ['default']
 images: ['/static/media/blog/jingi/0.2.0.png']
 ---
 
 import YouTubeEmbed from "./media/YouTubeEmbed";
 
-## Introduce
-I'm excited to announce the release of Jingi Beta version 0.2.0! This update brings significant enhancements to the game's interface and inventory systems, pivotal for enhancing the overall gameplay experience.
+## Making the prototype easier to use
+
+For Beta 0.2.0, I worked on the parts around combat: managing items, showing character health, and moving between scenes.
 
 <YouTubeEmbed url="https://www.youtube.com/watch?v=mkFDlAXRNb4&t=48s" />
 
-**What’s New?**
+## Inventory and GUI
 
-- **Inventory System**: The new inventory system allows for item dragging, equipping, and usage. There are tooltips for items to help understand their attributes and uses. I crafted this feature using assets from indie mobile games, combined with custom scripts that I wrote to fit my unique requirements.
-- **Graphical User Interface (GUI)**: Enhancements to the GUI include a new HealthBar and Loading scenes, making the game more intuitive and visually engaging.
-- **Pet Mechanics**: For now, pets will follow their owner around the game world. I have not yet implemented attack scripts for pets, but it’s on my roadmap!
+The inventory supports dragging items, equipping them, and using them. Tooltips show what each item does. I used assets from indie mobile games and wrote the scripts needed to fit them into Jingi.
 
-**Development Notes**
+I also updated the health bar and loading scenes. These are small changes, but they make the prototype easier to follow while playing.
 
-As I gear up to tackle the networking aspect of Jingi, I anticipate rewriting about 70% of the current code to ensure scalability and performance. This means some features are still under development and will be polished in future updates.
+## Pets, for now
 
-**Feedback Wanted**
+Pets can follow their owner around. They cannot attack yet; that will need a separate set of scripts.
 
-Your feedback is invaluable! If you have any questions about the features released or suggestions for future updates, please drop them in the comments below. I'm here to answer your queries and take note of your valuable input.
+## Preparing for networking
 
-Stay tuned for more updates as I continue to build and refine Jingi into the immersive PvE experience I envision it to be!
+Networking is the next big task. At this point, I expect to rewrite roughly 70% of the code to make it fit multiplayer. That is an estimate of the work ahead, rather than a finished migration. Some of the current systems are likely to change along the way.
